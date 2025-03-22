@@ -1,0 +1,201 @@
+{
+  "main": {
+    "id": "ca75b318a67ab44d",
+    "type": "split",
+    "children": [
+      {
+        "id": "555917d48b371293",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "926aedbb3baff807",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "UDEMY/SPRING BOOT EXPERT/Sessão 2 - Primeiros Passos.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Sessão 2 - Primeiros Passos"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "3747633de1efd990",
+    "type": "split",
+    "children": [
+      {
+        "id": "f1978ac4fd1193b5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7fbf7abbcf6552a6",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de ficheiros"
+            }
+          },
+          {
+            "id": "f49ea0490d0b94a0",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Procurar"
+            }
+          },
+          {
+            "id": "2265aaeb196a8815",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 272.5,
+    "collapsed": true
+  },
+  "right": {
+    "id": "fd48e1adbeab8766",
+    "type": "split",
+    "children": [
+      {
+        "id": "bece3b09f9ebfffa",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3363252021e5cda1",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "spring/Spring Boot.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks para Spring Boot"
+            }
+          },
+          {
+            "id": "9b989c03f76ecc93",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Welcome.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Links externos de Welcome"
+            }
+          },
+          {
+            "id": "b5f91b1c359ec681",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "dedd73c12e28722a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Welcome.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Índice de Welcome"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir Quick Switcher": false,
+      "graph:Abrir Visualização de diagrama de grafo": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Abrir nota de hoje": false,
+      "templates:Inserir templates": false,
+      "command-palette:Abrir paleta de comando": false
+    }
+  },
+  "active": "926aedbb3baff807",
+  "lastOpenFiles": [
+    "UDEMY/SPRING BOOT EXPERT/Pasted image 20250321151640.png",
+    "UDEMY/SPRING BOOT EXPERT/Pasted image 20250321151250.png",
+    "UDEMY/SPRING BOOT EXPERT/Pasted image 20250321151133.png",
+    "UDEMY/SPRING BOOT EXPERT/Sessão 2 - Primeiros Passos.md",
+    "UDEMY/SPRING BOOT EXPERT/Pasted image 20250320153050.png",
+    "UDEMY/SPRING BOOT EXPERT/Pasted image 20250320150820.png",
+    "UDEMY/SPRING BOOT EXPERT/Pasted image 20250320150501.png",
+    "UDEMY/SPRING BOOT EXPERT/Pasted image 20250320150231.png",
+    "UDEMY/SPRING BOOT EXPERT/Pasted image 20250320130542.png",
+    "UDEMY/SPRING BOOT EXPERT/Pasted image 20250320124821.png",
+    "UDEMY/SPRING BOOT EXPERT/Pasted image 20250320114313.png",
+    "UDEMY/SPRING BOOT EXPERT/Pasted image 20250320114127.png",
+    "UDEMY/FRONT-END - DANIEL TAPIAS/Seção 10 - listas, tabelas, details e popover.md",
+    "UDEMY/SPRING BOOT EXPERT",
+    "Sem título",
+    "SPRING BOOT COM FERNANDA KIPPER/Resumo de Spring Boot.md",
+    "UDEMY/FRONT-END - DANIEL TAPIAS",
+    "UDEMY/Sem título.md",
+    "UDEMY",
+    "spring/Spring Boot.md",
+    "2025-03-16.md",
+    "Primeira nota.md",
+    "CANVAS SPRING BOOT.canvas",
+    "Exemplo.md",
+    "SPRING BOOT COM FERNANDA KIPPER",
+    "SDSF.md"
+  ]
+}
