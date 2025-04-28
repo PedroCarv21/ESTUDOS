@@ -7,6 +7,7 @@ Através do site [spring initialzr](https://start.spring.io/), onde serão estab
 - **Group**: define o domínio do seu projeto. Ele deve ser escrito ao contrário, ou seja, se o seu domínio é example.com então ele deve ser escrito como com.example.
 - **Artifact**: define o nome do projeto.
 - **ADD DEPENDENCIES**: através deste botão serão adicionadas as dependências (ou bibliotecas) no seu projeto. Foram adicionadas as dependências: Lombok; Spring Boot Dev Tools; Spring Web; Spring Data JPA e H2 Database.
+	- **Lombok**: é um framework que visa simplificar as tarefas repetitivas, como a criação de **getters** e **setters**. Em vez disso, seriam acrescentadas anotações em cima da classe para que fossem gerados tais métodos no momento de compilação.
 - **EXPLORE**: demonstra a estrutura do projeto antes de ser feito o download.
 - **GENERATE**: faz o download do projeto.
 
@@ -64,7 +65,7 @@ Este plugin se encontra no canto direito. Caso não esteja visível, vá até o 
 
 Ao clicar no plugin, serão exibidas diversas pastas tais como:
 
-- **Lifecycle**: as operações que podem ser realizadas em cima do projeto. Exemplo:
+- **Lifecycle**: as operações que podem ser realizadas em cima do projeto.
 - **Plugins**: onde estão armazenados os plugins.
 - **Dependencies**: onde estão armazenadas as dependências escolhidas durante o acesso do site Spring Initializr.
 - **Repositories**: é por meio desta pasta que serão feitas tentativas para a instalação das dependências (primeiro através do arquivo **local** e depois, caso não tenha encontrado, através do arquivo **central**).
@@ -103,7 +104,7 @@ Para definir a rota, deve-se colocar entre parênteses, depois da anotação, um
 
 Por fim, coloque a anotação **@RestController** na classe **Application**. Veja na prática:
 
-```
+```java
 @SpringBootApplication  
 @RestController  
 public class ProdutosapiApplication {  
@@ -153,11 +154,11 @@ Acesse a classe Produto e defina os atributos (ex.: id (String) , nome (String),
 
 ### Criando um controller para produtos
 
-Controller é uma classe que processa as requisições HTTP e retorna respostas destas requisições. Para que uma classe seja considerada um Controller, é necessário passar a anotação **@RestController**.
+Controller é uma classe que processa as requisições HTTP e retorna respostas destas requisições. Para que uma classe seja considerada um Controller, é necessário passar a anotação **@RestController**. ^fc947b
 
 Em seguida, coloque também a anotação **@RequestMapping** na classe ProdutoController, responsável por informar a url deste controller. Exemplo:
 
-```
+```java
 @RestController  
 @RequestMapping("produtos")  
 public class ProdutoController {  
@@ -170,7 +171,7 @@ public class ProdutoController {
 
 A partir da classe ProdutoController, crie um método **void** que irá 'salvar' as informações de um objeto Produto. No caso de métodos que fazem a operação de inserção (POST), coloque a anotação **@PostMapping** no método:
 
-```
+```java
 @RestController  
 @RequestMapping("produtos")  
 public class ProdutoController {  
@@ -212,7 +213,7 @@ Antes de clicar em Send, vá até o RestController e adicione a anotação **@Re
 
 Caso deseje que os dados aparecem também na resposta do Postman, mude o retorno do método de void para Produto e escreva no final do método **return produto**:
 
-```
+```java
 @RestController  
 @RequestMapping("/produtos")  
 public class ProdutoController {  
@@ -243,7 +244,7 @@ As configurações são realizadas no arquivo **application** presente na pasta 
 
 Esta é a sintaxe presente no arquivo:
 
-```
+```yml
 spring:  
   application:  
     name: Produtos API  
@@ -278,9 +279,11 @@ Depois de definir essas configurações, basta executar a aplicação e acessar 
 
 Para que seja criada uma tabela sempre que for iniciada a aplicação, crie na pasta src/main/resources um arquivo com este nome (e não outro): data.sql
 
+**OBS.: não é necessária a criação deste documento (apenas em casos de customização) quando se utiliza as principais anotações para entidades (fornecidas pela dependência do JPA).**
+
 A partir deste arquivo, crie uma tabela com os seus atributos e tipos:
 
-```
+```sql
 create table produto(  
     id varchar(255) not null primary key,  
     nome varchar(50) not null,  
@@ -311,13 +314,13 @@ Esta anotação serve para mapear, ou seja, relacionar uma classe POJO a uma tab
 
 ### Anotação @Table, @Column e @Id
 
-É necessário que tanto o nome da classe seja idêntico ao nome da tabela quanto o nome dos atributos sejam idênticos ao nome das colunas da tabela. Para isso, deve-se usar a anotação @Table para definir o nome da classe igual ao da tabela e a anotação @Column para definir o nome de cada atributo igual ao nome de cada coluna.
+É necessário que tanto o nome da classe seja idêntico ao nome da tabela quanto o nome dos atributos sejam idênticos ao nome das colunas da tabela. Para isso, deve-se usar a anotação **@Table** para definir o nome da classe igual ao da tabela e a anotação **@Column** para definir o nome de cada atributo igual ao nome de cada coluna.
 
-Já a anotação @Id tem como objetivo transformar um determinado atributo em uma chave primária. 
+Já a anotação **@Id** tem como objetivo transformar um determinado atributo em uma chave primária. 
 
 Veja o exemplo da classe Produto com todas essas anotações:
 
-```
+```java
 @Entity  
 @Table(name="produto")  
 public class Produto {  
@@ -336,3 +339,179 @@ public class Produto {
 
 **OBS.: como os atributos e a classe possuem nomes idênticos ao das colunas e da tabela, o uso de @Table e @Column foi utilizado apenas como exemplo de demonstração.**
 
+## Persistindo informações no banco de dados
+
+### O que é JpaRepository?
+
+É uma interface oferecida pela JPA que contém os métodos necessários para as operações CRUD no banco. Para sua implementação, basta que seja definida dentro do operador diamante a entidade (neste caso Produto) e o tipo do Id (neste caso String). Por fim, a interface JpaRepository deve ser estendida por outra interface; não é necessário a sua implementação em uma classe, pois o Spring Boot já automatiza esta operação assim como a instanciação de um atributo do tipo JpaRepository.  ^bdeec6
+
+Veja o exemplo onde é criado uma interface filha de JpaRepository para a entidade Produto:
+
+```java
+ackage com.example.produtosapi.repository;  
+  
+import com.example.produtosapi.model.Produto;  
+import org.springframework.data.jpa.repository.JpaRepository;  
+  
+public interface ProdutoRepository extends JpaRepository<Produto, String> {  
+}
+```
+
+Em seguida, é necessário criar um atributo ProdutoRepository no controlador Rest assim como um construtor para esse atributo.
+
+```java
+@RestController  
+@RequestMapping("/produtos")  
+public class ProdutoController {  
+  
+    private ProdutoRepository produtoRepository;  
+  
+    public ProdutoController(ProdutoRepository produtoRepository) {  
+        this.produtoRepository = produtoRepository;  
+    }
+
+	...
+}
+```
+
+A partir disso, é possível utilizar um dos métodos da interface JpaRepository para a persistência de dados no banco: o método save(). 
+
+Porém, antes que os dados sejam salvos, é necessário informar um código único para o atributo id de um objeto Produto e, para isso, será utilizado o **método estático randomUUID() da classe UUID (Universal Unique Identifier)**. Esse método será responsável gerar aleatoriamente um código único de 128 bits para cada registro. Para transformá-lo em um tipo String, chame o método toString(). ^9a6673
+
+Exemplo de um método que utiliza o método save() de JpaRepository e o método UUID.randomUUID().toString():
+
+```java
+@RestController  
+@RequestMapping("/produtos")  
+public class ProdutoController {  
+  
+    private ProdutoRepository produtoRepository;  
+  
+    public ProdutoController(ProdutoRepository produtoRepository) {  
+        this.produtoRepository = produtoRepository;  
+    }  
+  
+    @PostMapping  
+    public Produto salvar(@RequestBody Produto produto){  
+        String id = UUID.randomUUID().toString();  
+        produto.setId(id);  
+        System.out.println("Produto salvo: " + produto);  
+        produtoRepository.save(produto);  
+        return produto;  
+    }  
+}
+```
+
+Ao passar os dados no formato JSON lá no Postman, será possível ver o o código gerado para o atributo Id assim como também no banco de dados H2.
+
+![[Pasted image 20250324111010.png]]
+
+![[Pasted image 20250324111110.png]]
+
+## Obtendo dados do banco pelo ID
+
+Utilize o método **findById()** que receberá o ID do registro como argumento. Em seguida, use logo depois de findById() o método **orElse()**, especificando o que deve ser retornado em caso do registro não ser encontrado.
+
+Como se trata de um método GET, será utilizada a anotação @GetMapping, porém com um parâmetro entre {} para dizer que o ID será passado via URL. Por exemplo: @GetMapping("{id}")
+
+Por fim, para extrair essa parte da URL que corresponde ao id e transformar em um parâmetro do método obterPorId(), utilize a anotação **@PathVariable** cujo o parâmetro será o mesmo que aquele passado em @GetMapping. 
+
+**OBS.: não é necessário que id o nome do parâmetro @GetMapping (poderia ser identificador, por exemplo), mas é obrigatório que o nome do parâmetro do @GetMapping seja igual ao nome do parâmetro do @PathVariable**
+
+Exemplo:
+
+```java
+@GetMapping("{id}")  
+public Produto obterPorId(@PathVariable("id") String id){  
+    return produtoRepository.findById(id).orElse(null);  
+}
+```
+
+Depois de salvar o registro no banco, deve ser feita a requisição da seguinte forma:
+
+![[Pasted image 20250324120312.png]]
+
+É possível também parametrizar a URL no Postman ao colocar dois pontos seguidos de um nome qualquer (ex.: identifcador) e, em seguida, o ID do registro na área **Value**:
+
+![[Pasted image 20250324121916.png]]
+
+## Deletando um registro pelo ID
+
+É semelhante ao método GET por ID, porém se utiliza a anotação **@DeleteMapping** e, em vez do método findById(), será usado o método deleteById. Veja um exemplo:
+
+```java
+@DeleteMapping("/deletar/{id}")  
+public void deletarPorId(@PathVariable("id") String id){  
+    produtoRepository.deleteById(id);  
+}
+```
+
+Também será feito a seguinte configuração no Postman:
+
+![[Pasted image 20250324133054.png]]
+
+![[Pasted image 20250324133158.png]]
+
+![[Pasted image 20250324133326.png]]
+
+## Atualizando um registro por ID
+
+Utilize a anotação **@PutMapping** para indicar que se trata de um método de atualização. Este método deverá receber dois parâmetros: um indicando o ID do registro que você quer atualizar (com @PathVariable) e o outro indicando um objeto com os novos dados atualizados (com @RequestBody).
+
+Este parâmetro que representa o objeto deverá receber o ID atualizado através de um método set.
+
+O método disponibilizado pelo JpaRepository para atualização de registros é o próprio método **save()**. Quando este método recebe um objeto cujo o ID já está inserido em algum registro na tabela, ele entende que se trata de uma operação PUT e não de POST.
+
+```java
+@PutMapping("/atualizar/{id}")  
+public void atualizar(@PathVariable("id") String id, @RequestBody Produto produto){  
+    produto.setId(id);  
+    produtoRepository.save(produto);  
+}
+```
+
+A operação de atualização no Postman deve ser configurada da seguinte maneira:
+
+![[Pasted image 20250325113734.png]]
+
+## Consultando por meio de um parâmetro
+
+### Criação de um método personalizado
+
+A JpaRepository oferece métodos para operações mais comuns ou prováveis de serem feitas no banco de dados (ex.: deletar, buscar por ID, inserir, etc...). Como uma tabela acaba possuindo colunas específicas (ex.: preço, nome, endereço, etc..), é necessário criar um método personalizado para filtrar a busca de registros na tabela com base em um parâmetro específico que a pessoa deseja.
+
+Neste exemplo, será filtrado uma tabela com base na coluna nome da tabela Produto. Logo, será criado um método em ProdutoRepository que retornará uma lista de objetos Produto:
+
+Em suma, será passado um valor como argumento que indique quais produtos se deseja listar a partir do nome que eles tem em comum.
+
+```java
+public interface ProdutoRepository extends JpaRepository<Produto, String> {  
+  
+    List<Produto> findByNome(String nome);  
+}
+```
+
+**OBS.: se o nome da coluna da tabela for 'nome' então o método deve ser findByNome, se for 'descricao' então o método deve ser findByDescricao (obedecendo o camel case). Caso contrário, é provável que ocorra um erro.** ^e2dbee
+
+Por fim, é necessário criar um método para o controlador Rest que faça tal operação. O parâmetro do método deve receber a anotação **@RequestParam** com o nome da coluna como parâmetro (ou seja, nome). Logo, a anotação deve ficar como @RequestParam("nome").
+
+É através desta anotação que se torna possível passar no Postman um campo como parâmetro e um valor vinculado a este parâmetro. Por exemplo: deseja-se pesquisar todos os registros na tabela Produto cujo o valor na coluna nome é igual a 'Notebook':
+
+![[Pasted image 20250325130235.png]]
+
+Agora coloque a anotação @GetMapping para indicar que é uma operação GET e chame o método criado em ProdutoRepository dentro do corpo do método do controlador Rest. Exemplo:
+
+```java
+@GetMapping("/filtrar_nome")  
+public List<Produto> buscarPorNome(@RequestParam("nome") String nome){  
+    return produtoRepository.findByNome(nome);  
+}
+```
+
+Veja o caso onde será buscado os registros cujo o nome é 'Notebook' em uma tabela com os seguintes registros:
+
+![[Pasted image 20250325130635.png]]
+
+Ao definir na área **Params** o parâmetro (que é 'nome') e o valor (que é 'Notebook'), será adicionado este filtro na URL (por isso aparece como **?nome=Notebook**; URL de fato (localhost:8080/produtos/filtrar_nome) é informado manualmente). O resultado será o retorno de apenas 2 registros (e não 3 que é o total de registros na tabela produto):
+
+![[Pasted image 20250325131530.png]]
