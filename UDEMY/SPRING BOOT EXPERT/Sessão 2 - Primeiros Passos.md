@@ -72,7 +72,7 @@ Ao clicar no plugin, serão exibidas diversas pastas tais como:
 
 ### O que fazer quando o projeto apresentar algum erro nas dependências?
 
-Vá até a pasta **Lifecycle** do projeto através do puglin Maven e selecione tanto a operação **clean** como também **install**. Clique no botão de executar:
+Vá até a pasta **Lifecycle** do projeto através do puglin Maven e selecione tanto a operação **clean** como também **install**. Clique no botão de executar: ^219b34
 
 ![[Pasted image 20250319165323.png]]
 

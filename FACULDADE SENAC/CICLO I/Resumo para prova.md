@@ -157,39 +157,42 @@ Além da comparação entre o valor esperado e o valor retornado pelo método, h
 - **assertNull()**: verifica se o valor passado não é nulo.
 
 
+## Comandos @Before e @After
 
+- @Before: anotação colocada em cima de um método que deve ser executado antes de todos os métodos teste.
+- @After: anotação colocada em cima de um método que deve ser executado depois que todos os métodos teste já foram executados
 
 
 ### junit
 
 - Comentários com as anotações:
-	- {@link ...}
-	- @return
-	- @param
-	- @author
-	- @date
+	- **{@link ...}**
+	- **@return**
+	- **@param**
+	- **@author**
+	- **@date**
 - **@Test**
-- @Before
-- @After
+- **@Before**
+- **@After**
 - Métodos como:
-	- assertThat()
+	- **assertThat()**
 	- **assertEquals()**
-	- is()
-	- assertFalse()
-	- assertNull()
-	- assertTrue()
+	- **is()**
+	- **assertFalse()**
+	- **assertNull()**
+	- **assertTrue()**
 
 ### MOCKITO
 
 - Classes:
-	- TesteCase
+	- TestCase
 	- Test
 	- TestSuite
 - Anotações:
-	- @ExtendWith(MockitoExtension.class)
-	- @Mock
-	- @InjectMocks
+	- **@ExtendWith(MockitoExtension.class)**
+	- **@Mock**
+	- **@InjectMocks**
 - Método:
-	- when()
-	- thenReturn()
-	- Assertions.assertEquals()
+	- **when()**
+	- **thenReturn()**
+	- **Assertions.assertEquals()**

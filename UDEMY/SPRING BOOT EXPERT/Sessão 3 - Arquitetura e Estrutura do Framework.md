@@ -1,4 +1,3 @@
-
 ## Divisão do projeto Spring Boot
 
 O projeto é divido em módulos ou **starters**, sendo estes adicionados conforme as necessidades de cada desenvolvedor. Os starters são dependências que agruparam outras dependências para simplificar o desenvolvimento de aplicativos.
@@ -23,10 +22,19 @@ Acontece que vários starters tem as classes de configuração, responsáveis po
 É o mecanismo do Spring Framework que cuida do ciclo de vida dos beans, ou seja, cria, inicializa e gerencia os objetos definidos como beans.
 ### Beans
 
-Os **beans** são instancias de componentes gerenciados pelo Spring Container; eles podem pertencer a qualquer classe com a anotação @Component, @Controller, @Service, @Repository ou @Bean.
+Um bean é um objeto gerenciado pelo Spring Container, o que significa que esta instância terá o seu ciclo de vida (criação, configuração e destruição) controlado pelo Spring Container. 
+
+Para isso, é necessário colocar a anotação **@Bean** em um método cuja finalidade seja o retorno de algum objeto, sendo este objeto, graças a anotação @Bean, gerenciado pelo Spring Container.  Tais objetos provêm de classes que não estão no controle do programador.
+
+Os métodos são colocados em uma classe de configuração (aquela que possuir a anotação **@Configuration**).
 ### Components
 
-São classes com a anotação @Component, sendo esta anotação uma classificação genérica para qualquer classe gerenciada pelo Spring. Os tipos de componentes específicos são:
+Um componente é identificado pela anotação nível de classe chamada **@Component**. Todo o componente também será, no final das contas, gerenciado pelo Spring, ou seja, um bean. A diferença é que:
+
+- O @Component é usado quando se deseja que uma determinada classe seja gerenciada pelo Spring, estando esta classe no seu controle.
+- A anotação @Bean é usada em métodos que definem como você cria e configura um bean, especialmente quando você não tem controle da classe ou quando precisa de configurações personalizadas.
+
+Os tipos de componentes específicos são:
 
 - **Services**: camada que trata da lógica de negócio da aplicação.
 - **Repositories**: camada que possui interfaces com métodos para a manipulação de dados no banco (seja SQL ou NoSQL). Veja também sobre a interface JpaRepository na sessão 2:
@@ -100,7 +108,7 @@ No exemplo acima, a classe HondaHRV é filha da classe Carro, que possui um mét
 
 ## Classe Configuration
 
-É uma classe com a anotação **@Configuration** que registra os beans por meio de métodos com a anotação **@Bean**. Os beans nada mais são do que a instanciação de componentes que são criadas e gerenciadas pelo Spring Container.
+É uma classe com a anotação **@Configuration** que registra os beans por meio de métodos com a anotação **@Bean**. Os beans nada mais são do que a instanciação de objetos que são gerenciadas pelo Spring Container.
 
 **OBS.: sem a anotação @Configuration, o Spring não terá como escanear a classe de configuração e tampouco os beans.**
 
@@ -131,7 +139,7 @@ A partir do momento em que a aplicação for executada, o Spring irá instanciar
 
 ### Injeção de dependências (DI)
 
-O conceito de dependência aqui não diz respeito as bibliotecas externas presentes no arquivo pom.xml, mas sim um objeto ou componente que uma classe precisa para funcionar corretamente. Caso a dependência seja criada (instanciada) dentro de uma classe então isso resultará em um forte acoplamento (o que não é bom, pois dificulta a manutenção do código).
+O conceito de dependência aqui não diz respeito as bibliotecas externas presentes no arquivo pom.xml, mas sim um objeto que uma classe precisa para funcionar corretamente. Caso a dependência seja criada (instanciada) dentro de uma classe então isso resultará em um forte acoplamento (o que não é bom, pois dificulta a manutenção do código).
 
 No caso do Spring Boot, a injeção de dependências será feito em uma classe por meio de uma configurations (classe com anotação @Configuration) que forneça os beans para serem injetados. Essa injeção de dependências é feita através do anotação **@Autowired** que será colocada acima de um atributo, método ou construtor, indicando aonde deve ser feita a injeção de dependência.
 
@@ -157,7 +165,7 @@ O exemplo acima mostra a injeção de dependência em um atributo chamado 'motor
 
 ## Como especificar o bean que deseja utilizar ?
 
-Em casos onde há mais um de bean do mesmo tipo, é necessário especificar qual deles será utilizado. Esse problema é resolvido:
+Em casos onde há mais de um bean do mesmo tipo, é necessário especificar qual deles será utilizado. Esse problema é resolvido:
 
 - Atribuindo um nome para cada bean.
 - Utilizando a anotação **@Qualifier** no atributo ou método que irá receber o bean e especificando o nome do bean dentro desta anotação.
@@ -251,7 +259,8 @@ public class MontadoraConfiguration {
         motor.setTipo(TipoMotor.ELETRICO);  
         return motor;  
     }  
-  
+
+	@Priamary
     @Bean(name = "motorTurbo")  
     public Motor motorTurbo(){  
         var motor = new Motor();  
@@ -284,9 +293,9 @@ public @interface Aspirado {
 É necessário agora utilizar anotações padrão, ou seja, anotações presentes dentro da estrutura de todas as anotações. Estas são:
 
 - **@Retention**: determina se uma anotação estará disponível no momento da compilação e/ou execuação. Estas são as 3 opções de enums a serem passadas como argumentos:
-	- **RetentionType.SOURCE**: a anotação será ignorada tanto pelo compilador quanto no tempo de execução.
-	- **RetentionType.CLASS**: a anotação estará disponível apenas no momento de compilação, não de execução.
-	- **RetentionType.RUNTIME**: a anotação estará disponível tanto no momento de compilação quanto no momento de execução. Em caso de uma anotação ser necessária para requisições POST, é preciso escolher esta opção, caso contrário, a aplicação irá optar pela bean primary.
+	- **RetentionPolicy.SOURCE**: a anotação será ignorada tanto pelo compilador quanto no tempo de execução.
+	- **RetentionPolicy.CLASS**: a anotação estará disponível apenas no momento de compilação, não de execução.
+	- **RetentionPolicy.RUNTIME**: a anotação estará disponível tanto no momento de compilação quanto no momento de execução. Em caso de uma anotação ser necessária para requisições POST, é preciso escolher esta opção, caso contrário, a aplicação irá optar pela bean primary.
 - **@Target**: informa onde a anotação deve ser inserida (seja em um atributo, classe, pacote, entre outras opções). Neste caso, a anotação poderá ser inserida em um atributo (enum ElementType.FIELD) ou método (enum ElementType.METHOD). 
 
 Exemplo:
@@ -294,6 +303,16 @@ Exemplo:
 ```java
 @Retention(RetentionType.RUNTIME)
 @Target({ElementType.FIELD, ElementType.METHOD})  
+public @interface Aspirado {  
+}
+```
+
+Por fim, coloque a anotação @Qualifier para indicar qual bean aquela anotação se refere:
+
+```java
+@Retention(RetentionPolicy.RUNTIME)  
+@Target({ElementType.FIELD, ElementType.METHOD})  
+@Qualifier("motorAspirado")  
 public @interface Aspirado {  
 }
 ```
@@ -403,7 +422,7 @@ public class TodoValidator {
 
 Este método foi personalizado dentro do repositório TodoRepository da seguinte forma:
 
-```
+```java
 public interface TodoRepository extends JpaRepository<TodoEntity, Integer> {  
   
     boolean existsByDescicao(String descricao);  
@@ -450,7 +469,7 @@ public class TodoService {
 
 1. **Atributo**: introduzindo a anotação @Autowired no atributo de um componente. Este é a forma menos recomenda pois o Spring sempre injetará a mesma instância. Logo não é possível passar uma instância personalizada através do construtor ou mudar posteriormente a instância através de um método setter.
 2. **Construtor**: criação de um método construtor para a injeção de dependência. A anotação @Autowired é opcional neste caso. Esta é a mais recomenda porque indica uma obrigatoriedade daquele bean estar presente na classe (até porque não será possível utilizar a classe sem antes chamar o seu método construtor).
-3. **Setter**: a criação de um método setter par a injeção de dependência. A anotação @Autowired aqui já é necessária. Neste caso, a injeção de dependência não indica uma obrigatoriedade, mas indica uma opção.
+3. **Setter**: a criação de um método setter para a injeção de dependência. A anotação @Autowired aqui já é necessária. Neste caso, a injeção de dependência não indica uma obrigatoriedade, mas indica uma opção.
 
 ## Escopo do bean
 
@@ -487,7 +506,7 @@ public class BeanGerenciado {
 }
 ```
 
-Por padrão, esta anotação já vem com o valor `true`. Logo, não é preciso especificar o valor como true como não é exemplo anterior.
+Por padrão, esta anotação já vem com o valor `false`.
 
 ### Como definir todos os beans como lazy
 
@@ -608,7 +627,7 @@ public class ExemploValue {
 
 ## Como acessar os valores das propriedades de application.yml por meio de classes
 
-Antes de tudo, é necessário habilitar na classe Application o reconhecimento e utilização da classes de Configuration Properties por meio da anotação **@EnableConfigurationProperties**:
+Antes de tudo, é necessário habilitar na classe Application o reconhecimento e utilização de classes de Configuration Properties por meio da anotação **@EnableConfigurationProperties**:
 
 ```java
 @SpringBootApplication  
@@ -674,4 +693,6 @@ public class AppProperties {
 ```
 
 Agora é possível esta classe de Configuration Properties em alguma outra classe e manipular as propriedades do application.yml.
+
+
 
