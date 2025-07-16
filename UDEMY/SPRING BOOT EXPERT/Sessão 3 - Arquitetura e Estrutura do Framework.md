@@ -5,34 +5,34 @@ O projeto é divido em módulos ou **starters**, sendo estes adicionados conform
 Entre os principais starters estão: 
 
 - Starter Web: usado para o desenvolvimento de aplicações Web e para a criação de APIs Rest.
-- Starter Data JPA: usado para a implementação da JPA através do Hibernate em uma aplicação. Sem este starter não é possível usar as principais anotações mostradas anteriormente.
+- Starter Data JPA: usado para a implementação da JPA através do Hibernate em uma aplicação. Sem este starter não é possível usar as principais anotações mostradas anteriormente (ex.: `@Entity`, `@Id`, etc...)
 - Starter Secutiry: é adicionado a aplicação para configurações de segurança.
 - Starter Test: este starter já vem embutido na aplicação Spring Boot para testes da aplicação.
 
 ### Relação entre Spring Boot e Spring
 
-O Spring Boot é uma extensão do framework Spring, feito com o objetivo de simplificar a criação de aplicações complexas através de, por exemplo, a Inversão de Controle (IOC): um modo de delegar tarefas (como, por exemplo, o fechamento da conexão com o banco) para o Spring Boot, realizando tal tarefa de forma automatizada.
+O Spring Boot é uma extensão do framework Spring, feito com o objetivo de simplificar a criação de aplicações complexas através de, por exemplo, a **Inversão de Controle (IOC)**: um modo de delegar tarefas (como, por exemplo, o fechamento da conexão com o banco) para o Spring Boot, realizando tal tarefa de forma automatizada.
 
 ### Configurations
 
 Acontece que vários starters tem as classes de configuração, responsáveis por ler as configurações definidas em arquivos como application.yml ou application.properties e aplicar estas configurações.
 
-## Spring Container
+## Spring Container (ou Spring Context)
 
 É o mecanismo do Spring Framework que cuida do ciclo de vida dos beans, ou seja, cria, inicializa e gerencia os objetos definidos como beans.
 ### Beans
 
 Um bean é um objeto gerenciado pelo Spring Container, o que significa que esta instância terá o seu ciclo de vida (criação, configuração e destruição) controlado pelo Spring Container. 
 
-Para isso, é necessário colocar a anotação **@Bean** em um método cuja finalidade seja o retorno de algum objeto, sendo este objeto, graças a anotação @Bean, gerenciado pelo Spring Container.  Tais objetos provêm de classes que não estão no controle do programador.
+Para isso, é necessário colocar a anotação **@Bean** em um método cuja finalidade seja o retorno de algum objeto, sendo este objeto, graças a anotação @Bean, gerenciado pelo Spring Container.  Tais objetos provêm de classes que geralmente não estão no controle do programador.
 
 Os métodos são colocados em uma classe de configuração (aquela que possuir a anotação **@Configuration**).
 ### Components
 
 Um componente é identificado pela anotação nível de classe chamada **@Component**. Todo o componente também será, no final das contas, gerenciado pelo Spring, ou seja, um bean. A diferença é que:
 
-- O @Component é usado quando se deseja que uma determinada classe seja gerenciada pelo Spring, estando esta classe no seu controle.
-- A anotação @Bean é usada em métodos que definem como você cria e configura um bean, especialmente quando você não tem controle da classe ou quando precisa de configurações personalizadas.
+- O @Component é usado quando se deseja que uma determinada classe seja gerenciada pelo Spring, estando a classe no seu controle.
+- A anotação @Bean é usada em métodos que definem como você cria e configura um bean, especialmente quando você não tem controle da classe ou **quando precisa de configurações personalizadas.**
 
 Os tipos de componentes específicos são:
 
@@ -301,7 +301,7 @@ public @interface Aspirado {
 Exemplo:
 
 ```java
-@Retention(RetentionType.RUNTIME)
+@Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD, ElementType.METHOD})  
 public @interface Aspirado {  
 }
@@ -350,7 +350,7 @@ public class TesteFabricaController {
 ![[Pasted image 20250407095841.png]]
 
 - O repositório não necessariamente precisa se conectar com um banco de dados; é possível que ele se conecte também com um arquivo .CSV, por exemplo, para a manipulação de dados.
-- Além da injeção do repositório na camada service por meio da instanciação, é possível também a criação de componentes personalizados e, por consequência, sua injenção na camada service.
+- Além da injeção do repositório na camada service por meio da instanciação, é possível também a criação de componentes personalizados e, por consequência, sua injeção na camada service.
 
 ## Criação automática de ID's
 
@@ -462,7 +462,7 @@ public class TodoService {
 }
 ```
 
-**OBS.: a exceção ResponseStatusException é utilizada para lançar exceções com um status HTTP e uma mensagem de erro. O enum HttpStatus.CONFLICT indica o código 409: quando há um conflito com o estado atual do recurso.  Ou seja, o servidor entendeu a requisição, mas não pode processá-la porque algo está em conflito com o que já existe. Outros exemplos: tentar criar um recurso com um ID que já existe; atualizar um pedido que já foi cancelado; inserir um item duplicado onde não deveria. Em suma, o que você tentou fazer bate de frente com o que já está salvo no sistema.**
+**OBS.: a exceção ResponseStatusException é utilizada para lançar exceções com um status HTTP e uma mensagem de erro. O enum HttpStatus.CONFLICT indica o código 409: quando há um conflito com o estado atual do recurso.  Ou seja, o servidor entendeu a requisição, mas não pode processá-la porque algo está em conflito com o que já existe. Outros exemplos: tentar criar um recurso com um ID que já existe; atualizar um pedido que já foi cancelado; inserir um item duplicado onde não deveria. Em suma, o que você tentou fazer bate de frente com o que já está salvo no sistema.** ^55f860
 
 
 ## Formas de injeção de dependências
@@ -692,7 +692,7 @@ public class AppProperties {
 }
 ```
 
-Agora é possível esta classe de Configuration Properties em alguma outra classe e manipular as propriedades do application.yml.
+Agora é possível por esta classe de Configuration Properties em alguma outra classe e manipular as propriedades do application.yml.
 
 
 

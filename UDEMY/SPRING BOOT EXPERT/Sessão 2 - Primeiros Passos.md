@@ -39,7 +39,7 @@ São as configurações do projeto dentro da IDE utilizada. Não há o que se me
 Contém arquivos que ajudam a definir de maneira mais simples a versão do Maven que o projeto precisa ter.
 ### Arquivo src/test/java/..../...AplicationTests
 
-Arquivo criado apenas para subir a aplicação na hora da execução.
+Arquivo utilizado para validar se o contexto da aplicação está funcionando corretamente. O **contexto da aplicação (Spring Context)** é um container que contém todos os objetos (beans) e as suas dependências, e é responsável por injetar essas dependências entre os componentes, além de gerenciar o ciclo de vida (criação, configuração e destruição) desses objetos.
 
 ### Arquivo src/main/java/.../...Aplication
 
@@ -416,7 +416,7 @@ Como se trata de um método GET, será utilizada a anotação @GetMapping, poré
 
 Por fim, para extrair essa parte da URL que corresponde ao id e transformar em um parâmetro do método obterPorId(), utilize a anotação **@PathVariable** cujo o parâmetro será o mesmo que aquele passado em @GetMapping. 
 
-**OBS.: não é necessário que id o nome do parâmetro @GetMapping (poderia ser identificador, por exemplo), mas é obrigatório que o nome do parâmetro do @GetMapping seja igual ao nome do parâmetro do @PathVariable**
+**OBS.: não é necessário que o parâmetro do método seja igual ao nome do parâmetro do @GetMapping (poderia ser identificador, por exemplo), mas é obrigatório que o nome do parâmetro do @GetMapping seja igual ao nome do parâmetro do @PathVariable.**
 
 Exemplo:
 

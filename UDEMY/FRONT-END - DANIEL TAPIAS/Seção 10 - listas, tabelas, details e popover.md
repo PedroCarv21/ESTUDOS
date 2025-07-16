@@ -72,15 +72,15 @@ Sofia	567567567334
 
 ### Distinção nítida de linhas e colunas
 
-Utilize a propriedade border em td para criar um contorno entre as linhas e colunas e também utilize a mesma propriedade em table para criar um contorno envolta de toda a tabela.
-
-### Como mesclar uma linha ?
-
-Utilize o atributo colspan na tag `<td></td>`, passando como valor o número de colunas que uma tag deverá ocupar.
+Utilize a propriedade `border` em `td` para criar um contorno entre as linhas e colunas e também utilize a mesma propriedade em `table` para criar um contorno envolta de toda a tabela.
 
 ### Como mesclar uma coluna ?
 
-Utilize o atributo rowspan na tag `<tr></tr>`, passando como valor o número de linhas que uma tag deverá ocupar.
+Utilize o atributo `colspan` na tag `<td></td>`, passando como valor o número de colunas que uma tag deverá ocupar.
+
+### Como mesclar uma linha ?
+
+Utilize o atributo `rowspan` na tag `<tr></tr>`, passando como valor o número de linhas que uma tag deverá ocupar.
 
 ### Como organizar as tabelas ?
 
@@ -110,7 +110,7 @@ Para que uma ou mais linhas permaneçam na parte superior da tabela, indicando o
 Se você deseja que uma linha permaneça na parte inferior da tabela, coloque elas em uma tag `<tfoot></tfoot>`.
 ### Junção e separação de tabelas
 
-Coloque dentro do seletor table a propriedade border-collapse. O valor collapse junta as linhas e colunas enquanto o valor separate separa as linhas e colunas.
+Coloque dentro do seletor `table` a propriedade `border-collapse`. O valor `collapse` junta as linhas e colunas enquanto o valor `separate` separa as linhas e colunas.
 
 ## 118. Legendas e outras tags
 

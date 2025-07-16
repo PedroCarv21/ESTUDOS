@@ -1,5 +1,5 @@
-
-## 41. Introducação ao Spring Data JPA
+	 
+## 41. Introdução ao Spring Data JPA
 
 ### Como funciona a JPA
 
@@ -12,7 +12,7 @@ A JPA possui a seguinte estrutura:
 3. **EntityManagerFactory**: é uma interface responsável por criar instâncias de Entity Managers.
 4. **EntityManager**:  é uma ferramenta do JPA que gerencia as entidades durante as operações CRUD. ^0d3afc
 
-Em suma, haverão entidades representando tabelas do banco e, para que sejam feitas operações CRUD, será necessário um EntityManager criado através de um EnitytManagerFactory.
+Em suma, haverão entidades representando tabelas do banco e, para que sejam feitas operações CRUD, será necessário um EntityManager criado através de um EntitytManagerFactory.
 
 Por meio da utilização do JPA, o framework Spring Data JPA consegue fornecer outros recursos que simplificam a manipulação de dados. Entre eles está os JPA Repositories (que armazenam dentro de si o EntityManager).
 
@@ -36,7 +36,6 @@ Como será exigido uma conexão com o banco de dados, é necessário clicar em �
 Uma ferramenta capaz de empacotar uma aplicação, junto com todas os outros programas e configurações que ele precisa para funcionar, dentro de uma espécie de caixa (conhecido como **container**). 
 
 Com isso, é possível transportar este container para qualquer computador com qualquer configuração que ele vai funcionar do mesmo jeito.
-
 ### O que são imagens Docker e onde baixá-las ?
 
 Uma imagem docker equivale a um conjunto de instruções que o Docker deve seguir para que ele consiga criar e rodar um container. É possível tanto criar as imagens como também utilizar de imagens já prontas. No caso desta segunda opção, acesse o site https://hub.docker.com/
@@ -55,6 +54,7 @@ Como funciona ?
 
 ### O que é PostgreSQL ?
 
+É uma banco de dados relacional (assim como o MySQL ou SQL Server) para o gerenciamento de dados.
 
 Para criar e rodar um container do postgre, é necessário executar o comando `docker run --name librarydb -e POSTGRES_PASSWORD=password -e POSTGRES_USER=postgres -e POSTGRES_DB=library -p 5432:5432 postgres:16.3`
 
@@ -68,6 +68,8 @@ Utilize este comando no CMD para verificar se algum container está em execuçã
 ### O que é a imagem dpage/pgadmin4 ?
 
 É uma imagem docker que contém a ferramenta web PgAdmin4 responsável pela administração do banco de dados PostgreSQL.
+
+O PgAdmin permite interagir com servidores PostgreSQL, oferecendo recursos como edição de dados, execução de consultas SQL e criação de backups e restaurações.
 
 O comando para criar e rodar o container é este: `docker run --name pgadmin4 -p 15432:80 -e PGADMIN_DEFAULT_EMAIL=pedro8.carvalho@gmail.com -e PGADMIN_DEFAULT_PASSWORD=admin dpage/pgadmin4`
 ### Como acessar o pgAdmin ?
@@ -100,7 +102,7 @@ Lista os containers que estavam em execução, mas agora estão parados.
 Ao utilizar este comando mais o nome do container, ele será excluído. Exemplo: `docker container rm librarydb`
 ### library-network
 
-A library-network é uma rede de conexão responsável por criar uma comunicação entre dois containers. Ela será necessária para a conexão do pgAdmin com o Postgre.
+A library-network é uma rede de conexão responsável por criar uma comunicação entre dois containers. Ela será necessária para a conexão do pgAdmin com o Postgres.
 
 Parar criar uma library-network, utilize o comando `docker network create library-network` no CMD.
 
@@ -116,7 +118,7 @@ Também acrescente o comando na criação do container do pgAdmin:
 
 ### Conectando o pgAdmin com o Postgres
 
-Depois de iniciar ambos os container e logar na página do pgAdmin, vá até o canto superior esquerdo e clique em Servers -> Register -> Server. Será aberto a seguinte janela:
+Depois de iniciar ambos os container e logar na página do pgAdmin, vá até o canto superior esquerdo e clique com o botão direito do mouse em Servers -> Register -> Server. Será aberto a seguinte janela:
 
 ![[Pasted image 20250508162718.png]]
 
@@ -198,7 +200,7 @@ Depois de executar os comandos, é possível verificar o local onde elas estão 
 
 ## 51. Configurando conexão com o banco de dados através da aplicacao
 
-Estas são as seguintes configurações do banco Postgre presentes no arquivo application.yml
+Estas são as seguintes configurações do banco Postgres presentes no arquivo application.yml
 
 ```yml
 spring:  
@@ -214,7 +216,7 @@ spring:
 Algumas informações sobre determinadas propriedades:
 
 - **url**: neste contexto, a url é formada pelo banco que está sendo utilizado (`jdbc:prostgresql`) mais o caminho do banco que será conectado (`//localhost:5432/library`).
-- **driver-class-name**: a partir desta propriedade é informado qual driver JDBC a aplicação Spring Boot deve usar (neste caso, o Postgre). Logo, o valor é `org.postgresql.Driver`.
+- **driver-class-name**: a partir desta propriedade é informado qual driver JDBC a aplicação Spring Boot deve usar (neste caso, o Postgres). Logo, o valor é `org.postgresql.Driver`.
 
 **OBS.: um driver é basicamente um intérprete que traduz os comandos da sua aplicação para uma linguagem que o banco de dados entende e vice-versa. Cada banco (MySQL, PostgreSQL, Oracle, etc.) tem seu próprio driver, pois cada um tem suas particularidades.**
 
@@ -235,7 +237,7 @@ config.setPassword(password);
 config.setDriverClassName(driver);
 ```
 
-Cada método deste receberá um argumento contendo alguma informação específica do datasouce. 
+Cada método deste receberá um argumento contendo alguma informação específica do datasource. 
 ### HikariDataSource
 
 A classe HikariDataSource representa um pool de conexões: um mecanismo de gerenciamento de conexões de banco de dados que permite que estas conexões possam ser reutilizáveis.
