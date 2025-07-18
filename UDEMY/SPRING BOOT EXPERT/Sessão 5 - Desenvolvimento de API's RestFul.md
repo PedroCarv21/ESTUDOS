@@ -21,7 +21,7 @@ Restful é simplesmente uma referência para as API's que implementam as diretri
 	- **Host**: especifica o nome do domínio do servidor e a porta em que ele está escutando.
 	- **User-Agent**: descreve qual foi o tipo de cliente que solicitou a requisição (Navegador FireFox, Postman, etc...).
 - **Body (opcional)**
-- **Verbo HTTP**:
+- **Verbos HTTP**:
 	- **GET**
 	- **POST**
 	- **PUT**
@@ -71,3 +71,56 @@ Restful é simplesmente uma referência para as API's que implementam as diretri
 	- ![[Pasted image 20250716125208.png]]
 - **Definição do payload (conteúdo da mensagem) do request e response**:
 - **Definição dos headers**
+
+## 80. Mapeamento de Requisição e padrão DTO
+
+### Alternativas às anotações padrão para operações HTTP
+
+É possível, além das anotações utilizadas geralmente (como `@GetMapping`, `@PostMapping`, etc ), usar o próprio `RequestMapping` para descrever o tipo operação HTTP que o método irá realizar.
+
+Por exemplo, em vez de `@PostMapping`, é possível utilizar `@RequestMapping(method = RequestMethod.POST)`:
+
+```java
+@RequestMapping(method = RequestMethod.POST)  
+public Object salvar(@RequestBody Autor autor){  
+  
+}
+```
+
+### Uso de records
+
+É um tipo de classe criada de forma mais prática (ao automatizar métodos getters, construtor, `equals()`, `hashCode()`, `toString()`) e que tem com finalidade única o armazenamento de dados.
+
+É bastante utilizado com o intuito de referenciar classes normais, repetindo apenas os atributos considerados essenciais para o envio de uma solicitação ou uma reposta.
+
+Por exemplo, suponha que haja uma entidade Autor que possua os seguintes atributos: id, nome, dataNascimento, nacionalidade e livros. No entanto, na hora de um usuário fazer um novo registro na tabela Autor, é preciso somente que ele informe três campos: nome, dataNascimento e nacionalidade.
+
+o DTO correspondente a entidade Autor deveria ser assim:
+
+```java
+public record AutorDTO(String nome, LocalDate dataNascimento, String nacionalidade) {  
+}
+```
+
+Este DTO será então utilizado como parâmetro em um método POST para a inserção de um novo registro na tabela Autor:
+
+```java
+@RequestMapping(method = RequestMethod.POST)  
+public Object salvar(@RequestBody AutorDTO autorDTO){  
+  
+}
+```
+
+### Classe ResponseEntity
+
+É uma classe do Spring Framework que representa toda a resposta HTTP de um método de um controlador. É a partir desta classe que se torna possível definir: código de status, body da resposta, etc.
+
+Por exemplo, este método retornará no body a mensagem "Autor salvo com sucesso!" e o código de status 201 (CREATED) por meio do `HttpStatus.CREATED`:
+
+```java
+@PostMapping  
+public ResponseEntity salvar(@RequestBody AutorDTO autorDTO){  
+    return new ResponseEntity("Autor salvo com sucesso!", HttpStatus.CREATED);  
+}
+```
+

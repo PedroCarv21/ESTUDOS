@@ -53,7 +53,7 @@ Untracked files:
 nothing added to commit but untracked files present (use "git add" to track)
 ```
 
-Agora o Git informa que há um arquivo untracked, ou seja, não rastreado, no seu repositório. Isso significa que foi criado um novo arquivo e que ele não é gerenciado pelo Git, logo, é possível perder completamente o arquivo.
+Agora o Git informa que há um arquivo `untracked`, ou seja, não rastreado, no seu repositório. Isso significa que foi criado um novo arquivo e que ele não é gerenciado pelo Git, logo, é possível perder completamente o arquivo.
 
 Há também o aviso de que este arquivo ainda não foi adicionado para ser commitado.
 

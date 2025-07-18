@@ -359,7 +359,7 @@ Suponha que exista uma tabela Autor e uma tabela Livro. Um autor pode ter um ou 
 
 No caso da entidade Livro, será necessário criar um atributo do tipo Autor e utilizar a anotação `@JoinColumn(name = "")`. Esta anotação indica quem é a chave estrangeira e permite informar o nome correto da chave.
 
-Como vários livros podem pertencer a um único autor (ou seja, muitos para um), então necessário indicar esta relação entre as entidades através da anotação `@ManyToOne`.
+Como vários livros podem pertencer a um único autor (ou seja, muitos para um), então é necessário indicar esta relação entre as entidades através da anotação `@ManyToOne`.
 
 Este atributo deve ficar dentro da entidade Livro:
 
@@ -447,7 +447,7 @@ Os testes tem como finalidade verificar o funcionamento de partes da aplicação
 
 Esta anotação nível de classe é responsável por criar o contexto da aplicação Spring, o que permitirá a injeção de dependências e demais funcionalidades do framework.
 
-**OBS.: o contexto da aplicação nada mais é do que um local onde os componentes são registrados.**
+**OBS.: o contexto da aplicação nada mais é do que um local onde os beans são gerenciados.**
 
 ```java
 @SpringBootTest  
@@ -598,11 +598,11 @@ class LivroRepositoryTest {
 
 ### Atributo cascade
 
-É utilizado dentro anotações como `@OneToMany` e `@ManyToOne` para especificar como as alterações nos registros de uma entidade A afetam também os registros de uma entidade B relacionada a entidade A. É passado como valor para o atributo `cascade` o enum `CascadeType` com as seguintes opções (**estas são apenas algumas**):
+É utilizado dentro das anotações como `@OneToMany` e `@ManyToOne` para especificar como as alterações nos registros de uma entidade A afetam também os registros de uma entidade B relacionada a entidade A. É passado como valor para o atributo `cascade` o enum `CascadeType` com as seguintes opções (**estas são apenas algumas**):
 
 - `PERSIST`: persiste (salva) não só a entidade principal como também as entidades relacionadas a ela.
 - `MERGE`: atualiza não só a entidade principal como também as entidades relacionadas a ela.
-- `REMOVE`: remove não só a entidade principal como também as entidades relacionadas a ela.
+- `REMOVE`: remove não só a entidade principal como também as entidades relacionadas a ela (mas isso somente se houver **um único** registro da tabela relacionada com um registro da tabela principal; se houver mais de um então não funcionará).
 - `ALL`: realiza todas as operações anteriores além de outras não mencionadas.
 
 Exemplo do uso deste atributo na entidade Livro:
