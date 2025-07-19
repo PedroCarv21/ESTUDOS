@@ -124,3 +124,64 @@ public ResponseEntity salvar(@RequestBody AutorDTO autorDTO){
 }
 ```
 
+## 81. Finalizando o contrato de Salvar um Autor
+
+### Generics da classe `ResponseEntity`
+
+O generics de `ResponseEntity` se refere ao tipo de objeto que será retornado no corpo da mensagem. Caso não deseje retornar nada, coloque `Void` dentro do operador diamante `<>`:
+
+```java
+@PostMapping  
+public ResponseEntity<Void> salvar(@RequestBody AutorDTO autorDTO){  
+    ...
+}
+```
+
+### Definindo o location do cabeçalho da resposta
+
+Para isso será necessário o seguinte código:
+
+```java
+URI localtion = ServletUriComponentsBuilder  
+        .fromCurrentRequest()  
+        .path("/{id}")  
+        .buildAndExpand(autor.getId())  
+        .toUri();
+```
+
+- **ServletUriComponentsBuilder.fromCurrentRequest()**: retorna um builder, ou seja, um objeto configurável capaz de montar uma URL.
+- **path()**: define o seguimento da URL. É possível escolher qualquer seguimento como "salvar/{id}", por exemplo.
+- **buildAndExpand()**: atribui um valor à variável de ambiente id (neste caso o id do autor).
+- **toUri()**: converte para um objeto URI, que pode ser injetado em um `ResponseEntity`.
+
+É assim que um objeto URI pode ser usado:
+
+```java
+ResponseEntity.created(localtion).build()
+```
+
+- **created()**: retorna o código de status 201 no cabeçalho.
+- **build()**: finaliza a construção de um **ResponseEntity** personalizado, retornando uma instância desta classe.
+
+O método como um todo ficaria desta forma:
+
+```java
+@PostMapping  
+public ResponseEntity<Void> salvar(@RequestBody AutorDTO autorDTO){  
+    Autor autor = autorDTO.mapearParaAutor();  
+    autorService.salvar(autor);  
+  
+    URI localtion = ServletUriComponentsBuilder  
+            .fromCurrentRequest()  
+            .path("/{id}")  
+            .buildAndExpand(autor.getId())  
+            .toUri();  
+  
+    return ResponseEntity.created(localtion).build();  
+}
+```
+
+O resultado no Postman será este:
+
+![[Pasted image 20250719172230.png]]
+
