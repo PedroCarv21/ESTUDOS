@@ -282,3 +282,53 @@ Em suma, se o método encontrar `obterDetalhes` encontrar um registro por meio d
 Porém, se nenhum registro for encontrado, então retornará um código de status 404 (Not Found).
 
 Há também o método `get()`, que retorna o valor encapsulado.
+
+## 84. Deletando um Autor
+
+### Retornar código de status 204 (no content)
+
+Utilize o método `ResponseEntity.noContent().build()` para retornar um código de status 204. Exemplo:
+
+```java
+@DeleteMapping("{id}")  
+public ResponseEntity<Void> deletar(@PathVariable("id") String id){  
+    Optional<Autor> autorOptional = this.autorService.obterPorId(UUID.fromString(id));  
+    if (autorOptional.isEmpty()){  
+        return ResponseEntity.notFound().build();  
+    }    this.autorService.deletar(autorOptional.get());  
+    return ResponseEntity.noContent().build();  
+}
+```
+
+### O que é um método idempotente?
+
+É aquele método que, ao receber várias vezes em sequência a mesma requisição, irá retornar sempre a mesma resposta.
+
+## 85. Pesquisa de Autores com filtro
+
+### Parâmetro `required` da anotação `@RequestParam`
+
+Informa se o parâmetro de solicitação é opcional (se o valor for `false`) ou obrigatório (se o valor for `true`). Exemplo:
+
+```java
+@GetMapping  
+public ResponseEntity<List<AutorDTO>> pesquisarAutores(  
+        @RequestParam(value = "nome", required = false) String nome,  
+        @RequestParam(value = "nacionalidade", required = false) String nacionalidade){  
+  
+    List<Autor> autores = this.autorService.pesquisa(nome, nacionalidade);  
+    List<AutorDTO> autoresDTO = autores  
+            .stream()  
+            .map(autor -> new AutorDTO(  
+                    autor.getId(),  
+                    autor.getNome(),  
+                    autor.getDataNascimento(),  
+                    autor.getNacionalidade()  
+            )).collect(Collectors.toList());  
+  
+    return ResponseEntity.ok(autoresDTO);  
+}
+```
+
+A especificação do atributo `value` na anotação `@RequestParam` é obrigatório já que são, neste caso, dois parâmetros e também ambos são opcionais.
+
