@@ -52,7 +52,16 @@ Ao modificar um arquivo já commitado anteriormente será mostrado em vermelho a
 ### Comando `git add .`
 
 Em vez de salvar, um por um, os arquivos que foram modificados ou criados, é possível salvar todos de uma vez só através do comando `git add .`.
+## 14. Baixando alterações com Git pull
 
+### Como criar um arquivo no repositório remoto?
 
+Clique em `Add file` -> `Create new file`:
 
+![[Pasted image 20250721172451.png]]
 
+Informe agora o nome do arquivo (ex.: chat-joao) -> o conteúdo do arquivo (ex.: recurso de chat) -> clique em `Commit changes...` -> informe o nome do commit em `Commit message` -> escolha a opção `Commit directly to the main branch` -> `Commit changes`.
+
+![[Pasted image 20250721173207.png]]
+
+Em casos assim, onde são feitas alterações no repositório remoto, porém não no local, é necessário executar o comando `git pull` no Git Bash. Esse comando irá trazer os commits presentes somente no seu repositório remoto para o repositório local.

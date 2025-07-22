@@ -678,6 +678,7 @@ where l1_0.id=?
 
 Agora, se tentar acessar alguma informação da tabela Autor (ex.: `System.out.println("Autor:" + livroEncontrado.getAutor().getNome());`) então será lançada a exceção `LazyInitializationException`: ocorre justamente quando se tenta acessar um objeto carregado de forma preguiçosa (que só é carregado quando necessário) em um ponto do código onde a sessão do Hibernate já foi fechada ou não está mais ativo.
 
+**OBS.: enquanto uma entidade `@ManyToOne`  vem com `FetchType.EAGER` por padrão, uma entidade `@OneToMany` vem com `FetchType.LAZY` por padrão.**
 ### Consultado tabelas relacionadas de forma separada
 
 Mesmo com `@ManyToOne(fetch = FetchType.LAZY)` é possível ainda consultar dados em tabelas relacionadas através da anotação `@Transactional` do caminho `org.springframework.transaction.annotation.Transactional`:
@@ -865,6 +866,7 @@ List<Livro> listarTodosOrdenadosPorPreco();
 
 Perceba que `Livro` e `preco` fazem referência ao nome da entidade e do atributo (não necessariamente ao nome da tabela e da coluna).
 
+**OBS.: caso deseje utilizar SQL normal, e não JPQL, adicione na anotação `@Query` o atributo `nativeQuery = true`. É preciso também que sejam retornados todos os valores da classe cujo o método com `@Query` irá retornar. Exemplo: se há um método com `@Query` que irá retornar um objeto `Autor` então é necessário selecionar ( `select`) todos os atributos referentes a tabela `autores`.**
 ## 69. Utilizando Named e Positional Parameters
 
 Há duas opções de como utilizar parâmetros em um método com anotação `@Query`:

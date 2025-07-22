@@ -185,3 +185,100 @@ O resultado no Postman será este:
 
 ![[Pasted image 20250719172230.png]]
 
+## 82. Adicionando Auditoria JPA nas entidades
+
+### Tipo timestamp em SQL
+
+Ele é usado para o armazenamento de data e hora. Exemplo:
+
+```sql
+create table autor(  
+    id uuid not null primary key,  
+    nome varchar(100) not null,  
+    data_nascimento date not null,  
+    nacionalidade varchar(50) not null,  
+    data_cadastro timestamp,  
+    data_atualizacao timestamp,  
+    id_usuario uuid  
+);
+```
+
+### Anotações de auditoria
+
+O Spring Data JPA oferece anotações para saber quando um registro na tabela foi criado (`@CreatedDate`) como também saber quando foi realizada a última atualização (`@LastModifiedDate`). Cada uma destas anotações devem ser colocadas em um atributo diferente, sendo estes campos preenchidos automaticamente.
+
+No entanto, para que estas duas anotações funcionem adequadamente, é necessário duas outras anotações:
+
+- `@EntityListeners(AuditingEntityListener.class)`: habilita a funcionalidade de auditoria em uma entidade, fazendo com que os campos com as devidas anotações mostradas anteriormente sejam automaticamente preenchidos e gerenciados.
+- `@EnableJpaAuditing`: habilita a funcionalidade de auditoria no seu **projeto**, devendo ser colocada na classe `Application`.
+
+Exemplo de entidade com as devidas anotações:
+
+```java
+@Entity  
+@Table(name = "autor", schema = "public")  
+@Getter  
+@Setter  
+@ToString(exclude = "livros")  
+@EntityListeners(AuditingEntityListener.class)  
+public class Autor {  
+  
+    @Id  
+    @GeneratedValue(strategy = GenerationType.UUID)  
+    @Column(name = "id")  
+    private UUID id;  
+  
+    @Column(name = "nome", length = 100, nullable = false)  
+    private String nome;  
+  
+    @Column(name = "data_nascimento", nullable = false)  
+    private LocalDate dataNascimento;  
+  
+    @Column(name = "nacionalidade", length = 50, nullable = false)  
+    private String nacionalidade;  
+  
+    @CreatedDate  
+    @Column(name = "data_cadastro")  
+    private LocalDateTime dataCadastro;  
+  
+    @LastModifiedDate  
+    @Column(name = "data_atualizacao")  
+    private LocalDateTime dataAtualizacao;  
+  
+    @Column(name = "id_usuario")  
+    private UUID idUsuario;  
+  
+    @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)  
+    private List<Livro> livros;  
+}
+```
+
+## 83. Obtendo detalhes do Autor
+
+### Classe Optional
+
+Essa classe é utilizada para encapsular um valor e verificar a sua presença ou não, caso o valor seja nulo, através de métodos como `isPresent()` e `isEmpty()`. Exemplo:
+
+```java
+@GetMapping("/{id}")  
+public ResponseEntity<AutorDTO> obterDetalhes(@PathVariable("id") String id){  
+    Optional<Autor> autorOptional = this.autorService.obterPorId(UUID.fromString(id));  
+    if (autorOptional.isPresent()){  
+        Autor autor = autorOptional.get();  
+        AutorDTO autorDTO = new AutorDTO(  
+                autor.getId(),  
+                autor.getNome(),  
+                autor.getDataNascimento(),  
+                autor.getNacionalidade()  
+        );        
+        return ResponseEntity.ok(autorDTO);  
+    }  
+    return ResponseEntity.notFound().build();  
+}
+```
+
+Em suma, se o método encontrar `obterDetalhes` encontrar um registro por meio do parâmetro `id`, isso significa que `autorOptional.isPresent()` será `true` e, portanto, retornará um final um código de status 200 (Ok). Neste caso não é necessário o método `build()`.
+
+Porém, se nenhum registro for encontrado, então retornará um código de status 404 (Not Found).
+
+Há também o método `get()`, que retorna o valor encapsulado.
