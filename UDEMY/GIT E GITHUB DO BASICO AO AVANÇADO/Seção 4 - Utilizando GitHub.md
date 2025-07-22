@@ -65,3 +65,18 @@ Informe agora o nome do arquivo (ex.: chat-joao) -> o conteúdo do arquivo (ex.:
 ![[Pasted image 20250721173207.png]]
 
 Em casos assim, onde são feitas alterações no repositório remoto, porém não no local, é necessário executar o comando `git pull` no Git Bash. Esse comando irá trazer os commits presentes somente no seu repositório remoto para o repositório local.
+
+## 15. Sincronizando projeto com o GitHub
+
+Os comandos a seguir serão utilizados quando for criado um repositório local primeiro e, posteriormente, precisar subir ele no GitHub.
+### Como renomear a branch principal?
+
+Comando `git branch -M` mais o nome da branch. Este `-M` refere-se ao tipo de branch (a principal).
+
+### Como vincular o repositório local com o repositório remoto (origin) ?
+
+Comando `git remote add origin <url do repositório remoto>`.
+
+### Comando `git push -u origin main`
+
+Em caso de projetos clonados ou projetos que já possuem mais de um commit, é preciso apenas executar o comando `git push`. No entanto, em casos de projetos locais que precisam subir o primeiro commit, é necessário o comando `git push -u origin main` indicando para qual branch esse commit será enviado.
