@@ -1017,6 +1017,7 @@ public void executar(){
 ```
 
 **OBS.: todos os métodos de transação devem ser públicos.**
+**OBS.2: `@Transactional`, por padrão, faz um rollback automático no final da execução. É possível retirar esse rollback através da anotação `@Rollback(value=false)`.**
 
 ```java
 @SpringBootTest  
