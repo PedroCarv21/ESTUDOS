@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 328.5
+    "width": 328.5,
+    "collapsed": true
   },
   "right": {
     "id": "fd48e1adbeab8766",
@@ -171,11 +172,11 @@
   "active": "d9741666c5500040",
   "lastOpenFiles": [
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 4 - Utilizando GitHub.md",
-    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 5 - Trabalhando com Branches.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 5 - Trabalhando com branches.md",
     "UDEMY/SPRING BOOT EXPERT/Sessão 4 - Acesso a Dados com Spring Data JPA.md",
     "UDEMY/SPRING BOOT EXPERT/Sessão 5 - Desenvolvimento de API's RestFul.md",
     "UDEMY/SPRING BOOT EXPERT/Sessão 2 - Primeiros Passos.md",
+    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 5 - Trabalhando com Branches.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Pasted image 20250721173207.png",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Pasted image 20250721172451.png",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 3 - GIT Fundamental.md",

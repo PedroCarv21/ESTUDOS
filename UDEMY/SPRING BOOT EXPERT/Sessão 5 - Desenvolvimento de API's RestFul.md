@@ -332,3 +332,13 @@ public ResponseEntity<List<AutorDTO>> pesquisarAutores(
 
 A especificação do atributo `value` na anotação `@RequestParam` é obrigatório já que são, neste caso, dois parâmetros e também ambos são opcionais.
 
+## 88. Criando um DTO padronizado de respostas de erro
+
+### O que é o enum `HttpStatus`?
+
+Este enum oferece uma coleção de código de status HTTP, que inclui tanto o número referente ao código (201, 404, 500, etc...) como também um mensagem padronizada.
+
+Para obter o número do código é necessário chamar o `HttpStatus`, mais o tipo de erro e, por fim, `.value()`. Por exemplo, se você deseja obter o código de status 409 (referente a conflito), então o script deve ser: `HttpStatus.CONFLICT.value()`.
+
+Agora se deseja obter a mensagem, substitua o `.value()` por `.getReasonPhrase()`, ou seja, `HttpStatus.CONFLICT.getReasonPhrase()`.
+
