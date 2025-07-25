@@ -342,3 +342,19 @@ Para obter o número do código é necessário chamar o `HttpStatus`, mais o tip
 
 Agora se deseja obter a mensagem, substitua o `.value()` por `.getReasonPhrase()`, ou seja, `HttpStatus.CONFLICT.getReasonPhrase()`.
 
+## 89. Lógica de validação para regras de negócio
+
+### Query method `existsBy`
+
+Verifica se um registro existe ou não em uma tabela com base em alguma coluna, retornando `true` ou `false`. O método a seguir verifica se um registro existe com determinado nome, data de nascimento e nacionalidade já existe no banco de dados:
+
+```java
+boolean existsByNomeAndDataNascimentoAndNacionalidade(  
+        String nome,  
+        LocalDate dataNascimento,  
+        String nacionalidade);
+```
+
+### Método `ResponseEntity.status(int status)`
+
+Insere um valor do tipo inteiro que indica o código de status.
