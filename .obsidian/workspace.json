@@ -8,18 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "84fe06e28a3cc26f",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Pasted image 20250725170256.png"
-              },
-              "icon": "lucide-image",
-              "title": "Pasted image 20250725170256"
-            }
-          },
-          {
             "id": "bb6fb8333c15d0f1",
             "type": "leaf",
             "state": {
@@ -33,8 +21,7 @@
               "title": "Sessão 5 - Desenvolvimento de API's RestFul"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -183,11 +170,11 @@
   },
   "active": "bb6fb8333c15d0f1",
   "lastOpenFiles": [
+    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Pasted image 20250725170256.png",
+    "UDEMY/SPRING BOOT EXPERT/Sessão 5 - Desenvolvimento de API's RestFul.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 5 - Trabalhando com branches.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Pasted image 20250725170156.png",
-    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Pasted image 20250725170256.png",
     "Pasted image 20250725165954.png",
-    "UDEMY/SPRING BOOT EXPERT/Sessão 5 - Desenvolvimento de API's RestFul.md",
     "UDEMY/SPRING BOOT EXPERT/Sessão 4 - Acesso a Dados com Spring Data JPA.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 4 - Utilizando GitHub.md",
     "UDEMY/SPRING BOOT EXPERT/Sessão 2 - Primeiros Passos.md",

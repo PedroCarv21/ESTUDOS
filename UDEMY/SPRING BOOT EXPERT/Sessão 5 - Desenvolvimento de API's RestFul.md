@@ -358,3 +358,19 @@ boolean existsByNomeAndDataNascimentoAndNacionalidade(
 ### Método `ResponseEntity.status(int status)`
 
 Insere um valor do tipo inteiro que indica o código de status.
+
+## 91. Facilitando a Injeção com RequiredArgsContructor do Lombok
+
+A anotação de classe `@RequiredArgsConstructor` é utilizada para a criação automática de um método construtor para atributos `final`, ou seja, aqueles que exigem a inicialização. Ao colocar esta anotação na classe, é preciso retirar o método construtor caso haja um. Exemplo:
+
+```java
+@Service  
+@RequiredArgsConstructor  
+public class AutorService {  
+  
+    private final AutorRepository autorRepository;  
+    private final AutorValidator autorValidator;  
+    private final LivroRepository livroRepository;
+	...
+}
+```
