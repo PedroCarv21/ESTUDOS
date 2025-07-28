@@ -26,3 +26,9 @@ Por exemplo, o arquivo chat.txt se mostra visível na branch em que ele foi comm
 ![[Pasted image 20250725170156.png]]
 
 ![[Pasted image 20250725170256.png]]
+
+## 19. Subindo alterações em uma nova Branch
+
+Ao fazer novos commits em uma branch diferente da `main`, é necessário que, para subir esses commits, você execute o comando `git push -u origin` mais o nome da branch específica. Isso fará com que seja criado uma nova branch com o mesmo nome no repositório remoto. É nesta nova branch onde estarão os commits que acabou de subir.
+
+![[Pasted image 20250728175258.png]]
