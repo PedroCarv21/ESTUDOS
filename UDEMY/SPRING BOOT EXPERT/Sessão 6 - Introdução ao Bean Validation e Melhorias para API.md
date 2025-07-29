@@ -85,3 +85,10 @@ public class GlobalExceptionHandler {
 Veja que ao passar valores incorretos para os campos `nome` e `dataNascimento` (como nulo e vazio), estes mesmos campos serão listados no corpo da resposta:
 
 ![[Pasted image 20250728124433.png]]
+
+## 94. Explorando tipos de validação no Spring
+
+Estas são outras anotações utilizadas para a validação de campos.
+
+- **`@Size(min=3, max=8, message="")`**: define um tamanho mínimo e máximo de caracteres para aquele campo, além de uma mensagem que aparece quando as restrições não são atendidas.
+- **`@Past(message="")`**: obriga um campo de entrada relacionado a data estar no passado (não é permitido ser uma data presente ou futura).

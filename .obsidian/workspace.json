@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 5 - Trabalhando com branches.md",
+                "file": "UDEMY/SPRING BOOT EXPERT/Sessão 6 - Introdução ao Bean Validation e Melhorias para API.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Seção 5 - Trabalhando com branches"
+              "title": "Sessão 6 - Introdução ao Bean Validation e Melhorias para API"
             }
           }
         ]
@@ -170,14 +170,16 @@
   },
   "active": "bb6fb8333c15d0f1",
   "lastOpenFiles": [
-    "Pasted image 20250728175258.png",
-    "UDEMY/SPRING BOOT EXPERT/Sessão 6 - Introdução ao Bean Validation e Melhorias para API.md",
+    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Sessão 6 - Utilizando Git Flow.md",
+    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 5 - Trabalhando com branches.md",
+    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Sessão 6 - Utilizando GIT Flow.md",
+    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Pasted image 20250728175258.png",
     "UDEMY/SPRING BOOT EXPERT/Sessão 4 - Acesso a Dados com Spring Data JPA.md",
     "UDEMY/SPRING BOOT EXPERT/Sessão 5 - Desenvolvimento de API's RestFul.md",
+    "UDEMY/SPRING BOOT EXPERT/Sessão 6 - Introdução ao Bean Validation e Melhorias para API.md",
     "UDEMY/SPRING BOOT EXPERT/Pasted image 20250728124433.png",
     "UDEMY/SPRING BOOT EXPERT/Sessão 2 - Primeiros Passos.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Pasted image 20250725170256.png",
-    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 5 - Trabalhando com branches.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Pasted image 20250725170156.png",
     "Pasted image 20250725165954.png",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 4 - Utilizando GitHub.md",
@@ -189,7 +191,6 @@
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Pasted image 20250717172341.png",
     "Pasted image 20250701104334.png",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Pasted image 20250717175545.png",
-    "UDEMY/SPRING BOOT EXPERT/Pasted image 20250719172230.png",
     "UDEMY/SPRING BOOT EXPERT/Sessão 4 - Acesso a Dados com Spring Data JPA^Entit.md",
     "UDEMY/SPRING BOOT EXPERT/Sessão 3 - Arquitetura e Estrutura do Framework.md",
     "UDEMY/SPRING BOOT EXPERT/Sessão 5 - Desenvolvimento de API's Restful.md",
@@ -208,7 +209,6 @@
     "UDEMY/FRONT-END - DANIEL TAPIAS/Seção 10 - listas, tabelas, details e popover.md",
     "UDEMY/FRONT-END - DANIEL TAPIAS/Seção 12 - Projeto 5 - formulário de contato.md",
     "2025-05-25.md",
-    "UDEMY/SPRING BOOT EXPERT/Diferença de @Bean e @Component.md",
     "FACULDADE SENAC/CICLO I",
     "FACULDADE SENAC",
     "ETAPA 5.txt",
