@@ -92,3 +92,50 @@ Estas são outras anotações utilizadas para a validação de campos.
 
 - **`@Size(min=3, max=8, message="")`**: define um tamanho mínimo e máximo de caracteres para aquele campo, além de uma mensagem que aparece quando as restrições não são atendidas.
 - **`@Past(message="")`**: obriga um campo de entrada relacionado a data estar no passado (não é permitido ser uma data presente ou futura).
+
+## 95. Melhorando a pesquisa de autores com Query By Example
+
+### Classe `Example`
+
+Esta classe é destinada a fazer consultas de modo mais simples do que seria com lógica de programação, query methods ou com `@Query`.
+
+É possível definir como a consulta será feita através do método `Example.of()`, que recebe 2 parâmetros: o primeiro (obrigatório) é um objeto, do tipo de alguma entidade, que possui determinados campos preenchidos com os valores que você deseja pesquisar. Exemplo:
+
+```java
+var autor = new Autor();  
+autor.setNome(nome);  
+autor.setNacionalidade(nacionalidade);
+```
+
+Neste exemplo, será pesquisado na entidade Autor os registros que tiverem os mesmos dados no campo `nome` e `nacionalidade`.
+
+Já o segundo parâmetro é opcional e deve ser do tipo `ExampleMatcher`: uma classe destinada a configurar o modo como será feito a comparação entre os dados que você passou (neste caso, dados do `nome` e `nacionalidade`) e as informações no banco.
+
+A classe `ExampleMatcher` disponibiliza os seguintes métodos:
+
+- **`matching()`**: cria uma instância de `ExampleMatcher` para a configuração da comparação entre os dados.
+- **`withIgnoreCase()`**: ignora a diferença de letras maiúsculas e minúsculas entre os dados comparados.
+- **`withIgnoreNullValues()`**: ignora os campos nulos do objeto `Example`.
+- **`withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING)`**: verifica se os caracteres informados estão **contidos** (equivalente ao `like '%texto%'` de SQL) nos dados do banco. Por exemplo: se foi informado 'pe' em um tabela que possui um registro com nome 'pedro' então este registro será selecionado, pois 'pe' está contido em 'pedro'.
+
+Este é um exemplo do uso de `Example` e `ExampleMatcher`:
+
+```java
+public List<Autor> pesquisaByExample(String nome, String nacionalidade){  
+    var autor = new Autor();  
+    autor.setNome(nome);  
+    autor.setNacionalidade(nacionalidade);  
+  
+    ExampleMatcher matcher = ExampleMatcher  
+            .matching()  
+            .withIgnoreCase()  
+            .withIgnoreNullValues()  
+            .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);  
+  
+    Example<Autor> autorExample = Example.of(autor, matcher);  
+    return this.autorRepository.findAll(autorExample);  
+}
+```
+
+Em suma, o que este código fará é pesquisar registros na tabela Autor por meio do campo `nome` e `nacionalidade`, desconsiderando case sensitive, valores nulos e levando em considerado caracteres que podem estar contidos dentro de dados armazenados no campo `nome` e `nacionalidade`.
+
