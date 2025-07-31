@@ -47,3 +47,49 @@ Em alguns casos, esta solicitação será enviada para um **Code Review**, onde 
 Por fim, irá aparecer a mensagem `Pull request successfully merged and closed`:
 
 ![[Pasted image 20250730173117.png]]
+
+## 22. Fluxo de trabalho - Protegendo uma Branch
+
+**OBS.: A proteção da branch de maneira gratuita é possível apenas em repositórios públicos.**
+
+- Vá até a página do seu repositório e clique em `Settings`:
+
+![[Pasted image 20250731151610.png]]
+
+- Clique em `Branches`:
+
+![[Pasted image 20250731151850.png]]
+
+- Clique em `Add classic branch protection rule`:
+
+![[Pasted image 20250731151931.png]]
+
+- Informe o nome da branch que deverá se protegida em `Branch name pattern` -> selecione a opção `Require a pull request before merging`, que define um número específico de aprovações para que haja um merge. É também possível marcar a opção `Require review from Code Owners`, onde também será necessário uma revisão aprovada do código.
+
+![[Pasted image 20250731152205.png]]
+
+- Por fim, clique em `Create` no final da página.
+
+![[Pasted image 20250731152224.png]]
+
+- Caso tenha criado em uma conta privada, será exigido de você o `Upgrade` (nada mais que um pagamento) para habilitar estas regras na branch escolhida.
+
+![[Pasted image 20250731153553.png]]
+
+### Como adicionar novos colaboradores
+
+- Vá até a página do seu repositório e clique em `Settings`:
+
+![[Pasted image 20250731151610.png]]
+
+- Clique em `Collaborators`:
+
+![[Pasted image 20250731154421.png]]
+
+- Clique em `Add People`:
+
+![[Pasted image 20250731154532.png]]
+
+- Busque e selecione pelo nome de algum perfil e confirme no botão `Add ...`:
+
+![[Pasted image 20250731154747.png]]
