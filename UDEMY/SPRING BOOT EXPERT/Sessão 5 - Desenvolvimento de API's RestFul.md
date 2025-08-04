@@ -49,7 +49,7 @@ Restful é simplesmente uma referência para as API's que implementam as diretri
 	- **400 (Bad request)**: houve algum erro na solicitação enviada pelo cliente.
 		- **401 (Unauthorized)**: a solicitação teve problemas devido a falta de credenciais de autenticação corretas.
 		- **403 (Forbidden)**: ocorre quando o cliente está autenticado, porém tenta acessar um recurso que o servidor não lhe autorizou (por alguma razão).
-		- **404 (Not Found)**: quando o cliente tenta um recurso que não existe no servidor.
+		- **404 (Not Found)**: quando o cliente tenta acessar um recurso que não existe no servidor.
 		- **405 (Method Not Allowed)**: a solicitação enviada não é suportada (por exemplo, quando o cliente faz uma requisição por meio de um get, porém o único método disponível é um post).
 		- **409 (Conflict)**: o conceito sobre este código de status já foi esclarecido na sessão 3:
 		- ![[Sessão 3 - Arquitetura e Estrutura do Framework#^55f860]]

@@ -93,3 +93,54 @@ Por fim, irá aparecer a mensagem `Pull request successfully merged and closed`:
 - Busque e selecione pelo nome de algum perfil e confirme no botão `Add ...`:
 
 ![[Pasted image 20250731154747.png]]
+
+## 24. Fluxo de trabalho - Code Review (Revisão de código)
+
+### Escolhendo Code Reviewer
+
+No momento em que for criar um `pull request`, é possível escolher quem será o code reviewer daquele(s) commit(s) ao clicar no link `Reviewers` e selecionar alguma das opções disponíveis (como aparece em destaque na foto).
+
+![[Pasted image 20250804115059.png]]
+
+### Análise do `pull request` **por parte do code reviewer**
+
+- Acesse o repositório do projeto e clique em `Pull requests`
+
+![[Pasted image 20250804120703.png]]
+
+- Clique na `pull request` -> clique em `Commits` -> clique em um dos commits.
+
+![[Pasted image 20250804120815.png]]
+
+![[Pasted image 20250804120850.png]]
+
+![[Pasted image 20250804120934.png]]
+
+- Clique no sinal de + que aparece ao lado da linha que deseja fazer um comentário -> ao fazer o comentário, clique em `Add single comment`.
+
+![[Pasted image 20250804121319.png]]
+
+### Opções de review
+
+- Clique em `Review changes`, faça se  e escolha uma das 3 opções:
+	- `Comment`: será enviado apenas o comentário.
+	- `Approve`: o `pull request` será aprovado e, portanto, feito um merge.
+	- `Request changes`: o pull request não será aprovado, mas, em vez disso, será enviado uma solicitação de mudança junto com os comentário feito em `Review changes`.
+- Por fim, clique em `Submit review`.
+
+![[Pasted image 20250804121815.png]]
+
+Será enviada então esta mensagem para o colaborador que realizou a `pull request`:
+
+![[Pasted image 20250804122353.png]]
+
+Caso o colaborador tenha realizado as alterações necessárias e enviado um novo commit, este novo commit irá aparecer na mesma `pull request` que a anterior:
+
+![[Pasted image 20250804123339.png]]
+
+### Visualização dos pull requests já encerrados
+
+Clique na opção `Closed` na sessão `Pull requests` do seu repositório:
+
+![[Pasted image 20250804124329.png]]
+
