@@ -144,3 +144,21 @@ Clique na opção `Closed` na sessão `Pull requests` do seu repositório:
 
 ![[Pasted image 20250804124329.png]]
 
+## 25. Usando Fork
+
+### O que é fork?
+
+É um recurso do GitHub que permite você copiar e trazer um repositório público de outra conta para o seu perfil, permitindo que você faça alterações nesta cópia de forma independente, sem alterar o repositório original.
+### Como fazer um fork?
+
+- Vá até um repositório público de outra conta e clique em `Fork`:
+
+![[Pasted image 20250805120051.png]]
+
+- Escolha se você quer copiar apenas a branch principal (neste caso o `master`) ou todas as branches em `Copy the master branch only`. Por fim, clique em `Create fork`.
+
+![[Pasted image 20250805120329.png]]
+
+Depois que você fez um `git clone` deste fork e subiu um novo commit, é possível agora fazer um `pull request`:
+
+![[Pasted image 20250805123556.png]]
