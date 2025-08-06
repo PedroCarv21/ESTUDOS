@@ -162,3 +162,60 @@ Clique na opção `Closed` na sessão `Pull requests` do seu repositório:
 Depois que você fez um `git clone` deste fork e subiu um novo commit, é possível agora fazer um `pull request`:
 
 ![[Pasted image 20250805123556.png]]
+
+## 26. Trabalhando com arquivos - reverter, mover, excluir e log
+
+### Remoção de um arquivo
+
+Ao remover um arquivo do seu repositório local, irá aparecer uma mensagem semelhante ao executar `git status`:
+
+```
+Your branch is ahead of 'origin/ajuste' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    novo.txt
+```
+
+Em vez de executar `git add .`, execute `git rm ` mais o nome do arquivo deletado. Agora irá aparecer uma mensagem semelhante informando para que você comite essa mudança (a remoção de um arquivo):
+
+```
+Your branch is ahead of 'origin/ajuste' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        deleted:    novo.txt
+```
+
+Agora é só fazer o commit e, por fim, o `git push`.
+### Trocar um arquivo de diretório
+
+Digite `git mv <nome_arquivo> <nome_pasta>/<nome_arquivo>`. Por exemplo, se você deseja mudar o arquivo configuracao.txt para a pasta usuario então digite `git mv configuracao.txt usuario/configuracao.txt`
+
+**OBS.: é possível também renomear o arquivo com `git mv`. Por exemplo: `git mv configuracao.txt configuracao2.txt`**
+
+Ao executar `git status`, irá aparecer uma mensagem semelhante a esta:
+
+```
+Your branch is ahead of 'origin/ajuste' by 2 commits.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        renamed:    configuracao.txt -> usuario/configuracao.txt
+```
+
+Mesmo que o arquivo não tenha sido renomeando, ainda assim irá aparecer `renamed`.
+
+Por fim, não é preciso executar o `git add .`, mas apenas o `git commit -m` e o `git push`.
+
+### Restaurar arquivos
+
+Digite `git checkout <nome_arquivo>` para restaurar o conteúdo daquele arquivo para a última versão em que foi commitado.
+
+### Histórico de commits
+
+Digite `git log` para visualizar o histórico de commits. Caso tenha sido feito muitos commits, irá aparecer `:` no final do Git Bash, indicando que há uma continuação de commits que podem ser vistos. Para visualizá-los, pressione a seta pra baixo e, para sair, digite `q`.
