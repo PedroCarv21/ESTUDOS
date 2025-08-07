@@ -346,7 +346,7 @@ Agora se deseja obter a mensagem, substitua o `.value()` por `.getReasonPhrase()
 
 ### Query method `existsBy`
 
-Verifica se um registro existe ou não em uma tabela com base em alguma coluna, retornando `true` ou `false`. O método a seguir verifica se um registro existe com determinado nome, data de nascimento e nacionalidade já existe no banco de dados:
+Verifica se um registro existe ou não em uma tabela com base em alguma coluna, retornando `true` ou `false`. O método a seguir verifica se um registro existe com determinado nome, data de nascimento e nacionalidade no banco de dados:
 
 ```java
 boolean existsByNomeAndDataNascimentoAndNacionalidade(  

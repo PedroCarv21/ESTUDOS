@@ -219,3 +219,22 @@ Digite `git checkout <nome_arquivo>` para restaurar o conteúdo daquele arquivo 
 ### Histórico de commits
 
 Digite `git log` para visualizar o histórico de commits. Caso tenha sido feito muitos commits, irá aparecer `:` no final do Git Bash, indicando que há uma continuação de commits que podem ser vistos. Para visualizá-los, pressione a seta pra baixo e, para sair, digite `q`.
+
+## 27. Configurando informações de usuário no Git
+
+### Configuração do nome e e-mail
+
+As seguintes configurações irão ser registradas no momento em que for realizado um novo commit:
+
+- `git config --global user.name "seu nome"`
+- `git config --global user.email "seu e-mail"`
+
+**OBS.: embora não haja nesta aula uma instrução sobre como verificar estas alterações, digite `git config --list` para isso.**
+
+**OBS.2: o e-mail deve ser o mesmo usado na plataforma do GitHub.**
+
+### Comandos de ajuda
+
+- `git help`: lista os principais comandos do Git e oferece uma breve explicação sobre cada um deles.
+- `git help <comando específico>`: isso fará com que seja aberto uma nova página no seu navegador com as informações detalhadas do comando escolhido.
+
