@@ -238,3 +238,33 @@ As seguintes configurações irão ser registradas no momento em que for realiza
 - `git help`: lista os principais comandos do Git e oferece uma breve explicação sobre cada um deles.
 - `git help <comando específico>`: isso fará com que seja aberto uma nova página no seu navegador com as informações detalhadas do comando escolhido.
 
+## 28. Commits - Utilizando Log e Show
+
+### Histórico de commits
+
+Além do comando `git log`, há outras formas de buscar pelo histórico de commits:
+
+- `git log --oneline`: exibe o histórico de commits, porém de forma resumida (apenas com o código e a mensagem do commit).
+- `git log <nome_arquivo>`: exibe apenas os commits relacionados ao arquivo informado.
+- `git log --oneline <nome_arquivo>`: exibe apenas os commits relacionados ao arquivo informado, porém de forma resumida.
+
+### Apresentação das alterações
+
+- `git show <codigo_commit>`: apresenta as alterações que foram feitas naquele commit.
+
+### Referência HEAD do Git e o origin
+
+O HEAD aponta para o commit mas recente de uma branch. Por exemplo:
+
+```
+37213f6 (HEAD -> ajuste) alterado novo v2
+61a4559 adicionado novo v1
+3dee844 Alterei o chat removendo o v3
+0be0063 Alterado chat v3
+180e9af configurado movido
+d020ee8 removido arquivo novo
+6b2bfa5 adicionado arquivo novo
+8609ce7 (origin/ajuste) adicionado chat alterado
+```
+
+Este código afirma que o último commit da branch 'ajuste' foi o 'alterado novo v2'. No entanto, o mesmo código afirma que o último commit que foi 'empurrado' para a branch 'ajuste' do repositório remoto 'origin' foi o 'adicionado chat alterado'. Isso é sabido por causa do '(origin/ajuste)'.
