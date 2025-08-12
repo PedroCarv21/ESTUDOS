@@ -95,7 +95,7 @@ public Object salvar(@RequestBody Autor autor){
 
 Por exemplo, suponha que haja uma entidade Autor que possua os seguintes atributos: id, nome, dataNascimento, nacionalidade e livros. No entanto, na hora de um usuário fazer um novo registro na tabela Autor, é preciso somente que ele informe três campos: nome, dataNascimento e nacionalidade.
 
-o DTO correspondente a entidade Autor deveria ser assim:
+O DTO correspondente a entidade Autor deveria ser assim:
 
 ```java
 public record AutorDTO(String nome, LocalDate dataNascimento, String nacionalidade) {  

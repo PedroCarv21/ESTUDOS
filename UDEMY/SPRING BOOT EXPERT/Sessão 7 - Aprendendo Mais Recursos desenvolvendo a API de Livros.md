@@ -22,3 +22,10 @@ create table livro(
 ```
 
 Neste exemplo, o campo `isbn` não terá valores duplicados.
+
+## 98. Endpoint para cadastro de livro com Bean Validation
+### Anotação `@ISBN`
+
+É utilizado em um campo de uma classe para verificar se o código passado é um ISBN válido.
+
+**OBS.: ISBN é um código numérico único que identifica livros, artigos, entre outras publicações.**

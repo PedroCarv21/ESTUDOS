@@ -112,3 +112,11 @@ Este código afirma que o último commit da branch 'ajuste' foi o 'alterado novo
 - `git diff`: compara as alterações recentes, ainda não colocadas na área stage, com a última versão do arquivo (sendo que a criação deste arquivo já foi commitada).
 - `git diff <nome_arquivo>` compara as alterações recentes com a última versão de um arquivo específico.
 - `git diff <codigo do commit> <codigo do commit>`: compara as alterações feitas entre dois commits com base no código específico de cada um.
+
+## 30. Commits - Checkout
+
+- `git checkout <codigo do commit>`: retorna para o commit informado, restaurando a versão salva do arquivo durante aquele commit. Isso fará com que o `HEAD` aponte para o código do commit informado, e não mais para `main`. Isso é muito para saber em qual das versões, por exemplo, um sistema começou a apresentar defeitos.
+
+**OBS.: Caso tenha executado este comando enquanto o arquivo em questão estava aberto, feche-o e abra novamente para visualizar a restauração do arquivo.**
+
+- `git checkout <branch>`: dentro do contexto apresentado, este comando retornará para o commit mais recente da branch informada.
