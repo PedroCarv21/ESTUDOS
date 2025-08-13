@@ -120,3 +120,34 @@ Este código afirma que o último commit da branch 'ajuste' foi o 'alterado novo
 **OBS.: Caso tenha executado este comando enquanto o arquivo em questão estava aberto, feche-o e abra novamente para visualizar a restauração do arquivo.**
 
 - `git checkout <branch>`: dentro do contexto apresentado, este comando retornará para o commit mais recente da branch informada.
+
+## 31. Commits - Revertendo
+
+### O que é reversão?
+
+A reversão consiste em desfazer as alterações de um determinado commit e salvar esta mudança como um novo commit. Estes são alguns comandos que tratam de reversão:
+
+- `git revert HEAD`: desfaz a alteração do último commit e cria um novo commit chamado Revert mais o nome do último commit. Exemplo:
+
+```
+8ed860f (HEAD -> main) Revert "adicionado principal v3"
+66b96da adicionado principal v3
+8d2d760 adicionado principal v2
+e327050 adicionado principal v1
+```
+
+**OBS.1: se o comando `git revert HEAD` for executado pela segunda vez, o repositório voltará ao estado do último commit, antes de ter sido feito o primeiro revert. Será também criado um no commit chamado Reapply mais o nome do último commit (anterior ao revert)". Exemplo:**
+
+```
+1b37003 (HEAD -> main) Reapply "adicionado principal v3"
+8ed860f Revert "adicionado principal v3"
+66b96da adicionado principal v3
+8d2d760 adicionado principal v2
+e327050 adicionado principal v1
+```
+
+**OBS.2: em casos onde se deseja remover commits mais antigos, é possível que haja um conflito. Portanto, não é recomendado.**
+
+- `git revert <código do commit>`: é utilizado para remover um commit específico (não necessariamente o último, mas, talvez, um anterior a ele). Em caso de conflito, execute o comando `git diff <código do commit atual> <código do commit que deseja reverter>` para ver quais linhas apresentam um conflito (diferença). 
+
+Digite `git revert --abort` se deseja abortar a reversão ou, caso contrário, altere o código manualmente do arquivo em questão e execute os comandos `git add .` e `git revert --continue` para confirmar a reversão.

@@ -29,3 +29,67 @@ Neste exemplo, o campo `isbn` não terá valores duplicados.
 É utilizado em um campo de uma classe para verificar se o código passado é um ISBN válido.
 
 **OBS.: ISBN é um código numérico único que identifica livros, artigos, entre outras publicações.**
+
+## 99. Conhecendo e configurando o MapStruct no projeto
+
+### O que é MapStruct?
+
+
+### Como configurar o MapStruct no `pom.xml`?
+
+- Informe a versão do MapStruct dentro da tag  `<properties>`, que indica a versão do processador:
+
+```xml
+<org.mapstruct.version>1.6.3</org.mapstruct.version>
+```
+
+- Adicione a dependência do MapStruct em `<dependencies>`:
+
+```xml
+<dependency>  
+    <groupId>org.mapstruct</groupId>  
+    <artifactId>mapstruct</artifactId>  
+    <version>${org.mapstruct.version}</version>  
+</dependency>
+```
+
+- Adicione o plugin do MapStruct dentro da tag `<plugins>`. Ele será responsável por configurar o compilador para que gere o código-fonte dos mappers e do Lombok, de modo que ambos funcionem juntos e sem erro.
+
+**OBS.: um mapper é uma interface com a anotação `@Mapper`, criada para definir como a a transformação de um tipo de objeto em outro deve acontecer.**
+
+```xml
+<plugin>  
+    <groupId>org.apache.maven.plugins</groupId>  
+    <artifactId>maven-compiler-plugin</artifactId>  
+    <version>3.8.1</version>  
+    <configuration>  
+       <source>1.8</source> <!-- depending on your project -->  
+       <target>1.8</target> <!-- depending on your project -->  
+       <annotationProcessorPaths>  
+          <path>  
+             <groupId>org.mapstruct</groupId>  
+             <artifactId>mapstruct-processor</artifactId>  
+             <version>${org.mapstruct.version}</version>  
+          </path>  
+          <!-- other annotation processors -->  
+          <path>  
+             <groupId>org.projectlombok</groupId>  
+             <artifactId>lombok</artifactId>  
+             <version>${lombok.version}</version>  
+          </path>  
+  
+          <path>  
+             <groupId>org.projectlombok</groupId>  
+             <artifactId>lombok-mapstruct-binding</artifactId>  
+             <version>${lombok-mapstruct-binding.version}</version>  
+          </path>  
+       </annotationProcessorPaths>  
+    </configuration>  
+</plugin>
+```
+
+Dentro da tag `annotationPrecessorPaths`, se encontram a lista de processadores que o Maven deve executar durante a compilação:
+
+- `mapstruct-processor`: gera automaticamente os mappers.
+- `lombok`: gera automaticamente getters, setters, etc., a partir das anotações do Lombok.
+- `lombok-mapstruct-processor`: faz com que o Lombok e o MapStruct trabalhem sem conflitos.
