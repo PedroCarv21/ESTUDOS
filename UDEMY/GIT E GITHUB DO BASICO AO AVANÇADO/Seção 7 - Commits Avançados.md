@@ -151,3 +151,32 @@ e327050 adicionado principal v1
 - `git revert <código do commit>`: é utilizado para remover um commit específico (não necessariamente o último, mas, talvez, um anterior a ele). Em caso de conflito, execute o comando `git diff <código do commit atual> <código do commit que deseja reverter>` para ver quais linhas apresentam um conflito (diferença). 
 
 Digite `git revert --abort` se deseja abortar a reversão ou, caso contrário, altere o código manualmente do arquivo em questão e execute os comandos `git add .` e `git revert --continue` para confirmar a reversão.
+
+## 32. Commits - Resetando
+
+Os seguintes comandos são recomendados em casos em que:
+
+- serão descartados commits em uma branch privada.
+- serão desfeitas alterações não commitadas em uma branch privada.
+- Tirar arquivos da área de trabalho.
+
+Os comandos são:
+
+- `git reset HEAD`: retira todas as alterações da área Stage.
+- `git reset <nome do arquivo>`: retira um arquivo específico da área Stage.
+-  `git reset --hard <código do commit>`: apaga os commits posteriores àquele cujo o código foi informado. Por exemplo:
+
+```
+44bcec9 (HEAD -> chat) arquivo3
+e57ba21 arquivo2
+fe712e6 arquivo1
+5f8a281 adicionado chat
+7e208cd (main) Revert "adicionado principal v1"
+1b37003 Reapply "adicionado principal v3"
+8ed860f Revert "adicionado principal v3"
+66b96da adicionado principal v3
+8d2d760 adicionado principal v2
+e327050 adicionado principal v1
+```
+
+Se for executado o comando `git reset --hard e57ba21` então o commit "arquivo3" será apagado.
