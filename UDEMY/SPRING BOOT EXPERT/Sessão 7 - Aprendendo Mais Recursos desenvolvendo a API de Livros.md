@@ -136,3 +136,29 @@ public ResponseEntity<AutorDTO> obterDetalhes(@PathVariable("id") UUID id){
 
 **OBS.: a diferença entre `orElseGet()` e `orElse()` é que o primeiro excuta apenas quando `Optional` está vazio enquanto o segundo executa sempre, mesmo o `Optional` não sendo vazio.**
 
+## 101. Mapeando e salvando um livro na base de dados
+
+Na aula anterior, foi explicado que, para que haja uma relação entre um campo DTO e um campo de uma entidade com nomes diferentes, é necessário esclarecer isso através da anotação `@Mapping(source = "", target = "")`.
+
+Porém, quando não somente os campos tem nomes diferentes, mas também tipos diferentes, é necessário utilizar o parâmetro `expression` em vez de `source`. O parâmetro `expression` será responsável por aplicar o código java, passado como valor, no campo informado no parâmetro `target`.
+
+Por exemplo, o `CadastroLivroDTO` possui o campo `idAutor` do tipo `UUID` enquanto a entidade `Livro` possui o campo `autor` do tipo `Autor`. É preciso então buscar um registro da tabela `Autor`, através do campo `idAutor`, e devolvê-lo para o campo `autor` da entidade `Livro`.
+
+Para isso, será necessário que o objeto retornado do método `autorRepository.findById(cadastroLivroDTO.idAutor()).orElse(null)` seja inserido no campo `autor`. Portanto, este código deve ser passado dentro do parâmetro `expression`.
+
+Por fim, este código deve ser inserido dentro de `java ()`, para indicar que se trata de um código Java.
+
+```java
+@Mapper(componentModel = "spring")  
+public abstract class LivroMapper {  
+  
+    @Autowired  
+    AutorRepository autorRepository;  
+  
+    @Mapping(target = "autor", expression = " java( autorRepository.findById(cadastroLivroDTO.idAutor()).orElse(null) ) ")  
+    public abstract Livro toEntity(CadastroLivroDTO cadastroLivroDTO);  
+  
+}
+```
+
+Como foi necessário a criação de um atributo para a resolução deste problema, teve que se usar uma classe abstrata em vez de uma interface.

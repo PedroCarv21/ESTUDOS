@@ -179,4 +179,9 @@ fe712e6 arquivo1
 e327050 adicionado principal v1
 ```
 
-Se for executado o comando `git reset --hard e57ba21` então o commit "arquivo3" será apagado.
+Se for executado o comando `git reset --hard e57ba21` então o commit "arquivo3" será apagado **assim como todas as alterações referentes àquele commit**.
+
+- `git reset --soft <código do commit>`: apaga os commits posteriores ao código informado, porém mantém as alterações da área Stage.
+- `git reset --mixed <código do commit>`: apaga os commits posteriores ao código informado e retira as alterações da área Stage. No entanto, **as alterações ainda existem.**
+
+**OBS.: por padrão, o git reset é `--mixed`. Portanto, não é preciso especificar essa palavra na hora de executar o código.**
