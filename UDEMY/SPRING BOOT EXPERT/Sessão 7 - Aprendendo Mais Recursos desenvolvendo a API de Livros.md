@@ -162,3 +162,45 @@ public abstract class LivroMapper {
 ```
 
 Como foi necessário a criação de um atributo para a resolução deste problema, teve que se usar uma classe abstrata em vez de uma interface.
+
+## 102. Criando interface generica para nos ajudar nos controllers
+
+### Nota sobre interfaces
+
+Caso você queira criar um corpo em um método de uma interface, é necessário que esse método seja `default`. Exemplo:
+
+```java
+public interface GenericController {  
+  
+    default URI gerarHeaderLocation(UUID id){  
+        return ServletUriComponentsBuilder  
+                .fromCurrentRequest()  
+                .path("/{id}")  
+                .buildAndExpand(id)  
+                .toUri();  
+    }
+}
+```
+
+## 104. Obtendo detalhes do livro - Mapstruct utilizando composição de outro mapper
+
+### A necessidade de mappers dentro de mappers
+
+Em casos onde seja necessário utilizar de um mapper para o mapeamento de uma das colunas da entidade e do DTO, é possível especificar o mapper através do parâmetro `uses` da anotação `@Mapper`:
+
+```java
+@Mapper(componentModel = "spring", uses = AutorMapper.class)  
+public abstract class LivroMapper {  
+  
+    @Autowired  
+    AutorRepository autorRepository;  
+  
+    @Mapping(target = "autor", expression = " java( autorRepository.findById(cadastroLivroDTO.idAutor()).orElse(null) ) ")  
+    public abstract Livro toEntity(CadastroLivroDTO cadastroLivroDTO);  
+  
+    public abstract ResultadoPesquisaLivroDTO toDTO(Livro livro);  
+  
+}
+```
+
+Neste exemplo, o método `toDTO` fará o mapeamento da entidade `Livro` para o DTO `ResultadoPesquisaLivroDTO`. A entidade possui o campo `autor` do tipo `Autor` e o DTO possui o campo `autor` do tipo `AutorDTO`. Por essa razão, é necessário especificar o mapper pelo parâmetro `uses` que realizará o mapeamento correto destes dois campos.
