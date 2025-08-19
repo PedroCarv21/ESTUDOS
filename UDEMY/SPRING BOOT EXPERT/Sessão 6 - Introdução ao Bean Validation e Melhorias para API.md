@@ -137,5 +137,5 @@ public List<Autor> pesquisaByExample(String nome, String nacionalidade){
 }
 ```
 
-Em suma, o que este código fará é pesquisar registros na tabela Autor por meio do campo `nome` e `nacionalidade`, desconsiderando case sensitive, valores nulos e levando em considerado caracteres que podem estar contidos dentro de dados armazenados no campo `nome` e `nacionalidade`.
+Em suma, o que este código fará é pesquisar registros na tabela Autor por meio do campo `nome` e `nacionalidade`, desconsiderando case sensitive, valores nulos e levando em consideração caracteres que podem estar contidos dentro de dados armazenados no campo `nome` e `nacionalidade`.
 

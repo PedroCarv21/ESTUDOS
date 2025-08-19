@@ -204,3 +204,19 @@ public abstract class LivroMapper {
 ```
 
 Neste exemplo, o método `toDTO` fará o mapeamento da entidade `Livro` para o DTO `ResultadoPesquisaLivroDTO`. A entidade possui o campo `autor` do tipo `Autor` e o DTO possui o campo `autor` do tipo `AutorDTO`. Por essa razão, é necessário especificar o mapper pelo parâmetro `uses` que realizará o mapeamento correto destes dois campos.
+
+## 106. Entendendo o que é uma Specification do Spring Data JPA
+
+### Interface `Specification`
+
+Esta interface possibilita a construção de consultas dinâmicas com base em critérios (campos) específicos. 
+
+Para que um repositório tenha suporte a consultas baseadas em `Specification`, é necessário estendê-la com a interface `JpaSpecificationExecutor`, recebendo a entidade na parte do generics. Exemplo:
+
+```java
+public interface LivroRepository extends JpaRepository<Livro, UUID>, JpaSpecificationExecutor<Livro> {
+    ...
+}
+```
+
+

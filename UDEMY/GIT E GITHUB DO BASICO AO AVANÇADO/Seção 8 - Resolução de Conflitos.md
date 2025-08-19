@@ -30,3 +30,17 @@ metodo(){
 ```
 
 Você deve escolher qual deve permanecer e clicar em `Mark as resolved` e, por fim, em `Commit merge`.
+
+## 34. Resolvendo conflitos - Local
+
+### Visualização do conteúdo do arquivo
+
+Digite `cat` mais o nome do arquivo.
+
+### Fazendo `merge` pelo Git
+
+Digite `git merge` mais o nome da branch que deseja mesclar. Caso ocorra um conflito, irá aparecer, no arquivo do se repositório local, a mesma estrutura que apareceu lá no GitHub quando ocorreu um conflito:
+
+![[Pasted image 20250818155227.png]]
+
+Faça a alteração no arquivo, crie um novo commit e, por fim, execute o `git push`.

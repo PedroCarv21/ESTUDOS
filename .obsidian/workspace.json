@@ -160,6 +160,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:Create new base": false,
       "switcher:Abrir Quick Switcher": false,
       "graph:Abrir Visualização de diagrama de grafo": false,
       "canvas:Create new canvas": false,
@@ -171,12 +172,12 @@
   "active": "70fb491bb466e52f",
   "lastOpenFiles": [
     "UDEMY/SPRING BOOT EXPERT/Sessão 7 - Aprendendo Mais Recursos desenvolvendo a API de Livros.md",
-    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Pasted image 20250818154830.png",
-    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Pasted image 20250818155227.png",
-    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 8 - Resolução de Conflitos.md",
-    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 7 - Commits Avançados.md",
     "UDEMY/SPRING BOOT EXPERT/Sessão 6 - Introdução ao Bean Validation e Melhorias para API.md",
     "UDEMY/SPRING BOOT EXPERT/Sessão 5 - Desenvolvimento de API's RestFul.md",
+    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 8 - Resolução de Conflitos.md",
+    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Pasted image 20250818154830.png",
+    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Pasted image 20250818155227.png",
+    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 7 - Commits Avançados.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 4 - Utilizando GitHub.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 5 - Trabalhando com branches.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 6 - Utilizando Git Flow.md",
