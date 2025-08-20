@@ -219,4 +219,62 @@ public interface LivroRepository extends JpaRepository<Livro, UUID>, JpaSpecific
 }
 ```
 
+## 107. Implementando as Specifications da entidade Livro
 
+A interface `Specification` pode ser transformada na seguinte expressão lambda:
+
+```java
+Specification<Livro> specs = (root, query, criteriaBuilder) -> criteriaBuilder.conjunction();
+```
+
+Tal expressão lambda possui os seguintes métodos:
+
+- `Root<T> root`: usada para acessar os atributos de um entidades através do método `root.get()`. Este método deve receber como argumento o nome de algum atributo da entidade informada como tipo genérico. No exemplo anterior, o tipo genérico foi `Livro`, portanto, deveria ser passado algum atributo como argumento (ex.: `root.get("titutlo")`).
+- `CriteriaQuery<?> query`: representa a consulta em si. Normalmente, não é preciso mexer muito nele, a menos que queira:
+	- definir ordenação,
+	- usar `distinct`,
+	- fazer subconsultas etc.
+- `CriteriaBuilder cb`: disponibiliza predicados (`equal`, `like`, `and`, `or`, `upper`, etc.) para construir a consulta.
+
+Exemplo de um método que utiliza estes recursos:
+
+```java
+public static Specification<Livro> isbnEqual(String isbn){  
+    return (root, query, cb) -> cb.equal(root.get("isbn"), isbn);  
+}
+```
+
+Em suma este método retorna a seguinte consulta:
+
+```sql
+SELECT * FROM Livro WHERE isbn = ?
+```
+
+Outro exemplo mais sofisticado:
+
+```java
+public static Specification<Livro> tituloLike(String titulo){  
+    return (root, query, cb) ->  
+            cb.like(  
+                    cb.upper(root.get("titulo")),  
+                    "%" + titulo.toUpperCase() + "%"  
+            );  
+}
+```
+
+Este código representa a seguinte consulta SQL:
+
+```SQL
+SELECT * FROM Livro
+WHERE UPPER(titulo) LIKE CONCAT('%', UPPER(?), '%');
+```
+
+**OBS.: a função `UPPER()` torna os valores encontrados no campo 'titulo' em caixa alta. Já a função `CONCAT` concatena os valores passados como argumento.**
+
+Caso deseje fazer uma consulta simples, é possível utilizar o método `conjunction()` do `CrieteriaBuilder`:
+
+```java
+Specification<Livro> specs = (root, query, criteriaBuilder) -> criteriaBuilder.conjunction();
+```
+
+Isso equivale a `SELECT * FROM Livro where 1 = 1`.
