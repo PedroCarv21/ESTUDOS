@@ -10,3 +10,24 @@ Os comandos seguintes são usados para criar ou manipular 'rascunhos' do seu pro
 - `git stash apply <numero da stash>`: recupera o que foi salvo em uma stash.
 - `git stash clear`: apaga todas as stash.
 - `git stash drop <numero da stash>`: remove um stash específica.
+
+## 36. Utilizando git Tag
+
+As tags são como se fossem etiquetas ou rótulos para um commit especifico, destacando desta forma versões importantes do seu projeto. Estes são os comandos para a manipulação de tags:
+
+- `git tag -a <nome da tag> -m "mensagem"`: cria uma nova tag com nome e uma mensagem vinculada a ela.
+- `git tag -d <nome>`: remove a tag.
+- `git show <nome da tag>`: mostra o conteúdo de um arquivo modificado com base na tag vinculada àquele commit.
+- `git checkout <nome da tag>`: faz com que o HEAD aponte para o commit vinculada a tag informada.
+
+Exemplo de como ficam os commits com tags:
+
+```
+24cec0c (HEAD -> chat, tag: v2.0) modificado 2 envio de video
+9f901a8 modificado 1 envio imagens
+33f9197 adicionado chat-envio
+201d387 (tag: v1.0) modificado 2 chat
+fd2fdd4 modificado 1 chat
+48d295a adicionado chat
+```
+

@@ -278,3 +278,36 @@ Specification<Livro> specs = (root, query, criteriaBuilder) -> criteriaBuilder.c
 ```
 
 Isso equivale a `SELECT * FROM Livro where 1 = 1`.
+
+## 108. Utilizando functions do banco na Specification JPA
+
+### Função `to_char`
+
+Esta é uma função do PostgreSQL utilizada para converter certos tipos de valores (como `timestamp`, `integer`, entre outros) em uma `String`. É possível ainda informar qual será o formato da `String` retornada:
+
+```sql
+select to_char(data_publicacao, 'YYYY') from livro;
+```
+
+O código acima faz uma consulta das datas encontrados na coluna `data_publicacao` da tabela `Livro` e retorna apenas o ano.
+
+### Utilização do `to_char` em um método Java
+
+Suponha que deva ser construído um método que compare os valores encontrados no campo `dataPublicacao` com o ano expresso como argumento.
+
+Para fazer essa comparação, será necessário o método `cb.equal`, que receberá a função `to_char` como argumento e o ano como segundo argumento.
+
+Para especificar o uso de `to_char`, é preciso utilizar o método `cb.function()` e passar a `String` `"to_char"` como o primeiro argumento. O segundo que `cb.function()` receberá é `String.class`, que especifica o tipo de retorno esperado de `to_char`.
+
+O terceiro argumento é o nome do campo **da entidade** cujo os valores serão comparados (neste caso é `dataPublicacao`, que ser passado como argumento de `root.get()`). Por fim, informe o formato em que data deve retornar através de `cb.literal()` (por exemplo, `cb.literal("YYYY")`). Exemplo:
+
+```java
+public static Specification<Livro> dataPublicacaoEqual(Integer anoPublicaco){  
+    return (root, query, cb) ->  
+            cb.equal(cb.function(  
+                    "to_char", String.class, root.get("dataPublicacao"), cb.literal("YYYY")),  
+                    anoPublicaco.toString()  
+            );  
+}
+```
+
