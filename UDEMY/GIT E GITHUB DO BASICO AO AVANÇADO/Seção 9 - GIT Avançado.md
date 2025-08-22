@@ -31,3 +31,19 @@ fd2fdd4 modificado 1 chat
 48d295a adicionado chat
 ```
 
+## 37. Enviando Tags para o GitHub
+
+- `git push origin <nome da tag>`: sobe para o GitHub uma tag específica.
+- `git push origin --tags`: sobe todas as tags para o GitHub.
+
+É possível ainda visualizar as tags lá no seu repositório do GitHub:
+
+![[Pasted image 20250822152836.png]]
+
+## 38. Atualizando branchs e tags com Fetch
+
+- `git tag`: lista todas as tags.
+
+### Como trazer outras branches para o seu repositório local
+
+Ao clonar um repositório remoto, apenas a branch `main` será levada para o seu repositório local. Para trazer todas as branches atualizadas, utilize o comando `git fetch -a`. Após esse comando, se você executar `git branch` para listar todas as branches daquele repositório, ainda não será possível visualizá-las. É necessário executar `git checkout <nome da branch>` para então se mover para a branch desejada e visualizá-la.

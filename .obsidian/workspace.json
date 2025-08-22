@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 328.5,
-    "collapsed": true
+    "width": 328.5
   },
   "right": {
     "id": "fd48e1adbeab8766",
@@ -173,8 +172,10 @@
   "active": "70fb491bb466e52f",
   "lastOpenFiles": [
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 9 - GIT Avançado.md",
-    "UDEMY/SPRING BOOT EXPERT/Sessão 7 - Aprendendo Mais Recursos desenvolvendo a API de Livros.md",
+    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Pasted image 20250822152836.png",
     "UDEMY/SPRING BOOT EXPERT/Sessão 5 - Desenvolvimento de API's RestFul.md",
+    "UDEMY/SPRING BOOT EXPERT/Sessão 4 - Acesso a Dados com Spring Data JPA.md",
+    "UDEMY/SPRING BOOT EXPERT/Sessão 7 - Aprendendo Mais Recursos desenvolvendo a API de Livros.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 8 - Resolução de Conflitos.md",
     "UDEMY/SPRING BOOT EXPERT/Sessão 6 - Introdução ao Bean Validation e Melhorias para API.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Pasted image 20250818154830.png",
@@ -183,7 +184,6 @@
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 4 - Utilizando GitHub.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 5 - Trabalhando com branches.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 6 - Utilizando Git Flow.md",
-    "UDEMY/SPRING BOOT EXPERT/Sessão 4 - Acesso a Dados com Spring Data JPA.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Pasted image 20250805120051.png",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Pasted image 20250805123556.png",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Pasted image 20250805120329.png",
@@ -191,7 +191,6 @@
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Pasted image 20250804121815.png",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Pasted image 20250804120815.png",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Pasted image 20250804124329.png",
-    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Pasted image 20250804123339.png",
     "Sem título.canvas",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Sessão 6 - Utilizando GIT Flow.md",
     "UDEMY/SPRING BOOT EXPERT/Sessão 2 - Primeiros Passos.md",
@@ -209,7 +208,6 @@
     "FACULDADE SENAC/CICLO II/Programação Web I.md",
     "FACULDADE SENAC/CICLO II/Sem título 1.md",
     "FACULDADE SENAC/CICLO II",
-    "FACULDADE SENAC/CICLO I/Resumo para prova.md",
     "FACULDADE SENAC/CICLO II",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO",
     "FACULDADE SENAC/CICLO I",

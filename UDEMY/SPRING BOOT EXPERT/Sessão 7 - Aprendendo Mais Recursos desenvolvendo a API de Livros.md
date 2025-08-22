@@ -311,3 +311,44 @@ public static Specification<Livro> dataPublicacaoEqual(Integer anoPublicaco){
 }
 ```
 
+## 109. Criando joins ao utilizar Specifications JPA
+
+Há duas formas de se fazer um join entre duas entidades.
+### Primeira solução
+
+É possível chamar um método `get()` a partir de outro método `get()`. 
+
+Por exemplo, a entidade `Livro` possui um atributo `autor` do tipo `Autor` (uma outra entidade) que, por sua vez, possui um atributo `nome`. Para acessar este atributo `nome`, seria utilizado o seguinte comando: `root.get("autor").get("nome")`.
+
+O exemplo abaixo mostra um exemplo de uma consulta que compara, através do predicado `like`, o nome passado como argumento com os valores encontrados no campo `nome` da tabela `Autor`, desconsiderando letras maiúsculas e minúsculas.
+
+```java
+public static Specification<Livro> nomeAutorLike(String nome) {  
+    return (root, query, cb) -> cb.like(  
+            cb.upper(root.get("autor").get("nome")),  
+            "%" + nome.toUpperCase() + "%");  
+}
+```
+
+### Segunda solução
+
+A solução anterior é mais simples, porém não permite especificar o tipo de `join` que deve ser realizado (por padrão, é feito um `inner join`). Estas são as opções de `join`:
+
+- `INNER JOIN`: retorna apenas os registros que têm correspondência nas duas tabelas.
+- `LEFT JOIN`: retorna todos os registros da tabela da esquerda, e os dados da tabela da direita quando houver correspondência. Quando não houver match, os campos da tabela da direita vêm como `NULL`.
+- `RIGHT JOIN`: retorna todos os registros da tabela da direita, e os dados da tabela da esquerda quando houver correspondência. Quando não houver match, os campos da tabela da direita vêm como `NULL`.
+
+Para especificar o tipo de `join` que será realizado, utilize o predicado `root.join()`, cujo o primeiro argumento deve ser o atributo correspondente a chave estrangeira e o segundo argumento deve ser uma destas constantes: `JoinType.LEFT`, `JoinType.RIGHT` e `JoinType.INNER`. Armazene o resultado deste predicado em um objeto do tipo `Join` e passe-o como argumento de um predicado `equal` ou `like`.
+
+Este é um exemplo de como utilizar o predicado `join`.
+
+```java
+public static Specification<Livro> nomeAutorLike(String nome){  
+        return (root, query, cb) -> {  
+  
+            Join<Object, Object> joinAutor = root.join("autor", JoinType.LEFT);  
+            return cb.like(cb.upper(joinAutor.get("nome")), "%" + nome.toUpperCase() + "%");  
+   
+        };  
+    }
+```
