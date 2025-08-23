@@ -352,3 +352,17 @@ public static Specification<Livro> nomeAutorLike(String nome){
         };  
     }
 ```
+
+## 111. Validação de ISBN duplicado
+
+### Operação terminal `anyMatch()`
+
+É utilizado para verificar se algum elemento de uma stream atende a uma determinada condição. Por exemplo: o código a seguir utiliza `anyMatch` para verificar se existe algum nome, presente na lista `nomes`, que começa com a letra 'A'.
+
+```java
+List<String> nomes = Arrays.asList("Carlos", "Ana", "João");
+
+boolean temNomeComA = nomes.stream().anyMatch(nome -> nome.startsWith("A"));
+
+System.out.println("Tem nome com A? " + temNomeComA);  // Saída: true
+```
