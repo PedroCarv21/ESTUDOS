@@ -47,3 +47,37 @@ fd2fdd4 modificado 1 chat
 ### Como trazer outras branches para o seu repositório local
 
 Ao clonar um repositório remoto, apenas a branch `main` será levada para o seu repositório local. Para trazer todas as branches atualizadas, utilize o comando `git fetch -a`. Após esse comando, se você executar `git branch` para listar todas as branches daquele repositório, ainda não será possível visualizá-las. É necessário executar `git checkout <nome da branch>` para então se mover para a branch desejada e visualizá-la.
+
+## 40. Utilizando Rebase
+
+Enquanto o `git merge` é responsável por mesclar os commits de duas branches e agrupá-los na ordem cronológica em que foram criados e, no fim, criar um novo commit que represente esse merge, o `git rebase` irá agrupar os commits de modo linear, ou seja, reaplicando os seus commits no topo de outra branch, resultando num histórico de commits mais limpo e linear. 
+
+Para isso, digite `git branch` mais o nome da branch que deseja mesclar.
+
+Exemplo de commits mesclados com `git merge`:
+
+```
+4e4068d (HEAD -> main) Merge branch 'recurso'
+a0554b7 (recurso) Recurso 2
+a2b3305 C3
+a49e3a9 Recurso 1
+9a12883 Commit 2
+e464da1 Commit 1
+```
+
+**OBS.: os commits com nome 'Recurso' são de uma branch e os demais são de outra branch**.
+
+Exemplo de commits mesclados com `git rebase`:
+
+```
+598c2cc (HEAD -> recurso) Recurso 4
+93620ed Recurso 3
+9cc02f9 Recurso 2
+50e1740 Recurso 1
+83dcbae (main) Commit 4
+e7c4582 Commit 3
+9a12883 Commit 2
+e464da1 Commit 1
+```
+
+**OBS.: não é recomendado fazer `git rebase` na branch principal, apenas o `git merge`.**

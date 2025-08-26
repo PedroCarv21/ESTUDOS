@@ -366,3 +366,152 @@ boolean temNomeComA = nomes.stream().anyMatch(nome -> nome.startsWith("A"));
 
 System.out.println("Tem nome com A? " + temNomeComA);  // Saída: true
 ```
+
+## 113. Como implementar pesquisa paginada com Spring Data
+
+### O que é pesquisa paginada?
+
+Significa separar uma quantidade específica de registros pesquisados por página. Desta forma, a consulta não fica tão sobrecarregada como em casos onde uma tabela possui mais de 100.000 registros.
+### Como fazer a pesquisa paginada?
+
+A interface `JpaSpecificationExecutor` fornece um método `findAll()`, que recebe um argumento do tipo `Specification` e outro argumento do tipo `Pageable` e retorna um objeto do tipo `Page`.
+
+A interface `Page` irá disponibilizar os campos que informam dados a respeito da paginação, tais como: o total de páginas, o total de elementos, o tamanho da página (quantos registros ela carrega), entre outras informações.
+
+Já a interface `Pageable` oferece um método `of()` para que seja passado como argumento a página em que você deve se encontrar (primeira página, segunda....) e também o tamanho da página. Ambos os valores devem ser inteiros. Exemplo:
+
+```java
+    public Page<Livro> pesquisa(  
+            String isbn,  
+            String nomeAutor,  
+            String titulo,  
+            GeneroLivro genero,  
+            Integer anoPublicacao,  
+            Integer pagina,  
+            Integer tamanhoPagina){  
+  
+        Specification<Livro> specs = (root, query, criteriaBuilder) ->  
+                criteriaBuilder.conjunction();  
+  
+        if (isbn != null){  
+            specs = specs.and(LivroSpecs.isbnEqual(isbn));  
+        }  
+  
+        if (genero != null){  
+            specs = specs.and(LivroSpecs.generoEqual(genero));  
+        }  
+  
+        if (titulo != null){  
+            specs = specs.and(LivroSpecs.tituloLike(titulo));  
+        }  
+  
+        if (anoPublicacao != null){  
+            specs = specs.and(LivroSpecs.dataPublicacaoEqual(anoPublicacao));  
+        }  
+  
+        if (nomeAutor != null){  
+            specs = specs.and(LivroSpecs.nomeAutorLike(nomeAutor));  
+        }  
+  
+        Pageable pageRequest = PageRequest.of(pagina, tamanhoPagina);  
+  
+        return livroRepository.findAll(specs, pageRequest);  
+    }
+```
+
+Neste caso, a interface `livroRepository` estende `JpaSpecificationExecutor`, o que dá acesso ao método `findAll()`. Este método recebe então um objeto do tipo `Specification` (a variável `specs`) e outro objeto do tipo `Pageable` (a variável `pageRequest`), que já contém a página em que o usuário se encontra e o tamanho da página através do método `of()`.
+
+É possível definir um valor padrão para a página em que o usuário se encontra e o tamanho da página através da anotação `@RequestParam()` por meio do atributo `defaultValue`.
+
+A interface `Page` também oferece o método `map`, que pode ser muito útil para a transformação de entidade em um DTO. Exemplo:
+
+```java
+@GetMapping  
+public ResponseEntity<Page<ResultadoPesquisaLivroDTO>> pesquisa(  
+        @RequestParam(value = "isbn", required = false)  
+        String isbn,  
+        @RequestParam(value = "nome-autor", required = false)  
+        String nomeAutor,  
+        @RequestParam(value = "titulo", required = false)  
+        String titulo,  
+        @RequestParam(value = "genero", required = false)  
+        GeneroLivro genero,  
+        @RequestParam(value = "ano-publicacao", required = false)  
+        Integer anoPublicacao,  
+        @RequestParam(value = "pagina", defaultValue = "0")  
+        Integer pagina,  
+        @RequestParam(value = "tamanho-pagina", defaultValue = "10")  
+        Integer tamanhoPagina){  
+  
+    Page<Livro> paginaResultado = this.service.pesquisa(isbn, nomeAutor, titulo, genero, anoPublicacao, pagina, tamanhoPagina);  
+  
+    Page<ResultadoPesquisaLivroDTO> resultado = paginaResultado.map(livroMapper::toDTO);  
+  
+    return ResponseEntity.ok().body(resultado);  
+}
+```
+
+### Consulta
+
+Ao fazer a consulta, o corpo da resposta deve devolver uma estrutura mais ou menos parecida com esta:
+
+```json
+{
+    "content": [
+        {
+            "id": "76449b0d-57d8-423a-b0d5-e1abf6a4fbe1",
+            "isbn": "5656544-4564654",
+            "titulo": "Nova Espécie",
+            "dataPublicacao": "1999-01-02",
+            "genero": "FICCAO",
+            "preco": 658,
+            "autor": {
+                "id": "7fb2820e-2dec-4c85-a9e0-dcdd6f19a8d1",
+                "nome": "Antonio",
+                "dataNascimento": "1978-08-05",
+                "nacionalidade": "Americana"
+            }
+        },
+        {
+            "id": "6b48fde4-1cd0-43ec-a3df-b1313ffc0359",
+            "isbn": "978-0-14-044913-6",
+            "titulo": "Republica ATUALIZADO",
+            "dataPublicacao": "1900-01-01",
+            "genero": "CIENCIA",
+            "preco": 10,
+            "autor": {
+                "id": "01743a13-dc39-43dd-b493-61adb7a8a03b",
+                "nome": "Pedro",
+                "dataNascimento": "2025-07-29",
+                "nacionalidade": "brasileiro"
+            }
+        }
+    ],
+    "pageable": {
+        "pageNumber": 1,
+        "pageSize": 2,
+        "sort": {
+            "empty": true,
+            "sorted": false,
+            "unsorted": true
+        },
+        "offset": 2,
+        "paged": true,
+        "unpaged": false
+    },
+    "totalPages": 4,
+    "totalElements": 7,
+    "last": false,
+    "size": 2,
+    "number": 1,
+    "sort": {
+        "empty": true,
+        "sorted": false,
+        "unsorted": true
+    },
+    "first": false,
+    "numberOfElements": 2,
+    "empty": false
+}
+```
+
