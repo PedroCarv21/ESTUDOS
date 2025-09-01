@@ -41,6 +41,7 @@ MapStruct é um gerador de código para Java que automatiza o processo de mapeam
 
 ```xml
 <org.mapstruct.version>1.6.3</org.mapstruct.version>
+<lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
 ```
 
 - Adicione a dependência do MapStruct em `<dependencies>`:
@@ -229,7 +230,7 @@ Specification<Livro> specs = (root, query, criteriaBuilder) -> criteriaBuilder.c
 
 Tal expressão lambda possui os seguintes métodos:
 
-- `Root<T> root`: usada para acessar os atributos de um entidades através do método `root.get()`. Este método deve receber como argumento o nome de algum atributo da entidade informada como tipo genérico. No exemplo anterior, o tipo genérico foi `Livro`, portanto, deveria ser passado algum atributo como argumento (ex.: `root.get("titutlo")`).
+- `Root<T> root`: usada para acessar os atributos de uma entidades através do método `root.get()`. Este método deve receber como argumento o nome de algum atributo da entidade informada como tipo genérico. No exemplo anterior, o tipo genérico foi `Livro`, portanto, deveria ser passado algum atributo como argumento (ex.: `root.get("titutlo")`).
 - `CriteriaQuery<?> query`: representa a consulta em si. Normalmente, não é preciso mexer muito nele, a menos que queira:
 	- definir ordenação,
 	- usar `distinct`,

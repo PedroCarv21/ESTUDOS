@@ -52,7 +52,7 @@ Por exemplo, se o método irá tratar da exceção `MethodArgumentNotValidExcept
 
 Por exemplo: `@ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)`
 
-![[Sessão 5 - Desenvolvimento de API's RestFul#^53643b]]
+![[Seção 5 - Desenvolvimento de API's RestFul#^53643b]]
 
 ### Mais informações sobre `MethodArgumentNotValidException`
 

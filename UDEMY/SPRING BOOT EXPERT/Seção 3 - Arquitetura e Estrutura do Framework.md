@@ -38,9 +38,9 @@ Os tipos de componentes específicos são:
 
 - **Services**: camada que trata da lógica de negócio da aplicação.
 - **Repositories**: camada que possui interfaces com métodos para a manipulação de dados no banco (seja SQL ou NoSQL). Veja também sobre a interface JpaRepository na sessão 2:
-		![[Sessão 2 - Primeiros Passos#^bdeec6]]
+		![[Seção 2 - Primeiros Passos#^bdeec6]]
 - **Controllers**: a definição de controllers foi dada também na sessão 2:
-		![[Sessão 2 - Primeiros Passos#^fc947b]]
+		![[Seção 2 - Primeiros Passos#^fc947b]]
 
 ![[Pasted image 20250331144133.png]]
 
@@ -161,7 +161,7 @@ public class TesteFabricaController {
 ```
 
 O exemplo acima mostra a injeção de dependência em um atributo chamado 'motor' com a anotação @Autowired, cuja a dependência se encontra na classe de configuração MontadoraConfiguration: 
-	![[Sessão 3 - Arquitetura e Estrutura do Framework#^842577]]
+	![[Seção 3 - Arquitetura e Estrutura do Framework#^842577]]
 
 ## Como especificar o bean que deseja utilizar ?
 
@@ -356,7 +356,7 @@ public class TesteFabricaController {
 
 Utilize a anotação **@GeneratedValue(strategy = GenerationType.IDENTITY)** em um atributo ID de uma entidade para a criação automática de ID's em cada registro inserido na tabela. Esta anotação substitui o método randomUUID() utilizado anteriormente:
 
-![[Sessão 2 - Primeiros Passos#^9a6673]]
+![[Seção 2 - Primeiros Passos#^9a6673]]
 
 
 ## Informações adicionais sobre a camada service, repository
@@ -433,7 +433,7 @@ Em suma, ele retorna verdadeiro, caso encontre em algum registro da tabela, a de
 
 Assim como o método findBy, a nomeação de um método existsBy personalizado deve obedecer as mesmas regras de sintaxe:
 
-![[Sessão 2 - Primeiros Passos#^e2dbee]]
+![[Seção 2 - Primeiros Passos#^e2dbee]]
 
 
 Por fim, tal componente deve ser instanciado em um service e aplicado em um dos seus métodos:

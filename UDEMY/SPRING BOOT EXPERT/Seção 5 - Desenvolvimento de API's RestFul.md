@@ -52,7 +52,7 @@ Restful é simplesmente uma referência para as API's que implementam as diretri
 		- **404 (Not Found)**: quando o cliente tenta acessar um recurso que não existe no servidor.
 		- **405 (Method Not Allowed)**: a solicitação enviada não é suportada (por exemplo, quando o cliente faz uma requisição por meio de um get, porém o único método disponível é um post).
 		- **409 (Conflict)**: o conceito sobre este código de status já foi esclarecido na sessão 3:
-		- ![[Sessão 3 - Arquitetura e Estrutura do Framework#^55f860]]
+		- ![[Seção 3 - Arquitetura e Estrutura do Framework#^55f860]]
 		- **422 (Unprocessable Entity)**: quando o servidor recebe uma mensagem com erro semântico (como, por exemplo, campos obrigatórios não preenchidos) ou não atende a determinadas condições (como a violação de regras de negócio). ^53643b
 	- **500 (Erro de Server)**: indica uma dificuldade de processamento do servidor.
 

@@ -138,7 +138,7 @@ Execute a aplicação e acesse a URL localhost:8080 mais a rota especificada na 
 
 É uma URL que, através dela, se torna possível interagir com uma aplicação Spring Boot. Um exemplo é o caso anterior onde foi feito o acesso da aplicação por meio do endpoint "/hello-world":
 
-![[Sessão 2 - Primeiros Passos#^634a33]]
+![[Seção 2 - Primeiros Passos#^634a33]]
 
 ### Criando a classe Produto
 

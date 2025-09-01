@@ -170,7 +170,7 @@ create table autor(
 
 A coluna id, geralmente definida como int, possui um tipo uuid, cujo conceito está relacionado com aquilo já demonstrado na sessão 2:
 
-![[Sessão 2 - Primeiros Passos#^9a6673]]
+![[Seção 2 - Primeiros Passos#^9a6673]]
 
 #### Tabela livro
 
@@ -345,7 +345,7 @@ public class Autor {
 
 Estas anotações devem ser colocadas em cima da entidade e serão responsáveis por criar automaticamente os métodos getters e setters durante a compilação. Para ver isso acontecer, utilize o plugin do Maven e realize o build da aplicação como demonstrado anteriormente. Abra o link abaixo: 
 
-![[Sessão 2 - Primeiros Passos#^219b34]]
+![[Seção 2 - Primeiros Passos#^219b34]]
 
 Em seguida, vá até a pasta **target/classes** e procure pelo arquivo da entidade compilado. Você verá a criação dos métodos getters e setters dentro deste arquivo.
 
@@ -952,7 +952,7 @@ void atualizarDataPorTituloTest(){
 
 Quando um objeto, instância de uma entidade, ainda não possui uma representação no banco de dados e nem é reconhecido pelo `EntityManager`. Lembrando do que se trata:
 
-![[Sessão 4 - Acesso a Dados com Spring Data JPA#^0d3afc]]
+![[Seção 4 - Acesso a Dados com Spring Data JPA#^0d3afc]]
 
 ### O que é um objeto managed?
 
