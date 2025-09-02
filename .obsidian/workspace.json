@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 328.5
+    "width": 328.5,
+    "collapsed": true
   },
   "right": {
     "id": "fd48e1adbeab8766",
@@ -171,15 +172,15 @@
   },
   "active": "403753c46f94e869",
   "lastOpenFiles": [
-    "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250719172230.png",
+    "UDEMY/SPRING BOOT EXPERT/Seção 7 - Aprendendo Mais Recursos desenvolvendo a API de Livros.md",
+    "UDEMY/SPRING BOOT EXPERT/Seção 8 - Aprendendo Spring Security.md",
     "UDEMY/SPRING BOOT EXPERT/Seção 2 - Primeiros Passos.md",
+    "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250719172230.png",
     "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250319123144.png",
     "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250318132843.png",
     "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250416151022.png",
     "UDEMY/SPRING BOOT EXPERT/Seção 6 - Introdução ao Bean Validation e Melhorias para API.md",
     "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250728124433.png",
-    "UDEMY/SPRING BOOT EXPERT/Seção 7 - Aprendendo Mais Recursos desenvolvendo a API de Livros.md",
-    "UDEMY/SPRING BOOT EXPERT/Seção 8 - Aprendendo Spring Security.md",
     "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250901112738.png",
     "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250901111820.png",
     "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250901112235.png",
@@ -194,7 +195,6 @@
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 8 - Resolução de Conflitos.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 6 - Utilizando Git Flow.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 5 - Trabalhando com branches.md",
-    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Pasted image 20250822152836.png",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 4 - Utilizando GitHub.md",
     "Sem título.canvas",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Sessão 6 - Utilizando GIT Flow.md",
