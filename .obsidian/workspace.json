@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 328.5,
-    "collapsed": true
+    "width": 328.5
   },
   "right": {
     "id": "fd48e1adbeab8766",
@@ -172,8 +171,11 @@
   },
   "active": "403753c46f94e869",
   "lastOpenFiles": [
+    "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250903121609.png",
     "UDEMY/SPRING BOOT EXPERT/Seção 7 - Aprendendo Mais Recursos desenvolvendo a API de Livros.md",
     "UDEMY/SPRING BOOT EXPERT/Seção 8 - Aprendendo Spring Security.md",
+    "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250903121312.png",
+    "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250903120414.png",
     "UDEMY/SPRING BOOT EXPERT/Seção 2 - Primeiros Passos.md",
     "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250719172230.png",
     "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250319123144.png",
@@ -183,10 +185,7 @@
     "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250728124433.png",
     "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250901112738.png",
     "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250901111820.png",
-    "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250901112235.png",
-    "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250901111935.png",
     "UDEMY/SPRING BOOT EXPERT/IMAGENS",
-    "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250901111517.png",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 9 - GIT Avançado.md",
     "UDEMY/SPRING BOOT EXPERT/Seção 4 - Acesso a Dados com Spring Data JPA.md",
     "UDEMY/SPRING BOOT EXPERT/Seção 5 - Desenvolvimento de API's RestFul.md",

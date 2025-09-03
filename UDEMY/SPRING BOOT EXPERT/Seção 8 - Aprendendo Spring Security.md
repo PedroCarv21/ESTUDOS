@@ -89,3 +89,23 @@ public class SecurityConfiguration {
 ```
 
 Somando todos esses filtros, o resultado é a mesma autenticação já utilizada na aula 116. Ou seja, o código acima representa a autenticação padrão do Spring Security.
+
+## 118. Como funciona a autenticação HTTP BASIC
+
+### Autenticação Http Basic sem formulário
+
+É possível ainda fazer autenticação em uma página web sem que o formulário login esteja habilitado por meio do `formLogin(Customizer.withDefault())`. Sem ele, o navegador irá criar um **prompt de autenticação Http Basic** semelhante a este:
+
+![[Pasted image 20250903120414.png]]
+
+### Forma alternativa de se autenticar no Postman
+
+Em vez de definir o usuário e a senha na aba Authorization do Postman, é possível se autenticar ao passar na aba Header a chave `Authorization`. Já o valor deve ser `Basic ` mais a codificação de `user:<senha gerada pela aplicação>`.
+
+Por exemplo, acesse o site https://www.base64encode.org/ e digite `user:` mais a senha gerada pela aplicação e, por fim, clique em `encode`.
+
+![[Pasted image 20250903121312.png]]
+
+Copie o código gerado e passe como valor depois da palavra `Basic `:
+
+![[Pasted image 20250903121609.png]]
