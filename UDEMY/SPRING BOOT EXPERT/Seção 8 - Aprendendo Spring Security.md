@@ -109,3 +109,91 @@ Por exemplo, acesse o site https://www.base64encode.org/ e digite `user:` mais a
 Copie o código gerado e passe como valor depois da palavra `Basic `:
 
 ![[Pasted image 20250903121609.png]]
+
+## 119. Habilitando e customizando formulario de login
+
+### Biblioteca Thymeleaf
+
+Esta é uma biblioteca que permite a criação de páginas em aplicações Spring. Esta é a sua dependência:
+
+```xml
+<dependency>  
+    <groupId>org.springframework.boot</groupId>  
+    <artifactId>spring-boot-starter-thymeleaf</artifactId>  
+</dependency>
+```
+
+### Criação de páginas Web
+
+Por convenção, as páginas web ficam dentro de uma pasta chamada `templates`. A página que foi criada é um formulário de Login.
+
+Na tag `<html></html>` adicione o atributo `xmlns:th="http://www.thymeleaf.org"`. O comando `xmlns` permite você definir um nome que servirá como indicador de que certos atributos pertencem ao Thymeleaf (neste caso, foi escolhido o nome `th`). Por fim, a URL é utilizada como uma forma identificador para reconhecer os atributos especiais do Thymeleaf.
+
+Os atributos especuiais do Thymeleaf (também chamados de diretivas) serão responsáveis por capacitar uma interação do código java com os documentos HTML, trazendo um comportamento dinâmico que os atributos HTML padrão não tem a capacidade de fazer.
+
+Uma dessas diretivas é o `action`, que define a URL de destino para onde os dados do formulário deverão ser enviados. Por exemplo, caso os dados tenham que ser enviados para a URL `/login` então essa URL deverá ficar dentro de `@{}` como é mostrado no código abaixo:
+
+```html
+<form th:action="@{/login}" method="post">
+```
+
+**OBS.: perceba que o `th:` é usado como prefixo para identificar que o `action` utilizado é, na verdade, uma diretiva.**
+
+### Anotação `@EnableWebMvc`
+
+Essa anotação é responsável desligar a auto-configuração do Spring MVC (que já vem por padrão no Spring Boot) e habilitar a sua configuração manual.
+
+**OBS.: Spring MVC é um módulo do Spring que organiza a aplicação de acordo com o modelo MVC.**
+
+Uma das interfaces que fornece métodos para a configuração do MVC é a `WebMvcConfigurer`. Um dos seus métodos, `addViewControllers(ViewControllerRegistry registry)`, permite registrar rotas simples (URLs) que apontam direto para uma view (página).
+
+Através do parâmetro `registry`, é possível definir uma rota com o método `addViewController()` e, em seguida, definir através de `addViewName()` qual será a página HTML acessada através desta rota. Exemplo:
+
+```java
+@Override
+public void addViewControllers(ViewControllerRegistry registry){  
+    registry.addViewController("/login").setViewName("login");
+}
+```
+
+Caso você tenha vários controladores ou `ViewControllerRegistry` que respondem à mesma URL, e queira priorizar a execução de um mapeamento específico, utilize o comando `registry.setOrder(Ordered.HIGHEST_PRECEDENCE)`. Exemplo:
+
+```java
+@Override
+public void addViewControllers(ViewControllerRegistry registry){  
+    registry.addViewController("/login").setViewName("login");
+	registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
+}
+```
+
+O código inteiro ficaria deste jeito:
+
+```java
+@Configuration  
+@EnableWebMvc  
+public class WebConfiguration implements WebMvcConfigurer {  
+  
+    @Override  
+    public void addViewControllers(ViewControllerRegistry registry){  
+        registry.addViewController("/login").setViewName("login");  
+        registry.setOrder(Ordered.HIGHEST_PRECEDENCE);  
+    }  
+}
+```
+
+### Alternativa ao código anterior
+
+Observe o código seguinte:
+
+```java
+@Controller  
+public class LoginViewController {  
+  
+    @GetMapping("/login")  
+    public String paginaLogin(){  
+        return "login";  
+    }  
+}
+```
+
+Ele praticamente substitui a classe de configuração mostrada anteriormente. Em vez de um `@RestController` (que lida com API's), é usado um `@Controller`, responsável por retornar páginas (views). Ou seja, o código acima irá retornar uma página `login.html` quando for acessado a URL `/login`.
