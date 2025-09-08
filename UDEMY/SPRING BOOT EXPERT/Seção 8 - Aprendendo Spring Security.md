@@ -197,3 +197,115 @@ public class LoginViewController {
 ```
 
 Ele praticamente substitui a classe de configuração mostrada anteriormente. Em vez de um `@RestController` (que lida com API's), é usado um `@Controller`, responsável por retornar páginas (views). Ou seja, o código acima irá retornar uma página `login.html` quando for acessado a URL `/login`.
+
+Por fim, para especificar o uso da página loginl.html criada, e não a utilização do formulário de login padrão do Spring Security, utilize, dentro do método `formLogin()`, o método`loginPage()`, que receberá como argumento o nome da página:
+
+```java
+.formLogin(configurer -> {  
+    configurer.loginPage("/login").permitAll();  
+})
+```
+
+O método `permitAll()` é utilizado para que todos os usuários, sem a necessidade de autenticação, possam acessar essa página.
+
+## 121. Criando um repositorio de usuários em memoria
+
+### Armazenamento dos usuários em memória
+
+Serão armazenados usuários em memória com o objetivo de utilizar os seus dados para autenticação. Esse armazenamento será realizado através da classe `InMemoryUserDetailsManager`,  que implementa a interface `UserDetailsService`.
+
+Essa classe deverá receber como argumento uma quantidade indefinida de objetos do tipo `UserDetails`. Uma classe que implementa esta interface é `User` do pacote `import org.springframework.security.core.userdetails.User`. É possível definir o nome, a senha e a função (role) de usuário da seguinte forma:
+
+```java
+UserDetails user1 = User.builder()  
+        .username("Usuario")  
+        .password("123")  
+        .roles("USER")  
+        .build();
+```
+
+No caso da senha, é possível criptografá-la através da classe `BCryptPasswordEncoder`, que implementa `PasswordEncoder`. Essa classe possibilita gerar, através do método `encode()` que recebe uma String como argumento, um hash do tipo String.
+
+Essa classe recebe como argumento no seu método construtor um valor inteiro que representa a 'força' utilizada para gerar o hash. Quanto maior for o número, mais custoso será para a CPU gerar o hash, porém mais segura será a proteção da senha.
+
+Exemplo do uso de `BCryptPasswordEncoder`:
+
+```java
+@Bean  
+public PasswordEncoder passwordEncoder(){  
+    return new BCryptPasswordEncoder(10);  
+}  
+  
+@Bean  
+public UserDetailsService userDetailsService(PasswordEncoder encoder){  
+    UserDetails user1 = User.builder()  
+            .username("Usuario")  
+            .password(encoder.encode("123"))  
+            .roles("USER")  
+            .build();  
+  
+  
+    UserDetails user2 = User.builder()  
+            .username("Admin")  
+            .password(encoder.encode("321"))  
+            .roles("ADMIN")  
+            .build();  
+  
+    return new InMemoryUserDetailsManager(user1, user2);  
+}
+```
+
+Quando a aplicação for executada, não será gerado mais aquele hash aleatório para autenticação, pois agora existe usuários já definidos no sistema.
+
+## 122. Trabalhando com roles de usuario
+
+### Autorizações limitadas a roles específicas
+
+Dentro do método `HttpSecurity.authorizeHttpRequests()`, é possível limitar o acesso de certas APIs aos usuários com uma determinada role.
+
+Por exemplo, suponha que a API 'autores' deveria ser acessada apenas para àqueles com a role 'ADMIN':
+
+```java
+authorize.requestMatchers("/autores/**").hasRole("ADMIN");
+```
+
+O método `requestMatchers()` serve para especificar a rota da API enquanto que o método `hasRole()` é utilizado para especificar a role que terá acesso àquela API.
+
+Se quiser especificar quais verbos HTTP daquela API uma role terá acesso, utilize o enum `HttpMethod` como argumento de `requestMatchers`:
+
+```java
+authorize.requestMatchers(HttpMethod.POST, "/autores/**").hasRole("ADMIN");
+```
+
+Caso deseje atribuir o acesso a mais de uma role, use o método `hasAnyRole()`, que possibilita receber uma quantidade indefinida de roles:
+
+```java
+authorize.requestMatchers(HttpMethod.GET, "/autores/**").hasAnyRole("USER", "ADMIN");
+```
+
+Caso deseje que todas as demais APIs exijam autenticação, porém sem exigir uma role específica, utilize o método `anyRequest().autheticated()`.
+
+**OBS.: esse método deve ser o último utilizado; tudo o que vier após ele será ignorado.**
+
+Agora se deseja conceder a uma API o acesso a todos, sem exigir autenticação, utilize o comando `permitAll()`. 
+
+Exemplo de todos os métodos descritos:
+
+```java
+@Bean  
+public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{  
+    return http  
+            .csrf(AbstractHttpConfigurer::disable)  
+            .formLogin(configurer -> {  
+                configurer.loginPage("/login");  
+            })  
+            .httpBasic(Customizer.withDefaults())  
+            .authorizeHttpRequests(authorize -> {  
+                authorize.requestMatchers("/login/**").permitAll();  
+                authorize.requestMatchers("/autores/**").hasRole("ADMIN");  
+                authorize.requestMatchers("/livros/**").hasAnyRole("USER", "ADMIN");  
+                authorize.anyRequest().authenticated();  
+            })  
+            .build();  
+}
+```

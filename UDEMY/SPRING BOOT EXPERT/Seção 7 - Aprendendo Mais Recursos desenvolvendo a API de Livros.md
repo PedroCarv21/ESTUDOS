@@ -337,7 +337,7 @@ A solução anterior é mais simples, porém não permite especificar o tipo de 
 
 - `INNER JOIN`: retorna apenas os registros que têm correspondência nas duas tabelas.
 - `LEFT JOIN`: retorna todos os registros da tabela da esquerda, e os dados da tabela da direita quando houver correspondência. Quando não houver match, os campos da tabela da direita vêm como `NULL`.
-- `RIGHT JOIN`: retorna todos os registros da tabela da direita, e os dados da tabela da esquerda quando houver correspondência. Quando não houver match, os campos da tabela da direita vêm como `NULL`.
+- `RIGHT JOIN`: retorna todos os registros da tabela da direita, e os dados da tabela da esquerda quando houver correspondência. Quando não houver match, os campos da tabela da esquerda vêm como `NULL`.
 
 Para especificar o tipo de `join` que será realizado, utilize o predicado `root.join()`, cujo o primeiro argumento deve ser o atributo correspondente a chave estrangeira e o segundo argumento deve ser uma destas constantes: `JoinType.LEFT`, `JoinType.RIGHT` e `JoinType.INNER`. Armazene o resultado deste predicado em um objeto do tipo `Join` e passe-o como argumento de um predicado `equal` ou `like`.
 
