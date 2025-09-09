@@ -309,3 +309,41 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
             .build();  
 }
 ```
+
+## 123. Criando a estrutura de usuários no banco de dados
+
+### Criação de array em um tabela SQL
+
+Especifique o tipo que os elementos daquele array irá ter e coloque os colchetes. Exemplo do array roles que contém dados do tipo `varchar`:
+
+```sql
+create table usuarios(  
+    id uuid not null primary key,  
+    login varchar(20) not null unique,  
+    senha varchar(300) not null,  
+    roles varchar[]  
+);
+```
+
+### Mapeamento de uma lista
+
+Para converter uma lista de uma entidade para um array de um tabela do banco, é necessário incluir a dependência `hypersistence-utils`, presente no site: https://github.com/vladmihalcea/hypersistence-utils
+
+Para saber qual das versões escolher, verifique a versão do `hibernate.orm:hibernate-core` presente em `External Libraries`. Por fim, inclua a dependência no `pom.xml`.
+
+#### Anotação `@Type` e atributo `columnDefinition`
+
+É preciso informar o tipo do campo da tabela que representa o array. Isso é feito através do atributo `columnDefinition` da anotação `@Column`:
+
+```java
+@Column(name = "roles", columnDefinition = "varchar[]")  
+private List<String> roles;
+```
+
+Por fim, adicione o `@Type`, responsável por estender os recursos de mapeamento de dados para tipos não suportados nativamente pelo JPA ou Hibernate, através da criação de tipos de dados personalizados. Neste caso, o tipo passado como argumento da anotação será o `ListArrayType`.
+
+```java
+@Type(ListArrayType.class)  
+@Column(name = "roles", columnDefinition = "varchar[]")  
+private List<String> roles;
+```

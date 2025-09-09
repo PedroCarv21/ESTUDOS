@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "UDEMY/SPRING BOOT EXPERT/Seção 7 - Aprendendo Mais Recursos desenvolvendo a API de Livros.md",
+                "file": "UDEMY/SPRING BOOT EXPERT/Seção 8 - Aprendendo Spring Security.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Seção 7 - Aprendendo Mais Recursos desenvolvendo a API de Livros"
+              "title": "Seção 8 - Aprendendo Spring Security"
             }
           }
         ]
@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 328.5
+    "width": 328.5,
+    "collapsed": true
   },
   "right": {
     "id": "fd48e1adbeab8766",
@@ -171,6 +172,7 @@
   },
   "active": "403753c46f94e869",
   "lastOpenFiles": [
+    "UDEMY/SPRING BOOT EXPERT/Seção 7 - Aprendendo Mais Recursos desenvolvendo a API de Livros.md",
     "UDEMY/SPRING BOOT EXPERT/Seção 8 - Aprendendo Spring Security.md",
     "RASCUNHO.canvas",
     "Sem título 2.canvas",
@@ -178,7 +180,6 @@
     "Sem título 1.base",
     "Sem título.base",
     "2025-09-07.md",
-    "UDEMY/SPRING BOOT EXPERT/Seção 7 - Aprendendo Mais Recursos desenvolvendo a API de Livros.md",
     "UDEMY/FRONT-END - DANIEL TAPIAS/Seção 11 - Formulários.md",
     "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250903121609.png",
     "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250903121312.png",
