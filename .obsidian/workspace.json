@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "80e01f095177bbb6",
+        "id": "c5c7c846dce00563",
         "type": "tabs",
         "children": [
           {
-            "id": "403753c46f94e869",
+            "id": "5fce2ac36878e5cd",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -170,11 +170,14 @@
       "command-palette:Abrir paleta de comando": false
     }
   },
-  "active": "403753c46f94e869",
+  "active": "5fce2ac36878e5cd",
   "lastOpenFiles": [
+    "RASCUNHO.canvas",
+    "UDEMY/SPRING BOOT EXPERT/Seção 3 - Arquitetura e Estrutura do Framework.md",
+    "UDEMY/SPRING BOOT EXPERT/Seção 4 - Acesso a Dados com Spring Data JPA.md",
+    "UDEMY/SPRING BOOT EXPERT/Seção 6 - Introdução ao Bean Validation e Melhorias para API.md",
     "UDEMY/SPRING BOOT EXPERT/Seção 7 - Aprendendo Mais Recursos desenvolvendo a API de Livros.md",
     "UDEMY/SPRING BOOT EXPERT/Seção 8 - Aprendendo Spring Security.md",
-    "RASCUNHO.canvas",
     "Sem título 2.canvas",
     "Sem título 1.canvas",
     "Sem título 1.base",
@@ -189,15 +192,12 @@
     "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250319123144.png",
     "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250318132843.png",
     "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250416151022.png",
-    "UDEMY/SPRING BOOT EXPERT/Seção 6 - Introdução ao Bean Validation e Melhorias para API.md",
     "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250728124433.png",
     "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250901112738.png",
     "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250901111820.png",
     "UDEMY/SPRING BOOT EXPERT/IMAGENS",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 9 - GIT Avançado.md",
-    "UDEMY/SPRING BOOT EXPERT/Seção 4 - Acesso a Dados com Spring Data JPA.md",
     "UDEMY/SPRING BOOT EXPERT/Seção 5 - Desenvolvimento de API's RestFul.md",
-    "UDEMY/SPRING BOOT EXPERT/Seção 3 - Arquitetura e Estrutura do Framework.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 7 - Commits Avançados.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 8 - Resolução de Conflitos.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 6 - Utilizando Git Flow.md",

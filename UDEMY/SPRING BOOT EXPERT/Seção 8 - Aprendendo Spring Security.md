@@ -347,3 +347,35 @@ Por fim, adicione o `@Type`, responsável por estender os recursos de mapeamento
 @Column(name = "roles", columnDefinition = "varchar[]")  
 private List<String> roles;
 ```
+
+## 126. Utilizando @EnableMethodSecurity para regras de acesso
+
+### O que é a anotação `@EnableMethodSecurity`?
+
+Antes havia sido utilizado o método `requestMatchers` para configurar a autorização que usuário teria, com base nas roles, em relação as APIs. Outra forma definir a autorização é realizar a configuração nos métodos dos controllers.
+
+Para isso, é preciso adicionar a anotação `@EnableMethodSecurity` na classe de configuração de segurança Web (a mesma que possui a `@EnableWebSecurity`). A anotação `@EnableMethodSecurity` serve para habilitar a segurança em nível de métodos, ou seja, você pode restringir o acesso a métodos específicos da sua aplicação com base em roles ou permissões.
+### Anotação `@PreAuthorize`
+
+Essa anotação deve ser colocada nos métodos dos controllers, e o argumento passado para essas anotações deve ser, no formato String, métodos (como `hasRole` e `hasAnyRole`) que definem a autorização que um determinado usuário tem sobre aquela API. Exemplo uma API que restringe o acesso somente para usuários com role 'OPERADOR' ou 'GERENTE':
+
+```java
+@GetMapping("/{id}")  
+@PreAuthorize("hasAnyRole('OPERADOR', 'GERENTE')")  
+public ResponseEntity<AutorDTO> obterDetalhes(@PathVariable("id") UUID id) {  
+  
+    return this.autorService.obterPorId(id)  
+            .map(autor -> {  
+                AutorDTO dto = autorMapper.paraDTO(autor);  
+                return ResponseEntity.ok(dto);  
+            }).orElseGet(() -> ResponseEntity.notFound().build());  
+}
+```
+
+É possível também utilizar `@PreAuthorize` na classe em vez do método. No entanto as definições de autorização serão passadas para todos os métodos daquela classe.
+
+**OBS.: os métodos que não tiverem `@PreAuthorize` serão acessados por qualquer usuário autenticado (caso a sua classe de configuração de segurança possua `anyRequest().authenticated()`).**
+
+### Exceção `AccessDeniedException`
+
+a exceção `AccessDeniedException` é lançada quando um usuário está autenticado, mas não tem permissão suficiente para acessar um recurso ou executar uma ação (equivalente ao código de status 403).
