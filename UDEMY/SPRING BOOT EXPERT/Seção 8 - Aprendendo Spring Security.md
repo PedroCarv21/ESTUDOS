@@ -379,3 +379,28 @@ public ResponseEntity<AutorDTO> obterDetalhes(@PathVariable("id") UUID id) {
 ### Exceção `AccessDeniedException`
 
 a exceção `AccessDeniedException` é lançada quando um usuário está autenticado, mas não tem permissão suficiente para acessar um recurso ou executar uma ação (equivalente ao código de status 403).
+
+## 127. Implementando auditoria de usuários e finalizando os requisitos
+
+### Capturando a autenticação usada na requisição
+
+Utilize o método `SecurityContextHolder.getContext().getAuthentication()` para retornar o usuário **atualmente autenticado**.
+
+A partir do objeto obtido através deste método, utilize o método `getPrincipal()` que irá retornar um objeto `UserDetails`, o que tornará possível expor os dados do usuário autenticado na resposta da requisição.
+
+Exemplo de componente utilizado para a captura dos dados do usuário:
+
+```java
+@Component  
+@RequiredArgsConstructor  
+public class SecurityService {  
+  
+    private final UsuarioService usuarioService;  
+  
+    public Usuario obterUsuarioLogado(){  
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();  
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();  
+        return usuarioService.obterPorLogin(userDetails.getUsername());  
+    }  
+}
+```
