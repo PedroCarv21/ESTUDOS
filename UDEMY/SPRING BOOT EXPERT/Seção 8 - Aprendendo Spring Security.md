@@ -63,7 +63,8 @@ Para que esses filtros possam ser aplicados, é necessário utilizar a classe `H
 
 A classe `HttpSecurity` oferece alguns métodos:
 
-- `csrf()`: utilizado como mecanismo de proteção contra ataques CSRF: um ataque que obriga o usuário final a executar ações indesejadas em um site que já concedeu autenticação a ele. Se for utilizado `AbstractHttpConfigurer::disable` como argumento, isso significa que este mecanismo de proteção estará desabilitado.
+- `csrf()`: utilizado como mecanismo de proteção contra ataques CSRF: um ataque que obriga o usuário final a executar ações indesejadas em um site que já concedeu autenticação a ele. Se for utilizado `AbstractHttpConfigurer::disable` como argumento, isso significa que este mecanismo de proteção estará desabilitado. 
+	- **OBS.: Se você não desabilita, o Spring Security exige tokens CSRF válidos em todas as requisições POST/PUT/DELETE. Se não enviar o token → 403 Forbidden.**
 - `formLogin()`: habilita a autenticação baseada em um formulário. O argumento `Customizer.withDefaults()` habilita a página de login padrão.
 - `httpBasic()`: habilita a autenticação HTTP Basic, que verifica a identidade de alguém através do fornecimento de um nome e uma senha codificada em Base64. O argumento `Curstomizer.withDefaults()` garante que as configurações padrão para este tipo de autenticação sejam aplicadas.
 - `authorizeHttpRequests()`: define as regras de autorização das requisições. A expressão lambda `authorize -> authorize.anyRequest().authenticated()` como argumento implica que todas as requisições devem ter um usuário autenticado.
@@ -129,7 +130,7 @@ Por convenção, as páginas web ficam dentro de uma pasta chamada `templates`. 
 
 Na tag `<html></html>` adicione o atributo `xmlns:th="http://www.thymeleaf.org"`. O comando `xmlns` permite você definir um nome que servirá como indicador de que certos atributos pertencem ao Thymeleaf (neste caso, foi escolhido o nome `th`). Por fim, a URL é utilizada como uma forma identificador para reconhecer os atributos especiais do Thymeleaf.
 
-Os atributos especuiais do Thymeleaf (também chamados de diretivas) serão responsáveis por capacitar uma interação do código java com os documentos HTML, trazendo um comportamento dinâmico que os atributos HTML padrão não tem a capacidade de fazer.
+Os atributos especiais do Thymeleaf (também chamados de diretivas) serão responsáveis por capacitar uma interação do código java com os documentos HTML, trazendo um comportamento dinâmico que os atributos HTML padrão não tem a capacidade de fazer.
 
 Uma dessas diretivas é o `action`, que define a URL de destino para onde os dados do formulário deverão ser enviados. Por exemplo, caso os dados tenham que ser enviados para a URL `/login` então essa URL deverá ficar dentro de `@{}` como é mostrado no código abaixo:
 
