@@ -140,6 +140,21 @@ Uma dessas diretivas é o `action`, que define a URL de destino para onde os dad
 
 **OBS.: perceba que o `th:` é usado como prefixo para identificar que o `action` utilizado é, na verdade, uma diretiva.**
 
+Além disso, como se trata de uma autenticação Http Basic, é necessário que o formulário contenha dois campos de entrada: um que receberá dados do tipo texto e outro que receberá uma senha. O campo de texto deve conter `name="username"` e o campo de senha deve conter o `name="password"` para que o Spring Security possa identificar cada campo.
+
+Por fim, deve conter um `<input type="submit" value="Enviar">` para que os dados sejam enviados.
+
+Exemplo de formulário: 
+
+```html
+<form thymeleaf:action="@{/login}" method="post">  
+    <fieldset>        
+	    <legend>Form. de Login</legend>  
+        <input type="text" class="entrada" id="campo_texto" name="username"><br><br>  
+        <input type="password" class="entrada" id="campo_email" name="password"><br><br>  
+        <input type="submit" value="Enviar">  
+    </fieldset></form>
+```
 ### Anotação `@EnableWebMvc`
 
 Essa anotação é responsável desligar a auto-configuração do Spring MVC (que já vem por padrão no Spring Boot) e habilitar a sua configuração manual.

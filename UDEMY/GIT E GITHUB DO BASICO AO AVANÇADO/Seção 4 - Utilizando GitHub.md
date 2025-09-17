@@ -47,7 +47,7 @@ Depois de executar esse comando, execute `git status` novamente e veja a mesma m
 
 ### Modificações em arquivos já commitados
 
-Ao modificar um arquivo já commitado anteriormente será mostrado em vermelho a mensagem `modified:` mais o nome do arquivo do alterado.
+Ao modificar um arquivo já commitado anteriormente será mostrado em vermelho a mensagem `modified:` mais o nome do arquivo alterado.
 
 ### Comando `git add .`
 
