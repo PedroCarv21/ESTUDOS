@@ -12,6 +12,7 @@ Comandos principais quanto a branches:
 Outros comandos relacionado a branch:
 
 - `git branch -d <nome da branch>`: remove a branch informada.
+	- **OBS.: você não pode estar na mesma branch que você irá deletar.**
 - `git checkout -b <nome da branch>`: cria uma nova branch e troca para essa branch.
 - `git merge <nome da branch>`: mescla o conteúdo das duas branches. Utilize esse comando quando estiver localizado na branch `main`.
 
