@@ -364,11 +364,69 @@ Por fim, adicione o `@Type`, responsável por estender os recursos de mapeamento
 private List<String> roles;
 ```
 
+## 125. Criando um `UserDetailsService` Customizado
+
+Neste exemplo, será demonstrado como fazer uma autenticação a partir de registros salvos em uma tabela do banco, substituindo assim os registros armazenados em memória.
+
+Para isso será necessário criar uma classe que implemente o `UserDetailsService`, pois é esta interface que fornece um método para obter o usuário registrado a partir do seu nome de usuário: o método `loadByUsername(String username)`. Caso o usuário não seja encontrado, o método deve lançar a exceção `UsernameNotFoundException`. No entanto, se for encontrado um usuário, ele deve retornar um objeto `UserDetails`. Exemplo:
+
+```java
+@RequiredArgsConstructor  
+public class UserDetailsServiceCustomizado implements UserDetailsService {  
+  
+    private final AutenticadoService autenticadoService;  
+    @Override  
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {  
+  
+        Autenticado autenticado = this.autenticadoService.obterPorNomeUsuario(username);  
+        if (autenticado == null){  
+            throw new UsernameNotFoundException("Usuario nao encontrado");  
+        }  
+        return User  
+                .builder()  
+                .username(autenticado.getNomeUsuario())  
+                .password(autenticado.getSenha())  
+                .roles(autenticado.getRoles().toArray(new String[autenticado.getRoles().size()]))  
+                .build();  
+    }  
+}
+```
+
+Em seguida, este método `loadUserByUsername` deve ser colocado no lugar de `InMemoryUserDetailsManager`, já que agora os dados informados pelo usuário não serão comparados com os dados de um usuário em memória, mas de um usuário do banco de dados.
+
+```java
+@Bean  
+public UserDetailsService criarUserDetailsServiceCustomizado(AutenticadoService autenticadoService){  
+  
+    return new UserDetailsServiceCustomizado(autenticadoService);  
+}
+```
+
+**OBS.: quando for cadastrar os usuários utilizados para validar a autenticação, lembre-se de codificar a senha, caso contrário, a validação irá falhar. Exemplo: **
+
+```java
+@Service  
+@RequiredArgsConstructor  
+public class AutenticadoService {  
+  
+    private final AutenticadoRepository autenticadoRepository;  
+    private final PasswordEncoder passwordEncoder;  
+  
+    public Autenticado salvar(Autenticado autenticado){  
+        autenticado.setSenha(passwordEncoder.encode(autenticado.getSenha()));  
+        return this.autenticadoRepository.save(autenticado);  
+    }  
+  
+    public Autenticado obterPorNomeUsuario(String nomeUsuario){  
+        return this.autenticadoRepository.findByNomeUsuario(nomeUsuario);  
+    }  
+}
+```
 ## 126. Utilizando @EnableMethodSecurity para regras de acesso
 
 ### O que é a anotação `@EnableMethodSecurity`?
 
-Antes havia sido utilizado o método `requestMatchers` para configurar a autorização que usuário teria, com base nas roles, em relação as APIs. Outra forma definir a autorização é realizar a configuração nos métodos dos controllers.
+Antes havia sido utilizado o método `requestMatchers` para configurar a autorização que usuário teria, com base nas roles, em relação as APIs. Outra forma de definir a autorização é realizar a configuração nos métodos dos controllers.
 
 Para isso, é preciso adicionar a anotação `@EnableMethodSecurity` na classe de configuração de segurança Web (a mesma que possui a `@EnableWebSecurity`). A anotação `@EnableMethodSecurity` serve para habilitar a segurança em nível de métodos, ou seja, você pode restringir o acesso a métodos específicos da sua aplicação com base em roles ou permissões.
 ### Anotação `@PreAuthorize`
@@ -394,7 +452,7 @@ public ResponseEntity<AutorDTO> obterDetalhes(@PathVariable("id") UUID id) {
 
 ### Exceção `AccessDeniedException`
 
-a exceção `AccessDeniedException` é lançada quando um usuário está autenticado, mas não tem permissão suficiente para acessar um recurso ou executar uma ação (equivalente ao código de status 403).
+A exceção `AccessDeniedException` é lançada quando um usuário está autenticado, mas não tem permissão suficiente para acessar um recurso ou executar uma ação (equivalente ao código de status 403).
 
 ## 127. Implementando auditoria de usuários e finalizando os requisitos
 
