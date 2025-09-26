@@ -1,7 +1,7 @@
 
-## 97. Criando as estruturas básicas da API
+# 97. Criando as estruturas básicas da API
 
-### Comando `unique`
+## Comando `unique`
 
 É inserido em um determinado campo de uma tabela com o intuito de que os valores daquele campo não sejam duplicados. Exemplo:
 
@@ -23,19 +23,19 @@ create table livro(
 
 Neste exemplo, o campo `isbn` não terá valores duplicados.
 
-## 98. Endpoint para cadastro de livro com Bean Validation
-### Anotação `@ISBN`
+# 98. Endpoint para cadastro de livro com Bean Validation
+## Anotação `@ISBN`
 
 É utilizado em um campo de uma classe para verificar se o código passado é um ISBN válido.
 
 **OBS.: ISBN é um código numérico único que identifica livros, artigos, entre outras publicações.**
 
-## 99. Conhecendo e configurando o MapStruct no projeto
+# 99. Conhecendo e configurando o MapStruct no projeto
 
-### O que é MapStruct?
+## O que é MapStruct?
 
 MapStruct é um gerador de código para Java que automatiza o processo de mapeamento entre objetos, simplificando o trabalho de desenvolvedores que precisam converter dados de um tipo de objeto para outro.
-### Como configurar o MapStruct no `pom.xml`?
+## Como configurar o MapStruct no `pom.xml`?
 
 - Informe a versão do MapStruct dentro da tag  `<properties>`, que indica a versão do processador:
 
@@ -95,9 +95,9 @@ Dentro da tag `annotationPrecessorPaths`, se encontram a lista de processadores 
 - `lombok`: gera automaticamente getters, setters, etc., a partir das anotações do Lombok.
 - `lombok-mapstruct-processor`: faz com que o Lombok e o MapStruct trabalhem sem conflitos.
 
-## 100. Criando um mapper do MapStruct
+# 100. Criando um mapper do MapStruct
 
-### Como criar um mapper?
+## Como criar um mapper?
 
 É necessário criar uma interface com a anotação `@Mapper`. Esta anotação possui o atributo `componentModel` que recebe o valor `"spring"`, indicando para a anotação que ele deve gerar um bean.
 
@@ -116,7 +116,7 @@ public interface AutorMapper {
 **OBS.: o nome dos métodos pode ser qualquer um.**
 
 Caso o nome de um campo do DTO não seja igual ao nome do campo equivalente da entidade (ou vice-versa), é necessário informar isso através da anotação `@Mapping(source = "", target = "")`, colocada em um dos métodos de uma interface Mapper. Em `source`, coloque o nome do campo da classe que você quer converter e em `target`, coloque o nome do campo da classe convertida.
-### Dica de como fornecer respostas para a requisição de modo mais eficiente
+## Dica de como fornecer respostas para a requisição de modo mais eficiente
 
 A classe `Optional` possui dois métodos importantes que substituem o `if` e o `else`:
 
@@ -137,7 +137,7 @@ public ResponseEntity<AutorDTO> obterDetalhes(@PathVariable("id") UUID id){
 
 **OBS.: a diferença entre `orElseGet()` e `orElse()` é que o primeiro excuta apenas quando `Optional` está vazio enquanto o segundo executa sempre, mesmo o `Optional` não sendo vazio.**
 
-## 101. Mapeando e salvando um livro na base de dados
+# 101. Mapeando e salvando um livro na base de dados
 
 Na aula anterior, foi explicado que, para que haja uma relação entre um campo DTO e um campo de uma entidade com nomes diferentes, é necessário esclarecer isso através da anotação `@Mapping(source = "", target = "")`.
 
@@ -164,7 +164,7 @@ public abstract class LivroMapper {
 
 Como foi necessário a criação de um atributo para a resolução deste problema, teve que se usar uma classe abstrata em vez de uma interface.
 
-## 102. Criando interface generica para nos ajudar nos controllers
+# 102. Criando interface generica para nos ajudar nos controllers
 
 ### Nota sobre interfaces
 
@@ -183,9 +183,9 @@ public interface GenericController {
 }
 ```
 
-## 104. Obtendo detalhes do livro - Mapstruct utilizando composição de outro mapper
+# 104. Obtendo detalhes do livro - Mapstruct utilizando composição de outro mapper
 
-### A necessidade de mappers dentro de mappers
+## A necessidade de mappers dentro de mappers
 
 Em casos onde seja necessário utilizar de um mapper para o mapeamento de uma das colunas da entidade e do DTO, é possível especificar o mapper através do parâmetro `uses` da anotação `@Mapper`:
 
@@ -206,9 +206,9 @@ public abstract class LivroMapper {
 
 Neste exemplo, o método `toDTO` fará o mapeamento da entidade `Livro` para o DTO `ResultadoPesquisaLivroDTO`. A entidade possui o campo `autor` do tipo `Autor` e o DTO possui o campo `autor` do tipo `AutorDTO`. Por essa razão, é necessário especificar o mapper pelo parâmetro `uses` que realizará o mapeamento correto destes dois campos.
 
-## 106. Entendendo o que é uma Specification do Spring Data JPA
+# 106. Entendendo o que é uma Specification do Spring Data JPA
 
-### Interface `Specification`
+## Interface `Specification`
 
 Esta interface possibilita a construção de consultas dinâmicas com base em critérios (campos) específicos. 
 
@@ -220,7 +220,7 @@ public interface LivroRepository extends JpaRepository<Livro, UUID>, JpaSpecific
 }
 ```
 
-## 107. Implementando as Specifications da entidade Livro
+# 107. Implementando as Specifications da entidade Livro
 
 A interface `Specification` pode ser transformada na seguinte expressão lambda:
 
@@ -280,9 +280,9 @@ Specification<Livro> specs = (root, query, criteriaBuilder) -> criteriaBuilder.c
 
 Isso equivale a `SELECT * FROM Livro where 1 = 1`.
 
-## 108. Utilizando functions do banco na Specification JPA
+# 108. Utilizando functions do banco na Specification JPA
 
-### Função `to_char`
+## Função `to_char`
 
 Esta é uma função do PostgreSQL utilizada para converter certos tipos de valores (como `timestamp`, `integer`, entre outros) em uma `String`. É possível ainda informar qual será o formato da `String` retornada:
 
@@ -292,7 +292,7 @@ select to_char(data_publicacao, 'YYYY') from livro;
 
 O código acima faz uma consulta das datas encontrados na coluna `data_publicacao` da tabela `Livro` e retorna apenas o ano.
 
-### Utilização do `to_char` em um método Java
+## Utilização do `to_char` em um método Java
 
 Suponha que deva ser construído um método que compare os valores encontrados no campo `dataPublicacao` com o ano expresso como argumento.
 
@@ -312,10 +312,10 @@ public static Specification<Livro> dataPublicacaoEqual(Integer anoPublicaco){
 }
 ```
 
-## 109. Criando joins ao utilizar Specifications JPA
+# 109. Criando joins ao utilizar Specifications JPA
 
 Há duas formas de se fazer um join entre duas entidades.
-### Primeira solução
+## Primeira solução
 
 É possível chamar um método `get()` a partir de outro método `get()`. 
 
@@ -331,7 +331,7 @@ public static Specification<Livro> nomeAutorLike(String nome) {
 }
 ```
 
-### Segunda solução
+## Segunda solução
 
 A solução anterior é mais simples, porém não permite especificar o tipo de `join` que deve ser realizado (por padrão, é feito um `inner join`). Estas são as opções de `join`:
 
@@ -354,9 +354,9 @@ public static Specification<Livro> nomeAutorLike(String nome){
     }
 ```
 
-## 111. Validação de ISBN duplicado
+# 111. Validação de ISBN duplicado
 
-### Operação terminal `anyMatch()`
+## Operação terminal `anyMatch()`
 
 É utilizado para verificar se algum elemento de uma stream atende a uma determinada condição. Por exemplo: o código a seguir utiliza `anyMatch` para verificar se existe algum nome, presente na lista `nomes`, que começa com a letra 'A'.
 
@@ -368,12 +368,12 @@ boolean temNomeComA = nomes.stream().anyMatch(nome -> nome.startsWith("A"));
 System.out.println("Tem nome com A? " + temNomeComA);  // Saída: true
 ```
 
-## 113. Como implementar pesquisa paginada com Spring Data
+# 113. Como implementar pesquisa paginada com Spring Data
 
-### O que é pesquisa paginada?
+## O que é pesquisa paginada?
 
 Significa separar uma quantidade específica de registros pesquisados por página. Desta forma, a consulta não fica tão sobrecarregada como em casos onde uma tabela possui mais de 100.000 registros.
-### Como fazer a pesquisa paginada?
+## Como fazer a pesquisa paginada?
 
 A interface `JpaSpecificationExecutor` fornece um método `findAll()`, que recebe um argumento do tipo `Specification` e outro argumento do tipo `Pageable` e retorna um objeto do tipo `Page`.
 
@@ -452,7 +452,7 @@ public ResponseEntity<Page<ResultadoPesquisaLivroDTO>> pesquisa(
 }
 ```
 
-### Consulta
+## Consulta
 
 Ao fazer a consulta, o corpo da resposta deve devolver uma estrutura mais ou menos parecida com esta:
 

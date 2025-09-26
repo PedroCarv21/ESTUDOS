@@ -1,13 +1,13 @@
 
-## 114. Conceitos Básicos sobre segurança de API's
+# 114. Conceitos Básicos sobre segurança de API's
 
-### Diferença entre autenticação e autorização
+## Diferença entre autenticação e autorização
 
 A autenticação tem como finalidade a identificação de um usuário enquanto que a autorização define as ações permitidas (**authority**) que um usuário pode realizar com base no grupo (**role**) ao qual ele pertence.
 
 O **Spring Security** é um framework que fornece as ferramentas necessárias para o tratamento de autenticações e autorizações.
 
-## 116. Atualizando a versão do projeto e adicionando o Security
+# 116. Atualizando a versão do projeto e adicionando o Security
 
 Para incluir o Spring Security no seu sistema, inclua a seguinte dependência:
 
@@ -30,7 +30,7 @@ Caso tente executar uma requisição sem fazer a autenticação, será apresenta
 
 ![[Pasted image 20250901111517.png]]
 
-### Autenticação no Navegador
+## Autenticação no Navegador
 
 Para fazer a autenticação no navegador, acesse o console do Postman e copie e cole o link da requisição no navegador:
 
@@ -42,20 +42,20 @@ Para fazer a autenticação no navegador, acesse o console do Postman e copie e 
 Essa é a pagina de autenticação. Digite `user` no campo `Username` e a senha gerada durante a execução da aplicação no campo `Password`. Por fim, clique em `Sign in`.
 
 O resultado deve ser a execução da requisição.
-### Autenticação no Postman
+## Autenticação no Postman
 
 Vá até a aba `Authorization` do Postman -> escolha a opção `Basic Auth` na aba `Auth Type` -> defina o usuário e a senha nos campos `Username` e `Password`. Por fim, clique em `Send`.
 
 ![[Pasted image 20250901112738.png]]
 
-## 117. Criando a configuração básica do Security com SecurityFilterChain
+# 117. Criando a configuração básica do Security com SecurityFilterChain
 
 Como visto anteriormente, um sistema Spring, apenas por incluir a dependência do Spring Security, é capaz de oferecer uma segurança padrão. No entanto, é possível configurar essa segurança.
-### Anotações `@Configuration` e `@EnableWebSecurity`
+## Anotações `@Configuration` e `@EnableWebSecurity`
 
 É necessário criar uma classe de configuração através da anotação `@Configuration`. No entanto, para habilitar essa classe de configuração como uma classe de segurança web, é preciso usar a anotação `@EnableWebSecurity`.
 
-### Interface `SecurityFilterChain`
+## Interface `SecurityFilterChain`
 
 Esta interface representa uma cadeia de filtros de segurança, determinando como as requisições HTTP serão processadas antes que cheguem nos controladores.
 
@@ -91,15 +91,15 @@ public class SecurityConfiguration {
 
 Somando todos esses filtros, o resultado é a mesma autenticação já utilizada na aula 116. Ou seja, o código acima representa a autenticação padrão do Spring Security.
 
-## 118. Como funciona a autenticação HTTP BASIC
+# 118. Como funciona a autenticação HTTP BASIC
 
-### Autenticação Http Basic sem formulário
+## Autenticação Http Basic sem formulário
 
 É possível ainda fazer autenticação em uma página web sem que o formulário login esteja habilitado por meio do `formLogin(Customizer.withDefault())`. Sem ele, o navegador irá criar um **prompt de autenticação Http Basic** semelhante a este:
 
 ![[Pasted image 20250903120414.png]]
 
-### Forma alternativa de se autenticar no Postman
+## Forma alternativa de se autenticar no Postman
 
 Em vez de definir o usuário e a senha na aba Authorization do Postman, é possível se autenticar ao passar na aba Header a chave `Authorization`. Já o valor deve ser `Basic ` mais a codificação de `user:<senha gerada pela aplicação>`.
 
@@ -111,9 +111,9 @@ Copie o código gerado e passe como valor depois da palavra `Basic `:
 
 ![[Pasted image 20250903121609.png]]
 
-## 119. Habilitando e customizando formulario de login
+# 119. Habilitando e customizando formulario de login
 
-### Biblioteca Thymeleaf
+## Biblioteca Thymeleaf
 
 Esta é uma biblioteca que permite a criação de páginas em aplicações Spring. Esta é a sua dependência:
 
@@ -124,7 +124,7 @@ Esta é uma biblioteca que permite a criação de páginas em aplicações Sprin
 </dependency>
 ```
 
-### Criação de páginas Web
+## Criação de páginas Web
 
 Por convenção, as páginas web ficam dentro de uma pasta chamada `templates`. A página que foi criada é um formulário de Login.
 
@@ -155,7 +155,7 @@ Exemplo de formulário:
         <input type="submit" value="Enviar">  
     </fieldset></form>
 ```
-### Anotação `@EnableWebMvc`
+## Anotação `@EnableWebMvc`
 
 Essa anotação é responsável desligar a auto-configuração do Spring MVC (que já vem por padrão no Spring Boot) e habilitar a sua configuração manual.
 
@@ -197,7 +197,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 }
 ```
 
-### Alternativa ao código anterior
+## Alternativa ao código anterior
 
 Observe o código seguinte:
 
@@ -224,9 +224,9 @@ Por fim, para especificar o uso da página loginl.html criada, e não a utiliza�
 
 O método `permitAll()` é utilizado para que todos os usuários, sem a necessidade de autenticação, possam acessar essa página.
 
-## 121. Criando um repositorio de usuários em memoria
+# 121. Criando um repositorio de usuários em memoria
 
-### Armazenamento dos usuários em memória
+## Armazenamento dos usuários em memória
 
 Serão armazenados usuários em memória com o objetivo de utilizar os seus dados para autenticação. Esse armazenamento será realizado através da classe `InMemoryUserDetailsManager`,  que implementa a interface `UserDetailsService`.
 
@@ -273,9 +273,9 @@ public UserDetailsService userDetailsService(PasswordEncoder encoder){
 
 Quando a aplicação for executada, não será gerado mais aquele hash aleatório para autenticação, pois agora existe usuários já definidos no sistema.
 
-## 122. Trabalhando com roles de usuario
+# 122. Trabalhando com roles de usuario
 
-### Autorizações limitadas a roles específicas
+## Autorizações limitadas a roles específicas
 
 Dentro do método `HttpSecurity.authorizeHttpRequests()`, é possível limitar o acesso de certas APIs aos usuários com uma determinada role.
 
@@ -326,9 +326,9 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
 }
 ```
 
-## 123. Criando a estrutura de usuários no banco de dados
+# 123. Criando a estrutura de usuários no banco de dados
 
-### Criação de array em um tabela SQL
+## Criação de array em um tabela SQL
 
 Especifique o tipo que os elementos daquele array irá ter e coloque os colchetes. Exemplo do array roles que contém dados do tipo `varchar`:
 
@@ -341,7 +341,7 @@ create table usuarios(
 );
 ```
 
-### Mapeamento de uma lista
+## Mapeamento de uma lista
 
 Para converter uma lista de uma entidade para um array de um tabela do banco, é necessário incluir a dependência `hypersistence-utils`, presente no site: https://github.com/vladmihalcea/hypersistence-utils
 
@@ -364,7 +364,7 @@ Por fim, adicione o `@Type`, responsável por estender os recursos de mapeamento
 private List<String> roles;
 ```
 
-## 125. Criando um `UserDetailsService` Customizado
+# 125. Criando um `UserDetailsService` Customizado
 
 Neste exemplo, será demonstrado como fazer uma autenticação a partir de registros salvos em uma tabela do banco, substituindo assim os registros armazenados em memória.
 
@@ -422,14 +422,14 @@ public class AutenticadoService {
     }  
 }
 ```
-## 126. Utilizando @EnableMethodSecurity para regras de acesso
+# 126. Utilizando @EnableMethodSecurity para regras de acesso
 
-### O que é a anotação `@EnableMethodSecurity`?
+## O que é a anotação `@EnableMethodSecurity`?
 
 Antes havia sido utilizado o método `requestMatchers` para configurar a autorização que usuário teria, com base nas roles, em relação as APIs. Outra forma de definir a autorização é realizar a configuração nos métodos dos controllers.
 
 Para isso, é preciso adicionar a anotação `@EnableMethodSecurity` na classe de configuração de segurança Web (a mesma que possui a `@EnableWebSecurity`). A anotação `@EnableMethodSecurity` serve para habilitar a segurança em nível de métodos, ou seja, você pode restringir o acesso a métodos específicos da sua aplicação com base em roles ou permissões.
-### Anotação `@PreAuthorize`
+## Anotação `@PreAuthorize`
 
 Essa anotação deve ser colocada nos métodos dos controllers, e o argumento passado para essas anotações deve ser, no formato String, métodos (como `hasRole` e `hasAnyRole`) que definem a autorização que um determinado usuário tem sobre aquela API. Exemplo uma API que restringe o acesso somente para usuários com role 'OPERADOR' ou 'GERENTE':
 
@@ -450,13 +450,13 @@ public ResponseEntity<AutorDTO> obterDetalhes(@PathVariable("id") UUID id) {
 
 **OBS.: os métodos que não tiverem `@PreAuthorize` serão acessados por qualquer usuário autenticado (caso a sua classe de configuração de segurança possua `anyRequest().authenticated()`).**
 
-### Exceção `AccessDeniedException`
+## Exceção `AccessDeniedException`
 
 A exceção `AccessDeniedException` é lançada quando um usuário está autenticado, mas não tem permissão suficiente para acessar um recurso ou executar uma ação (equivalente ao código de status 403).
 
-## 127. Implementando auditoria de usuários e finalizando os requisitos
+# 127. Implementando auditoria de usuários e finalizando os requisitos
 
-### Capturando a autenticação usada na requisição
+## Capturando a autenticação usada na requisição
 
 Utilize o método `SecurityContextHolder.getContext().getAuthentication()` para retornar o usuário **atualmente autenticado**.
 

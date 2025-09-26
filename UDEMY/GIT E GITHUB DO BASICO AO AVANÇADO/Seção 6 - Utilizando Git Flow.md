@@ -155,7 +155,7 @@ Clique na opção `Closed` na sessão `Pull requests` do seu repositório:
 
 ![[Pasted image 20250805120051.png]]
 
-- Escolha se você quer copiar apenas a branch principal (neste caso o `master`) ou todas as branches em `Copy the master branch only`. Por fim, clique em `Create fork`.
+- Escolha se você quer copiar apenas a branch principal (neste caso o `master`) em `Copy the master branch only` ou todas as branches. Por fim, clique em `Create fork`.
 
 ![[Pasted image 20250805120329.png]]
 

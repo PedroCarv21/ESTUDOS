@@ -1,7 +1,7 @@
 	 
-## 41. Introdução ao Spring Data JPA
+# 41. Introdução ao Spring Data JPA
 
-### Como funciona a JPA
+## Como funciona a JPA
 
 A JPA possui a seguinte estrutura:
 
@@ -63,16 +63,16 @@ Para criar e rodar um container do postgre, é necessário executar o comando `d
 
 Utilize este comando no CMD para verificar se algum container está em execução.
 
-## 45. Subindo uma instancia do client do PostgreSQL
+# 45. Subindo uma instancia do client do PostgreSQL
 
-### O que é a imagem dpage/pgadmin4 ?
+## O que é a imagem dpage/pgadmin4 ?
 
 É uma imagem docker que contém a ferramenta web PgAdmin4 responsável pela administração do banco de dados PostgreSQL.
 
 O PgAdmin permite interagir com servidores PostgreSQL, oferecendo recursos como edição de dados, execução de consultas SQL e criação de backups e restaurações.
 
 O comando para criar e rodar o container é este: `docker run --name pgadmin4 -p 15432:80 -e PGADMIN_DEFAULT_EMAIL=pedro8.carvalho@gmail.com -e PGADMIN_DEFAULT_PASSWORD=admin dpage/pgadmin4`
-### Como acessar o pgAdmin ?
+## Como acessar o pgAdmin ?
 
 É necessário rodar tanto o container do postgre quanto do pgAdmin.
 
@@ -85,22 +85,22 @@ Deve aparecer uma página semelhante a essa:
 Coloque o e-mail e a senha que foram definidos durante a criação do container por meio das variáveis de ambiente e clique em login. Você será direcionado para a página inicial do pgAdmin:
 
 ![[Pasted image 20250508150803.png]]
-## 46. Criando uma network para conectar os containers
+# 46. Criando uma network para conectar os containers
 
-### Outros comandos
+## Outros comandos
 
-#### docker stop
+### docker stop
 
 Este comando para a execução container ao passar o nome ou o id após o `docker stop`. Exemplo: `docker stop pgadmin4`
 
-#### docker ps -a
+### docker ps -a
 
 Lista os containers que estavam em execução, mas agora estão parados.
 
-#### docker container rm
+### docker container rm
 
 Ao utilizar este comando mais o nome do container, ele será excluído. Exemplo: `docker container rm librarydb`
-### library-network
+## library-network
 
 A library-network é uma rede de conexão responsável por criar uma comunicação entre dois containers. Ela será necessária para a conexão do pgAdmin com o Postgres.
 
@@ -116,7 +116,7 @@ Também acrescente o comando na criação do container do pgAdmin:
 
 `docker run --name pgadmin4 -p 15432:80 -e PGADMIN_DEFAULT_EMAIL=pedro8.carvalho@gmail.com -e PGADMIN_DEFAULT_PASSWORD=admin --network library-network dpage/pgadmin4`
 
-### Conectando o pgAdmin com o Postgres
+## Conectando o pgAdmin com o Postgres
 
 Depois de iniciar ambos os container e logar na página do pgAdmin, vá até o canto superior esquerdo e clique com o botão direito do mouse em Servers -> Register -> Server. Será aberto a seguinte janela:
 
@@ -136,13 +136,13 @@ Por fim, clique em **Save**.
 
 ![[Pasted image 20250508163807.png]]
 
-## 47. Solucionando problemas que podem ocorrer com o ambiente no Docker
+# 47. Solucionando problemas que podem ocorrer com o ambiente no Docker
 
 Caso a porta escolhida para a conexão com algum dos containers já esteja sendo usada, é possível checar isso através do comando no CMD `netstat -aof | findstr` mais a porta do container. Para listar todas as portas em uso, utilize o comando `netstat -aof`.
 
-## 50. Criando e rodando os scripts no banco de dados
+# 50. Criando e rodando os scripts no banco de dados
 
-### Criação das tabelas
+## Criação das tabelas
 
 Clique na seta ao lado de Servers -> clique em library.
 
@@ -155,7 +155,7 @@ Em seguida, vá até o menu e clique em Tools -> Query Tool
 Será aberto este editor onde será possível inserir códigos SQL e executá-los por meio da seta no topo do editor. O resultado irá aparecer em **Data Output**.
 
 ![[Pasted image 20250509120853.png]]
-#### Tabela autor
+### Tabela autor
 
 Esta tabela é formada pelas seguintes colunas:
 
@@ -172,7 +172,7 @@ A coluna id, geralmente definida como int, possui um tipo uuid, cujo conceito es
 
 ![[Seção 2 - Primeiros Passos#^9a6673]]
 
-#### Tabela livro
+### Tabela livro
 
 Esta tabela é formada pelas seguintes colunas:
 
@@ -198,7 +198,7 @@ Depois de executar os comandos, é possível verificar o local onde elas estão 
 
 ![[Pasted image 20250509123724.png]]
 
-## 51. Configurando conexão com o banco de dados através da aplicacao
+# 51. Configurando conexão com o banco de dados através da aplicacao
 
 Estas são as seguintes configurações do banco Postgres presentes no arquivo application.yml
 
@@ -220,11 +220,11 @@ Algumas informações sobre determinadas propriedades:
 
 **OBS.: um driver é basicamente um intérprete que traduz os comandos da sua aplicação para uma linguagem que o banco de dados entende e vice-versa. Cada banco (MySQL, PostgreSQL, Oracle, etc.) tem seu próprio driver, pois cada um tem suas particularidades.**
 
-## 52. Como configurar um DataSource e um Pool de conexões
+# 52. Como configurar um DataSource e um Pool de conexões
 
 O código anterior já é o suficiente para criação de um datasource com as demais configurações no banco, pois o Spring utiliza por padrão a classe HikariDataSource. No entanto, é possível também definir essas configurações através das classes HikariConfig e HikariDataSource.
 
-### HikariConfig
+## HikariConfig
 
 É uma classe utilizada para receber as configurações do datasource (username, password, url, etc...):
 
@@ -238,7 +238,7 @@ config.setDriverClassName(driver);
 ```
 
 Cada método deste receberá um argumento contendo alguma informação específica do datasource. 
-### HikariDataSource
+## HikariDataSource
 
 A classe HikariDataSource representa um pool de conexões: um mecanismo de gerenciamento de conexões de banco de dados que permite que estas conexões possam ser reutilizáveis.
 
@@ -272,7 +272,7 @@ public class DatabaseConfiguration {
 }
 ```
 
-### Outras configurações quanto ao pool
+## Outras configurações quanto ao pool
 
 Esta configurações por meias de um objeto HikariConfig.
 
@@ -283,7 +283,7 @@ Esta configurações por meias de um objeto HikariConfig.
 - **setConnectionTimeOut()**: define o tempo limite para uma conexão através de um valor inteiro como argumento. Caso esse tempo limite seja ultrapassado, será realizado uma tentativa com outra conexão.
 - **setConnectionTestQuery()**: verifica previamente se uma conexão com o banco de dados está ativa através de um comando SQL (como por exemplo "SELECT 1") para que depois a conexão possa ser usada.
 
-## 53. Como mapear entidades JPA
+# 53. Como mapear entidades JPA
 
 ### Esquemas
 
@@ -301,7 +301,7 @@ public class Autor {
 
 **OBS.: no caso do esquema ser 'public', não é obrigatório informar o esquema na anotação @Table()**
 
-### Geração automática de ID UUID
+## Geração automática de ID UUID
 
 Além do enum `GenerationType.IDENTITY`, é possível gerar automaticamente um id do tipo UUID através do enum `GenerationType.UUID`. Exemplo:
 
@@ -317,7 +317,7 @@ public class Autor {
 }
 ```
 
-### Atributos length e nullable da anotação @Column
+## Atributos length e nullable da anotação @Column
 
 O atributo `length` especifica a quantidade máxima de caracteres que um atributo pode ter (deve ser equivalente ao número passado dentro varchar()). O atributo `nullable` diz se um atributo pode ou não ser nulo. Exemplo:
 
@@ -341,7 +341,7 @@ public class Autor {
 }
 ```
 
-### Anotações @Getter e @Setter do Lombok
+## Anotações @Getter e @Setter do Lombok
 
 Estas anotações devem ser colocadas em cima da entidade e serão responsáveis por criar automaticamente os métodos getters e setters durante a compilação. Para ver isso acontecer, utilize o plugin do Maven e realize o build da aplicação como demonstrado anteriormente. Abra o link abaixo: 
 
@@ -351,7 +351,7 @@ Em seguida, vá até a pasta **target/classes** e procure pelo arquivo da entida
 
 **OBS.: caso ocorra algum erro, verifique se o plugin do Lombok está instalado.**
 
-## 54. Mapeamento da entidade Livro e utilização do Lombok
+# 54. Mapeamento da entidade Livro e utilização do Lombok
 
 ### Relações entre tabelas
 
@@ -380,7 +380,7 @@ Este atributo deve ficar dentro da entidade Autor:
 private List<Livro> livros;
 ```
 
-### Limitação de casas em um atributo Double
+## Limitação de casas em um atributo Double
 
 Em um atributo Double, utilize dentro da anotação `@Column` o atributo `precision` para indicar um número de casas totais e o atributo `scale` para indicar a quantidade de casas decimais. No exemplo a seguir, o atributo terá no total 18 casas, sendo que 2 são decimais:
 
@@ -389,7 +389,7 @@ Em um atributo Double, utilize dentro da anotação `@Column` o atributo `precis
 private Double preco;
 ```
 
-### Criação de atributos com enums
+## Criação de atributos com enums
 
 Utilize a anotação `@Enumerated` em um atributo com enum e, dentro da anotação, informe como deverá ser exibido os valores deste atributo lá na tabela: como String (utilize o `EnumType.STRING`) ou de acordo com a posição de cada constante lá no enum (utilize o `EnymType.ORDINAL`).
 
@@ -401,15 +401,15 @@ No exemplo a seguir, o atributo `genero` é do tipo `GeneroLivro` (um enum) e os
 private GeneroLivro genero;
 ```
 
-### Anotação @Data
+## Anotação @Data
 
 Esta anotação carrega dentro de si diversas outras anotações responsáveis pela criação de métodos padrão: `toString()`, `equals()`, `hashCode()`, getters e setters, entre outros. Ela deve ser colocada na entidade.
 
-### Anotação @AllArgsConstructor
+## Anotação @AllArgsConstructor
 
 Cria um construtor com todos os atributos. Esta anotação é nível de classe.
 
-## 55. Como gerar as tabelas automaticamente com JPA
+# 55. Como gerar as tabelas automaticamente com JPA
 
 Em application.yml, utilize a propriedade  `jpa:hibernate:ddl-auto` que define a maneira como a criação e atualização das tabelas será manipulada. Alguns valores que podem ser passados para esta propriedade são:
 
@@ -419,7 +419,7 @@ Em application.yml, utilize a propriedade  `jpa:hibernate:ddl-auto` que define a
 
 Ao rodar a aplicação, é possível verificar as configurações da tabela de duas formas:
 
-### Propriedades
+## Propriedades
 
 Vá até o pgAdmin e clique com o botão direito na tabela desejada -> clique em **properties...**
 
@@ -429,21 +429,21 @@ Por fim, clique em **Columns** para ver as configurações em cada coluna.
 
 ![[Pasted image 20250514152413.png]]
 
-### Script SQL
+## Script SQL
 
 Selecione com o botão direito a tabela desejada -> **Scripts** -> **CREATE Script**
 
 ![[Pasted image 20250514152601.png]]
 
-## 58. Aplicando testes no repository
+# 58. Aplicando testes no repository
 
 Os testes tem como finalidade verificar o funcionamento de partes da aplicação separadamente. Para isso, é necessário criar novas classes no mesmo pacote que `ApplicationTests`, presente na pasta `test`. Na imagem a seguir, foi criado uma classe de teste `repository.AutorRepositoryTest` dentro do pacote solicitado:
 
 ![[Pasted image 20250519085714.png]]
 
-### Anotações necessárias
+## Anotações necessárias
 
-#### @SpringBootTest
+### @SpringBootTest
 
 Esta anotação nível de classe é responsável por criar o contexto da aplicação Spring, o que permitirá a injeção de dependências e demais funcionalidades do framework.
 
@@ -456,7 +456,7 @@ public class AutorRepositoryTest {
 }
 ```
 
-#### @Test
+### @Test
 
 Esta anotação nível de método indica que um determinado método deve ser executado como um caso de teste.
 
@@ -485,7 +485,7 @@ public class AutorRepositoryTest {
 Para executar um teste específico, clique na seta ao lado do método de teste:
 
 ![[Pasted image 20250519100834.png]]
-### Testes com entidades relacionadas entre si
+## Testes com entidades relacionadas entre si
 
 Caso deseje ignorar no momento do teste a relação que uma entidade possui com outra entidade, use a anotação `@Transient` no lugar de `@OneToMany`, indicando que um determinado atributo não será considerado durante a criação da tabela de um banco de dados. Exemplo:
 
@@ -513,11 +513,11 @@ public class Autor {
 }
 ```
 
-## 59. Operações básicas para entidades simples
+# 59. Operações básicas para entidades simples
 
 
 Este são outros métodos da interface `JpaRepository`
-### Método count()
+## Método count()
 
 Retorna a quantidade de registros em uma determinada tabela:
 
@@ -528,7 +528,7 @@ public void contarAutoresTest(){
 }
 ```
 
-### Método delete()
+## Método delete()
 
 Recebe a instância de alguma entidade como argumento e então deleta. Exemplo:
 
@@ -546,9 +546,9 @@ public void deletarTest(){
 }
 ```
 
-## 60. Trabalhando com relacionamentos - Entidade Livro
+# 60. Trabalhando com relacionamentos - Entidade Livro
 
-### Como criar uma classe teste de forma prática
+## Como criar uma classe teste de forma prática
 
 Vá até uma classe ou interface e coloque o cursor em cima do nome -> pressione `Alt + Enter` -> escolha a opção `Create Test`:
 
@@ -558,7 +558,7 @@ Perceba que o nome da nova classe de teste equivale ao nome da interface/classe 
 
 ![[Pasted image 20250521084250.png]]
 
-### Como inserir um registro em uma tabela com chave estrangeira?
+## Como inserir um registro em uma tabela com chave estrangeira?
 
 Neste exemplo, a entidade Livro possui uma chave estrangeira com a entidade Autor. É necessário, portanto, que haja pelo menos um registro na tabela Autor para que este seja referenciado em um registro da tabela Livro.
 
@@ -594,9 +594,9 @@ class LivroRepositoryTest {
 
 ![[Pasted image 20250521085718.png]]
 
-## 61. Operações utilizando cascade
+# 61. Operações utilizando cascade
 
-### Atributo cascade
+## Atributo cascade
 
 É utilizado dentro das anotações como `@OneToMany` e `@ManyToOne` para especificar como as alterações nos registros de uma entidade A afetam também os registros de uma entidade B relacionada a entidade A. É passado como valor para o atributo `cascade` o enum `CascadeType` com as seguintes opções (**estas são apenas algumas**):
 
@@ -639,7 +639,7 @@ void salvarCascadeTest(){
 
 **OBS.: o recomendado é NÃO usar cascade, mas sim realizar manualmente as operações CRUD por uma questão de segurança.**
 
-## 63. Entendendo sobre Lazy e Eager initializations
+# 63. Entendendo sobre Lazy e Eager initializations
 
 Quando é realizado uma consulta em uma tabela vinculada a outra (ex.: tabela Livro vinculada a tabela Autor) será gerado um código SQL que fará um `join` entre as tabelas, independente se você precisar dos dados de uma só tabela ou de ambas.
 
@@ -679,7 +679,7 @@ where l1_0.id=?
 Agora, se tentar acessar alguma informação da tabela Autor (ex.: `System.out.println("Autor:" + livroEncontrado.getAutor().getNome());`) então será lançada a exceção `LazyInitializationException`: ocorre justamente quando se tenta acessar um objeto carregado de forma preguiçosa (que só é carregado quando necessário) em um ponto do código onde a sessão do Hibernate já foi fechada ou não está mais ativo.
 
 **OBS.: enquanto uma entidade `@ManyToOne`  vem com `FetchType.EAGER` por padrão, uma entidade `@OneToMany` vem com `FetchType.LAZY` por padrão.**
-### Consultado tabelas relacionadas de forma separada
+## Consultado tabelas relacionadas de forma separada
 
 Mesmo com `@ManyToOne(fetch = FetchType.LAZY)` é possível ainda consultar dados em tabelas relacionadas através da anotação `@Transactional` do caminho `org.springframework.transaction.annotation.Transactional`:
 
@@ -710,10 +710,10 @@ where a1_0.id=?
 
 Veja que agora as consultas foram realizadas de modo separado: a primeira da tabela Livro e a segunda da tabela Autor.
 
-## 64. Trabalhando com relacionamento OneToMany
+# 64. Trabalhando com relacionamento OneToMany
 
 Serão demonstrados dois exemplos de inserção de registros com relacionamentos: o primeiro sem o atributo `cascade` e o segundo com o atributo `cascade`.
-### Sem o atributo `cascade`
+## Sem o atributo `cascade`
 
 Neste exemplo, será inserido um registro na tabela Autor (`@OneToMany`) e dois registros na tabela Livro (`@ManyToOne`). Para isso, será necessário passar o objeto Autor como argumento para os dois objetos Livro e depois os dois objetos Livro devem ser inseridos em uma lista, sendo esta passada como argumento para o objeto Autor.
 
@@ -753,7 +753,7 @@ void salvarAutorComLivrosTest(){
 }
 ```
 
-## 65. Estratégia de fetching para relacionamentos OneToMany
+# 65. Estratégia de fetching para relacionamentos OneToMany
 
 ```java
 //@OneToMany e FetchType.LAZY
@@ -761,11 +761,11 @@ void salvarAutorComLivrosTest(){
 //@ToString(exclude = "")
 ```
 
-### Considerações sobre `@OneToMany`
+## Considerações sobre `@OneToMany`
 
 Da mesma forma que `FetchType.EAGER` é padrão em `@ManyToOne`, o enum `FetchType.LAZY` é padrão em `@OneToMany`.
 
-### Impressão dos registros de entidades relacionadas
+## Impressão dos registros de entidades relacionadas
 
 Ao capturar um registro por meio de algum método `findBy` e armazená-lo em uma variável, é provável que se deseje imprimir tal objeto (se ele possuir um método `toString`). Porém, em casos de entidades relacionadas, isso só funcionará se for ignorado os atributos responsáveis por referenciar a outra entidade (seja no atributo com `@OneToMany` ou com `@ManyToOne`).
 
@@ -788,7 +788,7 @@ void listarLivrosAutor(){
 }
 ```
 
-### Query Methods
+## Query Methods
 
 No exemplo anterior foi utilizado `@Transactional` para que fosse possível consultar também os registros da tabela Livro. Porém, outra forma de fazer isso sem esta anotação é através de **query methods**: métodos com a finalidade de consultar com base em algum critério específico. Este métodos podem ser personalizados como no seguinte exemplo:
 
@@ -821,18 +821,18 @@ void listarLivrosAutor(){
 }
 ```
 
-## 66. Implementação de pesquisas com Query Methods
+# 66. Implementação de pesquisas com Query Methods
 
-### Outras formas de métodos personalizados
+## Outras formas de métodos personalizados
 
-#### And
+### And
 
 Utilize este palavra entre o nome dos atributos se desejar consultar um registro por meio de dois ou mais atributos. Por exemplo, se deseja consultar um registro por meio do atributo `titulo` e `genero` então o nome do método deve ser `findByTituloAndGenero`:
 
 ```java
 List<Livro> findByTituloAndGenero(String titulo, GeneroLivro generoLivro);
 ```
-#### Or
+### Or
 
 Utilize este palavra entre o nome dos atributos se deseja consultar por meio de um atributo ou outro. Por exemplo, se deseja consultar um registro por meio do atributo `nome` ou `dataNascimento` então o nome do método deve ser `findByNomeOrDataNascimento`:
 
@@ -840,20 +840,20 @@ Utilize este palavra entre o nome dos atributos se deseja consultar por meio de 
 List<Autor> findByNomeOrDataNascimento(String nome, LocalDate localDate);
 ```
 
-### Formatação do código SQL 
+## Formatação do código SQL 
 
 Utilize o comando `spring:jpa:properties:hibernate.format-sql:true` para formatar (organizar) o código SQL que aparece impresso no momento da execução do código. Veja um exemplo:
 
 ![[Pasted image 20250528121319.png]]
 
-## 67. Variações de métodos de busca declarativos
+# 67. Variações de métodos de busca declarativos
 
 Para mais dicas sobre query methods, acesso o site https://docs.spring.io/spring-data/jpa/reference/jpa/query-methods.html onde será encontrada uma lista de opções de consultas.
 
 
-## 68. Trabalhando com consultas JPQL e @Query
+# 68. Trabalhando com consultas JPQL e @Query
 
-### O que é JPQL
+## O que é JPQL
 
 JPQL é uma linguagem de consulta específica da JPA, utilizada para fazer consultas em entidades armazenadas em um banco de dados. Ou seja, a pesquisa não será realizada com base no nome das colunas e da tabela, mas com base no nome de uma entidade e seus atributos.
 
@@ -867,11 +867,11 @@ List<Livro> listarTodosOrdenadosPorPreco();
 Perceba que `Livro` e `preco` fazem referência ao nome da entidade e do atributo (não necessariamente ao nome da tabela e da coluna).
 
 **OBS.: caso deseje utilizar SQL normal, e não JPQL, adicione na anotação `@Query` o atributo `nativeQuery = true`. É preciso também que sejam retornados todos os valores da classe cujo o método com `@Query` irá retornar. Exemplo: se há um método com `@Query` que irá retornar um objeto `Autor` então é necessário selecionar ( `select`) todos os atributos referentes a tabela `autores`.**
-## 69. Utilizando Named e Positional Parameters
+# 69. Utilizando Named e Positional Parameters
 
 Há duas opções de como utilizar parâmetros em um método com anotação `@Query`:
 
-### Named Parameters
+## Named Parameters
 
 Será fornecido uma espécie de 'apelido' para o parâmetro da consulta que ficará após os dois pontos (:) e esse parâmetro será referenciado dentro da assinatura do método através da anotação `@Param`.
 
@@ -885,7 +885,7 @@ No seguinte exemplo, o apelido do parâmetro é `paramentoNacionalidade` e deve 
 List<Autor> findByNacionalidade(@Param("paramentoNacionalidade") String nacionalidade);
 ```
 
-### Positional Parameters
+## Positional Parameters
 
 Neste caso, o parâmetro do método terá como referência não mais um apelido, mas a posição dos parâmetros. Exemplo:
 
@@ -907,7 +907,7 @@ Veja que o parâmetro `nacionalidade` é referenciado por `?1` (logo ele deve se
 List<Autor> findByNacionalidade(String nomePropriedade, String nacionalidade);
 ```
 
-## 70. Operacoes delete e update utilizando Queries
+# 70. Operacoes delete e update utilizando Queries
 
 Para realizar essas operações com a anotação `@Query` são necessárias duas outras anotações:
 
@@ -942,25 +942,25 @@ void atualizarDataPorTituloTest(){
 }
 ```
 
-## 71. Conhecendo os estados das entidades
+# 71. Conhecendo os estados das entidades
 
-### O que é uma transação?
+## O que é uma transação?
 
 É uma soma de operações no banco de dados que devem ser executadas por inteiro (e não apenas parte delas). Caso contrário, as operações já realizadas serão desfeitas como garantia de preservação dos dados.
 
-### O que é um objeto transiente?
+## O que é um objeto transiente?
 
 Quando um objeto, instância de uma entidade, ainda não possui uma representação no banco de dados e nem é reconhecido pelo `EntityManager`. Lembrando do que se trata:
 
 ![[Seção 4 - Acesso a Dados com Spring Data JPA#^0d3afc]]
 
-### O que é um objeto managed?
+## O que é um objeto managed?
 
 Quando a entidade passa a ser associada ao `EntityManager`. Caso a entidade venha a ser removida então ela ficará no estado **removed**.
 
-## 72. Entendendo como funcionam as transações do Spring
+# 72. Entendendo como funcionam as transações do Spring
 
-### Mais informações sobre transações
+## Mais informações sobre transações
 
 A linguagem SQL disponibiliza estes comandos para a realização de transações:
 
@@ -986,7 +986,7 @@ commit;
 rollback;
 ```
 
-### Como funcionaria uma transação em aplicação Spring Boot ?
+## Como funcionaria uma transação em aplicação Spring Boot ?
 
 Exemplo:
 
@@ -1035,7 +1035,7 @@ public class TransacoesTest {
 
 Será realizada a tentativa de inserir um objeto da entidade Autor e outro objeto da entidade Livro. No entanto, se o título do objeto Livro for igual a 'Livro X', ocorrerá uma exceção e isso representará um `rollback`. Se não ocorresse a exceção devido ao nome do livro, seria realizado um `commit`.
 
-### Método `saveAndFlush`
+## Método `saveAndFlush`
 
 No exemplo anterior, se fosse utilizado `saveAndFlush()` em vez de `save()`, o resultado seria a inserção dos dados no banco e, posteriormente, quando fosse detectado a exceção, a realização de um `rollback`.
 
@@ -1049,9 +1049,9 @@ Resultado com método `saveAndFlush`:
 
 ![[Pasted image 20250606133633.png]]
 
-## 73. Aplicando os conceitos de transações e estados na prática
+# 73. Aplicando os conceitos de transações e estados na prática
 
-### Atualização em uma transação
+## Atualização em uma transação
 
 Neste caso, não é necessário utilizar o método `save()` do `JpaRepository` para uma operação de atualização dentro de uma transação. Exemplo:
 

@@ -1,17 +1,17 @@
-## 75. Entendendo tudo sobre Rest, HTTP e Requests
+# 75. Entendendo tudo sobre Rest, HTTP e Requests
 
-### O que é Rest?
+## O que é Rest?
 
 Um conjunto de diretrizes sobre como deve ser implementado uma API web. Dentre as diretrizes em destaque estão:
 - Utilização dos métodos HTTP (GET, POST, PUT e DELETE) para realizar operações.
 - Uso de URL's para identificar recursos específicos.
 - Transferência de dados entre cliente e servidor por meio de um formato padrão como JSON ou XML.
 
-### Qual a diferença do Rest para Restful?
+## Qual a diferença do Rest para Restful?
 
 Restful é simplesmente uma referência para as API's que implementam as diretrizes Rest.
 
-### Estrutura de uma Request (solitação)
+## Estrutura de uma Request (solitação)
 
 - **URL**
 - **Cabeçalho (Header)**: contém informações adicionais (metadados) sobre a requisição que está sendo feita. Exemplos:
@@ -32,9 +32,9 @@ Restful é simplesmente uma referência para as API's que implementam as diretri
 
 **OBS.: um recurso refere-se a qualquer componente para um cliente ou aplicação que o servidor pode fornecer. Isso pode incluir hardware (como processamento, armazenamento, memória) ou software (como aplicativos, serviços, APIs).**
 
-## 76. Entendendo a composição de respostas do servidor
+# 76. Entendendo a composição de respostas do servidor
 
-### Estrutura do response
+## Estrutura do response
 
 - **Header**: 
 	- **Content-type**
@@ -56,13 +56,13 @@ Restful é simplesmente uma referência para as API's que implementam as diretri
 		- **422 (Unprocessable Entity)**: quando o servidor recebe uma mensagem com erro semântico (como, por exemplo, campos obrigatórios não preenchidos) ou não atende a determinadas condições (como a violação de regras de negócio). ^53643b
 	- **500 (Erro de Server)**: indica uma dificuldade de processamento do servidor.
 
-## 77. Aprenda a modelar contratos de APIs
+# 77. Aprenda a modelar contratos de APIs
 
-### O que é um contrato de API?
+## O que é um contrato de API?
 
 É a definição das regras de interação entre um cliente e uma API. Estas regras podem incluir: a URL utilizada para acessar a API, o verbo HTTP daquela API, o código status esperado, entre outras.
 
-### Como definir um contrato?
+## Como definir um contrato?
 
 - **Identificação do recurso (a URL utilizada para acessar o recurso)**: é recomendado que as URL's sejam substantivos no plural em vez de verbos que descrevam qual será a operação daquele recurso:
 	- ![[Pasted image 20250716125340.png]]
@@ -72,9 +72,9 @@ Restful é simplesmente uma referência para as API's que implementam as diretri
 - **Definição do payload (conteúdo da mensagem) do request e response**:
 - **Definição dos headers**
 
-## 80. Mapeamento de Requisição e padrão DTO
+# 80. Mapeamento de Requisição e padrão DTO
 
-### Alternativas às anotações padrão para operações HTTP
+## Alternativas às anotações padrão para operações HTTP
 
 É possível, além das anotações utilizadas geralmente (como `@GetMapping`, `@PostMapping`, etc ), usar o próprio `RequestMapping` para descrever o tipo operação HTTP que o método irá realizar.
 
@@ -87,7 +87,7 @@ public Object salvar(@RequestBody Autor autor){
 }
 ```
 
-### Uso de records
+## Uso de records
 
 É um tipo de classe criada de forma mais prática (ao automatizar métodos getters, construtor, `equals()`, `hashCode()`, `toString()`) e que tem com finalidade única o armazenamento de dados.
 
@@ -111,7 +111,7 @@ public Object salvar(@RequestBody AutorDTO autorDTO){
 }
 ```
 
-### Classe ResponseEntity
+## Classe ResponseEntity
 
 É uma classe do Spring Framework que representa toda a resposta HTTP de um método de um controlador. É a partir desta classe que se torna possível definir: código de status, body da resposta, etc.
 
@@ -124,9 +124,9 @@ public ResponseEntity salvar(@RequestBody AutorDTO autorDTO){
 }
 ```
 
-## 81. Finalizando o contrato de Salvar um Autor
+# 81. Finalizando o contrato de Salvar um Autor
 
-### Generics da classe `ResponseEntity`
+## Generics da classe `ResponseEntity`
 
 O generics de `ResponseEntity` se refere ao tipo de objeto que será retornado no corpo da mensagem. Caso não deseje retornar nada, coloque `Void` dentro do operador diamante `<>`:
 
@@ -137,7 +137,7 @@ public ResponseEntity<Void> salvar(@RequestBody AutorDTO autorDTO){
 }
 ```
 
-### Definindo o location do cabeçalho da resposta
+## Definindo o location do cabeçalho da resposta
 
 Para isso será necessário o seguinte código:
 
@@ -185,9 +185,9 @@ O resultado no Postman será este:
 
 ![[Pasted image 20250719172230.png]]
 
-## 82. Adicionando Auditoria JPA nas entidades
+# 82. Adicionando Auditoria JPA nas entidades
 
-### Tipo timestamp em SQL
+## Tipo timestamp em SQL
 
 Ele é usado para o armazenamento de data e hora. Exemplo:
 
@@ -203,7 +203,7 @@ create table autor(
 );
 ```
 
-### Anotações de auditoria
+## Anotações de auditoria
 
 O Spring Data JPA oferece anotações para saber quando um registro na tabela foi criado (`@CreatedDate`) como também saber quando foi realizada a última atualização (`@LastModifiedDate`). Cada uma destas anotações devem ser colocadas em um atributo diferente, sendo estes campos preenchidos automaticamente.
 
@@ -253,9 +253,9 @@ public class Autor {
 }
 ```
 
-## 83. Obtendo detalhes do Autor
+# 83. Obtendo detalhes do Autor
 
-### Classe Optional
+## Classe Optional
 
 Essa classe é utilizada para encapsular um valor e verificar a sua presença ou não, caso o valor seja nulo, através de métodos como `isPresent()` e `isEmpty()`. Exemplo:
 
@@ -283,9 +283,9 @@ Porém, se nenhum registro for encontrado, então retornará um código de statu
 
 Há também o método `get()`, que retorna o valor encapsulado.
 
-## 84. Deletando um Autor
+# 84. Deletando um Autor
 
-### Retornar código de status 204 (no content)
+## Retornar código de status 204 (no content)
 
 Utilize o método `ResponseEntity.noContent().build()` para retornar um código de status 204. Exemplo:
 
@@ -300,13 +300,13 @@ public ResponseEntity<Void> deletar(@PathVariable("id") String id){
 }
 ```
 
-### O que é um método idempotente?
+## O que é um método idempotente?
 
 É aquele método que, ao receber várias vezes em sequência a mesma requisição, irá retornar sempre a mesma resposta.
 
-## 85. Pesquisa de Autores com filtro
+# 85. Pesquisa de Autores com filtro
 
-### Parâmetro `required` da anotação `@RequestParam`
+## Parâmetro `required` da anotação `@RequestParam`
 
 Informa se o parâmetro de solicitação é opcional (se o valor for `false`) ou obrigatório (se o valor for `true`). Exemplo:
 
@@ -332,9 +332,9 @@ public ResponseEntity<List<AutorDTO>> pesquisarAutores(
 
 A especificação do atributo `value` na anotação `@RequestParam` é obrigatório já que são, neste caso, dois parâmetros e também ambos são opcionais.
 
-## 88. Criando um DTO padronizado de respostas de erro
+# 88. Criando um DTO padronizado de respostas de erro
 
-### O que é o enum `HttpStatus`?
+## O que é o enum `HttpStatus`?
 
 Este enum oferece uma coleção de código de status HTTP, que inclui tanto o número referente ao código (201, 404, 500, etc...) como também um mensagem padronizada.
 
@@ -342,9 +342,9 @@ Para obter o número do código é necessário chamar o `HttpStatus`, mais o tip
 
 Agora se deseja obter a mensagem, substitua o `.value()` por `.getReasonPhrase()`, ou seja, `HttpStatus.CONFLICT.getReasonPhrase()`.
 
-## 89. Lógica de validação para regras de negócio
+# 89. Lógica de validação para regras de negócio
 
-### Query method `existsBy`
+## Query method `existsBy`
 
 Verifica se um registro existe ou não em uma tabela com base em alguma coluna, retornando `true` ou `false`. O método a seguir verifica se um registro existe com determinado nome, data de nascimento e nacionalidade no banco de dados:
 
@@ -355,11 +355,11 @@ boolean existsByNomeAndDataNascimentoAndNacionalidade(
         String nacionalidade);
 ```
 
-### Método `ResponseEntity.status(int status)`
+## Método `ResponseEntity.status(int status)`
 
 Insere um valor do tipo inteiro que indica o código de status.
 
-## 91. Facilitando a Injeção com RequiredArgsContructor do Lombok
+# 91. Facilitando a Injeção com RequiredArgsContructor do Lombok
 
 A anotação de classe `@RequiredArgsConstructor` é utilizada para a criação automática de um método construtor para atributos `final`, ou seja, aqueles que exigem a inicialização. Ao colocar esta anotação na classe, é preciso retirar o método construtor caso haja um. Exemplo:
 

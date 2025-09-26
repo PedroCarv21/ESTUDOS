@@ -1,5 +1,5 @@
 
-## 92. Adicionando validação de campos com Bean Validation
+# 92. Adicionando validação de campos com Bean Validation
 
 Para que as anotações a seguir sejam disponibilizadas, é necessário obter a dependência Validation:
 
@@ -9,7 +9,7 @@ Para que as anotações a seguir sejam disponibilizadas, é necessário obter a 
     <artifactId>spring-boot-starter-validation</artifactId>  
 </dependency>
 ```
-### Anotações `@NotBlank` e `@NotNull`
+## Anotações `@NotBlank` e `@NotNull`
 
 A primeira anotação é utilizada em objetos `String` e valida se o campo não está vazio (" ") e a segunda verifica se o campo não está nulo. Exemplo:
 
@@ -33,20 +33,20 @@ public record AutorDTO(
 }
 ```
 
-### Anotação `@Valid`
+## Anotação `@Valid`
 
 Esta anotação é geralmente colocada em um parâmetro de algum método, de modo que o Spring Boot aciona automaticamente a validação deste parâmetro antes que o método seja invocado.
 
-## 93. Criando um Exception Handler
+# 93. Criando um Exception Handler
 
-### Anotação `@RestControllerAdvice`
+## Anotação `@RestControllerAdvice`
 
 Esta anotação, usada em uma classe, permite que as exceções sejam tratadas em qualquer lugar da aplicação. Os métodos contidos dentro de uma classe com `@RestControllerAdvice` devem conter a anotação `@ExceptionHandler`, onde será passado como argumento a exceção específica tratada por aquele método.
 
 Por exemplo, se o método irá tratar da exceção `MethodArgumentNotValidException`, a anotação deve ficar como `@ExceptionHandler(MethodArgumentNotValidException.class)`.
 
 **OBS.: `MethodArgumentNotValidException` é uma exceção do Spring que é lançada quando a validação de um argumento de método falha, geralmente devido a anotações de validação como `@NotNull` ou `@NotEmpty`.**
-### Anotação `ResponseStatus`
+## Anotação `ResponseStatus`
 
 É utilizado para especificar o código de status que aquele método irá retornar, seja em caso de sucesso ou de exceções. É necessário passar como argumento desta anotação uma constante fornecida pela classe `HttpStatus`. 
 
@@ -54,7 +54,7 @@ Por exemplo: `@ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)`
 
 ![[Seção 5 - Desenvolvimento de API's RestFul#^53643b]]
 
-### Mais informações sobre `MethodArgumentNotValidException`
+## Mais informações sobre `MethodArgumentNotValidException`
 
 Esta exceção possui o método `getFieldErrors`, que retorna uma lista de objetos `FieldError`. Um objeto deste tipo possui alguns atributos, entre os quais se destaca o atributo `field` (representando o campo da solicitação em que ocorreu o erro) e o atributo `defaultMessage` (representando a mensagem que as anotações de validação (como `@NotNull` ou `@NotEmpty`) devolvem).
 
@@ -86,16 +86,16 @@ Veja que ao passar valores incorretos para os campos `nome` e `dataNascimento` (
 
 ![[Pasted image 20250728124433.png]]
 
-## 94. Explorando tipos de validação no Spring
+# 94. Explorando tipos de validação no Spring
 
 Estas são outras anotações utilizadas para a validação de campos.
 
 - **`@Size(min=3, max=8, message="")`**: define um tamanho mínimo e máximo de caracteres para aquele campo, além de uma mensagem que aparece quando as restrições não são atendidas.
 - **`@Past(message="")`**: obriga um campo de entrada relacionado a data estar no passado (não é permitido ser uma data presente ou futura).
 
-## 95. Melhorando a pesquisa de autores com Query By Example
+# 95. Melhorando a pesquisa de autores com Query By Example
 
-### Classe `Example`
+## Classe `Example`
 
 Esta classe é destinada a fazer consultas de modo mais simples do que seria com lógica de programação, query methods ou com `@Query`.
 
