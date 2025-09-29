@@ -201,3 +201,60 @@ Há também outros métodos de `Authentication` que terão o seu corpo alterado:
 - `getDetails()` e `getPrincipal()`: retornarão os as informações do usuário (pode ser o próprio objeto `Usuario`).
 - `isAuthenticated()`: retorna um valor booleano que informa se o usuário está autenticado ou não. O valor ser alterado para `true`, caso contrário, não será possível logar.
 - `getName()`: retornará o nome do usuário.
+
+# 130. Criando um `AuthenticationProvider` customizado
+
+Para criação de um 'fornecedor de autenticação' customizado, é necessário criar um componente que implemente a interface `AuthenticationProvider`, que possui dois métodos:
+
+- `supports(Class<?> authentication)`: informará qual o tipo de autenticação esse 'fornecedor de autenticação' suporta. Neste caso, como se trata do fornecimento de login e senha, será utilizado a classe `UsernamePasswordAuthenticationToken.class` como argumento do método `authentication.isAssignableFrom()`, método responsável por comparar o tipo de autenticação fornecida pelo usuário e a autenticação suportada pelo 'fornecedor de autenticação'. Caso afirmativo, retornará `true`.
+- `authenticate(Authentication authentication)`: caso o método `supports` retorne `true`, será retornado um objeto `UsernamePasswordAuthenticationToken`, que também implementa `Authentication`, e injetado esse objeto no método `authenticate`. O objeto `UsernamePasswordAuthenticationToken` já estará com os dados informados pelo usuário durante o login. Por fim, será criada uma regra de negócio para fazer a validação do login, retornando um objeto `Authentication` (neste caso, será usado a classe `CustomAuthentication` que implementa esta interface).
+
+Exemplo de classe com `AuthenticationProvider`: 
+
+```java
+@Component  
+@RequiredArgsConstructor  
+public class CustomAuthenticationProvider implements AuthenticationProvider {  
+  
+    private final UsuarioService usuarioService;  
+    private final PasswordEncoder passwordEncoder;  
+  
+    @Override  
+    public Authentication authenticate(Authentication authentication) throws AuthenticationException {  
+  
+        String login = authentication.getName();  
+        String senhaDigitada = authentication.getCredentials().toString();  
+  
+        Usuario usuarioEncontrado = usuarioService.obterPorLogin(login);  
+  
+        if (usuarioEncontrado == null){  
+            throw getErroUsuarioNaoEncontrado();  
+        }  
+  
+        String senhaCriptografada = usuarioEncontrado.getSenha();  
+  
+        boolean senhasBatem = this.passwordEncoder.matches(senhaDigitada, senhaCriptografada);  
+  
+        if (senhasBatem){  
+            return new CustomAuthentication(usuarioEncontrado);  
+        }  
+  
+        throw getErroUsuarioNaoEncontrado();  
+    }  
+  
+    private UsernameNotFoundException getErroUsuarioNaoEncontrado(){  
+        return new UsernameNotFoundException("Usuario e/ou senha incorretos!");  
+    }  
+  
+    @Override  
+    public boolean supports(Class<?> authentication) {  
+        return authentication.isAssignableFrom(UsernamePasswordAuthenticationToken.class);  
+    }  
+}
+```
+
+Observe que, ao executar a aplicação pelo debug e fazer uma tentativa de autenticação, é carregado um objeto `UsernamePasswordAuthenticationToken` com os dados que o usuário forneceu:
+
+![[Pasted image 20250929165334.png]]
+
+No entanto, mesmo que os dados estejam certos, o usuário não terá permissão de autenticar (gerando um código de status 403), pois quando são inseridas as roles em um objeto Usuario, é acrescentado a cada role um prefixo `ROLE_`. Isso será concertado na próxima aula.

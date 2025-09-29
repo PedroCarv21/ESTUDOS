@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "41cc8cf72480da84",
+        "id": "e496e0b30df80041",
         "type": "tabs",
         "children": [
           {
-            "id": "6242fbe29bbab42c",
+            "id": "85c095b240a0f615",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -169,13 +169,16 @@
       "command-palette:Abrir paleta de comando": false
     }
   },
-  "active": "6242fbe29bbab42c",
+  "active": "7fbf7abbcf6552a6",
   "lastOpenFiles": [
-    "UDEMY/SPRING BOOT EXPERT/Seção 8 - Aprendendo Spring Security.md",
+    "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250929165334.png",
+    "FACULDADE SENAC/Gestão e Governança de TI.md",
     "UDEMY/SPRING BOOT EXPERT/Seção 9 - Security Avançado e Login Social.md",
-    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 7 - Commits Avançados.md",
-    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 6 - Utilizando Git Flow.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 9 - GIT Avançado.md",
+    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 8 - Resolução de Conflitos.md",
+    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 7 - Commits Avançados.md",
+    "UDEMY/SPRING BOOT EXPERT/Seção 8 - Aprendendo Spring Security.md",
+    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 6 - Utilizando Git Flow.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 1 - Boas Vindas e Introdução.md",
     "UDEMY/SPRING BOOT EXPERT/Seção 6 - Introdução ao Bean Validation e Melhorias para API.md",
     "UDEMY/SPRING BOOT EXPERT/Seção 7 - Aprendendo Mais Recursos desenvolvendo a API de Livros.md",
@@ -194,7 +197,6 @@
     "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250924122313.png",
     "Pasted image 20250924122030.png",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 5 - Trabalhando com branches.md",
-    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 8 - Resolução de Conflitos.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 4 - Utilizando GitHub.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 3 - GIT Fundamental.md",
     "UDEMY/FRONT-END - DANIEL TAPIAS/IMAGENS",
@@ -213,7 +215,6 @@
     "UDEMY/SPRING BOOT EXPERT/Sessão 5 - Desenvolvimento de API's Restful.md",
     "FACULDADE SENAC/CICLO II/AV2 - Computação em Nuvem.md",
     "FACULDADE SENAC/CICLO II/Resumo de Testes de Sosftware - AV2.md",
-    "FACULDADE SENAC/CICLO II/Programação Web i.md",
     "FACULDADE SENAC/CICLO II",
     "FACULDADE SENAC/CICLO II",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO",
