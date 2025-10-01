@@ -258,3 +258,51 @@ Observe que, ao executar a aplicação pelo debug e fazer uma tentativa de auten
 ![[Pasted image 20250929165334.png]]
 
 No entanto, mesmo que os dados estejam certos, o usuário não terá permissão de autenticar (gerando um código de status 403), pois quando são inseridas as roles em um objeto Usuario, é acrescentado a cada role um prefixo `ROLE_`. Isso será concertado na próxima aula.
+
+# 131. Eliminando o prefixo ROLE do security
+
+Crie um bean que retorne uma instância de `GrantedAuthorityDefaults`, sendo o argumento uma String vazia:
+
+```java
+@Bean  
+public GrantedAuthorityDefaults grantedAuthorityDefaults(){  
+    return new GrantedAuthorityDefaults("");  
+}
+```
+
+Este método deverá ficar dentro da classe de configuração de segurança (neste caso, `SecurityConfiguration`).
+
+Só isso já será o suficiente para que esse bean seja registrado no contexto de segurança do Spring e consultado no momento em que for decidir como interpretar os nomes de roles.
+
+# 132. Ajustando o Security Service
+
+Dado que está sendo utilizado agora uma a classe de autenticação customizada, e não mais o `UserDetails`, o método do `SecurityService` deverá retornar um objeto `Usuario` caso o `SecurityContextHolder.getContext().getAuthentication()` retorne uma instância de `CustomAuthentication`:
+
+```java
+@Component  
+@RequiredArgsConstructor  
+public class SecurityService {  
+  
+    private final UsuarioService usuarioService;  
+  
+    public Usuario obterUsuarioLogado(){  
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();  
+  
+        if (authentication instanceof CustomAuthentication customAuth){  
+            return customAuth.getUsuario();  
+        }  
+  
+        return null;  
+    }  
+}
+```
+
+# 134. Adicionando campo para salvar email no cadastro de usuários
+
+Caso deseje inserir uma nova coluna, que permita valores nulos, execute o comando:
+
+```sql
+alter table nome_tabela add column nome_coluna(100)
+```
+
+**OBS.: caso deseje inserir uma nova coluna que não permita valores nulos, apenas apague a tabela e crie novamente com a coluna já adicionada.**

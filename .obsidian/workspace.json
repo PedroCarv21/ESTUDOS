@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "e496e0b30df80041",
+        "id": "74c80d3584827c6b",
         "type": "tabs",
         "children": [
           {
-            "id": "85c095b240a0f615",
+            "id": "e48a3aa2ea6226b5",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 328.5
+    "width": 328.5,
+    "collapsed": true
   },
   "right": {
     "id": "fd48e1adbeab8766",
@@ -169,19 +170,19 @@
       "command-palette:Abrir paleta de comando": false
     }
   },
-  "active": "7fbf7abbcf6552a6",
+  "active": "e48a3aa2ea6226b5",
   "lastOpenFiles": [
-    "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250929165334.png",
-    "FACULDADE SENAC/Gestão e Governança de TI.md",
-    "UDEMY/SPRING BOOT EXPERT/Seção 9 - Security Avançado e Login Social.md",
-    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 9 - GIT Avançado.md",
-    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 8 - Resolução de Conflitos.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 7 - Commits Avançados.md",
+    "UDEMY/SPRING BOOT EXPERT/Seção 9 - Security Avançado e Login Social.md",
+    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 8 - Resolução de Conflitos.md",
+    "UDEMY/SPRING BOOT EXPERT/Seção 7 - Aprendendo Mais Recursos desenvolvendo a API de Livros.md",
+    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 9 - GIT Avançado.md",
     "UDEMY/SPRING BOOT EXPERT/Seção 8 - Aprendendo Spring Security.md",
+    "UDEMY/SPRING BOOT EXPERT/Seção 6 - Introdução ao Bean Validation e Melhorias para API.md",
+    "FACULDADE SENAC/Gestão e Governança de TI.md",
+    "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250929165334.png",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 6 - Utilizando Git Flow.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 1 - Boas Vindas e Introdução.md",
-    "UDEMY/SPRING BOOT EXPERT/Seção 6 - Introdução ao Bean Validation e Melhorias para API.md",
-    "UDEMY/SPRING BOOT EXPERT/Seção 7 - Aprendendo Mais Recursos desenvolvendo a API de Livros.md",
     "UDEMY/SPRING BOOT EXPERT/Seção 5 - Desenvolvimento de API's RestFul.md",
     "UDEMY/SPRING BOOT EXPERT/Seção 4 - Acesso a Dados com Spring Data JPA.md",
     "UDEMY/SPRING BOOT EXPERT/Seção 3 - Arquitetura e Estrutura do Framework.md",
@@ -195,7 +196,6 @@
     "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250924133005.png",
     "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250924122453.png",
     "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250924122313.png",
-    "Pasted image 20250924122030.png",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 5 - Trabalhando com branches.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 4 - Utilizando GitHub.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 3 - GIT Fundamental.md",
