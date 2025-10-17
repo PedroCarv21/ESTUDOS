@@ -306,3 +306,93 @@ alter table nome_tabela add column nome_coluna(100)
 ```
 
 **OBS.: caso deseje inserir uma nova coluna que não permita valores nulos, apenas apague a tabela e crie novamente com a coluna já adicionada.**
+# 135. Implementando lógica de customização da autenticação Google
+
+Esta aula teve como objetivo capturar os dados que o usuário passou no login do Google e transformar esses dados em um objeto `CustomAuthetication`.
+
+Para isso, será necessário ir até o método que define a cadeia de filtros de segurança, presente na classe de configuração de segurança, e trocar `oauth2Login(Customizer.withDefaults())` por `oauth2Login(oauth2 -> oauth2.successHandler())`, sendo `oauth2.successHandler()` responsável por executar uma ação em caso do usuário se autenticar com sucesso. 
+
+O método `oauth2.successHandler()` irá receber como argumento uma classe que implemente o `AuthenticationSuccessHandler`. No exemplo da aula, foi criado uma nova classe que estende `SavedRequestAwareAuthenticationSuccessHandler`, sendo que ela mesma implementa o `AuthenticationSuccessHandler`.
+
+A classe `SavedRequestAwareAuthenticationSuccessHandler` é **o manipulador de sucesso de autenticação padrão usado pelo Spring Security**. Suponha que um usuário não-autenticado tente acessar uma página da aplicação. A sua requisição será salva pela aplicação e ele será redirecionado para a página de login. Depois se autenticar com sucesso, a classe `SavedRequestAwareAuthenticationSuccessHandler` irá verificar se existe uma requisição salva e, em caso afirmativo, a classe irá redirecionar o usuário para a página que ele tentou acessar originalmente.
+
+A interface `AuthenticationSuccessHandler` possui o método `onAuthenticationSuccess` (que possui **apenas três** parâmetros), responsável por conter dentro de si toda a lógica do que fazer após o usuário logar com sucesso. No exemplo da aula, foi aplicado a seguinte lógica:
+
+```java
+@Override  
+public void onAuthenticationSuccess(  
+        HttpServletRequest request,  
+        HttpServletResponse response,  
+        Authentication authentication) throws ServletException, IOException {  
+  
+    OAuth2AuthenticationToken oAuth2AuthenticationToken = (OAuth2AuthenticationToken) authentication;  
+    OAuth2User oAuth2User = oAuth2AuthenticationToken.getPrincipal();  
+    String email = oAuth2User.getAttribute("email");  
+  
+    Usuario usuario = this.usuarioService.obterPorEmail(email);  
+  
+    authentication = new CustomAuthentication(usuario);  
+  
+    SecurityContextHolder.getContext().setAuthentication(authentication);  
+  
+    super.onAuthenticationSuccess(request, response, authentication);  
+}
+```
+
+Ao executar a aplicação, o parâmetro `authentication` irá receber um objeto `OAuth2AuthenticationToken` criado pelo Spring Security, que contém todas as informações essenciais sobre a identidade do usuário. Através do método `getPrincipal()`, é retornado um objeto `OAuth2User`, que possui os dados pessoais do usuário: nome, e-mail, foto de perfil, etc. Caso queira obter o valor referente a um determinado dado pessoal, utilize o `getAttribute()` e passe como argumento o tipo de dado pessoal (ex.: email).
+
+Depois de capturar o usuário por meio do método `obterPorEmail()` e passá-lo como argumento para a autenticação customizada, é utilizado o comando `SecurityContextHolder.getContext().setAuthentication(authentication);` para atualizar o "contexto de segurança" da sessão atual do usuário. O `SecurityContextHolder` é uma classe central do Spring Security que armazena, de forma segura, as informações do usuário atualmente logado.
+
+**OBS.: "Contexto de Segurança" (SecurityContext) é o objeto que guarda as informações sobre quem é o usuário atualmente logado e o que ele pode fazer naquela requisição específica.**
+
+Por fim, é delegado para o método da classe pai (`SavedRequestAwareAuthenticationSuccessHandler`) a responsabilidade de redirecionamento do usuário para a página solicitada.
+
+Para ver o resultado do método `onAuthenticationSuccess`, utilize o seguinte método, que irá mostrar uma mensagem de boas vindas depois que o usuário se autenticar.
+
+```java
+@GetMapping("/")  
+@ResponseBody  
+public String paginaHome(Authentication authentication){  
+    if (authentication instanceof CustomAuthentication customAuthentication){  
+        System.out.println(customAuthentication.getUsuario());  
+    }  
+    return "Hello " + authentication.getName();  
+}
+```
+
+**OBS.: quando quiser fazer o logout da aplicação, basta digitar localhost:8080/logout**
+# 136. Configurando autenticação do Google no formulário próprio
+
+## Habilitando o formulário customizado
+
+É necessário habilitar o método `loginPage()` tanto para o `http` como também dentro do `oauth2Login`:
+
+```java
+.formLogin(configurer -> {  
+    configurer.loginPage("/login").permitAll();  
+})
+```
+
+```java
+.oauth2Login(oauth2 -> {  
+    oauth2  
+            .loginPage("/login")  
+            .successHandler(successHandler);  
+})
+```
+
+## Acrescentando o link do Google no formulário
+
+Crie dentro do formulário html um link através do elemento `<a></a>`, utilizando o atributo `href` fornecido pelo Thymeleaf. É através deste atributo que será informado o link oauth2/authentication/google (que é um link padrão do Google). Você deve colocá-lo dentro de `@{}`.
+
+```html
+<a th:href="@{oauth2/authorization/google}" class="btn btn-primary w-100">Entrar com Google</a>
+```
+
+Isso é o suficiente para já testar a autenticação do Google no seu formulário customizado.
+
+## Como se autenticar pelo Google através do Postman
+
+Na área `Headers` do Postman, adicione a chave `Cookie` e o valor como `JSESSIONID=` mais o id da sua sessão. É possível encontrar o valor desta forma:
+
+![[Pasted image 20251017155818.png]]
