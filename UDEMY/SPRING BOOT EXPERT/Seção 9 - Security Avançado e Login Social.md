@@ -396,3 +396,77 @@ Isso é o suficiente para já testar a autenticação do Google no seu formulár
 Na área `Headers` do Postman, adicione a chave `Cookie` e o valor como `JSESSIONID=` mais o id da sua sessão. É possível encontrar o valor desta forma:
 
 ![[Pasted image 20251017155818.png]]
+
+# 137. Lógica para novos usuários que só tem login Google
+
+Anteriormente, o usuário conseguia apenas logar pelo Google, porém não conseguia se cadastrar através do Google. Com esta lógica, é possível fazer as duas coisas:
+
+```java
+private static final String SENHA_PADRAO = "321";  
+private final UsuarioService usuarioService;  
+  
+@Override  
+public void onAuthenticationSuccess(  
+        HttpServletRequest request,  
+        HttpServletResponse response,  
+        Authentication authentication) throws ServletException, IOException {  
+  
+    OAuth2AuthenticationToken oAuth2AuthenticationToken = (OAuth2AuthenticationToken) authentication;  
+    OAuth2User oAuth2User = oAuth2AuthenticationToken.getPrincipal();  
+    String email = oAuth2User.getAttribute("email");  
+  
+    Usuario usuario = this.usuarioService.obterPorEmail(email);  
+  
+    if (usuario == null){  
+        usuario = cadastrarUsuarioNaBase(email);  
+    }  
+  
+    authentication = new CustomAuthentication(usuario);  
+  
+    SecurityContextHolder.getContext().setAuthentication(authentication);  
+  
+    super.onAuthenticationSuccess(request, response, authentication);  
+}  
+  
+private Usuario cadastrarUsuarioNaBase(String email) {  
+    Usuario usuario;  
+    usuario = new Usuario();  
+    usuario.setEmail(email);  
+    usuario.setLogin(obterLoginAPartirDoEmail(email));  
+    usuario.setSenha(SENHA_PADRAO);  
+    usuario.setRoles(List.of("OPERADOR"));  
+  
+    this.usuarioService.salvar(usuario);  
+    return usuario;  
+}  
+  
+private String obterLoginAPartirDoEmail(String email) {  
+    return email.substring(0, email.indexOf("@"));  
+}
+```
+
+Em resumo: se o objeto adquirido pelo `this.usuarioService.obterPorEmail(email)` for nulo, então será criado, através do método `cadastrarUsuarioNaBase(String email)`, um novo objeto `Usuario` e, por fim, salvo no banco.
+
+**OBS.: o método `substring()` é utilizado para capturar uma fração de uma `String`. No caso de `obterLoginAPartirDoEmail(String email)`, será capturado a primeira letra do e-mail até a última letra anterior ao @.**
+## Criando métodos de forma mais prática.
+
+Selecione uma parte da lógica do programa e, em seguida, pressione `Ctrl` + `Alt Gr` + `m`. Isso fará com que esta lógica seja transferida para o corpo de um novo método.
+
+# 138. Variáveis de Ambiente para guardar secrets e conclusao do módulo
+
+## Por que utilizar variáveis de ambiente?
+
+É necessário utilizá-las no lugar do ID e da chave secreta do cliente, pois o GitHub não irá permitir subir elas em um commit. Então é preciso usar as variáveis de ambientes como forma de referência para estes dois valores.
+## Como criar uma variável de ambiente?
+
+Antes de tudo, copie os valores que serão referenciados e coloque em outro lugar. No lugar do valor referenciado, utilize `${}` e informe um nome (qualquer um) para variável dentro das chaves do `${}`.
+
+Agora clique nos `⋮` (canto superior direito) -> `Edit...`. Será aberto a seguinte tela:
+
+![[Pasted image 20251020151549.png]]
+
+Clique agora no ícone de `Edit environment variables` (à direita com o círculo vermelho). Caso não apareça, clique em `Modify options` -> `Environment variables` para que apareça esta opção.
+
+Depois clique no ícone de `+` para ir adicionando as variáveis de ambiente. Por fim, clique em `Ok` -> `Apply` -> `Ok`.
+
+**OBS.: as variáveis de ambiente não estarão disponíveis em um projeto caso você venha cloná-lo do GitHub.**
