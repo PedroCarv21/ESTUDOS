@@ -10,7 +10,6 @@ Um conjunto de diretrizes sobre como deve ser implementado uma API web. Dentre a
 ## Qual a diferença do Rest para Restful?
 
 Restful é simplesmente uma referência para as API's que implementam as diretrizes Rest.
-
 ## Estrutura de uma Request (solitação)
 
 - **URL**

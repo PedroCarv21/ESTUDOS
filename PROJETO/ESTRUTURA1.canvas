@@ -6,7 +6,7 @@
 		{"id":"72aeca6442b8a536","type":"text","text":"COMENTARIO","x":-120,"y":60,"width":250,"height":60},
 		{"id":"480e801a94407610","type":"text","text":"CRIA/EDITA/EXCLUI QUALQUER UM","x":-380,"y":-213,"width":200,"height":87},
 		{"id":"bb3dba4c50d99277","type":"text","text":"ADMIN","x":-220,"y":-560,"width":250,"height":60},
-		{"id":"899ae67fe04ee263","x":260,"y":-145,"width":200,"height":85,"type":"text","text":"CRIA/EDITA/EXCLUI APENAS O SEU (OU DO SEU) TIME"},
+		{"id":"899ae67fe04ee263","type":"text","text":"CRIA/EDITA/EXCLUI APENAS O SEU (OU DO SEU) TIME","x":260,"y":-145,"width":200,"height":85},
 		{"id":"d40d3597a9520165","type":"text","text":"GERENTE","x":380,"y":-340,"width":250,"height":60},
 		{"id":"8b148fddef20cd49","type":"text","text":"MEMBRO","x":-700,"y":-169,"width":250,"height":60}
 	],

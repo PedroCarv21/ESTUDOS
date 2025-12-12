@@ -10,8 +10,20 @@ O objetivo é fornecer uma ferramenta capaz de estruturar qualquer projeto em de
  
 ## Projeto
 
+
 ## Time
 
-## Tarefas
-# Papeis
 
+
+## Tarefas
+# O que cada papel pode fazer
+
+- ## ADM:
+	- Criar, atualizar e excluir projeto, time, tarefa, comentário
+	- Ele pode excluir um membro e atualizar suas permissões, porém ele não pode criar um novo membro.
+- ## MANAGER
+	- Criar, atualizar e excluir tarefa e comentário.
+	- Ele não pode criar um novo membro.
+- ## MEMBRO
+	- Criar um membro (ele mesmo).
+	- Criar, atualizar, e excluir comentário.

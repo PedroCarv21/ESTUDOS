@@ -115,7 +115,7 @@ A classe `ExampleMatcher` disponibiliza os seguintes métodos:
 
 - **`matching()`**: cria uma instância de `ExampleMatcher` para a configuração da comparação entre os dados.
 - **`withIgnoreCase()`**: ignora a diferença de letras maiúsculas e minúsculas entre os dados comparados.
-- **`withIgnoreNullValues()`**: ignora os campos nulos do objeto `Example`.
+- **`withIgnoreNullValues()`**: ignora os campos nulos do objeto passado como primeiro argumento.
 - **`withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING)`**: verifica se os caracteres informados estão **contidos** (equivalente ao `like '%texto%'` de SQL) nos dados do banco. Por exemplo: se foi informado 'pe' em um tabela que possui um registro com nome 'pedro' então este registro será selecionado, pois 'pe' está contido em 'pedro'.
 
 Este é um exemplo do uso de `Example` e `ExampleMatcher`:

@@ -4,24 +4,42 @@
     "type": "split",
     "children": [
       {
-        "id": "34c0b84ffe92cb38",
+        "id": "d50eb65a27f0c567",
         "type": "tabs",
         "children": [
           {
-            "id": "b57b0554fe44e65b",
+            "id": "8beb443a64cf30c7",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "PROJETO/ESTRUTURA2.canvas",
+                "viewState": {
+                  "x": -330,
+                  "y": 40,
+                  "zoom": -0.2850607121637929
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "ESTRUTURA2"
+            }
+          },
+          {
+            "id": "ba26031796353d5b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "UDEMY/SPRING BOOT EXPERT/Seção 9 - Security Avançado e Login Social.md",
+                "file": "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 7 - Commits Avançados.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Seção 9 - Security Avançado e Login Social"
+              "title": "Seção 7 - Commits Avançados"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -78,7 +96,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 383.5,
+    "width": 361.5,
     "collapsed": true
   },
   "right": {
@@ -170,39 +188,44 @@
       "command-palette:Abrir paleta de comando": false
     }
   },
-  "active": "b57b0554fe44e65b",
+  "active": "ba26031796353d5b",
   "lastOpenFiles": [
-    "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20251020151549.png",
-    "FACULDADE SENAC/Ética e Legislação em TI.md",
-    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 9 - GIT Avançado.md",
-    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 8 - Resolução de Conflitos.md",
-    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 6 - Utilizando Git Flow.md",
+    "PROJETO/ESTRUTURA2.canvas",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 7 - Commits Avançados.md",
-    "UDEMY/SPRING BOOT EXPERT/Seção 9 - Security Avançado e Login Social.md",
-    "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20251017155818.png",
-    "Pasted image 20251017155735.png",
+    "PROJETO/Projeto Sistema de Controle de Projetos com Time.md",
     "UDEMY/SPRING BOOT EXPERT/Seção 8 - Aprendendo Spring Security.md",
     "UDEMY/SPRING BOOT EXPERT/Seção 4 - Acesso a Dados com Spring Data JPA.md",
-    "FACULDADE SENAC/Programação Web II.md",
-    "FACULDADE SENAC/Tópicos Especiais em TI.md",
-    "FACULDADE SENAC/Gestão e Governança de TI.md",
-    "FACULDADE SENAC/Gerenciamento Ágil de Projeto.md",
-    "Sem título.md",
+    "UDEMY/SPRING BOOT EXPERT/Seção 5 - Desenvolvimento de API's RestFul.md",
     "UDEMY/SPRING BOOT EXPERT/Seção 7 - Aprendendo Mais Recursos desenvolvendo a API de Livros.md",
     "UDEMY/SPRING BOOT EXPERT/Seção 6 - Introdução ao Bean Validation e Melhorias para API.md",
-    "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250929165334.png",
-    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 1 - Boas Vindas e Introdução.md",
-    "UDEMY/SPRING BOOT EXPERT/Seção 5 - Desenvolvimento de API's RestFul.md",
+    "PROJETO/ESTRUTURA1.canvas",
+    "UDEMY/SPRING BOOT EXPERT/Seção 9 - Security Avançado e Login Social.md",
+    "ESTRUTURA DOS ESTUDOS.canvas",
+    "PROJETO",
     "UDEMY/SPRING BOOT EXPERT/Seção 3 - Arquitetura e Estrutura do Framework.md",
     "UDEMY/SPRING BOOT EXPERT/Seção 2 - Primeiros Passos.md",
+    "FACULDADE SENAC/Ética e Legislação em TI.md",
+    "Sem título.base",
+    "FACULDADE SENAC/Gestão e Governança de TI.md",
+    "2025-11-21.md",
+    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 6 - Utilizando Git Flow.md",
+    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 5 - Trabalhando com branches.md",
+    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 9 - GIT Avançado.md",
+    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 8 - Resolução de Conflitos.md",
+    "FACULDADE SENAC/Tópicos Especiais em TI.md",
+    "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20251020151549.png",
+    "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20251017155818.png",
+    "Pasted image 20251017155735.png",
+    "FACULDADE SENAC/Programação Web II.md",
+    "FACULDADE SENAC/Gerenciamento Ágil de Projeto.md",
+    "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250929165334.png",
+    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 1 - Boas Vindas e Introdução.md",
     "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250925093419.png",
     "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250925095346.png",
     "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250925095945.png",
     "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250924122132.png",
     "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250924112952.png",
     "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250924153713.png",
-    "UDEMY/SPRING BOOT EXPERT/IMAGENS/Pasted image 20250924133005.png",
-    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 5 - Trabalhando com branches.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 4 - Utilizando GitHub.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 3 - GIT Fundamental.md",
     "UDEMY/FRONT-END - DANIEL TAPIAS/IMAGENS",
@@ -211,16 +234,13 @@
     "Sem título 2.canvas",
     "Sem título 1.canvas",
     "Sem título 1.base",
-    "Sem título.base",
     "2025-09-07.md",
     "UDEMY/FRONT-END - DANIEL TAPIAS/Seção 11 - Formulários.md",
     "UDEMY/SPRING BOOT EXPERT/IMAGENS",
-    "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Sessão 6 - Utilizando GIT Flow.md",
     "FACULDADE SENAC/CICLO II",
     "FACULDADE SENAC/CICLO II",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO",
     "FACULDADE SENAC/CICLO I",
-    "FACULDADE SENAC",
     "CANVAS SPRING BOOT.canvas"
   ]
 }
