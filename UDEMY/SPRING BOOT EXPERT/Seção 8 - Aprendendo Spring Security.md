@@ -224,6 +224,9 @@ Por fim, para especificar o uso da página loginl.html criada, e não a utiliza�
 
 O método `permitAll()` é utilizado para que todos os usuários, sem a necessidade de autenticação, possam acessar essa página.
 
+> [!NOTE]
+> Comente a linha `httpBasic(Customizer.withDefaults())` para que não haja conflito. Caso contrário, haverá uma concorrência entre dois entryPoints (ponto de entrada do Spring Security que decide o que fazer quando alguém não autenticado tenta acessar um recurso protegido).
+
 # 121. Criando um repositorio de usuários em memoria
 
 ## Armazenamento dos usuários em memória
@@ -452,7 +455,7 @@ public ResponseEntity<AutorDTO> obterDetalhes(@PathVariable("id") UUID id) {
 
 ## Exceção `AccessDeniedException`
 
-A exceção `AccessDeniedException` é lançada quando um usuário está autenticado, mas não tem permissão suficiente para acessar um recurso ou executar uma ação (equivalente ao código de status 403).
+A exceção `AccessDeniedException` do pacote `org.springframework.security.access.AccessDeniedException` é lançada quando um usuário está autenticado, mas não tem permissão suficiente para acessar um recurso ou executar uma ação (equivalente ao código de status 403).
 
 # 127. Implementando auditoria de usuários e finalizando os requisitos
 
