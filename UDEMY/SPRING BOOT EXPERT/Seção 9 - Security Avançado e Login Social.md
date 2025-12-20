@@ -204,7 +204,7 @@ Há também outros métodos de `Authentication` que terão o seu corpo alterado:
 
 # 130. Criando um `AuthenticationProvider` customizado
 
-Para criação de um 'fornecedor de autenticação' customizado, é necessário criar um componente que implemente a interface `AuthenticationProvider`, que possui dois métodos:
+O `AuthenticationProvider` é uma interface encarregada de processar uma solicitação de autenticação específica. Para criação de um 'fornecedor de autenticação' customizado, é necessário criar um componente que implemente a interface `AuthenticationProvider`, que possui dois métodos:
 
 - `supports(Class<?> authentication)`: informará qual o tipo de autenticação esse 'fornecedor de autenticação' suporta. Neste caso, como se trata do fornecimento de login e senha, será utilizado a classe `UsernamePasswordAuthenticationToken.class` como argumento do método `authentication.isAssignableFrom()`, método responsável por comparar o tipo de autenticação fornecida pelo usuário e a autenticação suportada pelo 'fornecedor de autenticação'. Caso afirmativo, retornará `true`.
 - `authenticate(Authentication authentication)`: caso o método `supports` retorne `true`, será retornado um objeto `UsernamePasswordAuthenticationToken`, que também implementa `Authentication`, e injetado esse objeto no método `authenticate`. O objeto `UsernamePasswordAuthenticationToken` já estará com os dados informados pelo usuário durante o login. Por fim, será criada uma regra de negócio para fazer a validação do login, retornando um objeto `Authentication` (neste caso, será usado a classe `CustomAuthentication` que implementa esta interface).
