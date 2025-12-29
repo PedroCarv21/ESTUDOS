@@ -118,7 +118,7 @@ E com isso, sua aplicação pode permitir login com Google ou consumir APIs do G
 
 ## Habilitando a autenticação OAuth2 no form. de Login
 
-Para habilitar a autenticação via OAuth2 Login no Spring Security, utilize comando `http.oauth2Login(Customizer.withDefaults())` na classe de configuração do Secutiry. Por ora, utilize o formulário padrão com o comando `http.formLogin(Customizer.withDefaults())`, pois este já adiciona automaticamente o link de autenticação do Google no formulário. O código deve ficar mais ou menos assim:
+Para habilitar a autenticação via OAuth2 Login no Spring Security, utilize comando `oauth2Login(Customizer.withDefaults())` na classe de configuração do Secutiry. Por ora, utilize o formulário padrão com o comando `formLogin(Customizer.withDefaults())`, pois este já adiciona automaticamente o link de autenticação do Google no formulário. O código deve ficar mais ou menos assim:
 
 ```java
 @Bean  
@@ -159,7 +159,7 @@ public String paginaHome(){
 }
 ```
 
-A anotação `@ResponseBody` serve para informar que o retorno aqui não será um arquivo, mas sim uma mensagem que deve ser exibida na página principal (já que o cominho é apenas uma barra (/)). O resultado será este após se autenticar:
+A anotação `@ResponseBody` serve para informar que o retorno aqui não será um arquivo, mas sim uma mensagem que deve ser exibida na página principal (já que o caminho é apenas uma barra (/)). O resultado será este após se autenticar:
 
 ![[Pasted image 20250925095945.png]]
 
@@ -170,7 +170,6 @@ Na seção passada, foi dito que, ao fazer login através da autenticação do G
 Sendo assim, será necessário criar uma autenticação customizada, adaptada ao contexto da aplicação. Para isso, é preciso criar uma classe que implemente a interface `Authentication` do pacote `org.springframework.security.core`, que contém a principal identidade do utilizador, as credenciais (como a senha), e as autoridades (ou permissões) concedidas ao utilizador.
 
 **OBS.: não esqueça de implementar os métodos da interface.**
-
 ## Retornando as roles de um usuário
 
 Para isso, será criado um atributo do tipo de uma classe que carregue os seus dados (neste exemplo, será a classe `Usuario`). Assim será possível retornar as roles de um determinado usuário a partir de um dos métodos de `Authentication` que foram implementados (neste caso, o método `getAuthorities()`).
@@ -310,7 +309,7 @@ alter table nome_tabela add column nome_coluna(100)
 
 Esta aula teve como objetivo capturar os dados que o usuário passou no login do Google e transformar esses dados em um objeto `CustomAuthetication`.
 
-Para isso, será necessário ir até o método que define a cadeia de filtros de segurança, presente na classe de configuração de segurança, e trocar `oauth2Login(Customizer.withDefaults())` por `oauth2Login(oauth2 -> oauth2.successHandler())`, sendo `oauth2.successHandler()` responsável por executar uma ação em caso do usuário se autenticar com sucesso. 
+Para isso, será necessário ir até o método que define a cadeia de filtros de segurança, presente na classe de configuração de segurança, e trocar `oauth2Login(Customizer.withDefaults())` por `oauth2Login(oauth2 -> oauth2.successHandler())`, sendo `oauth2.successHandler()` responsável por executar uma ação em caso do usuário se autenticar com sucesso.
 
 O método `oauth2.successHandler()` irá receber como argumento uma classe que implemente o `AuthenticationSuccessHandler`. No exemplo da aula, foi criado uma nova classe que estende `SavedRequestAwareAuthenticationSuccessHandler`, sendo que ela mesma implementa o `AuthenticationSuccessHandler`.
 

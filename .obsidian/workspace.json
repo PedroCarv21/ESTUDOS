@@ -4,25 +4,59 @@
     "type": "split",
     "children": [
       {
-        "id": "4c59eae33c6643d4",
+        "id": "26aaeb8e506df772",
         "type": "tabs",
         "children": [
           {
-            "id": "11be71ed49d075c8",
+            "id": "738a8cb60e664477",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "UDEMY/SPRING BOOT EXPERT/Seção 9 - Security Avançado e Login Social.md",
+                "file": "PROJETO/Projeto Sistema de Controle de Projetos com Time.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Seção 9 - Security Avançado e Login Social"
+              "title": "Projeto Sistema de Controle de Projetos com Time"
             }
           },
           {
-            "id": "0b084017a12e8ba4",
+            "id": "0ddab2af0dfe296d",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "PROJETO/ESTRUTURA.canvas",
+                "viewState": {
+                  "x": -330,
+                  "y": 40,
+                  "zoom": -0.6161750143094231
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "ESTRUTURA"
+            }
+          },
+          {
+            "id": "6cc67fe5f03edbb5",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "PROJETO/ENTIDADES.canvas",
+                "viewState": {
+                  "x": -706.434227818982,
+                  "y": -241.523279122933,
+                  "zoom": -0.8333333333333335
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "ENTIDADES"
+            }
+          },
+          {
+            "id": "32d0df4cd4049af1",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -109,7 +143,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 6 - Utilizando Git Flow.md",
+                "file": "UDEMY/SPRING BOOT EXPERT/Seção 9 - Security Avançado e Login Social.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -119,7 +153,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks para Seção 6 - Utilizando Git Flow"
+              "title": "Backlinks para Seção 9 - Security Avançado e Login Social"
             }
           },
           {
@@ -184,13 +218,14 @@
       "command-palette:Abrir paleta de comando": false
     }
   },
-  "active": "11be71ed49d075c8",
+  "active": "738a8cb60e664477",
   "lastOpenFiles": [
-    "UDEMY/SPRING BOOT EXPERT/Seção 8 - Aprendendo Spring Security.md",
-    "UDEMY/SPRING BOOT EXPERT/Seção 9 - Security Avançado e Login Social.md",
-    "PROJETO/ESTRUTURA1.canvas",
-    "PROJETO/ESTRUTURA2.canvas",
+    "PROJETO/ENTIDADES.canvas",
     "PROJETO/Projeto Sistema de Controle de Projetos com Time.md",
+    "PROJETO/ESTRUTURA.canvas",
+    "UDEMY/SPRING BOOT EXPERT/Seção 8 - Aprendendo Spring Security.md",
+    "PROJETO/ESTRUTURA1.canvas",
+    "UDEMY/SPRING BOOT EXPERT/Seção 9 - Security Avançado e Login Social.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 7 - Commits Avançados.md",
     "UDEMY/SPRING BOOT EXPERT/Seção 4 - Acesso a Dados com Spring Data JPA.md",
     "UDEMY/SPRING BOOT EXPERT/Seção 5 - Desenvolvimento de API's RestFul.md",

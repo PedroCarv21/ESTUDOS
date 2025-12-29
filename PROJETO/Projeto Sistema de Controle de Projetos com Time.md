@@ -10,20 +10,136 @@ O objetivo é fornecer uma ferramenta capaz de estruturar qualquer projeto em de
  
 ## Projeto
 
+### GET/
 
+- Ver informações de todos os projetos que **participa**.
+- **Autorização**: TODOS
+
+### GET/nome
+
+- Buscar informações de um projeto específico com base no nome.
+- **Autorização**: TODOS
+
+### POST/
+
+- Criar projeto.
+- **Autorização**: ADM
+
+### PUT/
+
+- Atualizar informações do projeto.
+- **Autorização**: ADM
+
+### DELETE/
+
+- Deletar projeto
+- **Autorização**: ADM
+
+**OBS: É SOMENTE UM DELETE LÓGICO**
 ## Time
 
+### GET/
 
+- Ver informações de todos os times que **participa**.
+- **Autorização**: TODOS
 
-## Tarefas
-# O que cada papel pode fazer
+### GET/nome
 
-- ## ADM:
-	- Criar, atualizar e excluir projeto, time, tarefa, comentário
-	- Ele pode excluir um membro e atualizar suas permissões, porém ele não pode criar um novo membro.
-- ## MANAGER
-	- Criar, atualizar e excluir tarefa e comentário.
-	- Ele não pode criar um novo membro.
-- ## MEMBRO
-	- Criar um membro (ele mesmo).
-	- Criar, atualizar, e excluir comentário.
+- Buscar informações de um time específico com base no nome.
+- **Autorização**: TODOS
+
+### POST/
+
+- Criar time.
+- **Autorização**: ADM e MANAGER
+
+### PUT/
+
+- Atualizar informações do time.
+- **Autorização**: ADM e MANAGER
+
+### PUT/adicionar_membros
+
+- Adicionar novos membros
+- **Autorização**: ADM e MANAGER
+
+### PUT/excluir_membros
+
+- Excluir membros.
+- **Autorização**: ADM e MANAGER
+
+**OBS.: QUANDO EXCLUIR OS MEMBROS DO TIME, DEVE EXCLUIR TAMBÉM SUA PARTICIPAÇÃO NAS TAREFAS.**
+### DELETE/
+
+- Deletar time
+- **Autorização**: ADM e MANAGER
+## Tarefa
+
+### GET/
+
+- Ver informações de todos as tarefas que **participa**.
+- **Autorização**: TODOS
+
+### GET/nome
+
+- Buscar informações de um tarefa específico com base no nome.
+- **Autorização**: TODOS
+
+### POST/
+
+- Criar tarefa.
+- **Autorização**: ADM e MANAGER
+
+### PUT/
+
+- Atualizar informações do projeto.
+- **Autorização**: ADM e MANAGER
+
+### PUT/adicionar_membros
+
+- Incluir novos membros/gerente na tarefa.
+- **Autorização**: ADM e MANAGER
+
+### PUT/excluir_membros
+
+- Excluir membros/gerente na tarefa.
+- **Autorização**: ADM e MANAGER
+### DELETE/
+
+- Deletar tarefa
+- **Autorização**: ADM
+
+**OBS.: É NECESSÁRIO TAMBÉM DELETAR OS COMENTÁRIOS VINCULADOS A TAREFA.**
+## Comentário
+
+### GET/
+
+- Ver informações de todos os comentários que **escreveu**.
+- **Autorização**: TODOS
+
+### POST/
+
+- Criar comentário.
+- **Autorização**: TODOS
+
+### PUT/
+
+- Atualizar informações do comentário.
+- **Autorização**: TODOS
+### DELETE/
+
+- Deletar comentário
+- **Autorização**: TODOS
+
+# Papeis
+
+## ADM
+
+O seu diferencial dentre os demais é:
+
+- Manipular projetos.
+- Excluir membros e gerentes.
+## MANAGER
+
+- Manipular membros do seu próprio time.
+## MEMBRO
