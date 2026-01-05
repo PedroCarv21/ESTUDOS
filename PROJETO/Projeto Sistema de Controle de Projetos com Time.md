@@ -139,7 +139,35 @@ O seu diferencial dentre os demais é:
 
 - Manipular projetos.
 - Excluir membros e gerentes.
+- Ela não será incluído em nenhum time.
+- Ele não ficará responsável por qualquer tarefa.
+
+De resto, ele pode fazer tudo.
 ## MANAGER
 
 - Manipular membros do seu próprio time.
+- 
 ## MEMBRO
+
+Dentre as suas funcionalidades estão:
+
+- Mudar o status da tarefa.
+- Manipular o comentário da tarefa.
+- Atualizar suas próprias informações.
+
+
+| AUTORIZAÇÕES                                | ADM | MANAGER | MEMBER |
+| ------------------------------------------- | --- | ------- | ------ |
+| Criar, atualizar e deletar projeto          | SIM | NÃO     | NÃO    |
+| Criar time                                  | SIM | NÃO     | NÃO    |
+| Deletar time                                | SIM | NÃO     | NÃO    |
+| Adicionar e excluir tarefas do time         | SIM | SIM     | NÃO    |
+| Adicionar e trocar gerente do time          | SIM | NÃO     | NÃO    |
+| Adicionar e excluir membros do time         | SIM | SIM     | NÃO    |
+| Atualizar nome e status do time             | SIM | SIM     | NÃO    |
+| Criar e excluir tarefa                      | SIM | SIM     | NÃO    |
+| Atualizar nome da tarefa                    | SIM | SIM     | NÃO    |
+| Atualizar status da tarefa                  | SIM | SIM     | SIM    |
+| Adicionar, atualizar e excluir comentários  | SIM | SIM     | SIM    |
+| Vincular e desvincular membros a uma tarefa | SIM | SIM     | NÃO    |
+
