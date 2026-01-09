@@ -1,10 +1,8 @@
 {
 	"nodes":[
-		{"id":"3ed844cb70f3be0b","type":"text","text":"TAREFA\n\nATRIBUTOS:\n\n- NOME\n- DATA_CRIACAO\n- DATA_ATUALIZACAO\n- STATUS\n- COMENTARIOS\n- ENTREGA\n- PROJETO\n- TIME\n- USUARIOS\n- CRIADO_POR","x":-643,"y":-166,"width":250,"height":378},
-		{"id":"51f14816718b5d7e","type":"text","text":"COMENTARIO\n\nATRIBUTOS:\n\n- NOME\n- DATA_CRIACAO\n- DATA_ATUALIZACAO\n- STATUS\n- DESCRICAO\n- TAREFA\n- AUTOR","x":-145,"y":-166,"width":250,"height":351},
-		{"id":"d9fd6531ed0e9210","type":"text","text":"TIME\n\nATRIBUTOS:\n\n- NOME\n- DATA_CRIACAO\n- DATA_ATUALIZACAO\n- GERENTE\n- USUARIOS\n- PROJETO\n- STATUS\n- TAREFAS","x":-1706,"y":-166,"width":250,"height":351},
-		{"id":"af358f1d3e8afc50","type":"text","text":"BASEENTITY\n\nATRIBUTOS:\n\n- NOME\n- DATA_CRIACAO\n- DATA_ATUALIZACAO\n- STATUS","x":-1132,"y":-799,"width":250,"height":220},
-		{"id":"fdc386c099af861c","type":"text","text":"USUARIO\n\nATRIBUTOS:\n- NOME\n- EMAIL\n- SENHA\n- DATA_CRIACAO\n- DATA_ATUALIZACAO\n- STATUS\n- PROJETOS\n- TIMES\n- TAREFAS\n- COMENTARIOS\n","x":-1132,"y":368,"width":250,"height":378,"color":"1"},
+		{"id":"51f14816718b5d7e","type":"text","text":"COMENTARIO\n\nATRIBUTOS:\n\n- ID\n- NOME\n- DATA_CRIACAO\n- DATA_ATUALIZACAO\n- STATUS\n- DESCRICAO\n- TAREFA\n- AUTOR","x":-145,"y":-166,"width":250,"height":351},
+		{"id":"d9fd6531ed0e9210","type":"text","text":"TIME\n\nATRIBUTOS:\n\n- ID\n- NOME\n- DATA_CRIACAO\n- DATA_ATUALIZACAO\n- GERENTE\n- USUARIOS\n- PROJETO\n- STATUS\n- TAREFAS","x":-1706,"y":-166,"width":250,"height":351},
+		{"id":"fdc386c099af861c","type":"text","text":"USUARIO\n\nATRIBUTOS:\n- ID\n- NOME\n- EMAIL\n- SENHA\n- DATA_CRIACAO\n- DATA_ATUALIZACAO\n- STATUS\n- PROJETOS\n- TIMES\n- TAREFAS\n- COMENTARIOS\n","x":-1132,"y":368,"width":250,"height":378,"color":"1"},
 		{"id":"041d4fe2ddb66a95","type":"text","text":"ADM\n\n","x":-1254,"y":882,"width":122,"height":50},
 		{"id":"4acbb57364e1f20b","type":"text","text":"MEMBRO","x":-884,"y":882,"width":148,"height":50},
 		{"id":"f3835346086accf7","type":"text","text":"GERENTE","x":-1070,"y":882,"width":127,"height":50},
@@ -23,7 +21,7 @@
 		{"id":"22e1b78db10e9df7","type":"text","text":"PROJETO","x":-1094,"y":-1572,"width":125,"height":60},
 		{"id":"006557e594e298e8","type":"text","text":"GERENTE","x":-1330,"y":-1698,"width":144,"height":60},
 		{"id":"e85f176478fce543","type":"text","text":"MEMBRO","x":-1330,"y":-1460,"width":144,"height":60},
-		{"id":"b2cc5876f7176825","type":"text","text":"PROJETO\n\nATRIBUTOS:\n- NOME\n- DATA_CRIACAO\n- DATA_ATUALIZACAO\n- STATUS\n- TIMES\n- UISUARIOS\n- CRIADO_POR","x":-1132,"y":-528,"width":250,"height":299},
+		{"id":"b2cc5876f7176825","type":"text","text":"PROJETO\n\nATRIBUTOS:\n- NOME\n- DATA_CRIACAO\n- DATA_ATUALIZACAO\n- STATUS\n- TIMES\n- USUARIOS\n- CRIADO_POR","x":-1132,"y":-528,"width":250,"height":299},
 		{"id":"7f5107a4abb9d17d","type":"text","text":"ADM","x":-1330,"y":-1572,"width":144,"height":60},
 		{"id":"96ea47975b2f764b","type":"text","text":"TAREFA","x":-698,"y":-2424,"width":137,"height":60},
 		{"id":"1c01ac5316f7e2ea","type":"text","text":"TIME","x":-698,"y":-2304,"width":137,"height":60},
@@ -37,7 +35,9 @@
 		{"id":"46d6df5255f55634","type":"text","text":"TAREFA","x":-698,"y":-2692,"width":137,"height":60},
 		{"id":"f21241bb736a12cf","type":"text","text":"COMENTARIO","x":-486,"y":-2692,"width":164,"height":60},
 		{"id":"92559542fca3580d","type":"text","text":"COMENTARIO","x":-486,"y":-2566,"width":164,"height":60},
-		{"id":"775b4c6ad88ce74e","type":"text","text":"PROJETO","x":-1094,"y":-2566,"width":125,"height":60}
+		{"id":"775b4c6ad88ce74e","type":"text","text":"PROJETO","x":-1094,"y":-2566,"width":125,"height":60},
+		{"id":"3ed844cb70f3be0b","type":"text","text":"TAREFA\n\nATRIBUTOS:\n\n- ID\n- NOME\n- DATA_CRIACAO\n- DATA_ATUALIZACAO\n- STATUS\n- COMENTARIOS\n- ENTREGA\n- PROJETO\n- TIME\n- USUARIOS\n- CRIADO_POR","x":-643,"y":-192,"width":250,"height":404},
+		{"id":"af358f1d3e8afc50","type":"text","text":"BASEENTITY\n\nATRIBUTOS:\n\n- ID\n- NOME\n- DATA_CRIACAO\n- DATA_ATUALIZACAO","x":-1132,"y":-822,"width":250,"height":246}
 	],
 	"edges":[
 		{"id":"225223d9aa82066c","fromNode":"3ed844cb70f3be0b","fromSide":"right","toNode":"51f14816718b5d7e","toSide":"left","label":"OneToMany"},
