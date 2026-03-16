@@ -1,0 +1,372 @@
+
+# 7 - Instalação de ferramentas
+
+## O que é pgAdmin?
+
+Ferramenta utilizada para acessar as bases de dados PostgreSQL.
+
+# 8 - Tabela de clientes
+
+## Diferença entre `char` e `varchar`
+
+- **`char`**: sempre armazenará no disco rígido o valor informado entre parênteses. Por exemplo: `cpf char(11)` sempre armazenará 11 caracteres, não importando se é ou não utilizado 11 caracteres em um dado registro.
+- **`varchar`**: só armazena um número de caracteres de acordo com o valor passado. Por exemplo: `nome varchar(50)` é um campo que armazena no máx. 50 caracteres, mas se for passado um valor como `Pedro`, então só serão armazenados 5 caracteres no disco rígido.
+
+## Comentários
+
+Utilize o `--` antes do conteúdo que será transformado em comentário.
+
+## Restrição
+
+A restrição, criada através do `constraint`, impõe uma determinada regra a um campo específico. Um exemplo é o `primary key`, que determina um valor único em um campo específico para cada registro. Essa restrição seria criada desta forma:
+
+```sql
+create table clientes(
+	id integer not null,
+	nome varchar(100) not null,
+	email varchar(100) not null,
+	
+	constraint id_cln primary key (id)
+)
+```
+
+Isso significa que dois ou mais registros da tabela cliente não poderão ter o mesmo valor no campo 'id'.
+
+# 9 - Inserção de dados
+
+Para fazer a inserção de dados, é necessário informar `insert into <nome do banco> (campo1, campo2) values (1, 'Pedro')`.
+
+
+# 12 - Consulta simples 1
+
+## Renomeação de colunas
+
+Utilize a palavra-chave `as` para renomear uma coluna:
+
+```sql
+select nome, data_nascimento as "Data de Nascimento" from cliente;
+```
+
+**OBS.: o nome deve estar entre aspas duplas.**
+## Concatenação do valor dos registros
+
+Utilize o `||` para concatenar um texto com um valor de um registro.
+
+```sql
+select 'CPF: ' || cpf || 'RG: ' || rg as "CPF e RG" from cliente
+```
+
+## Limitando o número de registros
+
+Utilize a palavra-chave `limit` e, em seguida, informe a quantidade de registros desejada.
+
+```sql
+select * from cliente limit 3;
+```
+
+# 13 - Consultas simples 2
+
+## Filtrando consulta com base na data
+
+É possível buscar registros cujo o valor de alguma coluna seja menor ou maior que uma data específica:
+
+```sql
+select * from cliente where data_nascimento > '2000-01-01';
+```
+
+Há também como buscar registros cujo o valor referente a alguma coluna esteja entre uma e outra data, através da palavra-chave `between` e `and`.
+
+```sql
+select nome, data_nascimento 
+from cliente 
+where data_nascimento between '1990-01-01' and '2020-12-31';
+```
+
+## Buscando registros com valores nulos
+
+Utilize o comando `is null`
+
+```sql
+select nome, rg from cliente where rg is null;
+```
+
+## Ordenando registros em uma busca
+
+Utilize o comando `order by` e, em seguida, a coluna utilizada como critério para a ordenação.
+
+```sql
+select nome, data_nascimento 
+from cliente 
+order by data_nascimento asc;
+```
+
+**OBS.: o `asc` é opcional.**
+
+Caso queira em ordem decrescente, utilize o comando `desc`:
+
+```sql
+select nome, data_nascimento 
+from cliente 
+order by data_nascimento desc;
+```
+
+# 17. Comandos update e delete
+
+## Atualização de múltiplos campos
+
+Basta colocar a atualização de cada campo separado por vírgula:
+
+```sql
+update cliente set genero = 'F', profissao = 'Professora', numero = '123'
+where idcliente = 18;
+```
+
+# 20. Criação de mais tabelas
+
+É possível exigir de uma coluna valores únicos para cada um dos registros:
+
+```sql
+create table bairro(
+	idbairro integer not null,
+	nome varchar(30) not null,
+
+	constraint pk_brr_idbairro primary key (idbairro),
+	constraint un_brr_nome unique (nome)
+);
+```
+
+# 21. Chaves estrangeiras 1
+
+## Alterando nome da coluna
+
+Utilize o comando `alter table <nome_tabela> rename <nome_atual_coluna> to <novo_nome_coluna>;`.
+
+## Alterando o tipo de uma coluna
+
+Utilize o comando `alter table <nome_tabela> alter column <nome_coluna> type <novo_tipo>`. Por exemplo:
+
+```sql
+alter table cliente alter column idprofissao type integer;
+```
+
+## Apagando coluna da tabela
+
+`alter table <nome_tabela> drop column <nome_coluna>`
+
+## Adicionando coluna na tabela
+
+`alter table <nome_tabela> add column <nome_coluna> <tipo>`
+
+## Adicionando uma chave estrangeira
+
+Chave estrangeira é uma coluna ou conjunto de colunas em uma tabela que estabelece um vínculo com a chave primária de outra tabela. Este é o comando:
+
+```sql
+alter table <nome_tabela_com_chave_estrangeira>
+add constraint <nome_chave_estrangeira> foreign key (<coluna_chave_estrangeira>) references <nome_tabela_com_chave_primaria> (<coluna_chave_primaria>);
+```
+
+## Atualizando valores de uma coluna de uma vez só
+
+```sql
+update <nome_tabela> set <coluna_que_tera_valores_alterados> = <valor> where <coluna_qualquer> in (<valor1>, <valor2>, <valor3>, etc.);
+```
+
+# 28. Tabela de pedidos 2
+
+## Criação de chave primária composta
+
+A chave primária composta é formada por dois ou mais campos que, juntos, seus valores não podem se repetir mais de uma vez. Para criar uma chave primária composta, basta colocar entre parênteses o nome das colunas que farão parte desta chave. Exemplo:
+
+```sql
+create table pedido_produto(
+	idpedido integer not null,
+	idproduto integer not null,
+	quantidade integer not null,
+	valor_unitario float not null,
+
+	constraint pk_pdp_idpedidoproduto primary key (idpedido, idproduto),
+	constraint fk_pdp_idpedido foreign key (idpedido) references pedido (idpedido),
+	constraint fk_pdp_idproduto foreign key (idproduto) references produto (idproduto)
+);
+```
+
+# 31. Solução 2
+
+## Operador de comparação `<>`
+
+É um operador de comparação que significa “diferente de” (not equal). Significa o mesmo que `!=`. Exemplo:
+
+```sql
+SELECT *
+FROM clientes
+WHERE idade <> 18;
+```
+
+# 32. Funções agregadas
+
+## `avg`
+
+Calcula a média do valor de alguma coluna. Neste exemplo, será calculado a média de todos os valores presentes na coluna `valor` da tabela `pedido`
+
+```sql
+select avg(valor) as media
+from pedido;
+```
+
+É possível também selecionar quais registros serão considerados para o cálculo da média. Exemplo:
+
+```sql
+select avg(valor) from pedido
+where idcliente = 9;
+```
+
+## `count`
+
+Retorna a quantidade de registros não nulos com base em uma determinada coluna. Exemplo:
+
+```sql
+select count(cpf) from cliente;
+```
+
+Se quiser incluir valores não nulos na contagem, utilize `count(*)`.
+## `min` e `max`
+
+Retorna o valor mínimo e o valor máximo de uma tabela.
+
+```sql
+select min(valor) as minimo, max(valor) as maximo
+from pedido;
+```
+
+## `sum`
+
+Retorna a soma de todos os valores de uma determinada coluna:
+
+```sql
+select sum(valor)
+from pedido;
+```
+## Comandos `group by` e `having`
+
+Quando for preciso selecionar uma função agregada e mais uma coluna, é necessário utilizar o `group by <nome_coluna>` para saber qual coluna a consulta se baseará para fazer um agrupamento. Exemplo:
+
+```sql
+select idcliente, sum(valor) 
+from pedido
+group by idcliente;
+```
+
+Caso ainda queira filtrar a consulta, em vez de `while`, utilize a palavra-chave `having` da seguinte forma:
+
+```sql
+select idcliente, sum(valor) 
+from pedido
+group by idcliente
+having sum(valor) > 500;
+```
+
+É possível agrupar linhas que possuem a mesma combinação de duas ou mais colunas. Exemplo:
+
+```sql
+select idcliente, idvendedor, valor
+from pedido;
+```
+
+Suponha que o resultado fosse esse:
+
+| idcliente | idvendedor | valor |
+| --------- | ---------- | ----- |
+| 1         | 1          | 1300  |
+| 1         | 1          | 500   |
+Caso precise, por exemplo, somar os valores com base no idcliente e no idvendedor, o comando sql seria esse:
+
+```sql
+select idcliente, idvendedor, sum(valor)
+from pedido
+group by idcliente, idvendedor;
+```
+
+E o resultado seria esse:
+
+| idcliente | idvendedor | valor |
+| --------- | ---------- | ----- |
+| 1         | 1          | 1800  |
+
+# 38. Relacionamentos com joins
+
+## left outer join (left join)
+
+Retorna todos os registros da tabela esquerda e os correspondentes da direita. Exemplo:
+
+Tabela de clientes
+
+| cliente | idproduto |
+| ------- | --------- |
+| Pedro   | 1         |
+| Maria   | null      |
+| null    | 2         |
+
+Tabela de produtos:
+
+| idproduto | nome    |
+| --------- | ------- |
+| 1         | TV      |
+| 2         | celular |
+
+Se fosse executado o seguinte comando:
+
+```sql
+select c.cliente, p.nome
+from clientes c
+left outer join
+produtos p
+on c.idproduto = p.idproduto;
+```
+
+**OBS.: o comando `outer` é opcional.**
+
+O resultado da consulta seria:
+
+| cliente | nome    |
+| ------- | ------- |
+| Pedro   | TV      |
+| Maria   | null    |
+| null    | celular |
+
+## right outer join (right join)
+
+Retorna todos os registros da tabela direita e os correspondentes da esquerda. Considerando ainda as tabelas de clientes e de produtos e utilizando agora o seguinte comando:
+
+```sql
+select c.cliente, p.nome
+from clientes c
+right outer join
+produtos p
+on c.idproduto = p.idproduto;
+```
+
+O resultado seria:
+
+| cliente | nome    |
+| ------- | ------- |
+| Pedro   | TV      |
+| null    | celular |
+
+## inner join
+
+Já o inner join retorna  apenas os registros que possuem correspondência nas duas tabelas. Se o comando fosse:
+
+```sql
+select c.cliente, p.nome
+from clientes c
+inner join produtos p
+on c.idproduto = p.idproduto;
+```
+
+O resultado seria:
+
+| cliente | nome    |
+| ------- | ------- |
+| Pedro   | TV      |
+| NULL    | celular |
