@@ -31,3 +31,97 @@
 - Não traduz instruções que nunca são executadas.
 - Consome menos memória.
 - Execução mais lenta do que a compilação.
+
+# O que é amarração (binding)
+
+Associação entre entidade de programação, tais como:
+
+- Variável amarrada a um valor.
+- Operador amarrado a um símbolo.
+
+# Como se chama o tempo em que a amarração ocorre?
+
+Tempo de amarração.
+
+# O que é amarração de tipo?
+
+Vínculo entre a variável e o tipo. Esse vínculo pode ser:
+
+- **Estático:** Ocorrem antes da execução e permanecem inalteradas.
+- **Dinâmico:** Ocorrem durante a execução e podem ser alteradas.
+
+
+# Relação de precedência entre operadores
+
+![[Pasted image 20260326155528.png]]
+
+# O que é a função `eval()`?
+
+Função que recebe uma string como argumento, mas trata como uma expressão matemática que pode ser executada:
+
+```python
+print(eval('81 ** 0.5'))
+# O resultado é 9.0
+```
+
+É possível também passar o `input()` como argumento desta função:
+
+```python
+resultado = eval(input("Digite uma expressão matemática: "))
+```
+
+# Métodos usados para lista:
+
+- **append()**: adiciona um elemento ou uma lista dentro de outra lista. Exemplo: 
+
+```python
+lista = [1, 2, 3]
+lista.append([4, 5])
+# Resultado: [1, 2, 3, [4, 5]]
+```
+
+- **extend()**: extende a lista, seja com um novo elemento ou uma nova lista. Exemplo:
+
+```python
+lista = [1, 2, 3]
+lista.extend([4, 5])
+# Resultado: [1, 2, 3, 4, 5]
+```
+
+- **pop()**: informa o índice do elemento que se deseja excluir e retorna o valor excluído.
+- **remove()**: informa o valor do elemento que se deseja excluir para excluí-lo.
+- **insert()**: adiciona um novo elemento em posicionamento específico na lista, sendo o primeiro parâmetro o índice e o segundo parâmetro o valor que será inserido.
+- **sort()**: ordena a lista.
+- **del lista[0]**: desta forma, apaga um elemento específico da lista.
+- **clear()**: apaga a lista.
+
+# Métodos do dicionário:
+
+- **values()**: retorna só os valores do dicionário.
+- **keys()**:  retorna só as chaves do dicionário.
+- **items()**: retorna uma lista e cada elemento é uma tupla contendo o par chave valor. Exemplo:
+
+```python
+pessoa = {
+    "nome": "Pedro",
+    "idade": 23,
+    "nacionalidade": "Brasileiro"
+    }
+    
+print(pessoa.items())
+# dict_items([('nome', 'Pedro'), ('idade', 23), ('nacionalidade', 'Brasileiro')])
+
+for chave, valor in pessoa.items():
+	print(f"{chave} = {valor}")
+'''
+nome = Pedro
+idade = 23
+nacionalidade = Brasileiro
+'''
+```
+
+- **clear()**: apaga o dicionário.
+
+# O que é um subprograma em Python?
+
+Nada mais que uma função.

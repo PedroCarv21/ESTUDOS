@@ -370,3 +370,132 @@ O resultado seria:
 | ------- | ------- |
 | Pedro   | TV      |
 | NULL    | celular |
+
+# 43. Comandos adicionais
+
+## Extraindo partes da data
+
+Separe o valor do dia, mês ou ano a partir da data através do comando `extract()` e dos comandos:
+- `day from`
+- `month from`
+- `year from`
+
+```sql
+select data_pedido, extract (day from data_pedido) as dia from pedido;
+select data_pedido, extract (month from data_pedido) from pedido;
+select data_pedido, extract (year from data_pedido) from pedido;
+```
+
+## Extraindo caracteres de uma string
+
+A função `substring` recebe a coluna que contém as strings seguido de um destes dois comandos:
+
+- `from <numero> for <numero>`: determina aonde começa e termina a leitura da string.
+- Depois do nome da coluna, informe a posição onde deve começar a leitura da string.
+
+```sql
+select nome, substring(nome from 1 for 5) from cliente;
+select nome, substring(nome, 2) from cliente;
+```
+
+## Funções `upper` e `lower`
+
+Torna os valores de uma determinada coluna maiúsculos ou minúsculos:
+
+```sql
+select upper(nome) from cliente;
+select lower(nome) from cliente;
+```
+
+## Função `coalesce` 
+
+Caso a coluna passada como parâmetro desta função retorne `null`, é possível informar um valor, como segundo parâmetro, que substituirá o valor `null`
+
+**OBS.: o valor substituto deve ser do mesmo tipo que o tipo da coluna.**
+
+```sql
+select nome, cpf, coalesce(cpf, 'Não informado') from cliente;
+```
+
+## Comandos `case`, `when`, `then`, `else`, `end`
+
+Esses comandos são utilizados para criar uma estrutura condicional: caso o valor da coluna X seja Y, então retorne P.
+
+```sql
+select 
+	sigla, 
+	case sigla
+		when 'SC' then 'Santa Catarina'
+		when 'SP' then 'Sao Paulo'
+	else 'Outros'
+	end as estados
+from uf;
+```
+
+Caso deseje utilizar operadores relacionais, coloque o nome da coluna depois do `when`:
+
+```sql
+select 
+	nome, 
+	case
+		when valor > 500 then 'Acima de 500'
+		when valor < 500 then 'Abaixo de 500'
+	else '500.00'
+	end
+from produto;
+```
+
+# 46. Subconsultas
+
+São consultas dentro de outras consultas
+## Exemplo 1
+
+Consultar os registros da tabela pedido cujo o valor é maior que a média.
+
+```sql
+select data_pedido, valor
+from pedido
+where valor > (select avg(valor) from pedido);
+```
+
+## Exemplo 2
+
+Selecionar a data e o valor do pedido assim como a quantidade total de produtos por pedido.
+
+```sql
+select 
+	data_pedido, 
+	valor,
+	(select sum(quantidade) from pedido_produto pp where pp.idpedido = p.idpedido)
+from pedido p;
+```
+## Exemplo 3
+
+É possível utilizar a subconsulta dentro de comandos `update`. Por exemplo: aumentar em 5% os valores que forem maior que a média dos valores dos pedidos.
+
+```sql
+update pedido set valor = valor + ((valor * 5) / 100)
+where valor > (select avg(valor) from pedido);
+```
+
+# 50. Views
+
+A view nada mais é do que uma consulta armazenada e que pode ser retornada através de um apelido que foi dado a ela. 
+
+Para criar uma view, utilize o comando `create view <apelido> as` e escolha uma determinada consulta. Por exemplo:
+
+```sql
+create view cliente_profissao as 
+select cln.nome as cliente, prf.nome as profissao, cln.cpf
+from cliente cln
+left outer join profissao prf
+on cln.idprofissao = prf.idprofissao;
+```
+
+Caso dê um apelido para as colunas da consulta (`cln.nome as cliente, prf.nome as profissao`), é necessário, na hora em que for consultar a view, informar os apelidos e não o nome original da coluna. Exemplo:
+
+```sql
+select cliente from cliente_profissao
+```
+
+Caso queira apagar a view, execute o comando `drop view <nome_view>`.

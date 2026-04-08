@@ -343,3 +343,309 @@ Devem ser utilizados um ponto em cima dos dois números para indicar a sua inclu
 
 ![[Pasted image 20260311204301.png]]
 
+# Por que, no plano cartesiano, o eixo X é chamado de variável independente e o eixo Y de variável dependente?
+
+Porque o eixo X representa um valor que varia livremente, sem consideração de um valor associado, enquanto o eixo Y é influenciado pelo eixo X. Por exemplo: a altura é influenciada pela idade de uma pessoa, porém a idade independe da altura.
+
+# O que é função?
+
+É uma tabela bem organizada, sendo apresentado os valores de eixo X de um lado e os valores do eixo Y de outro.
+
+| **Idade (x)** | **Altura (y)** |
+| ------------- | -------------- |
+| 12            | 1,50           |
+| 20            | 1,75           |
+| 32            | 1,80           |
+
+É chamado de gráfico de função **as retas verticais o tocam em um único ponto.** Exemplo:
+
+![[Pasted image 20260317184809.png]]
+
+Somente o gráfico C não é um gráfico de função, pois a reta vertical toca em mais de um ponto:
+
+![[Pasted image 20260317185254.png]]
+
+# O que é raiz da função em um gráfico?
+
+Também chamado de **zero da função**, é quando a linha toca o eixo X (também chamado de OX). Raízes da função também podem ser descritos da seguinte forma: são os valores de x tais que **f(x) = 0**. Exemplo:
+
+![[Pasted image 20260317191739.png]]
+
+A resposta é 19 raízes, pois a linha do gráfico toca o eixo X 19 vezes.
+
+# O que é função constante?
+
+É quando há um gráfico cuja a linha nunca toca o eixo X:
+
+![[Pasted image 20260317192413.png]]
+
+# O que são valores mínimos e máximos, locais e globais?
+
+Valores máximos e mínimos são pontos extremos de uma função. O **máximo/mínimo local** é o maior ou menor valor em uma vizinhança específica (pico ou vale), enquanto o **máximo/mínimo global** é o maior ou menor valor absoluto em todo o domínio da função.
+
+# O que é função?
+
+Relação matemática entre dois conjuntos, sendo que cada valor de um conjunto possui um único valor correspondente em outro conjunto. Quando um valor de um conjunto possui dois ou mais valores em outro conjunto, **isso já não é uma função.**
+
+![[Pasted image 20260324160930.png]]
+
+**OBS.: a função é representada como $f(x)$, em que $f$ é o nome da função e $x$ é a variável independente.**
+
+# O que é domínio (D), contradomínio (CD) e imagem (Im)?
+
+![[Pasted image 20260324161846.png]]
+
+
+O **conjunto do domínio** é de onde saem as setas do conjunto X. Por isso o conjunto X é chamado de **domínio**. O conjunto contradomínio é o conjunto Y, pelo simples fato de ele estar recebendo as setinhas. Já o conjunto imagem é formado pelos elementos de Y que recebem as setinhas.
+
+Com base na imagem anterior:
+
+D={1,2,3,4,5,6}
+CD = {10,11,12,13,14,15,16}
+Im ={10,11,12,13,14,15}​
+
+# Como se dá a relação entre domínio e contradomínio?
+
+Através da função $f(x)$, sendo $x$ um número do domínio e o resultado de $f(x)$ o número do contradomínio ou, como também poderia ser dito, a imagem. Pode-se dizer também  No exemplo da foto anterior, a função era $f(x) = x + 9$.
+
+# Representação de imagens no gráfico
+
+Observe a seguinte imagem:
+
+![[Pasted image 20260324171538.png]]
+
+**OBS.: o domínio é representado pelo $Dom(f)$ e a imagem pelo $Im(f)$.**
+
+Acima do gráfico há 3 condições que determinam qual será o valor da imagem com base no valor de X. 
+
+A primeira condição é que Y = 1 se X < 0, ou seja, qualquer valor negativo. Por essa razão, a linha em negrito presente no gráfico acompanha os números negativos. A linha em negrito também está posicionada em em cima do número 1 da linha vertical Y, pois sempre que X é negativo, o valor de Y (a imagem) é 1.
+
+Assim também ocorrerá com as duas outras regras ($Y = x + 1\ se\ 0 <= x <= 2$ e $Y = 3\ se\ x >= 2$).
+
+# O que é uma função injetora (ou injetiva)?
+
+É aquela em que elementos distintos do domínio possuem imagens distintas no contradomínio. Em outras palavras, cada elemento do conjunto de chegada (imagem) recebe, no máximo, uma "flechada" do conjunto de saída, garantindo que não existam dois diferentes com o mesmo.
+
+![[Pasted image 20260331162817.png]]
+
+
+Para que a função seja injetora, é necessário que f(a) = f(b) e, portanto, a = b. Por exemplo: a função f(x) = 3x+2. Agora, baseado nessa fórmula, as funções f(a) e f(b) devem ficar da seguinte forma:
+
+f(a)=3a+2 = f(b)=3b+2
+f(a)=3a = f(b)=3b
+
+Simplificando ainda mais, é possível dividir cada um dos lados da equação pelo mesmo valor que multiplica a variável a e b:
+
+$$
+\frac{3a}{3} = \frac{3b}{3}
+$$
+
+O resultado será a = b.
+
+
+![[Pasted image 20260331164520.png]]
+
+O mesmo poderia ser tentado com x², mas o problema é que tanto -1 quanto 1 elevado ao quadrado, o resultado é 1. Portanto, há dois números que levam a mesma imagem. Por essa razão, não pode ser definido como função injetora.
+
+![[Pasted image 20260331163924.png]]
+
+# O que é função sobrejetora?
+
+É uma função cujo os elementos do contradomínio são referenciados pelos elementos do domínio. Exemplo de função sobrejetora:
+
+![[Pasted image 20260331171152.png]]
+
+Embora ela não possa ser considerada uma função injetora, ela ainda assim é sobrejetora, pois **todo elemento do conjunto B (contradomínio)** é imagem de **pelo menos um elemento de A**.
+
+Já a imagem a seguir não é uma função sobrejetora:
+
+![[Pasted image 20260331171252.png]]
+
+Quando há uma linha no plano cartesiano que mostra a relação de todos os números do eixo Y com o eixo X, se trata de função sobrejetora. Caso a linha exclua certos números, não é possível que seja sobrejetora. Exemplo onde não há uma função sobrejetora:
+
+![[Pasted image 20260331171535.png]]
+
+Essa função não é sobrejetora, pois os valores negativos do contradomínio não interagem com os elementos do domínio.
+
+# O que é uma função bijetora?
+
+É uma função que é injetora e sobrejetora ao mesmo tempo.
+
+
+# Como é possível definir as seguintes funções?
+
+- **Crescente:** quanto maior o valor de X, **maior** o valor Y.
+- **Decrescente:** quanto maior o valor de X, **menor** o valor Y.
+
+Suponha que haja o seguinte gráfico e seja solicitado os intervalos descrente e crescente.
+
+![[Pasted image 20260331190152.png]]
+
+O resultado deveria expresso da seguinte forma:
+
+- **Crescente:** [-3, 0] U [3, 5]
+- **Decrescente:** [0, 3] U [5, 6]
+
+# Função periódica
+
+É aquela que repete seus valores em intervalos regulares. Sendo o período = p, f(x + p) = f(x), ou seja, de acordo com uma quantidade p de tempo, o valor f(x) se apresenta.
+## O que é período da função?
+
+Parte do gráfico da função que se repete ao longo dos valores de X.
+
+
+# Quais são os tipos de proposições?
+
+- **Simples (atômicas):** composto por apenas um sujeito e predicado.
+- **Compostas (moleculares):** composto por mais de um sujeito e predicado.
+
+# O que é o valor lógico de uma proposição?
+
+São atributos de Verdadeiro (V) ou Falso (F) atribuídos a proposições lógicas. Exemplo: a frase "o número 15 é ímpar", representada pela letra p, poderia ser tratada como V(p) = V.
+
+# Quais são os 3 princípios da lógica matemática?
+
+- **3° excluído:** ou é verdadeiro ou é falso, não há uma terceira opção.
+- **Não contradição:** não é possível ser verdadeiro e falso ao mesmo tempo.
+- **Identidade:** uma proposição é igual a ela mesma.
+
+# O que são conectivos ou juntores?
+
+São símbolos lógicos para a realização de cálculos entre as proposições. Os principais símbolos são:
+
+- **Conjunção** representado pelo ^ que significa 'e'. Pode também ser representado por um ponto (.), representado uma multiplicação dentro da álgebra booleana:
+- ![[Pasted image 20260407183516.png]]
+- **Disjunção:** representado pelo v que significa 'ou'. Há dois tipos de disjunção:
+	- **Inclusiva:** se uma proposição é verdadeira, isso não impede que a outra também seja verdadeira. Por exemplo: ou Ana é estudante ou Ana é estagiária. As duas proposições podem ser verdadeiras ao mesmo tempo. Na álgebra booleana, é representado por +.
+	- **Exclusiva (represtado por <u>v</u> ):** se uma proposição é verdadeira, a outra deve ser falsa. Por exemplo: ou a luz está ligada ou está desligada.
+	- ![[Pasted image 20260407175915.png]]
+- **Condicional:** representado por uma → que simboliza o **se ..., então**, ou seja, se uma proposição é verdadeira, a outra proposição também deve ser verdadeira. Exemplo: se chover, então a rua ficará molhada.
+- ![[Pasted image 20260407180004.png]]
+- **Bicondicional:** representado por uma ↔ que smboliza **se, e somente se**. Por exemplo: um número é par se, e somente se, ele for divisível por 2.
+- ![[Pasted image 20260407180025.png]]
+- **Negação:** representado por ~ ou por ¬. Por exemplo: se a frase "José é engenheiro" é representado por p, então ¬p equivale a "José não é engenheiro". Pode também ser representado por um traço em cima da letra (ex.: $\bar{A}$)
+- **NAND:** representado pelo ↑ e significa que a operação booleana que combina AND e NOT, produzindo um resultado falso apenas quando todas as entradas são verdadeiras. Por exemplo: p = "Maria vai ao clube"; q = "Maria vai estudar"; p ↑ q equivale a "Não é verdade que Maria vai ao clube e Maria vai estudar".
+- ![[Pasted image 20260407181235.png]]
+- **NOR:** representado pelo ↓ e significa que a operação booleana que combina OR e NOT, produzindo um resultado falso apenas quando uma das entradas é verdadeira. Por exemplo: p = "Maria vai ao clube"; q = "Maria vai estudar"; p ↓ q equivale a "Não é verdade que Maria vai ao clube ou Maria vai estudar".
+- ![[Pasted image 20260407181154.png]]
+
+
+# Classificações de proposições lógicas
+
+- **Tautologia:** se seu valor lógico é V, independentemente dos valores lógicos das proposições que a compõem. Exemplo: (¬q∧p)↔(¬p∨¬q)
+- **Contradição:** se seu valor lógico é F (falso), independentemente dos valores lógicos das proposições que a compõem. Exemplo: (p∧q)↔( p∨¬q)
+- **Contingência:** toda proposição composta que não é tautologia nem contradição.
+
+# O que é equivalência lógica?
+
+Equivalência lógica ocorre quando duas proposições compostas possuem tabelas-verdade idênticas, significando que expressam a mesma ideia e possuem os mesmos valores de verdade (ambas verdadeiras ou ambas falsas). Representada pelo símbolo “↔”, permite substituir uma proposição por outra sem alterar o sentido lógico. 
+
+# Regras de inferência
+
+## Regras de adição (AD)
+
+$$
+\frac{p(premissa)}{p\ v\ q(conclusão)}
+$$
+
+## Regra da simplificação (SIMP)
+
+$$
+\frac{p ∧ q}{p}
+$$
+## Modus ponens (MP)
+
+$$
+\begin{align}
+p → q \\
+\frac{p}{q}
+\end{align}
+$$
+## Modus tollens (MT)
+
+
+$$
+\begin{align}
+p→q \\
+\frac{∼p}{∼q}
+\end{align}
+​$$
+ 
+​
+## Silogismo hipotético (SH)
+
+$$
+\begin{align}
+p→q \\
+\frac{p→r}{q→r}​​
+\end{align}
+$$
+## Silogismo disjuntivo (SD)
+
+ $$
+\begin{align}
+p ∨ q \\
+\frac{∼ p}{q} \\
+p ∨ q \\
+\frac{∼ q}{p}
+\end{align}
+​$$
+
+Exemplo:
+
+p: A temperatura está baixa. 
+q: Há nevoeiro. 
+p ∨ q: A temperatura está baixa ou há nevoeiro. 
+∼p: A temperatura não está baixa.
+
+Conclusão:
+
+q: Há nevoeiro.
+## Regra da conjunção (CONJ)
+
+$$
+\begin{align}
+p \\ 
+q \\
+p∧q
+\end{align}​
+$$
+
+
+
+
+# Como verificar a validade de um argumento?
+
+As seguintes proposições lógicas formam um conjunto de premissas de um argumento:
+
+```
+Se Pedro não é músico, então André é servidor da ABIN. 
+Se André é servidor da ABIN, então Carlos não é espião. 
+Carlos é um espião.
+Conclusão: Pedro é músico.
+```
+
+## 1° passo: Consideramos todas as premissas e a conclusão verdadeiras.
+
+```
+1. Se Pedro não é músico, então André é servidor da ABIN. (V)  
+     
+2. Se André é servidor da ABIN, então Carlos não é espião. (V)  
+     
+3. Carlos é um espião. (V)
+
+Conclusão: Pedro é músico (V)
+```
+
+Agora, começaremos a analisar a partir da proposição simples “Carlos é um espião”. Depois, é necessário prosseguir de baixo para cima uma análise da relação entre as proposições por meio da tabela verdade. Por exemplo: se a última proposição `Carlos é um espião.` é verdadeira então a penúltima proposição `então Carlos não é espião` deve ser falsa. Para que a premissa `Se André é servidor da ABIN, então Carlos não é espião` seja verdadeira, é necessário que `André é servidor da ABIN` seja falso, pois F → F é verdadeiro na tabela verdade. E assim por diante. Resultado:
+
+```
+Se Pedro não é músico (F), então André é servidor da ABIN (F). V
+Se André é servidor da ABIN (F), então Carlos não é espião (F)⋅(V).
+Carlos é um espião. (V)
+Se Pedro não é músico (F), então André é servidor da ABIN (F). V
+Se André é servidor da ABIN (F), então Carlos não é espião (F)⋅(V).
+Carlos é um espião. (V)
+```
+
+Logo, concluímos que Pedro é músico. O argumento é válido.

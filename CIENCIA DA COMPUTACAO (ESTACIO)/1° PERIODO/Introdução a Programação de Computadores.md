@@ -153,6 +153,16 @@ Em tese, esse comando serviria para tornar a quantidade de números inteiros mai
 | char          | -128 a 127                     |
 | unsigned char | 0 a 255                        |
 
+Caso queira uma variável que aceite apenas valores não-negativos, utilize o `unsigned` e também o especificador de formato `%u`. Caso o usuário ainda assim inicialize a variável com valor negativo, o resultado um número positivo muito grande. Exemplo:
+
+```c
+unsigned int a = -5;
+
+printf("O resultado é %u\n", a);
+// o resultado será 4294967291
+```
+
+
 > [!NOTE]
 > Deve-se lembrar que os caracteres possuem um representante numérico na tabela ASCII.
 
@@ -167,3 +177,111 @@ Esse comando é utilizado para a quantidade de valores permitidas entre os tipos
 | double      | ±1.7E-308 a ±1.7E+308                                  |
 | long double | ±3.4E-4932 a ±1.1E+4932                                |
 No caso dos especificadores de formato para `long int` ou `long double`, utilize o `%ld` ou `%lf`. Caso não funcione, tente utilize o `%lld` ou `%llf` e utilize o `long long int` ou `long long double` como tipo da sua variável.
+
+# Estruturas de decisão
+
+- **Estrutura Aninhada (`if` dentro de `if`):** Um comando `if` (ou `else`) é colocado dentro do bloco de ação de outro `if`, criando um "ninho" de condições.
+- **Estrutura Encadeada (`if-else if-else`):** Uma sequência de verificações onde o falso de um `if` leva a um novo `if`, comum em `if-else if` (C) para avaliar múltiplas faixas de valores, como calcular impostos ou médias.
+# Estrutura switch-case
+
+```c
+switch (variavel){
+	case 1:
+		printf("Possibilidade 1");
+		break; // sem o break, o programa segue lendo os demais cases
+	case 2:
+		printf("Possibilidade 2");
+		break;
+	default:
+		printf("Possibilidade não reconhecida.");
+		break;
+}
+printf("Essa mensagem será impressa de qualquer jeito.");
+```
+
+# Números aleatórios
+
+Para a criação de números aleatórios é necessário importar as seguintes bibliotecas:
+
+```c
+#include <stdlib.h>
+#include <time.h>
+```
+
+Em seguida, é necessário informar que o a geração de números aleatórios terá relação com o tempo. Para isso, é necessário usar o comando:
+
+```c
+srand(time(0));
+```
+
+Por fim, crie uma variável que armazene o número aleatório. Utilize o comando `rand() % 10`, o que fará com que o número aleatório esteja entre 0 e 9. Se deseja que o intervalo de números aleatórios seja maior, coloque, por exemplo, `rand() % 11`, gerando um número entre 0 e 10, ou `rand() % 21`, gerando um número entre 0 e 20, e assim por diante:
+
+
+```c
+srand(time(0));
+numeroSecreto = rand() % 10;
+```
+
+# Operador ternário
+
+A estrutura de um operador ternário em C é escrito da seguinte forma:
+
+```
+condicao ? valor_se_verdadeiro : valor_se_falso;
+```
+
+# Estrutura do-while
+
+```c
+do {
+	// bloco de código
+} while (/* condição */);
+```
+
+# Exemplo de utilização do operador ternário dentro do loop `for`
+
+```c
+int main() {
+
+  for (int i = 1; i < 10; i += (i % 2 == 0) ? 1 : 2){
+
+    printf("%d\n", i);
+
+  }
+
+  return 0;
+
+}
+```
+
+Em resumo: caso a variável `i` seja um número par, será somado mais um; caso contrário, será somado mais dois. Em qualquer um dos resultados, será impresso um número ímpar.
+
+# Atenção quanto a função recursiva
+
+Exemplo:
+
+```c
+void recursivo(int i){
+
+  if (i > 0){
+
+    recursivo(i - 1);
+
+    printf("%d\n", i);
+
+  }
+
+}
+
+  
+
+int main() {
+
+  recursivo(10);
+
+  return 0;
+
+}
+```
+
+Veja que a recursividade ocorre antes da chamada da função `printf`. Isso gera o seguinte resultado: depois que terminar o loop da recursividade, a função `printf` será executada na ordem inversa, ou seja, em vez de os números aparecerem em ordem decrescente, aparecerá na ordem crescente.
