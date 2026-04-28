@@ -36,7 +36,7 @@ $$
 \{A ∈ N\* | 0 < A < 6\}
 $$
 
-Pode ser lido da seguinte forma: o conjunto de A pertence ao conjunto de números naturais não nulos, **tal que** (representado pela barra | ) o conjunto de A é maior que 0 e menor que 6. Há outras duas formas de representar implicitamente este mesmo conjunto:
+	Pode ser lido da seguinte forma: o conjunto de A pertence ao conjunto de números naturais não nulos, **tal que** (representado pela barra | ) o conjunto de A é maior que 0 e menor que 6. Há outras duas formas de representar implicitamente este mesmo conjunto:
 
 $$
 \{ A | A ∈ N\*\ e\ 0 < A < 6 \}
@@ -540,6 +540,28 @@ São símbolos lógicos para a realização de cálculos entre as proposições.
 
 Equivalência lógica ocorre quando duas proposições compostas possuem tabelas-verdade idênticas, significando que expressam a mesma ideia e possuem os mesmos valores de verdade (ambas verdadeiras ou ambas falsas). Representada pelo símbolo “↔”, permite substituir uma proposição por outra sem alterar o sentido lógico. 
 
+## Exercício
+
+Muitas vezes, a demonstração de uma proposição do tipo P→Q não possui uma abordagem simples. Entretanto, há proposições logicamente equivalentes (mesma tabela-verdade) cuja demonstração pode ser mais facilmente abordada.  
+ 
+
+Dadas as proposições:
+
+  
+I. ∼Q→∼P  
+ 
+II. P ou ∼Q  
+  
+III. ∼P ou Q  
+ 
+
+Entre essas três proposições, quais são equivalentes à proposição P→Q ?
+
+Resposta:
+
+Basta analisar as tabelas-verdade das proposições envolvidas:
+
+![[Pasted image 20260421120259.png]]
 # Regras de inferência
 
 ## Regras de adição (AD)
@@ -649,3 +671,164 @@ Carlos é um espião. (V)
 ```
 
 Logo, concluímos que Pedro é músico. O argumento é válido.
+
+# Qual a diferença entre proposição e sentença aberta?
+
+- **Proposição:** sentença declarativa que pode ser classificada com verdadeira ou falsa. Exemplo: O Sol é uma estrela.
+- **Sentença aberta:** sentença que depende de um valor x para que ela seja classificada como verdadeira ou falsa. Exemplo: x² - 5x + 6 = 0. **Conjunto verdade** é o conjunto de valores que tornam esse sentença verdadeira, sendo representado por $Vp$. Neste caso, apenas o valor 2 tornaria essa sentença verdadeira. É possível utilizar também uma frase como, por exemplo, 'Ela é uma boa professora'. A variável 'Ela' também pode ser alterada para se tornar verdadeira ou falsa.
+
+# O que é conjunto universo (ou domínio da sentença aberta)?
+
+Representado pela letra U, é o conjunto que contém todos os elementos possíveis em um determinado contexto ou situação de estudo, servindo como base para a definição de outros subconjuntos.
+
+Exemplo: considere a expressão x + 15 = 8 uma sentença aberta do conjunto dos números inteiros (Z).
+
+Resultado de x é -7 e faz parte dos números inteiros. Portanto, uma sentença verdadeira.
+
+# Quais são as duas condições que uma sentença aberta pode assumir?
+
+- **Universal:** quando **todos** os elementos de um determinado conjunto implicam em uma coerência caso sejam aplicados naquela sentença. Por exemplo: seja 2x + 1 > x uma sentença aberta no conjunto de números naturais (N). O resultado da equação é x > -1, portanto, qualquer número natural pode representar x.
+- **Possível:** quando **alguns** dos elementos de um determinado conjunto implicam em uma coerência caso sejam aplicados naquela sentença. Por exemplo: seja 2x + 3 > 6 uma sentença aberta no conjunto de números naturais (N). O resultado é x > 1,5, portanto, apenas os números inteiros a partir do dois em diante tornam a sentença aberta verdadeira.
+- **Impossível:** quando a sentença aberta, mesmo sem apresentar o valor, já demonstra uma inconsistência. Por exemplo: x + 3 = x.
+
+# Exemplo de sentença aberta com duas variáveis
+
+Considere a sentença aberta x+2>y em A×B, em que A={1,2,3} e B={4,5}. O conjunto verdade é:
+
+$$
+Vp​={(x,y)∈A×B∧x+2>y}={(3,4)}
+$$
+Isso pode ser lido da seguinte forma: Vp é o conjunto dos valores x e y pertencentes aos conjuntos A e B, tais que x mais dois é maior que y, e esse conjunto é igual a 3 e 4.
+
+Ou seja, se eu tomar x igual ao número 3 do conjunto A e o y igual ao número 4 do conjunto B, o reusltado é:
+
+$$
+\begin{aligned}
+x + 2 > y \\
+3 + 2 > 4 \\
+5 > 4
+\end{aligned}
+$$
+
+
+# O que é predicado?
+
+São expressões lógicas que atribuem propriedades ou características a variáveis, formando sentenças abertas que se tornam proposições verdadeiras ou falsas quando as variáveis são substituídas por elementos específicos. Na lógica dos predicados, essas expressões são representadas por símbolos predicativos, como p,q,r, e variáveis, como x,y,z.
+
+# Como se dá as operações lógicas com sentenças abertas?
+
+## Negação
+
+Se a sentença aberta diz p(x) :  x + 2 < 6 então a negação dessa sentença seria p(x): x + 2 >= 6. Neste caso, o Vp = {4, 5, 6, ...}
+## Conjunção
+
+É a interseção entre dois conjunto verdades. Por exemplo: considerando o conjunto de números inteiros, Vp de p(x): x2+6x+5=0 é {-1, -5} e o Vp de q(x): x2+5x=0 é {0, -5}. Qual seria a conjunção Vp^q ? {-5} , pois é o elemento comum entre os dois conjunto verdades.
+## Disjunção
+
+Seriam todos os elementos presentes nos dois conjunto verdades. No caso do exemplo anterior, Vpvq é {-5, -1, 0}.
+
+## Condicional
+
+Para calcular p(x) → q(x) é possível utilizar, em vez disso, a fórmula ¬p(x) V q(x). Por exemplo:
+
+p(x): x + 1 < 6; portanto ¬p(x): x + 1 >= 6. O conjunto verdade é N - {1, 2, 3, 4}
+q(x) x é divisor de 10. O conjunto verdade é {1, 2, 5, 10}
+
+¬p(x) V q(x) é N - {3}
+
+## Bicondicional
+
+Vp(x) ⇔ Vq(x) equivale a Vp→q​ ∩ Vq→p​.
+
+
+# Como descrever a relação entre uma sentença e um conjunto
+
+Exemplo de sentença e de conjunto: 
+p(x): x² > 4
+A = {3, 4, 5, 6, 7}
+
+Neste caso todos os elementos de A podem ser aplicados na sentença para que ela se torne verdadeira. Uma forma de dizer isso é: Vp = A. 
+
+Outra forma de dizer isso é através de uma sentença quantificada:  ∀x ∈ A: x² > 4. Isso pode ser lido como: para todo elemento que pertence ao conjunto A, a sentença x² > 4 é verdadeira. Esse ∀ é descrito como **quantificador universal**. Outras formas de dizer que para todo x,p(x) é verdadeira:
+
+- (∀x∈A)(p(x))
+- ∀x∈A, p(x)
+- ∀x∈A: p(x)
+
+Agora se o conjunto A fosse {0, 1, 2, 3, 4}, então a relação deveria ser expressa como Vp = {3, 4} ou 
+Ǝx ∈ A: x² > 4. Isso pode ser lido como: para alguns elementos que pertence ao conjunto A, a sentença x² > 4 é verdadeira. Esse Ǝ é descrito como **quantificador existencial**.
+
+- (Ǝx∈A)(p(x))
+- Ǝx∈A, p(x)
+- Ǝx∈A: p(x)
+
+Agora se o conjunto A fosse {-1, 0, 1, 2, 3}, então a relação deveria ser expressa como Vp = {3} ou Ǝ! ∈ A: x² > 4. Isso pode ser lido como: apenas um elemento que pertence ao conjunto A, a sentença x² > 4 é verdadeira.
+
+# O que são variáveis ligadas e livres
+
+- **Ligada:** aquela variável relacionada a um conjunto.
+- **Livre:** aquela variável que não está relacionada a nenhum valor ou conjunto, ou seja, totalmente desconhecida.
+
+# Como funciona a negação de proposições?
+
+A negação implica alterar o 'todo' por 'algum' (ou vice-versa) e o cópula 'é' por 'não é'
+
+Exemplo: 
+
+Proposição: Todo computador da Apple é bom.
+Negação: pelo menos um computador da Apple não é bom
+
+## Em fórmulas matemáticas
+
+Aqui, a negação trocará o ∀ por Ǝ e o >= por < ou <= por >.
+
+Exemplo:
+
+p(x): (Ǝx ∈ N)(x + 1 > 0)
+
+Negação:
+
+~p(x): (∀x ∈ N)(x + 1 <= 0)
+
+Exemplo 2:
+
+(Ǝx)(x + 3 = 0)
+(∀x)(x + 3 ≠ 0)
+
+Exemplo 3:
+
+(∀x ∈ A)(p(x)) ^ (Ǝx ∈ A)(q(x))
+(Ǝx ∈ A)(~p(x)) v (∀x ∈ A)(~q(x))
+
+# Como são definidas as afirmações na linguagem Prolog?
+
+Deve seguir a seguinte estrutura:
+
+predicado (objeto 1, objeto 2, ...).
+
+Exemplo:
+
+amigo(paulo, carlos) significa que Paulo é amigo de Carlos.
+
+É possível ter apenas um único objeto:
+
+engenheiro(luis). Significa: Luis é engenheiro.
+
+Caso se trate de uma pergunta, é necessário colocar uma '? -' antes:
+
+? – carioca(carlos).
+
+Significa: Carlos é carioca?
+
+**OBS.: tudo deve estar com letra minúscula.**
+
+# O que é demonstração por vacuidade?
+
+A demonstração por vacuidade (ou verdade vazia) é um método lógico onde se prova que uma implicação "p → q" (se p, então q) é verdadeira simplesmente mostrando que o antecedente (p) é falso.
+
+# O que é redução ao absurdo ou contradição?
+
+Consiste em duas coisas:
+
+- Naquela estratégia utilizada por Sócrates, que mostrava as implicações da tese defendida pelo o oponente, sendo que estas implicações apontava para um absurdo.
+- O princípio de não contradição defendido por Aristóteles.

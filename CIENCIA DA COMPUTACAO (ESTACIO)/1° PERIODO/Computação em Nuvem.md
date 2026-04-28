@@ -316,3 +316,514 @@ Fornece as regiões e serviços do Azure de forma mais detalhada, focando nos se
 # O que são as marcas (tags)?
 
 Elas permitem associar metadados a um recurso para ajudar a controlar o gerenciamento de recursos, os custos e a otimização, a segurança etc.
+
+# O que é o portal 'Migrações para Azure'?
+
+É um portal onde é possível **alocar todos os projetos de migração para a nuvem**. É possível definir se o projeto será um conjunto de servidor, banco de dados e aplicativos, banco de dados somente, aplicativos web somente, entre outras opções.
+
+**O Azure Active Directory é um recurso que não pode ser migrado**, pois está vinculado a conta do Azure e não está dentro de um grupo de recursos.
+
+# Como é organizado a infraestrutura da AWS?
+
+A infraestrutura global da AWS é dividida em regiões, que representam localizações geográficas onde ficam hospedados seus datacenters. Dentro de cada região existem subdivisões conhecidas como **zonas de disponibilidade (AZs), que consistem em um ou mais datacenters**.. A escolha de qual região será utilizada é do usuário que provisiona os recursos de TI, que deve avaliar critérios como **latência, preço, disponibilidade e possíveis regulações de conformidade nesse ambiente**. 
+
+Para garantir a resiliência de ambientes na nuvem AWS, **é sempre recomendado o uso de pelo menos duas AZ**. Dessa forma, havendo falha em uma AZ, o ambiente continuará em pleno funcionamento em outra AZ da região.
+
+# O que é o Amazon Elastic Compute Cloud?
+
+É um serviço que provê capacidade computacional segura e redimensionável na nuvem, em formato de máquinas virtuais.
+
+**No Amazon EC2, a responsabilidade da instalação do sistema operacional não é do usuário, pois a AWS fornece imagens prontas, conhecidas como Amazon Machine Images (AMI).**
+
+# O que é Amazon Machine Image (AMI)?
+
+É um modelo (template) pré-configurado que contém o sistema operacional, softwares e configurações necessários para lançar uma instância virtual (servidor) no Amazon EC2.
+# O que é AMI ID?
+
+AMIs possuem um identificador único (AMI ID), com prefixo “ami-” seguido de um hash com números e letras, que representa todo o conjunto de características, como o sistema, a versão, a arquitetura e a região.
+# Quais são os 3 tipos de computação da AWS?
+
+- **Máquinas Virtuais (VMs)**: **virtualização de um servidor físico**, que possui disco, placa de rede, e permite instalar e personalizar o ambiente de forma similar. **Na AWS, as máquinas virtuais são chamadas de Amazon Elastic Compute Cloud (EC2).**
+- **Containers:** um padrão de empacotamento de código e dependências projetado para ser executado de forma confiável em qualquer plataforma. Na AWS é possível executar containers no **Amazon Elastic Container Service (Amazon ECS)** ou no **Amazon Elastic Kubernetes Service (Amazon EKS)**. Os containers oferecem **maior velocidade** de provisionamento e consistência de funcionamento independente do ambiente.
+- **Computação sem servidor (Serverless Computing):** o foco passa a ser no código das suas aplicações, sem precisar gastar tempo mantendo e atualizando infraestrutura, servidores ou sistema operacional. Nesse modelo, você pagará apenas pelo tempo que sua aplicação executar. Na AWS, o principal serviço de computação sem servidor é o AWS Lambda.
+
+# Quando é mais recomendado o EC2?
+
+para aplicações que necessitam de armazenamento local e que possuem forte dependência do sistema operacional e têm características de monolito.
+
+# Quando é mais recomendado ECS/EKS?
+
+Para equipes que dominam docker ou kubernetes, que já utilizam uma arquitetura de microsserviços e armazenamento de rede ou de objetos.
+
+# Quando é mais recomendado o Lambda?
+
+Quando o time técnico tem um perfil desenvolvedor e não quer gerir detalhes de infraestrutura ou de rede e as aplicações processam tarefas rapidamente.
+
+# O que é uma instância
+
+É um servidor virtual na nuvem, utilizado para executar aplicações, sites e processar dados de forma escalável e segura. Elas fazem parte do serviço Amazon EC2 (Elastic Compute Cloud), permitindo escolher capacidades específicas de CPU, memória, armazenamento e rede.
+
+# Tipos de instância EC2:
+
+- **De uso geral:** provê um **equilíbrio entre memória, processamento e rede**, e pode ser utilizado para uma ampla gama de workloads (conjunto de códigos, aplicativos, bancos de dados e recursos computacionais (memória, rede) necessários para executar uma tarefa ou serviço). Ex.: t4g, t3, t3a, m6i, m6g, m6a, m5, m5a, m5n, m4.
+- **Otimizado para computação:** ideal para workloads de **uso intensivo de CPU**, beneficiando-se de processadores de alta performance. Ex.: c6g, c6i, c6a.
+- **Otimizado para memória:** ideal para workloads que precisam processar grandes conjuntos de dados em memória. Ex.: r6a, r6g, r6i.
+
+# O que é o par de chave (key pair) da EC2?
+
+**É usado para autenticação segura ao acessar uma instância EC2**. Esse par de chaves é composto por uma chave pública e uma chave privada. A chave pública é associada à instância EC2 e a chave privada é mantida pelo usuário.
+
+**Para instâncias do Windows, a chave privada é necessária para descriptografar a senha do administrador e em instâncias Linux, para conectar remotamente, usando o SSH.**
+
+# O que é o Security Group (SG)?
+
+É um firewall virtual para suas máquinas EC2, controlando o tráfego de entrada e saída. 
+
+| Serviço                  | EC2                                                                             | ECS                                                                                                                           | Lambda                                                          |
+| ------------------------ | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| Tipo de Computação       | Instância;   <br>Infraestrutura como serviço (IaaS)                             | Container;   <br>Container como serviço (CaaS)                                                                                | Função;   <br>Função como serviço (FaaS)                        |
+| Caso de uso              | De uso geral; controle completo sobre o servidor                                | Executar containers docker; Tarefas/execuções de +15 minutos                                                                  | Pequenas aplicações que executam tarefas em menos de 15 minutos |
+| Escalabilidade           | Uso de políticas de auto scaling groups para aumento e diminuição de instâncias | Escalabilidade nativa baseado em métricas do cluster                                                                          | Escalabilidade automática                                       |
+| Tempo limite de execução | Sem limite                                                                      | Sem limite                                                                                                                    | 300 segundos (15 minutos)                                       |
+| Preço                    | Varia pelo tipo, tempo de execução e opção de compra.                           | ECS no EC2: mesmos custos do EC2;   <br>ECS no Fargate: quantidade vCPU e memória usada, tempo de execução e opção de compra. | Números de requisições e tempo de execução.                     |
+
+# O que é um Amazon Elastic Block Storage (EBS)?
+
+O Amazon Elastic Block Storage é um serviço que fornece volumes de armazenamento em blocos, e que pode ser usado com instâncias EC2. Se você desligar ou apagar uma instância do Amazon EC2, todos os dados no volume do EBS anexo permanecerão disponíveis, permitindo reanexar a uma instância.
+
+# O que é snapshot do EBS?
+
+É um backup incremental. Isso significa que o primeiro backup de um volume copia todos os dados. Nos backups subsequentes, somente os blocos de dados que foram alterados desde o snapshot mais recente serão salvos.
+
+# Em quais cenários se usa o EBS?
+
+- **Sistemas operacionais**
+- **Banco de dados**
+- **Aplicativos corporativos**
+
+# O que é Amazon Simple Storage Service (Amazon S3)?
+
+Ao contrário do Amazon Elastic Block Store (Amazon EBS), o Amazon Simple Storage Service (Amazon S3) é uma solução de armazenamento independente, que não está vinculada à computação e permite que você recupere seus dados de qualquer lugar na web.
+
+# O gp3 é o tipo de EBS mais recomendado para qual dos seguintes casos de uso?
+
+Volumes de boot, aplicativos de baixa latência, desenvolvimento e testes.
+# O que são os buckets do Amazon S3?
+
+Nesse serviço, você **armazena seus objetos em contêineres chamados de buckets (baldes)**. Não é possível fazer upload de nenhum objeto, nem mesmo uma única foto, para o Amazon S3 **sem criar um bucket primeiro.**
+
+Ao criar um bucket você especifica, no mínimo, **dois detalhes: o nome desse bucket e a região da AWS na qual deseja que ele resida.**
+
+Aqui está o conteúdo resumido em formato de perguntas e respostas:
+
+# O que acontece se eu não especificar a classe de armazenamento no S3?
+
+Se você não especificar, o objeto é armazenado automaticamente na classe padrão do Amazon S3, chamada **S3 Standard**.
+
+# Para que servem as classes de armazenamento do S3?
+
+Elas permitem ajustar o tipo de armazenamento conforme o padrão de acesso aos dados, ajudando a equilibrar **custo e desempenho**.
+
+# O que é a classe S3 Standard?
+
+É a classe padrão, ideal para dados acessados com frequência. Oferece:
+
+- Alta disponibilidade
+    
+- Baixa latência
+    
+- Alto desempenho  
+    Indicada para aplicações web, apps móveis, jogos e análise de dados.
+
+# O que é a classe S3 Standard-IA?
+
+É voltada para dados acessados com menos frequência, mas que ainda precisam de acesso rápido.  
+Vantagens:
+
+- Custo menor de armazenamento
+    
+- Alta performance  
+    Indicada para backups e recuperação de desastres.
+
+# O que é a classe Glacier Instant Retrieval?
+
+É uma classe de baixo custo para dados raramente acessados, mas que precisam ser recuperados rapidamente (em milissegundos).  
+Indicada para:
+
+- Arquivos médicos
+    
+- Mídias
+    
+- Conteúdo gerado por usuários
+
+# O que são Glacier Flexible Retrieval e Glacier Deep Archive?
+
+São classes voltadas para arquivamento de longo prazo, com custo ainda menor, porém com tempos de recuperação mais lentos (não detalhados no texto).
+
+# Para que o Amazon S3 é mais utilizado?
+
+**1. Backup e armazenamento**  
+Alta durabilidade, ideal para guardar cópias de segurança.
+
+**2. Hospedagem de mídia**  
+Permite armazenar arquivos grandes (até 5 TB por objeto), como vídeos, fotos e músicas.
+
+**3. Data lakes**  
+Escalabilidade praticamente ilimitada, ideal para grandes volumes de dados.
+
+**4. Sites estáticos**  
+Pode hospedar sites simples com HTML, CSS e JavaScript.
+
+# O que é o O Amazon Elastic File System (Amazon EFS)?
+
+É um sistema de arquivos escalável, usado com os serviços de nuvem AWS e recursos locais. À medida que você adiciona e remove arquivos, o Amazon EFS expande e retrai automaticamente, de forma que pode dimensionar sob demanda para petabytes sem interromper os aplicativos.
+
+# Por que é necessário controlar o acesso entre recursos na AWS?
+
+Porque existem milhões de clientes e recursos (como instâncias do Amazon EC2). Sem controle, todos poderiam se comunicar livremente, o que comprometeria a segurança.
+
+# O que é o Amazon VPC?
+
+O Amazon Virtual Private Cloud (VPC) é um serviço que permite criar uma rede virtual isolada dentro da AWS para seus recursos.
+
+# Qual é a principal função de uma VPC?
+
+Permitir que você execute recursos (como servidores) em uma rede definida por você, com controle total sobre:
+
+- Acesso
+- Comunicação
+- Estrutura da rede
+
+# O que são sub-redes (subnets)?
+
+Sub-redes são divisões dentro de uma VPC onde você pode organizar seus recursos, como instâncias do Amazon EC2.
+
+# Quais fatores precisam ser definidos ao criar uma VPC?
+
+1. Nome da VPC
+Identificação da sua rede.
+
+2. Região
+A VPC é criada em uma região específica da AWS e pode abranger várias zonas de disponibilidade.
+
+3. Intervalo de IP (CIDR)
+Define o tamanho da rede e a quantidade de IPs disponíveis.
+Cada VPC pode ter até quatro blocos CIDR /16.
+
+# O que a AWS faz após a criação da VPC?
+
+A AWS provisiona automaticamente:
+
+- A rede virtual
+- Os endereços IP dentro do intervalo definido
+
+# Uma VPC pode abranger várias zonas de disponibilidade?
+
+Sim. Embora esteja dentro de uma única região, a VPC pode se estender por múltiplas zonas de disponibilidade, aumentando a disponibilidade e resiliência. **Para ter alta disponibilidade em uma VPC, é recomendável usar ao menos duas AZs.**
+
+# O que são sub-redes em uma VPC?
+
+Sub-redes são divisões menores dentro de uma VPC, semelhantes a VLANs em redes tradicionais. Elas ajudam a organizar e controlar o tráfego de rede dentro do Amazon Virtual Private Cloud.
+
+# Qual é o objetivo das sub-redes na AWS?
+
+Elas são usadas para:
+
+- Melhorar a organização da rede
+- Garantir alta disponibilidade
+- Controlar a conectividade dos recursos
+
+# O que é necessário definir ao criar uma sub-rede?
+
+1. A VPC
+Em qual VPC a sub-rede será criada.
+
+2. Zona de disponibilidade
+A sub-rede pertence a uma única zona específica.
+
+3. Bloco CIDR
+Um intervalo de IP que deve estar dentro do CIDR da VPC.
+
+# Onde uma instância do EC2 é criada?
+
+Uma instância do Amazon EC2 é sempre iniciada dentro de uma sub-rede, e portanto em uma zona de disponibilidade específica.
+
+# Quais são os tipos de sub-redes?
+
+Sub-redes públicas
+
+- Possuem acesso direto à internet
+- Utilizam um gateway de internet
+
+Sub-redes privadas
+
+- Não possuem acesso direto à internet
+- Acessam a internet indiretamente via NAT (gateway NAT ou instância NAT)
+
+# Qual é a principal diferença entre sub-redes públicas e privadas?
+
+- Públicas: acesso direto à internet
+- Privadas: acesso indireto ou restrito, aumentando a segurança
+
+
+# O que são IPs reservados em uma sub-rede da AWS?
+
+São endereços IP que a AWS reserva automaticamente em cada sub-rede para funções internas, como:
+
+- Roteamento
+- DNS
+- Gerenciamento de rede
+
+# Quantos IPs a AWS reserva por sub-rede?
+
+A AWS reserva 5 endereços IP em cada sub-rede dentro de uma Amazon Virtual Private Cloud.
+
+# Esses IPs podem ser usados por instâncias?
+
+Não. Eles são exclusivos para uso interno da AWS e não podem ser atribuídos a recursos como instâncias do Amazon EC2.
+
+# Como funciona o cálculo de IPs em uma VPC?
+
+Exemplo:
+
+VPC: 10.0.0.0/22 → total de 1024 IPs
+Dividida em 4 sub-redes /24 → cada uma com 256 IPs
+
+# Quantos IPs realmente podem ser usados em cada sub-rede?
+
+De 256 IPs por sub-rede:
+
+5 são reservados pela AWS
+251 ficam disponíveis para uso
+
+# Pode dar um exemplo de sub-rede?
+
+Sim. Uma sub-rede poderia ser:
+
+10.0.0.0/24
+# Qual é a importância de entender os IPs reservados?
+
+Ajuda no planejamento da rede, evitando surpresas ao perceber que nem todos os IPs estão disponíveis para uso.
+
+# Quais são os 5 endereços IP reservados pela AWS?
+
+|Endereço IP|Propósito|
+|---|---|
+|10.0.0.0|Endereço de rede|
+|10.0.0.1|Roteador da VPC|
+|10.0.0.2|Servidor DNS|
+|10.0.0.3|De uso futuro|
+|10.0.0.255|Endereço de broadcast
+
+# O que é um Gateway NAT?
+
+É um serviço de Network Address Translation (NAT) que permite que instâncias em sub-redes privadas se conectem a redes externas, sem permitir conexões de entrada iniciadas de fora.
+
+# Qual é a principal função de um Gateway NAT?
+
+Permitir que recursos em sub-redes privadas:
+
+- Acessem a internet ou outras redes
+- Permaneçam protegidos contra acessos externos diretos
+# Instâncias em sub-redes privadas podem receber conexões externas usando NAT?
+
+Não. O Gateway NAT permite apenas conexões de saída, bloqueando conexões de entrada não solicitadas.
+
+# Quais são os tipos de Gateway NAT?
+
+## Público
+
+É o tipo padrão. Características:
+
+- Criado em uma sub-rede pública
+- Permite que instâncias privadas acessem a internet
+- Requer um IP elástico (EIP)
+- O tráfego é roteado para um gateway de internet
+
+Também pode ser usado para conectar com:
+
+- Outras VPCs
+- Redes locais (on-premise)
+## Privado
+
+Características:
+
+- Usado para comunicação entre redes privadas
+- Não permite acesso direto à internet
+- Não utiliza IP elástico
+- Indicado para conexões com:
+- Outras VPCs
+- Redes locais (via VPN ou conexão dedicada)
+
+# Um Gateway NAT privado pode acessar a internet?
+
+Não. Mesmo que exista um gateway de internet na Amazon Virtual Private Cloud, o tráfego vindo de um NAT privado será descartado.
+
+# Onde o Gateway NAT é utilizado na prática?
+
+Principalmente em arquiteturas onde:
+
+- O backend fica em sub-redes privadas
+- Precisa acessar APIs externas, atualizações ou serviços na internet
+- Mas deve continuar protegido contra acessos diretos
+
+
+# O que acontece quando você cria uma VPC na AWS?
+
+Ao criar uma Amazon Virtual Private Cloud, a AWS automaticamente cria uma tabela de rotas principal.
+
+# O que é uma tabela de rotas?
+
+É um conjunto de regras que define para onde o tráfego de rede deve ser enviado dentro da VPC.
+
+# O que são rotas?
+
+Rotas são regras dentro da tabela de rotas que determinam o caminho que o tráfego deve seguir.
+
+# Qual é o comportamento padrão da tabela de rotas principal?
+
+Por padrão, ela permite que todas as sub-redes dentro da VPC se comuniquem entre si.
+
+# Quais são os principais elementos de uma tabela de rotas?
+
+## Destino (Destination)
+
+É o intervalo de IP para onde o tráfego será enviado
+Exemplo: o bloco CIDR da própria VPC
+
+## Alvo (Target)
+
+É o caminho pelo qual o tráfego será roteado
+Exemplo: a própria rede local da VPC
+# Como entender “destino” e “alvo” de forma simples?
+
+- Destino: para onde o tráfego quer ir
+- Alvo: por onde ele vai chegar lá
+# Qual a importância da tabela de rotas?
+
+Ela controla o fluxo de comunicação dentro da rede e também pode ser usada para:
+
+- Permitir acesso à internet
+- Conectar com outras VPCs
+- Integrar com redes locais
+
+ Quais os tipos de site/página web o Amazon S3 possui capacidade para fazer hospedagem e executar como um servidor web?
+
+# O que é a área de Compute Engine do Google Cloud?
+
+É a página onde são criadas e armazenadas as máquinas virtuais. 
+
+# O que é a área de suporte?
+
+É através dessa área que é possível consultar documentação, conferir guias de arquitetura, ver perguntas frequentes e iniciar um tutorial.
+
+# O que são as regiões e as zonas do Google Cloud?
+
+As **regiões são os locais onde ficam os datacenters** responsáveis por prover serviço computacional. Serve como uma estratégia de recuperação de desastres (**disaster recovery**), em caso de uma indisponibilidade de uma região inteira.
+
+Dentro de cada região, existe uma divisão chamada de **“zonas”, o que representa uma divisão de servidores, denominados “a”, “b” e “c”.** Projetadas para tolerância a falhas: se uma zona falha, as outras na mesma região não são afetadas.
+
+A comunicação entre as regiões ocorre através de um **rede privada com cabos submarinos**.
+
+# O que é a VPC do Google Cloud?
+
+É uma rede privada hospedada em Google Cloud em que **os usuários podem disponibilizar suas aplicações, armazenar dados e hospedar sites.** Por meio dela é possível **configurar políticas de firewall, IPs (internet protocol), portas e protocolos.**
+
+A VPC do Google Cloud é global, logo, podemos ser atendidos em qualquer região disponível.
+
+# O que são as subnets?
+
+Uma subnet é uma divisão da VPC que define um intervalo de IPs (ex: 10.0.0.0/24) disponíveis para os recursos internos (VMs, serviços etc.).
+
+# O que é série ou geração?
+
+Cada série é formado por um conjunto de máquinas virtuais predefinidas, que possuem um conjunto de recursos para a VM. Se nenhum deles atender sua necessidade, é possível criar uma máquina personalizada.
+# Quais são os tipos de máquinas virtuais?
+
+| Tipo de uso | Econômico                                                                                                                    | Equilibrado                                                                              | Escalonamento horizontal otimizado                                      | Otimização de memória                                                                  |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| Família     | E2                                                                                                                           | N2, N2D, N1                                                                              | Tau T2D, Tau T2A                                                        | M3, M2, M1                                                                             |
+| Objetivo    | Computação básica a um custo menor                                                                                           | Desempenho e preços equilibrados                                                         | Melhor desempenho para cargas que precisam de escalabilidade horizontal | Cargas de trabalho com memória ultraelevada                                            |
+| Exemplos    | - Aplicação web<br>- Front-end<br>- Banco de dados pequenos<br>- Ambientes para desenvolvimento<br>- API<br>- Microsserviços | - Streaming de mídia<br>- Banco de dados médios e grandes<br>- Aplicações web<br>- Cache | - Aplicativos Java em grande escala<br>- Microsserviços em containers   | - Banco de dados de análises em memória<br>- Bancos de dados como Microsoft SQL Server |
+
+# Quais são uma das vantagens da máquinas virtuais?
+
+- Facilidade de gerenciamento: é possível facilmente deletá-la e recriá-la de maneira muito simples.
+- flexibilidade em customizações: podemos instalar a versão que melhor nos atender de um software e customizar as bibliotecas.
+
+# Como é feito o gerenciamento de responsabilidades de uma VM?
+
+**Mista**. Toda a infraestrutura física é provida e gerenciada pelo Google, mas o gerenciamento de utilização dos recursos, instalação e atualizações de softwares é de responsabilidade única do usuário.
+
+# O que é aplicativo nativo da nuvem (cloud native application)?
+
+Software que utiliza recursos como serviço e que é desacoplado, ou seja, seus componentes não dependem de outros componentes externos, é independente.
+
+## Quais são as duas arquiteturas comuns para o aplciativo nativo da nuvem?
+
+- **Stateful:** consiste em uma aplicação que, além da lógica, armazena os dados em si.
+- **Stateless:** dados armazenados em um componente externo, ficando apenas responsável pela lógica e processamento.
+
+# O que é Cloud Run?
+
+Um PaaS que entrega uma infraestrutura sem servidor para as aplicações e suporta as principais linguagens de programação.
+
+# O que é a ISO 27001?
+
+Norma da Organização Internacional de Normatização que descreve os requisitos de um sistema de gestão de segurança e especifica um conjunto de práticas recomendadas.
+
+# Exemplo de segurança aplicada ao Google?
+
+Apenas funcionários autorizados possuem acesso aos datacenters, e esses funcionários representam menos de 1% do total de funcionários do Google.
+
+# O que é o Google App Engine?
+
+É um serviço de PaaS (Plataforma como Serviço) totalmente gerenciado. Ele permite desenvolver e hospedar aplicações web e APIs sem gerenciar a infraestrutura subjacente.
+
+# O que é IAM (identity and access management)?
+
+Processo para controle do acesso às informações, recursos e ações do ambiente, sendo possível gerir todos os usuários e seu nível de acesso.
+
+Exemplo: se um usuário tem acesso de desenvolvedor, estará autorizado a somente visualizar ou talvez editar configurações relacionadas à sua alçada, não podendo visualizar, utilizar ou configurar nada de infraestrutura
+
+# O que é o Cloud Armor?
+
+Tecnologia que utiliza inteligência artificial e aprendizado de máquinas para mitigar ataques contra aplicações e servidores dos clientes.
+
+# O que é o reCAPT?
+
+Tecnologia do Google que permite distinguir entre um acesso humano ou automatizado por meio do uso de identificações visuais ou auditivas.
+
+# O que é a lista de bloqueios (blocklist) e lista de permitidos (allowlist)?
+
+Estratégia de segurança da informação cujo o objetivo é ter uma lista de bloqueios ou permissões de acessos ao sistema, e isso pode ser baseado em IPs ou regiões. É muito útil para podermos negar o acesso de IPs externos da nossa rede, por exemplo, a uma aplicação.
+
+# O que é DevOps?
+
+DevOps é uma cultura e um conjunto de práticas que une as equipes de **Desenvolvimento** (Dev) e **Operações** (Ops) de tecnologia, com a finalidade de criar, testar e colocar o software no ar mais rápido e com menos erros.
+
+# O que são os LOGS?
+
+Uma forma de monitoramento que registra eventos relevantes no sistema ou infraestrutura. Com o uso dos LOGS, é possível identificar erros, acessos e alterações realizadas.
+
+# Qual é a ferramenta de monitoramento do Google Cloud?
+
+**Cloud Monitoring** para monitoramento de aplicações e infraestrutura de maneira mais minuciosa.
+
+# Quais são as etapas de construção de uma infraestrutura para um projeto que utilizará VMs?
+
+Criar uma VPC, selecionar uma região, criar as subnets, vincular a VM a essa subnet.
+
+# O que é cloud native architecture?
+
+É uma arquitetura cujo objetivo é se adequar às tecnologias como serviço oferecidas pelo provedor de nuvem.
+
+# O que é o Cloud SQL?
+
+Um banco de dados SQL reacional, completamente gerenciado e com alta disponibilidade, escalável e em nuvem.
+
+# O que é mensageria assíncrona?
+
+É um sistema responsável por gerenciar a troca de mensagens entre serviços, no entanto, não é necessário que ambos serviços estejam simultaneamente disponíveis para que isso aconteça. Em suma, a troca de informações não exige resposta imediata.
+
+A ferramenta oferecida pelo Google Cloud para comunicação assíncrona é o Pub/Sub.

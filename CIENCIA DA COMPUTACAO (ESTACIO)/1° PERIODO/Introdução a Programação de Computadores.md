@@ -89,12 +89,12 @@ Já a função `fgets()` consegue ler uma linha inteira (incluindo os espaços).
 
 Ela possui duas qualidades:
 
-- **Modularidade:** técnica de dividir um sistema de software complexo em partes menores, independentes e gerenciáveis, facilitando a manutenção e reutilização de código Um exemplo são as funções.
+- **Modularidade:** técnica de dividir um sistema de software complexo em partes menores, independentes e gerenciáveis, facilitando a manutenção e reutilização de código. Um exemplo são as funções.
 - **Abstração:** permite você focar nos aspectos mais importantes de um problema, desconsiderando questões que são irrelevantes naquele momento. Mais uma vez, a função é um exemplo, pois um dos objetivos dela é fazer você focar apenas em *o que* ela pode fazer, e não em *como* ela pode fazer.
 
 # O que é pseudocódigo?
 
-forma genérica e estruturada de representar algoritmos usando linguagem natural (como português) misturada com elementos de programação.
+Forma genérica e estruturada de representar algoritmos usando linguagem natural (como português) misturada com elementos de programação.
 
 ![[Pasted image 20260302193028.png]]
 
@@ -284,4 +284,73 @@ int main() {
 }
 ```
 
-Veja que a recursividade ocorre antes da chamada da função `printf`. Isso gera o seguinte resultado: depois que terminar o loop da recursividade, a função `printf` será executada na ordem inversa, ou seja, em vez de os números aparecerem em ordem decrescente, aparecerá na ordem crescente.
+Veja que a recursividade ocorre antes da chamada da função `printf`. Isso gera o seguinte resultado: depois que terminar o loop da recursividade, a função `printf` será executada na ordem inversa, ou seja, em vez de os números aparecerem em ordem decrescente, aparecerá na ordem crescente
+
+# Como criar um array (vetor)?
+
+```c
+int numeros[5] = {10, 20, 30, 40, 50};
+```
+
+No caso de uma string, é 
+
+É possível acessar os elementos do vetor da seguinte forma:
+
+```c
+for (int x = 0; x < 4; x++){
+
+  printf("%d\n", idades[x]);
+
+}
+```
+
+Outra forma de criar um array:
+
+```c
+char *nomes[3] = {"Pedro", "Jose", "Maria"};
+```
+
+Você pode mudar o valor do vetor da seguinte forma:
+
+```c
+nomes[0] = "Vinicius";
+```
+# Como criar uma matriz?
+
+A matriz é uma estrutura de dados com duas dimensões: linhas e colunas. Exemplo:
+
+```c
+int tabela[3][3] = {
+    {1, 2, 3},
+    {4, 5, 6},
+    {7, 8, 9}
+};
+```
+
+Outro exemplo de como usá-la:
+
+```c
+char *nomes[2][3] = {
+
+    {"Alice", "Bob", "Carol"},
+
+    {"Pedro", "Jose", "Maria"}
+
+   };
+
+  
+
+  for (int x = 0; x < 2; x++){
+
+    for (int y = 0; y < 3; y++){
+
+      printf("%s\n", nomes[x][y]);
+
+    }
+
+  }
+```
+
+# O que é a função `malloc()`?
+
+Aloca dinamicamente um bloco de memória contíguo na região _heap_ durante a execução do programa.

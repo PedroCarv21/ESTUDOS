@@ -346,3 +346,79 @@ Objetivo 11. Desenvolvimento sustentável do Brasil rural.
 # O que é a Agenda 2030?
 
 Esse programa possui 17 objetivos principais relacionados ao desenvolvimento sustentável em âmbito global e substituiu a Agenda 21.
+
+# Quando a Declaração Universal dos Direitos Humanos foi adotada pela ONU?
+
+1948.
+
+# O que inspirou a ONU a criar essa declaração?
+
+As duas guerras mundiais.
+# Características dos direitos humanos
+
+- **Universalidade:** estar disponíveis para todos os membros da família humana igualmente, sem restrições para ninguém.
+- **Interdependência:** a existência de um direito está condicionada à existência de todos os demais. Nenhum direito é mais importante do que os outros.
+- **Indivisibilidade:** Não pode haver uma divisão dos direitos humanos em categorias. É preciso entendê-los e respeitá-los como um todo.
+# Quais direitos são reconhecidos pela ONU como inalienáveis?
+
+Justiça, paz e liberdade.
+# O que foi a crise do absolutismo?
+
+Foi o descrédito na tese de que um governante soberano com todos os direitos concentrados em suas mãos. Isso ocorreu nos séculos XVII e XVIII.
+
+# Quais foram os dois principais documentos que materializaram a noção de direitos básicos para todos?
+
+- **Declaração de Independência (Estados Unidos)**: 
+	- **Causa**: insatisfação dos colonos americanos com os abusos da Inglaterra, principalmente no final da **Guerra dos Setes Anos**, obrigados a **pagar dívidas inglesas** e a obedecer a **ordens autoritárias** da metrópole.
+	- **Dizeres da carta**: anuncia que todos os homens são **criados iguais por Deus** e que recebem Dele direitos que não lhes deveriam ser retirados: a vida, a liberdade e a busca da felicidade. Essa carta foi feita em 1776 e se tornou oficial em 1787.
+- **Declaração dos Direitos do Homem e do Cidadão (Revolução Francesa)**:
+	- **Causa**: insatisfação do povo com o governante Luís XVI, que **aumentou os impostos** cobrados da população, mas manteve as **classes privilegiadas isentas** de contribuição.
+	- **Dizeres:** defendeu que a ignorância ou o menosprezo aos direitos dos homens eram a razão da difícil situação em que o povo se encontrava e que, para mudar a situação, era necessário defender de forma solene os direitos considerados naturais e inalienáveis. Ela foi criada em 1789.
+# O que é o Estado de Direito?
+
+Sistema jurídico-político onde todos, incluindo governantes e instituições, estão submetidos às leis, garantindo direitos fundamentais e evitando o arbítrio. Ele surgiu através dos **filósofos iluministas** e esse período ficou conhecido como **era dos direitos**.
+
+# Quais foram as 3 filosofias que influenciaram os direitos humanos?
+
+- **Jusnaturalismo:** o direito é visto como algo **intrínseco e natural** ao ser humano, funcionando antes mesmo de ser legalizado pelas constituições ou pelo Estado.
+- **Positivismo:** os direitos não são elementos naturais em uma sociedade. Eles seriam o resultado de discussões e entendimentos do Estado, que decide pela oficialização e legalização de certas normas.
+- **Moralismo:** defende que os direitos são normas que não precisam ser oficializadas em leis e constituições para terem validade. Sua importância está diretamente relacionada às necessidades e valores da sociedade em que estão inseridos.
+
+# Quais foram opiniões de Hannah Arendt?
+
+Propôs que ocorreu uma ruptura nos direitos humanos não apenas devido aos regimes totalitários e também devido às **políticas imperialistas** praticadas.
+
+Para Arendt, o grupo dos apátridas foi o que teve a situação mais angustiante, pois, além de terem perdido seus direitos, eles não eram reconhecidos como iguais perante a lei, já que a lei nem existia mais para eles.
+
+Segundo Arendt, seria necessário garantir que todos os homens e mulheres, sem condições ou exceções, obtenham proteção jurídica na mesma medida que todos os demais. O indivíduo deveria ser reconhecido como **cidadão do mundo** ou, como foi dito na declaração da ONU, membro da família humana, sem distinção entre nativo e estrangeiro.
+
+# Quais são os críticos do universalismo?
+
+Surge a preocupação de que existe um grupo que presume entender sozinho as necessidades globais e pode decidir unilateralmente o que é necessário para garantir uma vida digna, sem consultar aqueles que serão afetados por esses direitos. Isso sugere que um grupo ou cultura possa tutelar o mundo em detrimento de outros.
+
+# O que defende Sousa Santos?
+
+Um dos **principais defensores do multiculturalismo**, que é natural que todas as culturas vejam seus próprios princípios como os mais corretos, algo que deveria ser respeitado pelos outros ou não seriam cultivados.
+
+# Quando foi que o Brasil adotou a ideia da ONU de que todos os seres humanos nascem livres e iguais?
+
+Constituição de 1988.
+# Quais os fundamentos da Republica Federativa do Brasil segundo Carta Magna?
+
+Soberania, Cidadania e Dignidade da pessoa humana (**condições mínimas necessárias** para que alguém viva uma vida justa).
+
+# Quais continentes não tem comitês regionais da ONU?
+
+Ásia e da Oceania
+
+# O que é a Constituição Cidadã?
+
+Foi redigida para superar as restrições aos direitos durante o regime militar, restaurar a democracia e promover a redução da desigualdade social e o combate à corrupção.
+
+# Quais são alguns dos tratados internacionais da ONU que o Brasil possui compromisso?
+
+1. Pacto Internacional dos Direitos Econômicos, Sociais e Culturais  
+     
+2. Pacto Internacional dos Direitos Civis e Políticos  
+     
+3. Convenção sobre Eliminação de Todas as Formas de Discriminação Racial
