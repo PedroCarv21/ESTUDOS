@@ -688,3 +688,64 @@ Neste caso, é preciso executar da seguinte forma:
 select maior();
 ```
 
+# 75. Stored procedures
+
+## Diferença entre função e procedure
+
+Funções não controlam transações (como `BEGIN`, `COMMIT`, `ROLLBACK`) e devem retornar um valor, enquanto procedimentos podem controlar transações e não retornam valores diretamente.
+
+## Como criar um procedure
+
+```sql
+create procedure nome_procedure(parametro tipo) language sql as
+$$
+	-- corpo do procedure
+$$;
+```
+
+Para executar o procedure, utilize o comando `call`. Exemplo:
+
+```sql
+create procedure insere_bairro(nome_bairro varchar(30)) language sql as
+$$
+	insert into bairro (nome) values (nome_bairro);
+$$;
+
+call insere_bairro ('Teste procedure');
+```
+
+O que este código faz é: inserir um novo registro na tabela `bairro`.
+
+# 78. Triggers
+
+Procedimento automatizado que instrui o banco de dados a executar uma função específica sempre que um evento de manipulação de dados (como `INSERT`, `UPDATE` ou `DELETE`) ocorrer em uma tabela ou view.
+
+## Como criar uma função configurada para ser executada por uma trigger
+
+Primeiro, é necessário criar uma função que deva ser executada sempre que um evento ocorrer. Exemplo:
+
+```sql
+create function bairro_log() returns trigger language plpgsql as
+$$
+begin
+	insert into bairro_auditoria (idbairro, data_criacao) values (new.idbairro, current_timestamp);
+	return new;
+end
+$$;
+```
+
+- `returns trigger` informa que essa função será executada por uma trigger.
+- `new` representa a nova linha inserida/alterada em outro local. Portanto, neste caso, `new.idbairro` se refere ao valor do novo registro referente ao campo `idbairro`. **Neste exemplo, `idbairro` não se refere a um campo da tabela `bairro_auditoria`, mas da tabela `bairro`. O vínculo com esta tabela fica mais claro com a criação da trigger.**
+
+
+**OBS.: o tipo `timestamp` é usado para representar data e hora. O comando `current_timestamp` é usado inserir o valor da data e hora atual.**
+## Criando a trigger
+
+Em seguida, é necessário criar a trigger, informando que ela acionará uma função assim que um evento ocorrer. Exemplo:
+
+```sql
+create trigger log_bairro_trigger after insert on bairro 
+for each row execute procedure bairro_log();
+```
+
+O que esse código diz é: crie uma trigger chamada `log_bairro_trigger` que, para cada linha inserida na tabela `bairro`, executará a função `bairro_log`.
