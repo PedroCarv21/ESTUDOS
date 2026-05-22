@@ -36,7 +36,7 @@ $$
 \{A ∈ N\* | 0 < A < 6\}
 $$
 
-	Pode ser lido da seguinte forma: o conjunto de A pertence ao conjunto de números naturais não nulos, **tal que** (representado pela barra | ) o conjunto de A é maior que 0 e menor que 6. Há outras duas formas de representar implicitamente este mesmo conjunto:
+Pode ser lido da seguinte forma: o conjunto de A pertence ao conjunto de números naturais não nulos, **tal que** (representado pela barra | ) o conjunto de A é maior que 0 e menor que 6. Há outras duas formas de representar implicitamente este mesmo conjunto:
 
 $$
 \{ A | A ∈ N\*\ e\ 0 < A < 6 \}
@@ -152,7 +152,7 @@ Na seguinte imagem, o conjunto A é representado pela cor azul, conjunto B pela 
 
 ![[Pasted image 20260211221240.png]]
 
-A interseção entre A ∩ B = {-3; -2; -1; 0; 1; 2}
+A interseção entre A ∩ B = {-3; -2; -1; 0; 1}
 
 Já a união entre o conjunto anterior (A ∩ B) e o conjunto C seria dos números a partir de -3 até 3, pois o número do conjunto C está excluído. Portanto, X = {-3; -2; -1; 0; 1; 2; 3}
 
@@ -273,7 +273,7 @@ O resultado é 151.200.
 
 é quando queremos escolher elementos de um conjunto **sem se importar com a ordem** e **permitindo repetir elementos**.
 
-Exemplo: Suponha que uma loja possui tabletes (barras) de chocolate de **três** marcas diferentes e você deseja comprar **oito** tabletes. De quantas formas diferentes podem ser escolhidos os tabletes em sua compra?
+Exemplo:  
 
 **OBS.: a resposta a seguir visa utilizar de um macete para chegar a uma conclusão (embora não faça muito sentido a maneira em que se chega ao resultado).**
 
@@ -281,7 +281,7 @@ Exemplo: Suponha que uma loja possui tabletes (barras) de chocolate de **três**
 
 A quantidade de tabletes (T) é 8 e há 3 opções de chocolate, portanto, é possível dividir os tabletes da seguinte forma:
 
-TTT - TTT - TTTT
+TTT - TTT - TT
 
 A quantidade de traços que separam os conjuntos de tabletes por marca é sempre, independentemente da maneira como os tabletes são distribuídos:
 
@@ -329,7 +329,7 @@ Devem ser utilizados um ponto em cima dos dois números para indicar a sua inclu
 
 ![[Pasted image 20260311181535.png]]
 
-- **Intervalor fechado**
+- **Intervalo fechado**
 - **intervalo semiaberto (ou semifechado)**
 - **intervalo semiaberto (ou semifechado)**
 - **Intervalo aberto**
@@ -529,6 +529,137 @@ São símbolos lógicos para a realização de cálculos entre as proposições.
 - **NOR:** representado pelo ↓ e significa que a operação booleana que combina OR e NOT, produzindo um resultado falso apenas quando uma das entradas é verdadeira. Por exemplo: p = "Maria vai ao clube"; q = "Maria vai estudar"; p ↓ q equivale a "Não é verdade que Maria vai ao clube ou Maria vai estudar".
 - ![[Pasted image 20260407181154.png]]
 
+| p   | q   | r   | p → q | q v r | (p → q) ^ (q v r) |
+| --- | --- | --- | ----- | ----- | ----------------- |
+| v   | v   | v   | v     | v     | v                 |
+| v   | v   | f   | v     | v     | v                 |
+| v   | f   | v   | f     | v     | f                 |
+| v   | f   | f   | f     | f     | f                 |
+| f   | v   | v   | v     | v     | v                 |
+| f   | v   | f   | v     | v     | v                 |
+| f   | f   | v   | v     | v     | v                 |
+| f   | f   | f   | v     | f     | f                 |
+
+p = O dragão desaparece amanhã.
+q = Aladim beijou a princesa ontem.
+
+| p   | q   | p ↔ q | ((p ↔ q) ^ p) -> q | ((p ↔ q) ^ p) -> q |
+| --- | --- | ----- | ------------------ | ------------------ |
+| V   | V   | F     | V                  |                    |
+| V   |     | V     | V                  |                    |
+|     | F   | F     |                    |                    |
+Sim
+
+
+| p   | q   | (p→q)→(∼q→∼p) |
+| --- | --- | ------------- |
+| v   | f   | v             |
+
+
+| p   | q   | r   | G   | p + ~ q * ~r | p + q * ~r | ~p + q * r |
+| --- | --- | --- | --- | ------------ | ---------- | ---------- |
+| v   | v   | v   | v   | v            | v          | v          |
+| v   | v   | f   | f   | v            | v          | f          |
+| v   | f   | v   | f   |              |            | f          |
+| v   | f   | f   | f   |              |            | f          |
+| f   | v   | v   | v   |              |            | v          |
+| f   | v   | f   | v   |              |            | v          |
+| f   | f   | v   | v   |              |            | v          |
+| f   | f   | f   | v   |              |            | v          |
+
+ler (l)
+compreender (c)
+jogar (j)
+desistir (d)
+é feriado (f)
+
+~l → ~f
+f → l
+l → ~j
+f → ~j
+
+j → ~l
+
+Se não leio, não compreendo. 
+Se jogo, não leio. 
+Se não desisto, compreendo. 
+Se é feriado, não desisto.
+
+
+Paula é prima de Lucia ou Luis é filho de Paulo.
+Se Jorge é irmão de Maria, então Marcos não é neto de Carlos.
+Se Luis é filho de Paulo, então Marcos é neto de Carlos.
+
+p = Paula é prima de Lucia
+l = Luis é filho de Paulo
+j = Jorge é irmão de Maria
+m = Marcos é neto de Carlos
+
+p v l
+j → ~m
+l → m
+
+p v l
+j → ~l
+
+p → ~j
+
+Joel é irmão de Marta
+
+1 - Verdadeira
+
+| p   | q   | r   | p -> q | p → (q → r) |
+| --- | --- | --- | ------ | ----------- |
+| v   | f   | v   | f      | v           |
+| v   | f   | f   | f      | v           |
+2 - Falsa
+
+3 - Falsa
+
+
+| p   | q   | r   | (p ^q) | (q → r) | ((p ^q) → r) → (p → (q → r)) |
+| --- | --- | --- | ------ | ------- | ---------------------------- |
+| v   | v   | v   | v      | v       | v                            |
+| v   | v   | f   | v      | f       | v                            |
+
+
+| a   | ~a  | ~b  | ~c  | b   | c   | y   | (~a + ~b + ~c) | (~a + b + c) | (a + b + c) | (a + ~b + ~c) | (~a + b + ~c) | (a + ~b + c) | (a + b + ~c) |
+| --- | --- | --- | --- | --- | --- | --- | -------------- | ------------ | ----------- | ------------- | ------------- | ------------ | ------------ |
+| 0   | 1   | 0   | 1   | 1   | 0   | 1   | 1              | 1            | 1           | 1             | 1             | 0            | 1            |
+| 0   | 1   | 0   | 0   | 1   | 1   | 1   | 1              | 1            | 1           | 0             | 1             | 1            | 1            |
+| 0   | 1   | 1   | 1   | 0   | 0   | 0   | 1              | 1            | 0           | 1             | 1             | 1            | 1            |
+| 1   | 0   | 1   | 0   | 0   | 1   | 1   | 1              | 1            | 1           | 1             | 0             | 1            | 1            |
+| 1   | 0   | 0   | 1   | 1   | 0   | 1   | 1              | 1            | 1           | 1             | 1             | 1            | 1            |
+| 1   | 0   | 1   | 1   | 0   | 0   | 0   | 1              | 0            | 1           | 1             | 1             | 1            | 1            |
+
+| y   |     |
+| --- | --- |
+| 1   |     |
+| 1   |     |
+| 0   |     |
+| 1   |     |
+| 1   |     |
+| 0   |     |
+
+| r   | t   | (r → t) | (r → t) ↔ r |
+| --- | --- | ------- | ----------- |
+| v   | v   | v       | v           |
+| v   | f   | f       | f           |
+| f   | v   | v       | f           |
+| f   | f   | v       | f           |
+
+| p   | q   | p v q | p ^ q | (p v q) → q | (p ^ q) → q |
+| --- | --- | ----- | ----- | ----------- | ----------- |
+| v   | v   | v     | v     | v           | v           |
+| v   | f   | v     | f     | f           | v           |
+| f   | v   | v     | f     |             | v           |
+| f   | f   | f     | f     |             | v           |
+
+| x   | y   | 2x + y > 3 |
+| --- | --- | ---------- |
+| 1   | 3   | V          |
+| 1   | -1  |            |
+|     |     |            |
 
 # Classificações de proposições lógicas
 
@@ -553,7 +684,6 @@ I. ∼Q→∼P
 II. P ou ∼Q  
   
 III. ∼P ou Q  
- 
 
 Entre essas três proposições, quais são equivalentes à proposição P→Q ?
 
@@ -589,7 +719,7 @@ $$
 $$
 \begin{align}
 p→q \\
-\frac{∼p}{∼q}
+\frac{∼q}{∼p}
 \end{align}
 ​$$
  
@@ -599,7 +729,7 @@ p→q \\
 $$
 \begin{align}
 p→q \\
-\frac{p→r}{q→r}​​
+\frac{q→r}{p→r}​​
 \end{align}
 $$
 ## Silogismo disjuntivo (SD)
@@ -665,9 +795,6 @@ Agora, começaremos a analisar a partir da proposição simples “Carlos é um 
 Se Pedro não é músico (F), então André é servidor da ABIN (F). V
 Se André é servidor da ABIN (F), então Carlos não é espião (F)⋅(V).
 Carlos é um espião. (V)
-Se Pedro não é músico (F), então André é servidor da ABIN (F). V
-Se André é servidor da ABIN (F), então Carlos não é espião (F)⋅(V).
-Carlos é um espião. (V)
 ```
 
 Logo, concluímos que Pedro é músico. O argumento é válido.
@@ -685,7 +812,7 @@ Exemplo: considere a expressão x + 15 = 8 uma sentença aberta do conjunto dos 
 
 Resultado de x é -7 e faz parte dos números inteiros. Portanto, uma sentença verdadeira.
 
-# Quais são as duas condições que uma sentença aberta pode assumir?
+# Quais são as 3 condições que uma sentença aberta pode assumir?
 
 - **Universal:** quando **todos** os elementos de um determinado conjunto implicam em uma coerência caso sejam aplicados naquela sentença. Por exemplo: seja 2x + 1 > x uma sentença aberta no conjunto de números naturais (N). O resultado da equação é x > -1, portanto, qualquer número natural pode representar x.
 - **Possível:** quando **alguns** dos elementos de um determinado conjunto implicam em uma coerência caso sejam aplicados naquela sentença. Por exemplo: seja 2x + 3 > 6 uma sentença aberta no conjunto de números naturais (N). O resultado é x > 1,5, portanto, apenas os números inteiros a partir do dois em diante tornam a sentença aberta verdadeira.
@@ -722,7 +849,7 @@ São expressões lógicas que atribuem propriedades ou características a variá
 Se a sentença aberta diz p(x) :  x + 2 < 6 então a negação dessa sentença seria p(x): x + 2 >= 6. Neste caso, o Vp = {4, 5, 6, ...}
 ## Conjunção
 
-É a interseção entre dois conjunto verdades. Por exemplo: considerando o conjunto de números inteiros, Vp de p(x): x2+6x+5=0 é {-1, -5} e o Vp de q(x): x2+5x=0 é {0, -5}. Qual seria a conjunção Vp^q ? {-5} , pois é o elemento comum entre os dois conjunto verdades.
+É a interseção entre dois conjunto verdades. Por exemplo: considerando o conjunto de números inteiros, Vp de p(x): x²+6x+5=0 é {-1, -5} e o Vp de q(x): x2+5x=0 é {0, -5}. Qual seria a conjunção Vp^q ? {-5} , pois é o elemento comum entre os dois conjunto verdades.
 ## Disjunção
 
 Seriam todos os elementos presentes nos dois conjunto verdades. No caso do exemplo anterior, Vpvq é {-5, -1, 0}.
@@ -734,7 +861,7 @@ Para calcular p(x) → q(x) é possível utilizar, em vez disso, a fórmula ¬p(
 p(x): x + 1 < 6; portanto ¬p(x): x + 1 >= 6. O conjunto verdade é N - {1, 2, 3, 4}
 q(x) x é divisor de 10. O conjunto verdade é {1, 2, 5, 10}
 
-¬p(x) V q(x) é N - {3}
+¬p(x) V q(x) é N - {3, 4}
 
 ## Bicondicional
 
@@ -832,3 +959,4 @@ Consiste em duas coisas:
 
 - Naquela estratégia utilizada por Sócrates, que mostrava as implicações da tese defendida pelo o oponente, sendo que estas implicações apontava para um absurdo.
 - O princípio de não contradição defendido por Aristóteles.
+

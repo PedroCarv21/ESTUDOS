@@ -15,9 +15,10 @@
 # Quais são os principais serviços oferecidos pela computação em nuvem?
 
 - **Infraestrutura como serviço (IaaS):** fornece recursos brutos de computação (servidores, rede, armazenamento) onde você gerencia o SO e aplicativos. O provedor de serviço é responsável por manter a infraestrutura do datacenter que hospedará as máquinas virtuais dos usuários. Exemplo: máquina virtual da Azure da Microsoft.
-- **Plataforma como serviço (PaaS):** a responsabilidade do usuário diminui e aumenta a do provedor. O provedor é responsável por entregar todos os recursos de hardware e software necessários para que o usuário possa construir seus aplicativos. O código e os dados gerados pela aplicação são responsabilidade do usuário. Exemplo: Google App Engine.
+- **Plataforma como serviço (PaaS):** a responsabilidade do usuário diminui e aumenta a do provedor. O provedor é responsável por entregar todos os recursos de hardware e software necessários para que o usuário possa construir seus aplicativos. O código e os dados gerados pela aplicação são responsabilidade do usuário. Exemplo: Google App Engine; AWS Elastic Beanstalk e Azure Web Apps.
 - **Software como serviço (SaaS):** refere-se ao software que é executado e gerenciado na nuvem, sendo assim executado em um banco de dados remoto.é aquele com o qual o usuário tem menor responsabilidade, bastando apenas se conectar aos aplicativos disponibilizados e utilizar. Ao contrário, o provedor de serviços é o que tem maior responsabilidade. Ele é responsável por gerenciar toda a pilha de aplicativos, desde o hardware, passando pelos sistemas operacionais, até o aplicativo. Exemplo: Office 365.
 
+![[Pasted image 20260325132823.png]]
 # Quais são as tecnologias habilitadoras da computação em nuvem?
 
 - **Virtualização:** permite criar versões virtuais de recursos físicos — como servidores, sistemas operacionais, armazenamento e redes — para que possam ser usados de forma mais eficiente e flexível na nuvem. Assim, a virtualização permite que **várias máquinas virtuais (VMs)** funcionem no mesmo hardware físico, cada uma operando como se fosse um computador independente.
@@ -33,7 +34,7 @@
 
 # Quais são as características essenciais da computação em nuvem segundo o NIST (National Institute of Standards and Technology)?
 
-- **Autoatendimento sob demanda (on-demand self-service):** o usuário tem acesso a plataforma para configurar recursos como servidores e redes de armazenamento, de forma automática e sem depender do provedor de serviço em núvem.
+- **Autoatendimento sob demanda (on-demand self-service):** capacidade de provisionar recursos de computação (tempo de servidor, armazenamento) automaticamente, conforme necessário, sem interação humana com o provedor de serviço.
 - **Amplo acesso à rede (broad network access):** os recursos computacionais devem estar acessíveis a internet.
 - **Agrupamento de recursos (resource pooling):** os recursos de computação do provedor são agrupados para atender a vários consumidores usando um modelo multilocatário, ou seja, os recursos computacionais são compartilhados entre diversos usuários, os quais não precisam ter conhecimento acerca da localização dos recursos que estão utilizando.
 - **Elasticidade dinâmica (rapid elasticity):** a capacidade dos recursos podem ser aumentadas ou diminuídas de acordo com a demanada.
@@ -91,9 +92,9 @@ Em vez de as organizações arcarem com os encargos financeiros, os requisitos d
 
 # O que é Grid e utility computing?
 
-- **Grid (computação em grade):** tipo de sistema paralelo e distribuído que permite o compartilhamento, seleção e agregação de recursos geograficamente distribuídos dinamicamente e em tempo de execução dependendo da sua disponibilidade, capacidade, performance, custo e requerimentos dos usuários.
+- **Grid (computação em grade):** é uma forma de computação distribuída que interliga computadores geograficamente dispersos para funcionar como um único supercomputador virtual, aproveitando o poder ocioso para resolver tarefas complexas.
 	- **Diferença entre cluster e grid:** cluster são vários computadores próximos (conectados na mesma rede local) funcionando como um único supercomputador. Já o grid são computadores espalhados em diferentes lugares colaborando para resolver um problema.
-- **Utility (computação de utilidade pública):** modelo classificado como computação sob demanda, pois o usuário pode contratar software, hardware e serviços conforme sua necessidade de utilização e em função de fatores como picos, quedas e conforme o período de uso.
+- **Utility (computação de utilidade pública):** é um modelo de serviço onde recursos de TI (como armazenamento ou processamento) são fornecidos sob demanda e pagos conforme o uso, similar a uma conta de luz.
 
 # Quais são as camadas da infraestrutura em nuvem?
 
@@ -131,7 +132,7 @@ Aplicação, serviços, cloud runtime (execução na nuvem), armazenamento, infr
 # Quais são as camadas da arquitetura em nuvem?
 
 - **Infraestrutura:** é através dela que os provedores de infraestrutura disponibilizam os serviços de rede e armazenamento da nuvem. Fazem parte desta camada: servidores, sistema de armazenamento, datacenters e roteadores.
-- **Plataforma:** provê serviços para que as aplicações possam desenvolvidas, testadas e implementadas no ambiente da nuvem.
+- **Plataforma:** provê serviços para que as aplicações possam ser desenvolvidas, testadas e implementadas no ambiente da nuvem.
 - **Aplicação:** oferece diversas aplicações como serviço para os usuários.
 
 # Quais são os tipos de serviço em nuvem?
@@ -154,7 +155,7 @@ O processamento dos dados é feito de forma local e separa aqueles que podem ser
 
 # Quais são as 7 estratégias de migração para a nuvem, também conhecidas como 7Rs?
 
-- **Rehost (Re-hospedar):** também conhecida como lift and shift, onsiste em mover aplicações, infraestrutura e dados para um ambiente de nuvem, mantendo intactas as suas configurações.
+- **Rehost (Re-hospedar):** também conhecida como lift and shift, consiste em mover aplicações, infraestrutura e dados para um ambiente de nuvem, mantendo intactas as suas configurações.
 - **Replatform (Replataforma):** relacionado ao caso de sistemas legados, onde muitas organizações possuem sistemas estruturados demais para migrar para plataformas de nuvem IaaS ,esta estratégia permite que se façam algumas alterações de configuração para melhor se adequar ao ambiente de nuvem, sem alterar a arquitetura principal.
 - **Repurchase (Recompra):** conhecida como uma estratégia de marketing em que uma empresa incentiva seus clientes a comprar novamente seus produtos ou serviços. Ela envolve oferecer descontos, ofertas especiais, programas de fidelidade e outras formas de recompensar os clientes por sua lealdade.
 - **Refactoring/Re-architecting (Refatorar/Rearquitetar):** Consiste em desenvolver os sistemas do zero para torná-los nativos da nuvem. Essa estratégia permite aproveitar todo o potencial das tecnologias.
@@ -166,15 +167,9 @@ O processamento dos dados é feito de forma local e separa aqueles que podem ser
 
 Processo que ajuda a distribuir o tráfego de uma aplicação entre vários servidores para garantir que todas as solicitações sejam servidas de forma eficiente.
 
-# Dentro do contexto de segurança da computação em nuvem, quem fica responsável por trazer a segurança?
+# O que é o SIEM (Security Information and Event Management)?
 
-Depende, conforme se vê na imagem abaixo a graduação de responsabilidade, do provedor até o cliente, varia de acordo com o serviço.
-
-
-![[Pasted image 20260325131820.png]]
-
-![[Pasted image 20260325132823.png]]
-
+É uma solução de cibersegurança que coleta e e analisa logs e eventos de segurança de várias fontes (firewalls, servidores, antivírus) em tempo real. É feito isso para **detectar ameaças.**
 # Quais são as 5 atividades do gerenciamento de riscos?
 
 - **Identificar:** detectar os CVES (Common Vulnerabilities and Exposures, um sistema padronizado para identificar e catalogar vulnerabilidades de segurança conhecidas em softwares e hardwares).
@@ -202,8 +197,8 @@ Serviços baseados na nuvem em que o provedor (como AWS, Google Cloud ou Oracle)
 # Quais são os 4 tipos de armazenadores?
 
 - **Arquivos**: organiza os dados como uma hierarquia de pastas.
-- **Bloco:** separa os dados em volumes com o mesmo tamanho.
-- **Objetos:** gerenciam dados como unidades discretas, combinando os dados reais (arquivos, imagens) com metadados ricos e um identificador único.
+- **Bloco:** separa os dados em volumes com o mesmo tamanho. **É usado pelo Storage Area Network (SAN).**
+- **Objetos:** gerenciam dados como unidades discretas, combinando os dados reais (arquivos, imagens) com metadados ricos e um identificador único. **É capaz de lidar com dados não estruturados.**
 - **Containers**
 
 # O que são funções sem serviço (abordagem serverless)?
@@ -212,7 +207,7 @@ Indica que o cliente do serviço de nuvem não é responsável pela infraestrutu
 
 # O que é rede como serviço (NaaS)?
 
- Funciona oferecendo aos organizações serviços de rede para que não precisem investir na compra, instalação e manutenção de hardware de rede. Em seguida, o cliente paga uma assinatura mensal para acessar os recursos de rede do provedor.
+ Funciona oferecendo as organizações serviços de rede para que não precisem investir na compra, instalação e manutenção de hardware de rede. Em seguida, o cliente paga uma assinatura mensal para acessar os recursos de rede do provedor.
 
 A classe de serviço em nuvem associado a rede são:
 
@@ -229,7 +224,9 @@ organização dedicada a fomentar conscientização sobre as melhores práticas 
 
 A CSA selecionou 14 domínios, sendo o domínio nada mais do que uma área crítica da computação em nuvem que tem relação com a segurança.
 
-O **domínio 1** descreve e dine computação em nuvem e propõe uma terminologia base e detalha estruturas lógicas e arquiteturais par ambientes em nuvem.
+**A ordem das camadas (da mais concreta para a mais abstrata) na arquitetura funcional são: infraestrutura; metaestrutura; apliestrutura e infoestrutura**
+
+O **domínio 1** descreve e define computação em nuvem e propõe uma terminologia base e detalha estruturas lógicas e arquiteturais par ambientes em nuvem.
 
 Outros exemplos de domínio são o de **governança**, que é a capacidade de uma organização governar e gerir o risco corporativo introduzido a partir da adoção da computação em nuvem e também o **operacional** .
 # Quais são as técnicas-chave para a criação de nuvem?
@@ -241,6 +238,10 @@ Outros exemplos de domínio são o de **governança**, que é a capacidade de um
 
 - **Segregação:** que "permite que o provedor de nuvem divida os recursos para os diferentes grupos".
 - **Isolamento:** que "garante que um grupo não possa ver ou modificar os ativos uns dos outros".
+
+# O que é o serviço WAF (Web Application Firewall)?
+
+É uma camada de segurança essencial que monitora, filtra e bloqueia o tráfego HTTP/HTTPS malicioso entre a internet e um servidor web.
 
 # Qual a diferença entre Capex e Opex?
 
@@ -264,14 +265,14 @@ São datacenters fisicamente separados e independentes dentro de uma região do 
 O Azure Active Directory (Azure AD), agora oficialmente chamado de Microsoft Entra ID, é o serviço de gerenciamento de identidades e acessos baseado na nuvem da Microsoft. A identidade é representação digital de um objeto que precisa acessar um recurso. Imagine a identidade como um crachá digital inteligente que carrega informações sobre "quem" ou "o quê" está tentando entrar no sistema.
 # Quais são os serviços de armazenamento no Azure?
 
-- **Blobs do Azure:** espaço de armazenamento para dados considerados não estruturados, como arquivos de texto, vídeos, imagens e dados binários, dados que crescem de uma forma escalonável.
+- **Blobs do Azure:** espaço de armazenamento para dados considerados não estruturados, como arquivos de texto, vídeos, imagens e dados binários, **dados que crescem de uma forma escalonável**.
 - **Arquivos do Azure:** compartilhamento de arquivos bem familiar (que conhecemos nos sistemas Windows), que pode ser utilizado em implementações locais e em nuvem.
 - **Filas do Azure:** tipo de armazenamento de mensagens para um sistema de mensagens entre componentes do aplicativo
 - **Azure Disks:** tipo de armazenamento usado para os discos de máquina virtual.
 
 # Quais são algumas das características do Azure Active Directory?
 
-- **Autenticação:** verificar a identidade para acessar aplicativos e recursos. Também inclui fornecer funcionalidades, como redefinição de senha por autoatendimento, autenticação multifatorial, etc.
+- **Autenticação:** verificar a identidade para acessar aplicativos e recursos. 
 - **Logon único:** Permite lembrar apenas de um nome de usuário e uma senha para acessar vários aplicativos.
 - **Gerenciamento de aplicativo:** Permite gerenciar seus aplicativos de nuvem e locais usando o Azure AD.
 - **Gerenciamento de dispositivo:** Permite suporte ao registro de dispositivos.
@@ -294,7 +295,7 @@ Ele serve para maximizar a disponibilidade e o desempenho de seus aplicativos e 
 
 # O que é o Azure Policy?
 
-Ela permite que você defina políticas individuais e grupos de políticas relacionadas, conhecidas como iniciativas. Também avalia seus recursos e realça aqueles que não estão em conformidade com as políticas criadas por você e pode impedir a criação de recursos sem conformidade.
+Ela permite que você defina políticas individuais e grupos de políticas relacionadas, **conhecidas como iniciativas**. Também avalia seus recursos e realça aqueles que não estão em conformidade com as políticas criadas por você e pode impedir a criação de recursos sem conformidade.
 # O que é o azure advisor (ou assistente azure)?
 
 Ele oferece recomendações práticas para ajudar você a otimizar seus recursos do Azure em termos de confiabilidade, segurança, excelência operacional, desempenho e custo
@@ -323,6 +324,9 @@ Elas permitem associar metadados a um recurso para ajudar a controlar o gerencia
 
 **O Azure Active Directory é um recurso que não pode ser migrado**, pois está vinculado a conta do Azure e não está dentro de um grupo de recursos.
 
+# O que é Uso Geral v2 (General Purpose v2)?
+
+É o **tipo de conta de armazenamento mais atual e recomendado** para a maioria dos cenários de nuvem. Ela suporta todos os tipos de dados do Azure com os menores custos de armazenamento por GB
 # Como é organizado a infraestrutura da AWS?
 
 A infraestrutura global da AWS é dividida em regiões, que representam localizações geográficas onde ficam hospedados seus datacenters. Dentro de cada região existem subdivisões conhecidas como **zonas de disponibilidade (AZs), que consistem em um ou mais datacenters**.. A escolha de qual região será utilizada é do usuário que provisiona os recursos de TI, que deve avaliar critérios como **latência, preço, disponibilidade e possíveis regulações de conformidade nesse ambiente**. 
@@ -337,7 +341,7 @@ Para garantir a resiliência de ambientes na nuvem AWS, **é sempre recomendado 
 
 # O que é Amazon Machine Image (AMI)?
 
-É um modelo (template) pré-configurado que contém o sistema operacional, softwares e configurações necessários para lançar uma instância virtual (servidor) no Amazon EC2.
+É um modelo pré-configurado utilizado para criar máquinas virtuais, conhecidas como **instâncias**, dentro do serviço EC2.
 # O que é AMI ID?
 
 AMIs possuem um identificador único (AMI ID), com prefixo “ami-” seguido de um hash com números e letras, que representa todo o conjunto de características, como o sistema, a versão, a arquitetura e a região.
@@ -345,11 +349,13 @@ AMIs possuem um identificador único (AMI ID), com prefixo “ami-” seguido de
 
 - **Máquinas Virtuais (VMs)**: **virtualização de um servidor físico**, que possui disco, placa de rede, e permite instalar e personalizar o ambiente de forma similar. **Na AWS, as máquinas virtuais são chamadas de Amazon Elastic Compute Cloud (EC2).**
 - **Containers:** um padrão de empacotamento de código e dependências projetado para ser executado de forma confiável em qualquer plataforma. Na AWS é possível executar containers no **Amazon Elastic Container Service (Amazon ECS)** ou no **Amazon Elastic Kubernetes Service (Amazon EKS)**. Os containers oferecem **maior velocidade** de provisionamento e consistência de funcionamento independente do ambiente.
-- **Computação sem servidor (Serverless Computing):** o foco passa a ser no código das suas aplicações, sem precisar gastar tempo mantendo e atualizando infraestrutura, servidores ou sistema operacional. Nesse modelo, você pagará apenas pelo tempo que sua aplicação executar. Na AWS, o principal serviço de computação sem servidor é o AWS Lambda.
+- **Computação sem servidor (Serverless Computing):** o foco passa a ser no código das suas aplicações, sem precisar gastar tempo mantendo e atualizando infraestrutura, servidores ou sistema operacional. Nesse modelo, você pagará apenas pelo tempo que sua aplicação executar. Na AWS, o principal serviço de computação sem servidor é o **AWS Lambda**.
 
 # Quando é mais recomendado o EC2?
 
-para aplicações que necessitam de armazenamento local e que possuem forte dependência do sistema operacional e têm características de monolito.
+- para aplicações que necessitam de armazenamento local e 
+- possuem forte dependência do sistema operacional 
+- têm características de monolito.
 
 # Quando é mais recomendado ECS/EKS?
 
@@ -401,28 +407,25 @@ O Amazon Elastic Block Storage é um serviço que fornece volumes de armazenamen
 - **Banco de dados**
 - **Aplicativos corporativos**
 
+# O gp3 e io1 são tipos de EBS mais recomendados para qual dos seguintes casos de uso?
+
+- gp3: Volumes de boot, aplicativos de baixa latência, desenvolvimento e testes.
+- io1: NoSQL e banco de dados relacionais.
+
 # O que é Amazon Simple Storage Service (Amazon S3)?
 
 Ao contrário do Amazon Elastic Block Store (Amazon EBS), o Amazon Simple Storage Service (Amazon S3) é uma solução de armazenamento independente, que não está vinculada à computação e permite que você recupere seus dados de qualquer lugar na web.
-
-# O gp3 é o tipo de EBS mais recomendado para qual dos seguintes casos de uso?
-
-Volumes de boot, aplicativos de baixa latência, desenvolvimento e testes.
 # O que são os buckets do Amazon S3?
 
 Nesse serviço, você **armazena seus objetos em contêineres chamados de buckets (baldes)**. Não é possível fazer upload de nenhum objeto, nem mesmo uma única foto, para o Amazon S3 **sem criar um bucket primeiro.**
 
 Ao criar um bucket você especifica, no mínimo, **dois detalhes: o nome desse bucket e a região da AWS na qual deseja que ele resida.**
-
-Aqui está o conteúdo resumido em formato de perguntas e respostas:
-
-# O que acontece se eu não especificar a classe de armazenamento no S3?
-
-Se você não especificar, o objeto é armazenado automaticamente na classe padrão do Amazon S3, chamada **S3 Standard**.
-
 # Para que servem as classes de armazenamento do S3?
 
 Elas permitem ajustar o tipo de armazenamento conforme o padrão de acesso aos dados, ajudando a equilibrar **custo e desempenho**.
+# O que acontece se eu não especificar a classe de armazenamento no S3?
+
+Se você não especificar, o objeto é armazenado automaticamente na classe padrão do Amazon S3, chamada **S3 Standard**.
 
 # O que é a classe S3 Standard?
 
@@ -456,9 +459,9 @@ Indicada para:
     
 - Conteúdo gerado por usuários
 
-# O que são Glacier Flexible Retrieval e Glacier Deep Archive?
+# O que é Glacier Deep Archive?
 
-São classes voltadas para arquivamento de longo prazo, com custo ainda menor, porém com tempos de recuperação mais lentos (não detalhados no texto).
+É uma classe voltada para arquivamento de longo prazo, com custo ainda menor, porém com tempos de recuperação mais lentos.
 
 # Para que o Amazon S3 é mais utilizado?
 
@@ -474,11 +477,11 @@ Escalabilidade praticamente ilimitada, ideal para grandes volumes de dados.
 **4. Sites estáticos**  
 Pode hospedar sites simples com HTML, CSS e JavaScript.
 
-# O que é o O Amazon Elastic File System (Amazon EFS)?
+###### O que é o O Amazon Elastic File System (Amazon EFS)?
 
 É um sistema de arquivos escalável, usado com os serviços de nuvem AWS e recursos locais. À medida que você adiciona e remove arquivos, o Amazon EFS expande e retrai automaticamente, de forma que pode dimensionar sob demanda para petabytes sem interromper os aplicativos.
 
-# Por que é necessário controlar o acesso entre recursos na AWS?
+###### Por que é necessário controlar o acesso entre recursos na AWS?
 
 Porque existem milhões de clientes e recursos (como instâncias do Amazon EC2). Sem controle, todos poderiam se comunicar livremente, o que comprometeria a segurança.
 
@@ -486,17 +489,14 @@ Porque existem milhões de clientes e recursos (como instâncias do Amazon EC2).
 
 O Amazon Virtual Private Cloud (VPC) é um serviço que permite criar uma rede virtual isolada dentro da AWS para seus recursos.
 
-# Qual é a principal função de uma VPC?
-
-Permitir que você execute recursos (como servidores) em uma rede definida por você, com controle total sobre:
+Você tem controle total sobre:
 
 - Acesso
 - Comunicação
 - Estrutura da rede
-
 # O que são sub-redes (subnets)?
 
-Sub-redes são divisões dentro de uma VPC onde você pode organizar seus recursos, como instâncias do Amazon EC2.
+Sub-redes são divisões dentro de uma VPC onde você pode organizar seus recursos, como instâncias do Amazon EC2 e controlar o tráfego de rede..
 
 # Quais fatores precisam ser definidos ao criar uma VPC?
 
@@ -510,7 +510,7 @@ A VPC é criada em uma região específica da AWS e pode abranger várias zonas 
 Define o tamanho da rede e a quantidade de IPs disponíveis.
 Cada VPC pode ter até quatro blocos CIDR /16.
 
-# O que a AWS faz após a criação da VPC?
+###### O que a AWS faz após a criação da VPC?
 
 A AWS provisiona automaticamente:
 
@@ -519,12 +519,7 @@ A AWS provisiona automaticamente:
 
 # Uma VPC pode abranger várias zonas de disponibilidade?
 
-Sim. Embora esteja dentro de uma única região, a VPC pode se estender por múltiplas zonas de disponibilidade, aumentando a disponibilidade e resiliência. **Para ter alta disponibilidade em uma VPC, é recomendável usar ao menos duas AZs.**
-
-# O que são sub-redes em uma VPC?
-
-Sub-redes são divisões menores dentro de uma VPC, semelhantes a VLANs em redes tradicionais. Elas ajudam a organizar e controlar o tráfego de rede dentro do Amazon Virtual Private Cloud.
-
+Sim. **Para ter alta disponibilidade em uma VPC, é recomendável usar ao menos duas AZs.**
 # Qual é o objetivo das sub-redes na AWS?
 
 Elas são usadas para:
@@ -546,26 +541,16 @@ Um intervalo de IP que deve estar dentro do CIDR da VPC.
 
 # Onde uma instância do EC2 é criada?
 
-Uma instância do Amazon EC2 é sempre iniciada dentro de uma sub-rede, e portanto em uma zona de disponibilidade específica.
-
-# Quais são os tipos de sub-redes?
-
-Sub-redes públicas
-
-- Possuem acesso direto à internet
-- Utilizam um gateway de internet
-
-Sub-redes privadas
-
-- Não possuem acesso direto à internet
-- Acessam a internet indiretamente via NAT (gateway NAT ou instância NAT)
+Sempre iniciada dentro de uma sub-rede, e portanto em uma zona de disponibilidade específica.
 
 # Qual é a principal diferença entre sub-redes públicas e privadas?
 
-- Públicas: acesso direto à internet
-- Privadas: acesso indireto ou restrito, aumentando a segurança
+- Públicas: acesso direto à internet (utilizam um gateway).
+- Privadas: acesso indireto ou restrito via NAT (gateway NAT ou instância NAT), aumentando a segurança
 
+# O que é IP elástico?
 
+IPv4 público que pode ser movido entre instâncias, se necessário.
 # O que são IPs reservados em uma sub-rede da AWS?
 
 São endereços IP que a AWS reserva automaticamente em cada sub-rede para funções internas, como:
@@ -582,7 +567,7 @@ A AWS reserva 5 endereços IP em cada sub-rede dentro de uma Amazon Virtual Priv
 
 Não. Eles são exclusivos para uso interno da AWS e não podem ser atribuídos a recursos como instâncias do Amazon EC2.
 
-# Como funciona o cálculo de IPs em uma VPC?
+###### Como funciona o cálculo de IPs em uma VPC?
 
 Exemplo:
 
@@ -596,35 +581,20 @@ De 256 IPs por sub-rede:
 5 são reservados pela AWS
 251 ficam disponíveis para uso
 
-# Pode dar um exemplo de sub-rede?
+###### Quais são os 5 endereços IP reservados pela AWS?
 
-Sim. Uma sub-rede poderia ser:
-
-10.0.0.0/24
-# Qual é a importância de entender os IPs reservados?
-
-Ajuda no planejamento da rede, evitando surpresas ao perceber que nem todos os IPs estão disponíveis para uso.
-
-# Quais são os 5 endereços IP reservados pela AWS?
-
-|Endereço IP|Propósito|
-|---|---|
-|10.0.0.0|Endereço de rede|
-|10.0.0.1|Roteador da VPC|
-|10.0.0.2|Servidor DNS|
-|10.0.0.3|De uso futuro|
-|10.0.0.255|Endereço de broadcast
+| Endereço IP | Propósito             |
+| ----------- | --------------------- |
+| 10.0.0.0    | Endereço de rede      |
+| 10.0.0.1    | Roteador da VPC       |
+| 10.0.0.2    | Servidor DNS          |
+| 10.0.0.3    | De uso futuro         |
+| 10.0.0.255  | Endereço de broadcast |
 
 # O que é um Gateway NAT?
 
-É um serviço de Network Address Translation (NAT) que permite que instâncias em sub-redes privadas se conectem a redes externas, sem permitir conexões de entrada iniciadas de fora.
+É um serviço de Network Address Translation (NAT) que permite que instâncias em sub-redes privadas se conectem a redes externas, sem permitir conexões de entrada iniciadas de fora. Isso ajuda as sub-redes a permanecerem protegidas contra acessos externos diretos
 
-# Qual é a principal função de um Gateway NAT?
-
-Permitir que recursos em sub-redes privadas:
-
-- Acessem a internet ou outras redes
-- Permaneçam protegidos contra acessos externos diretos
 # Instâncias em sub-redes privadas podem receber conexões externas usando NAT?
 
 Não. O Gateway NAT permite apenas conexões de saída, bloqueando conexões de entrada não solicitadas.
@@ -676,15 +646,15 @@ Ao criar uma Amazon Virtual Private Cloud, a AWS automaticamente cria uma tabela
 
 É um conjunto de regras que define para onde o tráfego de rede deve ser enviado dentro da VPC.
 
-# O que são rotas?
+###### O que são rotas?
 
 Rotas são regras dentro da tabela de rotas que determinam o caminho que o tráfego deve seguir.
 
-# Qual é o comportamento padrão da tabela de rotas principal?
+###### Qual é o comportamento padrão da tabela de rotas principal?
 
 Por padrão, ela permite que todas as sub-redes dentro da VPC se comuniquem entre si.
 
-# Quais são os principais elementos de uma tabela de rotas?
+###### Quais são os principais elementos de uma tabela de rotas?
 
 ## Destino (Destination)
 
@@ -695,11 +665,11 @@ Exemplo: o bloco CIDR da própria VPC
 
 É o caminho pelo qual o tráfego será roteado
 Exemplo: a própria rede local da VPC
-# Como entender “destino” e “alvo” de forma simples?
+###### Como entender “destino” e “alvo” de forma simples?
 
 - Destino: para onde o tráfego quer ir
 - Alvo: por onde ele vai chegar lá
-# Qual a importância da tabela de rotas?
+###### Qual a importância da tabela de rotas?
 
 Ela controla o fluxo de comunicação dentro da rede e também pode ser usada para:
 
@@ -713,7 +683,7 @@ Ela controla o fluxo de comunicação dentro da rede e também pode ser usada pa
 
 É a página onde são criadas e armazenadas as máquinas virtuais. 
 
-# O que é a área de suporte?
+###### O que é a área de suporte?
 
 É através dessa área que é possível consultar documentação, conferir guias de arquitetura, ver perguntas frequentes e iniciar um tutorial.
 
@@ -737,7 +707,7 @@ Uma subnet é uma divisão da VPC que define um intervalo de IPs (ex: 10.0.0.0/2
 
 # O que é série ou geração?
 
-Cada série é formado por um conjunto de máquinas virtuais predefinidas, que possuem um conjunto de recursos para a VM. Se nenhum deles atender sua necessidade, é possível criar uma máquina personalizada.
+Família de processadores (CPU) e à arquitetura de hardware por trás das suas Máquinas Virtuais (VMs) no Compute Engine. Elas determinam o desempenho, a eficiência e o custo de sua infraestrutura.
 # Quais são os tipos de máquinas virtuais?
 
 | Tipo de uso | Econômico                                                                                                                    | Equilibrado                                                                              | Escalonamento horizontal otimizado                                      | Otimização de memória                                                                  |
@@ -757,12 +727,12 @@ Cada série é formado por um conjunto de máquinas virtuais predefinidas, que p
 
 # O que é aplicativo nativo da nuvem (cloud native application)?
 
-Software que utiliza recursos como serviço e que é desacoplado, ou seja, seus componentes não dependem de outros componentes externos, é independente.
+Software feito para aproveitar ao máximo a infraestrutura em nuvem, em vez de servidores físicos tradicionais e que é **desacoplado**, ou seja, seus componentes não dependem de outros componentes externos, é independente.
 
 ## Quais são as duas arquiteturas comuns para o aplciativo nativo da nuvem?
 
-- **Stateful:** consiste em uma aplicação que, além da lógica, armazena os dados em si.
-- **Stateless:** dados armazenados em um componente externo, ficando apenas responsável pela lógica e processamento.
+- **Stateful:** consiste em uma aplicação que, além da lógica, armazena os dados em si. Exemplo de tecnologia: **Compute Engine**
+- **Stateless:** dados armazenados em um componente externo, ficando apenas responsável pela lógica e processamento. Exemplo de tecnologia: **Cloud Run.**
 
 # O que é Cloud Run?
 
@@ -770,7 +740,7 @@ Um PaaS que entrega uma infraestrutura sem servidor para as aplicações e supor
 
 # O que é a ISO 27001?
 
-Norma da Organização Internacional de Normatização que descreve os requisitos de um sistema de gestão de segurança e especifica um conjunto de práticas recomendadas.
+Principal norma internacional para a gestão da segurança da informação que estabelece os requisitos para implantar e monitorar um Sistema de Gestão de Segurança da Informação
 
 # Exemplo de segurança aplicada ao Google?
 
@@ -790,7 +760,7 @@ Exemplo: se um usuário tem acesso de desenvolvedor, estará autorizado a soment
 
 Tecnologia que utiliza inteligência artificial e aprendizado de máquinas para mitigar ataques contra aplicações e servidores dos clientes.
 
-# O que é o reCAPT?
+# O que é o reCAPTCHA?
 
 Tecnologia do Google que permite distinguir entre um acesso humano ou automatizado por meio do uso de identificações visuais ou auditivas.
 

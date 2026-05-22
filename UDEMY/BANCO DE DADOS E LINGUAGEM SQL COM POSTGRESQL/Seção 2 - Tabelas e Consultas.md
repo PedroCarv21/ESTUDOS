@@ -499,3 +499,192 @@ select cliente from cliente_profissao
 ```
 
 Caso queira apagar a view, execute o comando `drop view <nome_view>`.
+
+# 54. Autoincremento
+
+## Comando `serial`
+
+É utilizado no lugar do tipo de um campo e serve para gerar um incremento automático. Por exemplo:
+
+```sql
+create table exemplo(
+	idexemplo serial not null,
+	nome varchar(50) not null,
+
+	constraint pk_exemplo_idexemplo primary key (idexemplo)
+);
+```
+
+Neste caso, não será mais necessário informar manualmente o valor do campo `idexemplo`. Isso criará uma sequência numérica, que ficará disponível no menu esquerdo em `Sequences`.
+
+Para acessar as propriedades da sequência, é necessário: ir no menu esquerdo e procurar por `Sequences` → botão direito → `Properties` → `Definition`.
+## Como vincular uma sequência a um campo de uma tabela?
+
+É necessário criar uma sequência, informando o menor valor inicial para essa sequência. Por exemplo, se o maior valor presente na coluna daquela tabela foi 4, então o menor valor inicial da sequência deve ser 5.
+
+```sql
+create sequence bairro_id_seq minvalue 5;
+```
+
+Agora é preciso definir essa sequência como valor padrão para a coluna da tabela desejada. Isso é feito através do comando `set default nextval('nome_sequencia')`, sendo que a função `nextval()` pega o próximo número disponível de uma sequência.
+
+O comando `default` é uma restrição (constraint) aplicada a colunas de tabelas para definir um valor automático caso nenhum valor seja explicitamente inserido durante uma operação INSERT.
+
+```sql
+alter table bairro 
+alter idbairro 
+set default nextval('bairro_id_seq')
+```
+
+Por fim, informe a qual tabela e coluna essa sequência pertence com o comando `owned by`:
+
+```sql
+alter sequence bairro_id_seq owned by bairro.idbairro;
+```
+
+# 57. Campos default
+
+## Incremento automático da data atual
+
+Utilize o comando `set default current_date` para preencher automaticamente o campo de data. Exemplo:
+
+```sql
+alter table pedido
+alter column data_pedido
+set default current_date;
+```
+
+## Incremento automático de valores inteiros
+
+É recomendado que, para campos que indiquem o preço de alguma coisa, haja um preenchimento automático desse campo com o valor zero, caso contrário, poderá ocorrer um erro na hora de calcular, pois haverá com o valor `null`. Exemplo:
+
+```sql
+alter table pedido
+alter column valor
+set default 0;
+```
+
+# 60. Índices
+
+Os índices são utilizados para acelerar a consulta de alguma tabela do banco. Essa é a sintaxe:
+
+```sql
+create index nome_do_index on nome_tabela (nome_coluna);
+```
+
+Exemplo de índice utilizado para consulta na coluna 'nome' da tabela 'cliente':
+
+```sql
+create index idx_client_nome on cliente (nome);
+```
+
+# 62. Solução
+
+Para apagar um índice, execute o comando `drop index` mais o nome do índice.
+
+# 64. Correção avaliação 1
+
+## Como alterar o limite de caracteres em um campo?
+
+```sql
+alter table tabela
+alter column coluna type varchar(100);
+```
+
+# 68. Correção de avaliação 5
+
+## Comando `distinct`
+
+Essa função é utilizada para que os valores de uma determinada coluna não apareçam repetidos. No seguinte exemplo, cada um dos valores da coluna `livro_emprestado` só aparecerá uma vez.
+
+```sql
+select distinct(l.nome) as livro_emprestado from emprestimo_livro el
+inner join livro l
+on el.idlivro = l.idlivro;
+```
+
+# 72. Funções
+
+## Funções `concat`, `round` e `cast`
+
+- `concat`: junta um texto com outro texto/valor. Por exemplo: `concat('R$', valor)`.
+- `round`: define a quantidade de casas decimais. Exemplo: `round(valor, 2)`. É necessário que o primeiro argumento seja do tipo `numeric` ou `double precision`.
+- `cast`: converte o tipo de um valor para outro. Exemplo: `cast(valor as numeric)`.
+
+É possível utilizar as funções ao mesmo tempo tempo: transformar em decimal, expondo apenas duas casas decimais e que ele tenha 'R$' antes. Exemplo:
+
+```sql
+select valor, concat('R$ ', round(cast(valor as numeric), 2)) from pedido;
+```
+
+## Criando funções
+
+Este é a estrutura padrão para criação de uma função:
+
+```sql
+create function nome_da_funcao(parametro tipo) returns tipo_retornado language plpgsql as
+$$
+begin
+	-- corpo da função
+end;
+$$;
+```
+
+- `language plpgsql` significa que a função usa a linguagem procedural do PostgreSQL chamada **PL/pgSQL**.
+- O `$$` é **dollar-quoting**, responsável por delimitar o corpo de uma função.
+- Já o `begin` e o `end` servem para delimitar o bloco de código **executável** da função.
+
+É possível também criar funções com variáveis através do comando `declare`. Exemplo:
+
+```sql
+create function get_nome_by_id(idc integer) returns varchar(50) language plpgsql as
+$$
+declare r varchar(50);
+begin
+	select nome into r from cliente where idcliente = idc;
+	return r;
+end;
+$$;
+```
+
+O comando `into` significa que o dado relacionado ao campo `nome` que for encontrado na consulta deverá ser armazenado na variável `r`.
+
+É possível, neste caso, optar por não utilizar uma variável:
+
+```sql
+create function get_nome_by_id2(idc integer) returns varchar(50) language plpgsql as
+$$
+begin
+	return (select nome from cliente where idcliente = idc);
+end;
+$$;
+```
+
+Para executar a função, utilize o comando `select`:
+
+```sql
+select get_nome_by_id(idcliente) as nome, data_pedido, valor 
+from pedido;
+```
+
+# 74. Solução
+
+É possível também definir uma função sem nenhum parâmetro, mas é necessário colocar o `()` depois do nome.
+
+```sql
+create function maior () returns integer language plpgsql as
+$$
+declare r integer;
+begin
+	select idpedido into r from pedido where valor = (select max(valor) from pedido);
+	return r;
+end;
+$$;
+```
+
+Neste caso, é preciso executar da seguinte forma:
+
+```sql
+select maior();
+```
+

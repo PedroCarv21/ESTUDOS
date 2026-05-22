@@ -1,15 +1,39 @@
 
 # Paradigmas imperativos
 
+Esse é o paradigma em que você descreve passo a passo como o programa deve executar uma tarefa. Esses são alguns outros paradigmas dentro do imperativo:
+
 - **Estruturado:** baseado na divisão do código em blocos lógicos, procedimentos ou funções, visando facilitar a legibilidade e manutenção. Desenvolve programas usando três tipos de estruturas (sequenciais, condicionais e repetição).
 - **Orientado a objetos:** baseada na organização de código em "objetos" que modelam entidades do mundo real, unindo dados (atributos) e comportamentos (métodos).
-- **Concorrente:** construção de programas de computador que fazem uso da execução simultânea de várias tarefas computacionais interativas. Em vez de um programa executar uma instrução após a outra em sequência, o paradigma concorrente permite que múltiplas partes do programa avancem simultaneamente, compartilhando recursos ou comunicando-se entre si.
+- **Concorrente:** é um modelo de programação focado na execução de múltiplas tarefas que ocorrem em períodos de tempo sobrepostos. Sobreposto no tempo significa que várias tarefas começam e terminam em intervalos que se cruzam, sem que uma precise esperar o término total da outra para iniciar. Imagine uma linha do tempo:
+	- Execução Sequencial (Não sobreposta):
+	- Tarefa A: [----------]
+	- Tarefa B: [----------]
+	- (A B só começa quando a A acaba).
+	- Execução Sobreposta (Concorrente):
+	- Tarefa A: [---   ---   ---]
+	- Tarefa B:    [---   ---   ---]
+	- (Ambas estão "ativas" ao mesmo tempo. O processador faz um pedacinho de A, depois um de B, depois volta para A).
 
 # Paradigmas declarativos
 
-- **Funcional:** operam tão somente funções que recebem um conjunto de valores e retornam um valor. O resultado que a função retorna é a solução do problema (foca o processo de resolução de problemas).
-- **Lógico:** modelo de programação baseado na lógica formal, no qual o programa é descrito por fatos e regras, e a execução consiste em deduzir respostas para consultas.
+Esse é o paradigma que você descreve o que quer obter, sem especificar exatamente como:
 
+- **Funcional:** programar tratando computação como avaliação de funções matemáticas, evitando mudanças de estado e efeitos colaterais. Em vez de:
+	“pegue essa variável e vá alterando ela…”
+	Você faz:
+	"pegue esse valor e gere um novo valor a partir dele”
+- **Lógico:** baseada na lógica matemática (lógica de predicados), onde o programador define fatos e regras sobre um problema em vez de instruir o computador passo a passo. Exemplo: `filho(X, Y) :- pai(Y, X).` (X é filho de Y se Y for pai de X).
+
+
+# Exemplos de linguagens/tecnologias
+
+- **Imperativo:** C, Java, Python (modo tradicional)
+- **Declarativo:** SQL, HTML, Prolog
+- **Mistos (multi-paradigma):** Python, JavaScript
+# O que é o paradigma procedural?
+
+É, basicamente, uma forma de programação dentro do paradigma imperativo que organiza o código em procedimentos (funções).
 
 # Como funciona o processo de tradução do código-fonte?
 
@@ -43,6 +67,9 @@ Associação entre entidade de programação, tais como:
 
 Tempo de amarração.
 
+# Qual o tempo de compilação?
+
+Envolve a associação da variável ao seu tipo.
 # O que é amarração de tipo?
 
 Vínculo entre a variável e o tipo. Esse vínculo pode ser:
@@ -377,7 +404,7 @@ Criação de interface gráfica. A importação deve ser feito da seguinte forma
 - `Entry()`: cria um campo de entrada. Ele possui um método `get()` para capturar o valor digitado.
 - `messagebox.showinfo()`: cria um pop-up, recebendo como o primeiro argumento o título da janela e como segundo argumento uma mensagem.
 -  `messagebox.showerror()`: criar um pop-up que devem apresentar mensagens de erro.
-- `janela.bind('<Motion>', funcao_qualquer())`: utilizado para executar a função passada como argumento assim que o usuário mexe o mouse em cima da janela principal. Além do `"<Motion>"`, é possível utilizar o `"<Button-1>"` (quando o botão esquerdo mouse é clicado) e o `"<Button-3>"` (quando o botão direito do mouse é clicado)
+- `janela.bind('<Motion>', funcao_qualquer)`: utilizado para executar a função passada como argumento assim que o usuário mexe o mouse em cima da janela principal. Além do `"<Motion>"`, é possível utilizar o `"<Button-1>"` (quando o botão esquerdo mouse é clicado) e o `"<Button-3>"` (quando o botão direito do mouse é clicado)
 
 # Exceções
 
@@ -392,3 +419,42 @@ Criação de interface gráfica. A importação deve ser feito da seguinte forma
 | TypeError         | Levantado quando uma operação da função é aplicada a um objeto do tipo errado.                  |
 | ValueError        | Levantado quando a operação ou função tem um argumento com o tipo correto, mas valor incorreto. |
 
+**OBS.: BaseException é a classe base de todas as classes de exceção em Python.**
+
+# Quais são as evoluções da linguagem em cada geração?
+
+## 1. Primeira Geração (1GL - Linguagem de Máquina)
+
+Período: Anos 1940 - 1950.
+
+Características: Código binário puro (0s e 1s). É a única linguagem que o microprocessador entende nativamente.
+
+## 2. Segunda Geração (2GL - Assembly)
+
+Período: Anos 1950.
+
+Características: Introduziu mnemônicos (instruções simbólicas, ex: MOV, ADD) para substituir o código binário.
+
+## 3. Terceira Geração (3GL - Alto Nível)
+
+Período: Início em 1958 e continua em desenvolvimento.
+
+Características: Linguagens procedurais e estruturadas, mais próximas da linguagem humana (inglês) e independentes da arquitetura da máquina.
+
+Exemplos: C, C++, Java, Python, Pascal, Fortran.
+
+## 4. Quarta Geração (4GL - Altíssimo Nível)
+
+Período: A partir de 1965.
+
+Características: Linguagens voltadas a objetivos específicos, alto nível de abstração, frequentemente utilizadas para consulta de banco de dados e relatórios.
+
+Exemplos: SQL, Genexus, Matlab.Vantagens: Reduzem drasticamente o tempo de desenvolvimento e o código necessário.
+
+## 5. Quinta Geração (5GL - Inteligência Artificial)
+
+Características: Baseadas na resolução de restrições e inteligência artificial, ao invés de algoritmos passo a passo definidos pelo programador.
+
+Exemplos: Prolog, Lisp, OPS5.
+
+Uso: Sistemas especialistas e lógica.

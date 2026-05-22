@@ -12,8 +12,8 @@
 ![[Pasted image 20260313184727.png]]
 
 - **Tarefa:** atividades necessárias para a produção de um bem ou serviço.
-- **Pessoa:** engloba todas as pessoas diretamente envolvidas no sistema.
-- **Estrutura:** refere-se ao relacionamento entre componentes de indivíduos e pessoas.
+- **Pessoa:** Representa o capital humano, incluindo habilidades e conhecimentos.
+- **Estrutura:** Envolve a hierarquia, autoridade e o fluxo de trabalho organizado.
 - **Tecnologia:** compreende o hardware, software e equipamentos de telecomunicações utilizados para processar e armazenar informações.
 
 # O que são mainframes?
@@ -36,7 +36,7 @@ Neste modelo, todos os módulos, regras de negócio e interface do usuário são
 
 **Funcionamento:** A interface, lógica de negócios e acesso a dados rodam no mesmo processo e geralmente na mesma máquina. Essa arquitetura **usa armazenamento em batch**.
 
-# Qual a diferença entre arquitetura cliente-servidor?
+# Qual a diferença entre arquitetura cliente-servidor e monolítica?
 
 - **Cliente-Servidor** foca na **distribuição de responsabilidades** (quem pede x quem processa), geralmente em máquinas diferentes.
 - **Monolítica** foca na **unificação do código**, onde tudo roda como uma única unidade em um só local.
@@ -73,15 +73,15 @@ As 5 forças são:
 - **1° Rivalidade entre os concorrentes:** disputa entre as empresas para atrair o público de um mesmo **mercado-alvo.**
 - **2° Ameaça de produtos substitutos:** produtos substitutos são aqueles que atendem às mesmas necessidades ou realizam as mesmas funções que outras mercadorias, podendo ser utilizados como alternativas a elas.
 - **3° Ameaça de entrada de novos concorrentes:**  nível de **dificuldade para novos concorrentes** entrarem no seu mercado.
-- **4° Poder de negociação dos clientes.** 
+- **4° Poder de negociação dos clientes:**  Avalia a capacidade dos clientes de pressionar por preços mais baixos ou maior qualidade
 - **5° Poder de negociação dos fornecedores:** quanto maior for o poder de negociação de um fornecedor, mais fácil é para ele elevar os preços.
 
 # Quais são os tipos de sistemas da informação?
 
 - **Sistema de apoio executivo (ESS):** Esse sistema é usado por **diretores e executivos**, ajudando na **tomada de decisões estratégicas de longo prazo**. Nível: Estratégico (topo da pirâmide)
-- **Sistemas de apoio à decisão (DSS):** Esses sistemas ajudam gestores a tomar **decisões mais complexas**, analisando dados e permitindo **simulações e análises**. Nível: Gerencial/analítico
+- **Sistemas de apoio à decisão (DSS):** Esses sistemas ajudam gestores a tomar **decisões mais complexas**, através da análise de informações e simulações. Nível: Gerencial/analítico
 - **Sistemas de informação gerencial (MIS):** a principal pergunta que esse tipo de sistema deve responder é: tudo está funcionando corretamente? Sua função é **resumir** e **relatar** operações comerciais essenciais usando dados fornecidos por sistemas de processamento de transações. Nível: Gerencial (gerentes de nível médio)
-- **Sistema de processamento de transações (TPS):** Esse sistema registra e processa as **operações rotineiras do dia a dia da empresa**. Nível: Operacional (base da pirâmide)
+- **Sistema de processamento de transações (TPS):** Esse sistema registra e processa as **operações do dia a dia da empresa**. Nível: Operacional (base da pirâmide)
 
 ![[Pasted image 20260314164615.png|578]]
 
@@ -98,7 +98,7 @@ Exemplos de decisões por nível gerencial:
 
 # O que são controles de sistema de informação?
 
-São procedimentos e medidas tecnológicas para garantir a operação segura e eficiente dos sistemas de informação.
+São procedimentos que garantem que os sistemas de informação funcionem de modo seguro.
 
 Exemplos: controle de acesso, controle de gerenciamento de mudança (garantindo que mudanças no sistema de informação sejam planejadas, testadas e implementadas adequadamente) e controle de buckup e recuperação, garantindo que os dados da organização sejam devidamente processados e possam ser recuperados em caso de emergência.
 
@@ -239,7 +239,7 @@ Bandeirantes no século XVII.
 # Em quais regiões foram descobertas as primeiras minas?
 
 Regiões dos atuais estados de Minas Gerais, Goiás e Mato Grosso. 
-# Em qual foi a chegada da família real no Brasil?
+# Em qual ano foi a chegada da família real no Brasil?
 
 1808.
 # Quais outros povos europeus tentaram invadir o Brasil?
@@ -278,7 +278,7 @@ Lei nº 7.716/1989.
 
 # Quais os três principais aspectos da biodiversidade?
 
-Riqueza de espécies, diversidade genética e diversidade de ecossistemas.
+Riqueza de espécies, diversidade genética e de ecossistemas.
 
 # Qual a importância ambiental da biodiversidade?
 
@@ -317,7 +317,7 @@ O efeito estufa é um fenômeno natural essencial que retém o calor do sol na a
 
 # O que é acidificação da água?
 
-Ocorre pela absorção de gás carbônico pela água. Esses gases são oriundos da atividade antrópica e causam uma alteração do pH dos mares e oceanos.
+Ocorre pela absorção de gás carbônico pela água. Esses gases são oriundos da atividade antrópica e causam uma alteração do pH dos mares e oceanos. O resultado é alteração na ciclagem dos nutrientes.
 
 # Qual o principal mecanismo de prevenção de impactos ambientais no Brasil?
 
@@ -333,6 +333,9 @@ Mecanismos de licenciamento ambiental.
 - **Econômica (ou ecoeficiência):** busca pelo desenvolvimento econômico que causem menos impactos ao meio ambiente
 - **Ambiental (ou ecológica):** manutenção da biodiversidade e dos processos ambientais.
 
+# Quando foi utilizado a palavra sustentabilidade pela primeira vez?
+
+Relatório Brundtland - 1987
 # O que é Agenda 21?
 
 A agenda 21 foi o primeiro programa internacional que buscava o desenvolvimento sustentável em âmbito global.
@@ -422,3 +425,9 @@ Foi redigida para superar as restrições aos direitos durante o regime militar,
 2. Pacto Internacional dos Direitos Civis e Políticos  
      
 3. Convenção sobre Eliminação de Todas as Formas de Discriminação Racial
+
+# Como foi a construção dos direitos humanos em cada geração?
+
+- **Primeira:** Representada pelas declarações americana e francesa, o foco principal era a conquista da liberdade individual em oposição aos Estados absolutistas.
+- **Segunda:** reafirmou a liberdade da primeira geração e buscou a igualdade, promovendo a ideia de uma família humana.
+- **Terceira:** A partir dos anos 1960, concentrou-se nos direitos coletivos. Enfatizou-se a proteção do meio ambiente (ex.: Floresta Amazônica), o direito à paz e o compartilhamento equitativo de conhecimento, tecnologia e cultura.
