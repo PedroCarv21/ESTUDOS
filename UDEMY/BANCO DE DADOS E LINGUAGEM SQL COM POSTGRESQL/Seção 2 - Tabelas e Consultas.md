@@ -749,3 +749,57 @@ for each row execute procedure bairro_log();
 ```
 
 O que esse código diz é: crie uma trigger chamada `log_bairro_trigger` que, para cada linha inserida na tabela `bairro`, executará a função `bairro_log`.
+
+# 80. Solução
+
+Quando se tratar de executar uma trigger quando houver a deleção de um registro em uma tabela, use o comando `old` em vez de `new`. Em suma:
+
+- `OLD` → valores antes da operação.
+- `NEW` → valores depois da operação.
+
+# 81. Domínios
+
+ É um tipo de dado personalizado que você cria. Ele combina um tipo de dado base (como VARCHAR ou INTEGER) com regras ou restrições específicas (como valores padrão ou limites numéricos).
+
+```sql
+create domain nome_domain as tipo;
+```
+
+
+# 84. Usuários e permissões
+
+## Criação de usuários e papeis
+
+Os papeis (roles) são utilizados para determinar quais tipos de ações um usuário poderá executar. Para criar um papel, use o comando `create role nome_role`.
+
+Para definir quais serão as limitações da role, use os comandos `grant role comando_permitido on tabela to nome_role with grant option`. Enquanto o comando `grant` concede permissão para execução de um comando, o comando `with grant option` concede autorização ao usuário relacionado a esse papel para repassar essas permissões a outros usuários.
+
+Uma analogia simples:
+
+- `GRANT` = você recebeu uma chave.
+- `WITH GRANT OPTION` = você também recebeu autorização para fazer cópias da chave e entregar para outras pessoas.
+
+Exemplo real:
+
+```sql
+grant select, insert, delete, update on bairro, cliente
+to gerente with grant option;
+```
+
+Muitas tabelas utilizam `sequences`, portanto, é preciso conceder também acesso ao papel:
+
+```sql
+grant all on sequence to nome_role with grant option;
+```
+
+Você pode também conceder acesso a todos os `sequences`:
+
+```sql
+grant all on all sequences in schema public to gerente;
+```
+
+Por fim, é preciso criar um usuário e vinculá-lo a um papel:
+
+```sql
+create role nome_usuario login password 'senha' in role nome_role;
+```
