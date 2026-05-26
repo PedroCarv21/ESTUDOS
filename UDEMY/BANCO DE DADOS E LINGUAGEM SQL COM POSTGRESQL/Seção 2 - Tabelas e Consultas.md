@@ -803,3 +803,17 @@ Por fim, é preciso criar um usuário e vinculá-lo a um papel:
 ```sql
 create role nome_usuario login password 'senha' in role nome_role;
 ```
+
+
+# 87. Transações
+
+A transação é um processo que garante o sucesso na execução de todas as requisições em conjunto; caso alguma das requisições falhe, todo o resto das requisições será desfeito, garantindo a integridade dos dados. O PgAdmin utiliza a transação durante **qualquer instrução SQL por padrão.** Esses são os comandos utilizados durante a transação:
+
+- `begin`: inicia uma transação. Coloque antes da sequência de comandos.
+- `rollback`: desfaz as alterações causadas pela transação.  Coloque depois da sequência de comandos.
+- `commit`: em vez de `rollback`, pode-se utilizar esse comando para salvar as alterações causadas pela transação. Coloque depois da sequência de comandos.
+
+# 88. Backup e restore
+
+- **backup**: botão direito no banco de dados que deseja fazer o backup → `Backup...` → Em `Filename`, clique no 📁para escolher o local do seu backup → clique em `Backup`.
+- **restore**: botão direito no `Databases` → `Create` → `Database...` → botão direito no banco de dados que acabou de criar → `Refresh...` → Em `Filename`, clique no 📁para encontrar o seu backup → `Restore`
