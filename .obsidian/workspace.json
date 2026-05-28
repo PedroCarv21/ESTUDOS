@@ -13,28 +13,15 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "UDEMY/BANCO DE DADOS E LINGUAGEM SQL COM POSTGRESQL/Seção 2 - Tabelas e Consultas.md",
+                "file": "UDEMY/BANCO DE DADOS E LINGUAGEM SQL COM POSTGRESQL/Seção 4 - Álgebra relacional.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Seção 2 - Tabelas e Consultas"
-            }
-          },
-          {
-            "id": "da245c64772db2f7",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "UDEMY/BANCO DE DADOS E LINGUAGEM SQL COM POSTGRESQL/Pasted image 20260527215129.png"
-              },
-              "icon": "lucide-image",
-              "title": "Pasted image 20260527215129"
+              "title": "Seção 4 - Álgebra relacional"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -183,16 +170,16 @@
       "command-palette:Abrir paleta de comando": false
     }
   },
-  "active": "da245c64772db2f7",
+  "active": "13df4ab2f8bc3959",
   "lastOpenFiles": [
-    "UDEMY/BANCO DE DADOS E LINGUAGEM SQL COM POSTGRESQL/Seção 1 - Introdução.md",
     "UDEMY/BANCO DE DADOS E LINGUAGEM SQL COM POSTGRESQL/Pasted image 20260527215129.png",
     "UDEMY/BANCO DE DADOS E LINGUAGEM SQL COM POSTGRESQL/Seção 4 - Álgebra relacional.md",
+    "UDEMY/BANCO DE DADOS E LINGUAGEM SQL COM POSTGRESQL/Seção 3 - Tópicos Especiais.md",
+    "UDEMY/BANCO DE DADOS E LINGUAGEM SQL COM POSTGRESQL/Seção 2 - Tabelas e Consultas.md",
+    "UDEMY/BANCO DE DADOS E LINGUAGEM SQL COM POSTGRESQL/Seção 1 - Introdução.md",
     "UDEMY/SPRING BOOT EXPERT/Seção 2 - Primeiros Passos.md",
     "Pasted image 20260407181235.png",
     "Pasted image 20260421120259.png",
-    "UDEMY/BANCO DE DADOS E LINGUAGEM SQL COM POSTGRESQL/Seção 3 - Tópicos Especiais.md",
-    "UDEMY/BANCO DE DADOS E LINGUAGEM SQL COM POSTGRESQL/Seção 2 - Tabelas e Consultas.md",
     "CIENCIA DA COMPUTACAO (ESTACIO)/1° PERIODO/Computação em Nuvem.md",
     "CIENCIA DA COMPUTACAO (ESTACIO)/1° PERIODO/Sistemas de Informação e Sociedade.md",
     "CIENCIA DA COMPUTACAO (ESTACIO)/1° PERIODO/Paradigmas de Linguagens de Programacao em Python.md",
