@@ -20,8 +20,21 @@
               "icon": "lucide-file",
               "title": "Seção 2 - Tabelas e Consultas"
             }
+          },
+          {
+            "id": "da245c64772db2f7",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "UDEMY/BANCO DE DADOS E LINGUAGEM SQL COM POSTGRESQL/Pasted image 20260527215129.png"
+              },
+              "icon": "lucide-image",
+              "title": "Pasted image 20260527215129"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -170,20 +183,25 @@
       "command-palette:Abrir paleta de comando": false
     }
   },
-  "active": "13df4ab2f8bc3959",
+  "active": "da245c64772db2f7",
   "lastOpenFiles": [
+    "UDEMY/BANCO DE DADOS E LINGUAGEM SQL COM POSTGRESQL/Seção 1 - Introdução.md",
+    "UDEMY/BANCO DE DADOS E LINGUAGEM SQL COM POSTGRESQL/Pasted image 20260527215129.png",
+    "UDEMY/BANCO DE DADOS E LINGUAGEM SQL COM POSTGRESQL/Seção 4 - Álgebra relacional.md",
+    "UDEMY/SPRING BOOT EXPERT/Seção 2 - Primeiros Passos.md",
+    "Pasted image 20260407181235.png",
+    "Pasted image 20260421120259.png",
+    "UDEMY/BANCO DE DADOS E LINGUAGEM SQL COM POSTGRESQL/Seção 3 - Tópicos Especiais.md",
+    "UDEMY/BANCO DE DADOS E LINGUAGEM SQL COM POSTGRESQL/Seção 2 - Tabelas e Consultas.md",
     "CIENCIA DA COMPUTACAO (ESTACIO)/1° PERIODO/Computação em Nuvem.md",
     "CIENCIA DA COMPUTACAO (ESTACIO)/1° PERIODO/Sistemas de Informação e Sociedade.md",
-    "UDEMY/BANCO DE DADOS E LINGUAGEM SQL COM POSTGRESQL/Seção 2 - Tabelas e Consultas.md",
     "CIENCIA DA COMPUTACAO (ESTACIO)/1° PERIODO/Paradigmas de Linguagens de Programacao em Python.md",
     "CIENCIA DA COMPUTACAO (ESTACIO)/1° PERIODO/Introdução a Programação de Computadores.md",
     "CIENCIA DA COMPUTACAO (ESTACIO)/1° PERIODO/Matemática e Lógica.md",
     "UDEMY/SPRING BOOT EXPERT/Seção 8 - Aprendendo Spring Security.md",
     "UDEMY/SPRING BOOT EXPERT/Seção 9 - Security Avançado e Login Social.md",
-    "Pasted image 20260421120259.png",
     "UDEMY/FRONT-END - DANIEL TAPIAS/Seção 10 - listas, tabelas, details e popover.md",
     "Pasted image 20260407183516.png",
-    "Pasted image 20260407181235.png",
     "Pasted image 20260407181154.png",
     "Pasted image 20260407180025.png",
     "Pasted image 20260407180004.png",
@@ -194,24 +212,18 @@
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 7 - Commits Avançados.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 5 - Trabalhando com branches.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 4 - Utilizando GitHub.md",
-    "Pasted image 20260331190152.png",
     "CIENCIA DA COMPUTACAO (ESTACIO)/1° PERIODO/Segurança da Informação.md",
     "CIENCIA DA COMPUTACAO (ESTACIO)/1° PERIODO/Rede de Computadores e a Internet.md",
-    "UDEMY/BANCO DE DADOS E LINGUAGEM SQL COM POSTGRESQL/Seção 1 - Introdução.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 3 - GIT Fundamental.md",
     "UDEMY/GIT E GITHUB DO BASICO AO AVANÇADO/Seção 1 - Boas Vindas e Introdução.md",
     "FACULDADE SENAC/Gerenciamento Ágil de Projeto.md",
     "FACULDADE SENAC/Tópicos Especiais em TI.md",
     "FACULDADE SENAC/Programação Web II.md",
     "FACULDADE SENAC/Gestão e Governança de TI.md",
-    "FACULDADE SENAC/Ética e Legislação em TI.md",
     "FACULDADE SENAC",
     "Sem título 3.base",
     "Sem título.base",
-    "UDEMY/SPRING BOOT EXPERT/Seção 7 - Aprendendo Mais Recursos desenvolvendo a API de Livros.md",
-    "UDEMY/SPRING BOOT EXPERT/Seção 3 - Arquitetura e Estrutura do Framework.md",
     "UDEMY/BANCO DE DADOS E LINGUAGEM SQL COM POSTGRESQL",
-    "UDEMY/SPRING BOOT EXPERT/Seção 2 - Primeiros Passos.md",
     "Sem título 1.base",
     "Sem título 2.base",
     "PROJETO/ENTIDADES.canvas",
