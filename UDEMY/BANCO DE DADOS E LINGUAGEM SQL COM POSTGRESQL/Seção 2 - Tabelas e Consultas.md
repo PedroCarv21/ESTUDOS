@@ -139,7 +139,7 @@ create table bairro(
 
 ## Alterando nome da coluna
 
-Utilize o comando `alter table <nome_tabela> rename <nome_atual_coluna> to <novo_nome_coluna>;`.
+Utilize o comando `alter table <nome_tabela> rename column <nome_atual_coluna> to <novo_nome_coluna>;`.
 
 ## Alterando o tipo de uma coluna
 

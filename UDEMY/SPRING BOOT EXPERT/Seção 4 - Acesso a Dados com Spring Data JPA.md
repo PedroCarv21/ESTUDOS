@@ -100,13 +100,13 @@ Lista os containers que estavam em execução, mas agora estão parados.
 ### docker container rm
 
 Ao utilizar este comando mais o nome do container, ele será excluído. Exemplo: `docker container rm librarydb`
-## library-network
+## network
 
-A library-network é uma rede de conexão responsável por criar uma comunicação entre dois containers. Ela será necessária para a conexão do pgAdmin com o Postgres.
+A network é uma rede de conexão responsável por criar uma comunicação entre dois containers. Ela será necessária para a conexão do pgAdmin com o Postgres.
 
-Parar criar uma library-network, utilize o comando `docker network create library-network` no CMD.
+Parar criar uma network, utilize o comando `docker network create network_name` no CMD.
 
-**OBS.: library-network é apenas um nome escolhido para a rede, mas poderia ser qualquer outro.**
+**OBS.: network_name é apenas um nome escolhido para a rede, mas poderia ser qualquer outro.**
 
 Para criar o container conectado a esta rede, utilize o comando `--network` mais o nome que foi escolhido para a rede. Insira este comando da seguinte forma na criação do Postgres:
 
@@ -674,7 +674,7 @@ from livro l1_0
 where l1_0.id=?
 ```
 
-**OBS.: há casos onde uma tabela possui relacionamento diversas outras tabelas. Portanto, às vezes pode ser importante 'filtrar' quais tabelas serão consultadas de modo que a consulta não fique tão pesada.**
+**OBS.: há casos onde uma tabela possui relacionamento com diversas outras tabelas. Portanto, às vezes pode ser importante 'filtrar' quais tabelas serão consultadas de modo que a consulta não fique tão pesada.**
 
 Agora, se tentar acessar alguma informação da tabela Autor (ex.: `System.out.println("Autor:" + livroEncontrado.getAutor().getNome());`) então será lançada a exceção `LazyInitializationException`: ocorre justamente quando se tenta acessar um objeto carregado de forma preguiçosa (que só é carregado quando necessário) em um ponto do código onde a sessão do Hibernate já foi fechada ou não está mais ativo.
 

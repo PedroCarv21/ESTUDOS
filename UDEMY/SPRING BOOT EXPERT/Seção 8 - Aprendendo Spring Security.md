@@ -346,7 +346,7 @@ create table usuarios(
 
 ## Mapeamento de uma lista
 
-Para converter uma lista de uma entidade para um array de um tabela do banco, é necessário incluir a dependência `hypersistence-utils`, presente no site: https://github.com/vladmihalcea/hypersistence-utils
+Para converter uma lista de uma entidade para um array de uma tabela do banco, é necessário incluir a dependência `hypersistence-utils`, presente no site: https://github.com/vladmihalcea/hypersistence-utils
 
 Para saber qual das versões escolher, verifique a versão do `hibernate.orm:hibernate-core` presente em `External Libraries`. Por fim, inclua a dependência no `pom.xml`.
 

@@ -127,7 +127,7 @@ Execute a aplicação e acesse a URL localhost:8080 mais a rota especificada na 
 
 ### Por que localhost:8080 ?
 
-É informado **localhost** porque a aplicação está rodando na máquina local; em vez de digitar o IP (http://127.0.0.1:8080/hello-world) pode-se digitar apenas **localhost** que é mais simples. O número 8080 é referente a porta de acesso a aplicação e também a porta padrão do Tomcat: um servidor Java que já vem embutido nas aplicações Spring Boot.
+É informado **localhost** porque a aplicação está rodando na máquina local; em vez de digitar o IP (http://127.0.0.1:8080/hello-world) pode-se digitar apenas **localhost** que é mais simples. O número 8080 é referente a porta de acesso a aplicação e também a porta padrão do **Tomcat**: um servidor Java que já vem embutido nas aplicações Spring Boot.
 
 
 **DICA: para duplicar uma linha, aperte Ctrl+D; para apagar o import das bibliotecas não utilizadas aperte Ctrl+Alt+O**

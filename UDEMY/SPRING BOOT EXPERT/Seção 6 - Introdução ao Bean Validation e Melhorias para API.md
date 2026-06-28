@@ -1,4 +1,4 @@
-
+	
 # 92. Adicionando validação de campos com Bean Validation
 
 Para que as anotações a seguir sejam disponibilizadas, é necessário obter a dependência Validation:

@@ -197,7 +197,7 @@ public class CustomAuthentication implements Authentication {
 
 Há também outros métodos de `Authentication` que terão o seu corpo alterado:
 
-- `getDetails()` e `getPrincipal()`: retornarão os as informações do usuário (pode ser o próprio objeto `Usuario`).
+- `getDetails()` e `getPrincipal()`: retornarão as informações do usuário (pode ser o próprio objeto `Usuario`).
 - `isAuthenticated()`: retorna um valor booleano que informa se o usuário está autenticado ou não. O valor ser alterado para `true`, caso contrário, não será possível logar.
 - `getName()`: retornará o nome do usuário.
 
@@ -257,6 +257,13 @@ Observe que, ao executar a aplicação pelo debug e fazer uma tentativa de auten
 ![[Pasted image 20250929165334.png]]
 
 No entanto, mesmo que os dados estejam certos, o usuário não terá permissão de autenticar (gerando um código de status 403), pois quando são inseridas as roles em um objeto Usuario, é acrescentado a cada role um prefixo `ROLE_`. Isso será concertado na próxima aula.
+
+
+> [!NOTE] Comandos para realizar o Debug
+> - **Resume Program (`F9`):** Retoma a execução normal do programa até o próximo _breakpoint_.
+> - **Step Over (`F8`):** Avança para a próxima linha de código _sem_ entrar dentro de métodos internos.
+> - **Step Into (`F7`):** Entra no método ou classe que está sendo chamado na linha atual para depurá-lo passo a passo.
+> - **Step Out (`Shift + F8`):** Executa o restante do método atual e volta para o método que o chamou.
 
 # 131. Eliminando o prefixo ROLE do security
 

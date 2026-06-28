@@ -306,7 +306,7 @@ O terceiro argumento é o nome do campo **da entidade** cujo os valores serão c
 public static Specification<Livro> dataPublicacaoEqual(Integer anoPublicaco){  
     return (root, query, cb) ->  
             cb.equal(cb.function(  
-                    "to_char", String.class, root.get("dataPublicacao"), cb.literal("YYYY")),  
+	                    "to_char", String.class, root.get("dataPublicacao"), cb.literal("YYYY")),  
                     anoPublicaco.toString()  
             );  
 }

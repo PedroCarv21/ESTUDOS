@@ -141,7 +141,7 @@ A partir do momento em que a aplicação for executada, o Spring irá instanciar
 
 O conceito de dependência aqui não diz respeito as bibliotecas externas presentes no arquivo pom.xml, mas sim um objeto que uma classe precisa para funcionar corretamente. Caso a dependência seja criada (instanciada) dentro de uma classe então isso resultará em um forte acoplamento (o que não é bom, pois dificulta a manutenção do código).
 
-No caso do Spring Boot, a injeção de dependências será feito em uma classe por meio de uma configurations (classe com anotação @Configuration) que forneça os beans para serem injetados. Essa injeção de dependências é feita através do anotação **@Autowired** que será colocada acima de um atributo, método ou construtor, indicando aonde deve ser feita a injeção de dependência.
+No caso do Spring Boot, a injeção de dependências será feito em uma classe por meio de uma configuration (classe com anotação @Configuration) que forneça os beans para serem injetados. Essa injeção de dependências é feita através do anotação **@Autowired** que será colocada acima de um atributo, método ou construtor, indicando aonde deve ser feita a injeção de dependência.
 
 A injeção de dependências visa então diminuir o acoplamento ao separar as classes da criação de dependências.
 
