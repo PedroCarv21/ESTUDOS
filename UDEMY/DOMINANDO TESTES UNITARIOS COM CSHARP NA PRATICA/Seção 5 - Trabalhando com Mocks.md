@@ -1,0 +1,28 @@
+# 9. Realizando Mock de Objetos
+
+## O que é o Mock?
+
+Suponha que você criou uma classe service e seu método construtor precise receber como argumento um objeto que implemente uma interface repository.
+
+No caso de testes, não faz sentido passar uma implementação **real**, pois o objetivo é apenas simular a interação com o banco que a implementação do repository faria. Quem realiza essa simulação é justamente o mock.
+
+Exemplo:
+
+```csharp
+var cliente = ClienteFactory.GerarClienteValidoComBogus();
+
+var clienteRepo = new Mock<IClienteRepository>();
+
+var clienteService = new ClienteService(clienteRepo.Object);
+clienteService.Cadastrar(cliente);
+
+clienteRepo.Verify(r => r.Cadastrar(cliente), Times.Once);
+```
+
+Neste exemplo, é criado uma instância de `Mock` que recebe uma interface dentro operador diamante. Isso significa que o Mock que deverá criar um objeto que implemente a interface informada (neste caso o `IClienteRepository`).
+
+No momento que for chamar o método construtor do service (`new ClienteService()`), esse método construtor receberá como argumento o objeto criado pelo mock. 
+
+Para ter acesso ao objeto, chame a propriedade `Object`. Por fim, teste algum método do service (neste caso, `Cadastrar()`) e verifique se tudo ocorreu como devia com o método `Verify`, presente no objeto criado pelo mock. Este método receberá dois argumentos:
+- Uma arrow function indicando o método do service que deseja verificar.
+- O struct `Times` para saber quantas o método foi chamado (muitas, uma vez, nenhuma). Neste exemplo, `Times.Once` indica uma vez só.

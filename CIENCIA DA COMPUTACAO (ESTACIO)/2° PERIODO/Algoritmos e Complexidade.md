@@ -132,7 +132,7 @@ As principais notações de Big O são:
 - **O(n) ou linear:** algoritmo cuja a quantidade de operações realizadas aumenta conforme o volume de dados de entrada.
 - **O(n log n) ou complexidade loglinear:** significa que o algoritmo executa um trabalho **linear** (_n_) e, para cada parte desse trabalho, há um fator **logarítmico** (_log n_), ou vice-versa. Exemplo é o **Merge Sort** divide uma lista repetidamente em partes menores (log n) até que cada parte contenha apenas um elemento. Em seguida, ele intercala essas partes de forma ordenada O(n), formando sublistas cada vez maiores, até reconstruir a lista original completamente ordenada.
 - ![[Pasted image 20260709093223.png]]
-- **O(n^2) ou quadrática:** quando a operações realizadas aumentam *quadraticamente* (ou elevado a 2) em relação ao volume de dados de entrada. Um exemplo é o o loop aninhado.
+- **O(n^2) ou quadrática:** quando a operações realizadas aumentam *quadraticamente* (ou elevado a 2) em relação ao volume de dados de entrada. Um exemplo é o loop aninhado.
 - **O(2^n) ou exponencial:** significa que a cada novo dado adicionado, o o número de operações do programa dobra. Um exemplo é uma função de **fibonacci**:
   
   ```java
@@ -458,3 +458,58 @@ Uma função recursiva pode receber um argumento que inclui outra função recur
 ```
 
 Na linha (8), é realizada a recursão aninhada dentro da chamada ackermann ( n−1, ackermann(n−1,ackermann(n,m−1)).
+
+# Algoritmos de Ordenação Avançados
+
+## O que é ordenação?
+
+Método de organizar os valores de um conjunto, seja em ordem crescente ou decrescente. Os tipos de ordenação mais comum são: numérica e lexicográfica (alfabética).
+## O que é chave de ordenação?
+
+É um campo do item utilizado para comparação, verificando se um elemento está ou não a frente de outro elemento.
+
+## Quais são as classificações para algoritmos de ordenação?
+
+- **Ordenação interna (in-place):** o conjunto de dados é pequeno e cabe inteiramente na memória principal, sendo que o processo de ordenação é feito na memória principal.
+- **Ordenação externa:** o conjunto de dados não cabe inteiramente na memória principal, mas se encontra em algum disco de armazenamento ou fita, que são acessados sequencialmente em blocos.
+
+## O que é o bubble sort?
+
+Algoritmo que compara um elemento com o próximo elemento da estrutura de dados e, caso o elemento atual seja maior que o seu sucessor, haverá uma troca de lugar entre eles. O resultado final é que o maior elemento da estrutura de dados se torne o último elemento (como se fosse uma bolha subindo para a superfície). Exemplo:
+
+![[Pasted image 20260825105850.png]]
+
+O nível de complexidade desse algoritmo é **O(n²).**
+
+## O que é o insertion sort?
+
+Algoritmo de ordenação de elementos em uma estrutura de dados. O que ele faz é comparar um elemento com os seus antecessores e, caso os elementos anteriores sejam maiores do que o atual, será realizado uma troca de posição. Exemplo:
+
+![[Pasted image 20260825113841.png]]
+
+Para o pior caso, a ordenação por inserção é tão ruim quanto a ordenação bolha e a ordenação por seleção, ou seja, **sua complexidade é O(n²)**. Para o caso médio, é somente um pouco melhor.
+
+## O que é selection sort?
+
+Também é um algoritmo de ordenação de elementos em uma estrutura de dados, sendo que para cada elemento da estrutura de dados, começando do primeiro, o algoritmo procura na parte não ordenada (direita) o menor valor (ordenação crescente) e troca os dois valores de lugar.
+
+Em seguida, o algoritmo avança para a próxima posição do  estrutura de dados esse processo é feito até que todo a estrutura de dados esteja ordenada.
+
+O tempo de execução do selection sort é **O(n²)** para o melhor e o pior caso.
+
+## O que é o merge sort?
+
+Um algoritmo recursivo que usa a ideia de dividir para conquistar, ou seja, divide os dados em conjuntos cada vez menores para, depois, ordená-los e combiná-los por meio de intercalação. Nesta forma de ordenação, o vetor é dividido em vetores com a metade do tamanho do original por meio de um procedimento recursivo. A divisão ocorre até que o vetor fique com somente um elemento, e estes estejam ordenados e intercalados.
+
+Uma vantagem desse algoritmo é que ele requer menos memória.
+
+Sua complexidade é O(n log n) em todos os casos.
+## O que é o quick sort?
+
+O Quick Sort é um algoritmo de ordenação eficiente que usa a estratégia de dividir para conquistar. Este é o processo.
+
+- **Escolha do pivô:** Seleciona-se um elemento da lista para ser o **pivô** (referência). Pode ser o primeiro, o último ou um valor aleatório.
+- **Particionamento:** A lista é reorganizada de forma que todos os valores menores que o pivô fiquem à esquerda dele e todos os maiores fiquem à direita. O pivô fica na sua posição final correta.
+- **Recursão:** O processo é repetido de forma independente nas sublistas à esquerda e à direita do pivô até que a lista inteira esteja ordenada.
+
+No **caso médio e melhor caso**, o tempo de execução é **O(n log n)**. No **pior caso**, o tempo cai para **O(n²)**. O **tempo médio** do quick sort é **O(n log n)**.

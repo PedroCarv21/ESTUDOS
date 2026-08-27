@@ -127,4 +127,129 @@ Necessidades que o sistema deve atender.
 - **Pós-condições:** estado do sistema após o caso de uso ter sido executado.
 - **Regras de negócio:** descrição do que um caso de uso pode fazer referente as regras de negócio.
 
+## Como deve ser a descrição de atributos e métodos em um diagrama de classe?
 
+- **Atributos:** [visibilidade] nome: tipo. Os tipos de visibilidade são:
+	- Público (representado pelo +).
+	- Protegido (representado pelo #).
+	- Privado (representado pelo -).
+	- De pacote (representado pelo ~).
+- **Métodos:** [visibilidade] nome(parâmetros) : tipo-retorno.
+
+## Tipos de relacionamento entre classes
+
+### Associação
+
+- Representação: linha reta
+- Significado: representa a possibilidade da troca de mensagens entre as classes associadas. Exemplo: cliente faz pedido.
+
+Os tipos de associações são:
+
+|                      |             |
+| -------------------- | ----------- |
+| Apenas 1             | 1..1 (ou 1) |
+| Zero ou Muitos       | 0..* (ou *) |
+| Um ou Muitos         | 1..*        |
+| Zero ou Um           | 0..1        |
+| Intervalo Específico | li..ls      |
+#### Tipos de associações que podem ser aplicadas aos diagramas de classe
+
+- **Classe associativa:** é usada para guardar informações sobre a associação e é ligada a uma associação e não a outras classes. São comuns em relacionamentos Many-To-Many. É representado por uma linha pontilhada ligada a associação.
+- **Auto associações:** ocorre quando objetos da mesma classe se relacionam e possuem papeis diferentes.
+![[Pasted image 20260821125800.png]]
+- **Associação todo-parte:** indica que um dos objetos está contido (faz parte) no outro. Existem dois tipos de associação:
+	- **Agregação:** a parte existe independente da existência do todo. É representado pelo losango branco.
+	- **Composição:** a parte não pode existir sem a existência do todo. É representado pelo losango preto.
+- **Mecanismo de herança:** é um dos pilares da POO. É representado por uma seta branca.
+
+## Considerações sobre diagrama de objetos
+
+Diferente dos diagramas de classe (que possuem nome, atributos e métodos), os diagrama de objeto terá cada objeto com apenas um nome e atributo (sem métodos). Exemplo de diagrama de objeto. Exemplo:
+
+![[Pasted image 20260821151915.png]]
+
+Os diagramas de objeto, embora não muito utilizados, podem ser úteis para validar certos aspectos de um diagrama de classe. Em suma, eles podem ajudar na análise de uma interação específica entre objetos do sistema.
+
+As duas qualidades que podem ser verificadas são:
+- Exatidão: se todas as conexões e objetos estão de acordo com diagrama de classes original.
+- Completude: se falta alguma conexão ou objeto, quer no diagrama de objetos ou no diagrama de classes.
+
+## O que é diagrama de pacote?
+
+Descreve os pacotes ou pedaços do sistema divididos em agrupamentos lógicos mostrando as dependências entre eles. Este diagrama é muito utilizado para ilustrar a arquitetura de um sistema mostrando o agrupamento de suas classes.
+
+### Algumas características
+
+- As pacotes podem se relacionar entre si de forma dependente.
+- É possível definir a visibilidade de pacotes e dos elementos contidos nele.
+
+### Quais as relações de dependência?
+
+- **Acesso:** indica que um pacote requer assistência das funções de uma classe que está em outro pacote.
+- **Importação:** indica que uma funcionalidade foi importada de um pacote para outro.
+
+Ambas as relações são representadas por uma linha pontilhada com uma seta apontando para o pacote dependente.
+### Exemplo de diagrama de pacote
+
+![[Pasted image 20260821161529.png]]
+
+### Visibilidades nos pacotes
+
+- Público (+)
+- Protegido (#)
+- Privado (-)
+# Utilizando Uml Para Projetar o Software
+
+## O que é o diagrama de interação?
+
+É um tipo de diagrama comportamental que mostra como objetos ou partes de um sistema trocam mensagens e dados ao longo do tempo. Além disso:
+
+- Os objetos possuem uma linha de vida definida.
+- As mensagens são transformadas em métodos.
+- Um diagrama de interação é baseado em um diagrama de interação específico.
+- As principais características são:
+	- **Atores**: aqueles que irão interagir com o sistema.
+	- **Classes limites ou fronteiras (boundary class)**:  Objetos que interagem com atores do sistema (por exemplo, um **usuário** ou **um serviço externo** ). Janelas, telas e menus são exemplos de limites que interagem com usuários.
+	- **Entidade (Entity object):** Objetos que representam dados do sistema, geralmente provenientes do modelo de domínio.
+	- **Controle (Control object):** são objetos que atuam como intermediários entre limites e entidades. Eles servem como a cola entre os elementos de limite e os elementos de entidade, implementando a lógica necessária para gerenciar os diversos elementos e suas interações.
+
+![[Pasted image 20260826115054.png]]
+
+## Dois tipos de diagrama de interação
+
+### Comunicação
+
+Muito mais focado na relação entre os componentes do sistema. É também nesse diagrama em que as mensagens são enumeradas para descrever a sequência.
+### Sequência
+
+Diferente do diagrama de comunicação, o diagrama de sequência apresenta a sucessão de mensagens ocorrendo a partir do topo do diagrama até chegar no ponto mais baixo do diagrama.
+#### Características dos diagramas de sequência
+
+- Linha horizontal: atores objetos e classes.
+- Vertical: linha de tempo e tempo de vida do objeto.
+- Perfis específicos: fronteira, controle e entidade.
+- Arquitetura MVC.
+
+#### Tipos de mensagem
+
+- **Síncrona:** espera uma resposta.
+- **Assíncrona:** não espera resposta.
+- **De retorno:** indica o retorno de um objeto. 
+- **De criação:** indica a criação de um objeto.
+
+![[Pasted image 20260826122701.png]]
+
+#### Condição de guarda e iteração
+
+A condição de guarda é uma expressão booleana (verdadeiro ou falso) colocada entre colchetes `[...]` ao lado ou acima de uma mensagem ou fragmento. Como funciona: a mensagem só é enviada ou executada se a condição dentro dos colchetes resultar em verdadeiro.
+
+Já a condição de iteração é a repetição de uma mensagem ou conjunto de mensagens, semelhante a um laço (`for`, `while`) na programação. Como funciona: É indicada por um asterisco `*` na frente da mensagem (iteração simples).
+#### Autochamada
+
+Quando um método de um objeto X chama outro método do mesmo objeto X.
+#### Tipos de interação
+
+- **Ref:** referência para outro diagrama de sequência.
+- **Opt:** representa um if-else.
+- **Loop:** representa o loop de repetição.
+- **Alt:** permitem que um trecho da interação seja alternativo.

@@ -1,12 +1,11 @@
 
 # 14. Arquitetura de uma Solução C-Sharp
 
-## Qual a arquitetura de um projeto .NET?
+## Qual a arquitetura de um sistema .NET?
 
 A estrutura de uma aplicação é organizada da seguinte forma:
 - **Solução:** nada mais é do que o software como um todo. Dentro da solução, pode haver um ou mais projetos.
 - **Projetos:** responsáveis por agrupar todos os arquivos compilados necessários para atender a uma determinada funcionalidade da aplicação. Os projetos podem gerar tanto um executável como também um **Dynamic Link Library (DLL)**, um arquivo compactado que contém código feito para ser reutilizado.
-
 ## O que é o namespace?
 
 É um identificador utilizado para organizar as classes, interfaces e outros tipos, evitando conflito de nomes.

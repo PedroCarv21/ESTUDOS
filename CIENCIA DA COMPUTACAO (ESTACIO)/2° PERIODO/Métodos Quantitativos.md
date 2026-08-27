@@ -446,3 +446,217 @@ $$
 $$
 x_{F_1A},\ x_{F_2A},\ x_{AC1},\ x_{AC2} \geq 0
 $$
+
+## Problema de alocação (designação ou matching)
+
+Este problema lida com dois conjuntos e a criação de pares através dos elementos destes dois conjuntos, considerando a minimização e respeitando as restrições.
+
+### O que são variáveis de decisão?
+
+Uma empresa precisa alocar funcionários para três turnos diários (manhã, tarde e noite). Cada turno exige uma quantidade mínima de trabalhadores. A empresa dispõe de 3 funcionários (A, B e C), e cada um tem uma disponibilidade e um custo/hora diferente.
+
+Demandas por turno:
+- Manhã: 2 funcionários
+- Tarde: 2 funcionários
+- Noite: 1 funcionário
+
+Custos por hora:
+
+|   |   |   |   |
+|---|---|---|---|
+||**Manhã**|**Tarde**|**Noite**|
+|**Funcionário A**|**8**|**10**|**11**|
+|**Funcionário B**|**11**|**12**|**14**|
+|**Funcionário C**|**9**|**7**|**15**|
+
+Regras:
+- Cada funcionário pode trabalhar no máximo em 2 turnos.
+- Um funcionário só pode ser alocado uma vez por turno (0 ou 1).
+
+### Variáveis binárias
+
+No problema de alocação criamos variáveis binárias xiJ​ em que:
+
+i: representa o funcionário (por exemplo: A,B ou C).  
+j: representa o turno (por exemplo: manhã, tarde ou noite).
+
+Por ser uma variável binária, xiJ​ só pode valer 0 ou 1 , ou ele está alocado ou não está alocado.
+
+xiJ​=1 o funcionário foi alocado no turno j.  
+xiJ​=0 o funcionário não foi alocado no turno j.
+
+Com isso, temos as seguintes variáveis:
+
+$$
+X_A,m​,\ X_B,m​,\ X_C,m​,\ X_A,t​,\ X_B,t​,\ X_C,t,\ X_A,n​,\ X_B,n​,\ X_C,n​
+$$
+
+### Função objetivo:
+
+$$
+MinZ=8X_A,m​+11X_B,m​+9X_C,m​+10X_A,t​+12X_B,t​+7X_C,t​+11X_A,n​+14X_B,n​+15X_C,n
+$$
+
+### Restrições:
+
+Manhã: xA,m​+xB,m​+xC,m​≥2  
+Tarde: xA,t​+xB,t​+xC,t​≥2  
+Noite: xA,n​+xB,n​+xC,n​≥1  
+Funcionário A: xA,m​+xA,t​+1xA,n​≤2  
+Funcionário B: xB,m​+xB,t​+xB,n​≤2
+
+Funcionário A: xC,m​+xC,t​+xC,n​≤2
+
+xiJ​∈{0,1}
+
+# Tema 4 - Dualidade e Análise de Sensibilidade
+
+## O que é problema dual?
+
+é um modelo matemático associado a um problema original (**chamado de primal**) na programação linear. Enquanto o primal maximiza lucros ou minimiza custos diretos, o dual inverte o objetivo (de máx. para min.), transformando restrições em variáveis e revelando limites de valor e custos de oportunidade.
+
+**OBS.: o número de variáveis do problema dual é igual ao número de restrições do problema primal.**
+
+Existe um conjunto de regras para se obter o dual de um problema de programação linear, sintetizado na tabela a seguir.
+
+| Par assimétrico                             |                                             |
+| ------------------------------------------- | ------------------------------------------- |
+| Problema primal (dual)                      | Problema dual (primal)                      |
+| Maximizar                                   | Minimizar                                   |
+| Termos independentes                        | Coeficientes da Função Objetivo (FO)        |
+| Coeficientes da Função Objetivo (FO)        | Termos independentes                        |
+| i-ésima linha de coeficientes tecnológicos  | i-ésima coluna de coeficientes tecnológicos |
+| j-ésima coluna de coeficientes tecnológicos | j-ésima linha de coeficientes tecnológicos  |
+| **Restrição com relação tipo:**             | **Variável tipo:**                          |
+| ≤                                           | Não negativa                                |
+| ≥                                           | Não positiva                                |
+| =                                           | Sem restrição de sinal                      |
+| **Variável tipo:**                          | **Restrição com relação tipo:**             |
+| Não negativa                                | ≥                                           |
+| Não positiva                                | ≤                                           |
+| Sem restrição de sinal                      | =                                           |
+## Exemplo
+
+### 1. Problema primal
+
+O problema dado é:
+
+$$
+Max ZP​=6X_1​+4X_2​+10X_3​
+$$
+
+Sujeito a:
+
+$$
+\begin{aligned}
+X_1​+3X_2​+2X_3​≤15 \\
+2X_2​−X_3​≥5 \\
+2X_1​+X_2​−5X_3​=10 \\
+X_1​,X_2​,X_3​≥0
+\end{aligned}
+$$
+
+### 2. Variáveis do dual
+
+Como o problema primal possui **3 restrições**, o problema dual terá **3 variáveis**:
+
+- $Y_1$​ → associada à primeira restrição;
+- $Y_2$​ → associada à segunda restrição;
+- $Y_3​$ → associada à terceira restrição.
+
+Como o primal é um problema de **maximização**, analisamos o tipo de cada restrição:
+
+| Restrição primal | Variável dual |
+| ---------------- | ------------- |
+| ≤                | $Y_1$​≥0      |
+| ≥                | $Y_2$​≤0      |
+| =                | $Y_3$​ livre  |
+
+Portanto:
+
+$Y_1$​≥0
+$Y_2$​≤0
+$Y_3​$ livre
+
+**OBS.: livre significa que a variável não possui uma restrição de sinal.**
+
+### 3. Função objetivo dual
+
+Os termos da função objetivo dual são formados pelos valores do **lado direito das restrições do primal**: 15,5,10
+
+Como o primal é de **maximização**, o dual será de **minimização**:
+
+$$
+Min ZD​=15Y_1​+5Y_2​+10Y_3
+$$
+### 4. Restrições do dual
+
+Como existem **3 variáveis no primal**, teremos **3 restrições no dual**.
+
+#### Restrição associada a $X_1​$
+
+Pegamos os coeficientes de X1 (números que a multiplicam)​ encontradas nas restrições:
+
+1,0,2
+
+O coeficiente de $X_1​$ na função objetivo primal é 6.
+
+Logo:
+
+$Y_1​+2Y_3​≥6​$
+#### Restrição associada a $X_2​$
+
+Coeficientes de $X_2​$:
+
+3,2,1
+
+O coeficiente de $X_2​$ na função objetivo é 4.
+
+Portanto:
+
+$3Y_1​+2Y_2​+Y_3​≥4$​
+#### Restrição associada a $X_3​$
+
+Coeficientes de X3​:
+
+2,−1,−5
+
+O coeficiente de $X_3​$ na função objetivo é 10.
+
+Assim:
+
+$2Y_1​−Y_2​−5Y_3​≥10$​
+
+### Problema dual completo
+
+$Min ZD​=15Y_1​+5Y_2​+10Y_3$​​
+
+Sujeito a:
+
+
+$$
+\begin{aligned}
+Y_1​+2Y_3​≥6​ \\
+3Y_1​+2Y_2​+Y_3​≥4​ \\
+2Y_1​−Y_2​−5Y_3​≥10
+\end{aligned}$$
+
+E as condições de sinal:
+
+$$
+\begin{aligned}
+Y_1​≥0​ \\
+Y_2​≤0​ \\
+Y_3​ \ livre​
+\end{aligned}
+$$
+
+### Resumo da lógica
+
+- **3 restrições no primal → 3 variáveis no dual**.
+- **3 variáveis no primal → 3 restrições no dual**.
+- Primal **Max → Dual Min**.
+- Como $X_1​,X_2​,X_3​≥0$, todas as restrições do dual são do tipo **≥**.
+- O tipo de cada restrição do primal determina o sinal da variável correspondente no dual.
+
+
