@@ -26,3 +26,27 @@ No momento que for chamar o método construtor do service (`new ClienteService()
 Para ter acesso ao objeto, chame a propriedade `Object`. Por fim, teste algum método do service (neste caso, `Cadastrar()`) e verifique se tudo ocorreu como devia com o método `Verify`, presente no objeto criado pelo mock. Este método receberá dois argumentos:
 - Uma arrow function indicando o método do service que deseja verificar.
 - O struct `Times` para saber quantas o método foi chamado (muitas, uma vez, nenhuma). Neste exemplo, `Times.Once` indica uma vez só.
+# 10. Simulando retorno de métodos com Mock
+
+## Método `Setup` do `Mock`
+
+Usado para ensinar ao Mock o que ele deve fazer quando um determinado método do repository é chamado. Neste exemplo, foi configurado para que, ao chamar método `ObterTodos`, seja retornado uma lista de objetos do tipo `Cliente`:
+
+```csharp
+[Trait("Categoria", "Ordenacao")]
+[Fact(DisplayName = "lista todos os clientes")]
+public void Cliente_ObterTodos_DeveRetornarTodosClientes()
+{
+    var clientesFake = ClienteFactory.GerarListaClienteComAutoFixture(2);
+
+    var clienteRepo = new Mock<IClienteRepository>();
+
+    clienteRepo.Setup(r => r.ObterTodos()).Returns(clientesFake);
+
+    var _clienteService = new ClienteService(clienteRepo.Object);
+    var retornoLista = _clienteService.ObterTodos();
+
+    //clienteRepo.Verify(r => r.ObterTodos(), Times.Once);
+    Assert.Equal(2, retornoLista.Count);
+}
+```
