@@ -1,4 +1,3 @@
-
 # Diferença entre .NET e Csharp
 
 - **C#:**  linguagem de programação da Microsoft utilizada para você escrever do seu programa.

@@ -253,3 +253,70 @@ Quando um método de um objeto X chama outro método do mesmo objeto X.
 - **Opt:** representa um if-else.
 - **Loop:** representa o loop de repetição.
 - **Alt:** permitem que um trecho da interação seja alternativo.
+
+## Qual a diferença entre diagrama de classe conceitual e de projeto?
+
+O primeiro foca na análise enquanto que o segundo foca na implementação.
+
+## Como devem ser utilizados os tipos em um diagrama de classes?
+
+Os tipos devem ser utilizados de acordo com a plataforma de desenvolvimento (linguagem de programação).
+
+## Como é declarado um atributo em um diagrama de classe?
+
+```
+[/][visibilidade] [nome] : [tipo] = [valor_inicial]
+```
+
+A barra / significa que o atributo é derivado, ou seja, calculado. Por exemplo, a partir da data de nascimento será calculado um valor para o atributo idade.
+
+As visibilidades são representadas por símbolos:
+
+- Pública (+).
+- Privada (-).
+- Protegida (#).
+- Pacote (~).
+
+O valor inicial é opcional.
+## Como é declarado um método em um diagrama de classe?
+
+```
+[visibilidade] [nome([parâmtros])] : [tipo-retorno]
+```
+
+E o parâmetro será criado desta forma:
+
+```
+[direção] [nome-parâmetro] : [tipo-parâmetro]
+```
+
+Há três tipos de direção:
+
+- **IN**: o parâmetro envia informação para dentro do método. método apenas lê o valor. Ele não modifica o dado original fora do escopo do método.
+- **OUT**: o parâmetro serve para retornar uma informação para quem chamou o método. O método ignora qualquer valor inicial do parâmetro, calcula um novo dado e o preenche.
+- **INOUT**: o parâmetro faz as duas funções ao mesmo tempo. O método lê o valor inicial do parâmetro, processa, modifica esse valor e devolve o dado alterado para a variável original.
+
+## Quais são os diferentes tipos de associação entre as classes?
+
+- **Unárias, reflexivas ou recursivas (autoassociação)**: quando a classe se associa com ela mesma.
+- ![[Pasted image 20260902112019.png]]
+- **Binária**: é uma ligação estrutural que conecta exatamente duas classes (ou instâncias) em um diagrama de classes.
+- ![[Pasted image 20260902112357.png]]
+- **Ternárias ou N-árias**: é um relacionamento que conecta **três classes** simultaneamente em uma única conexão lógica.
+- ![[Pasted image 20260902113800.png]]
+- **Agregação**: é um tipo de relacionamento fraco do tipo "todo-parte", onde um objeto contém outro, mas ambos podem existir de forma independente.
+- ![[Pasted image 20260902113309.png]]
+- **Composição**: só faz sentido a parte existir se o todo também existe.
+- ![[Pasted image 20260902114433.png]]
+- **Classe associativa:** utilizada para modelar informações e comportamentos que pertencem especificamente ao **relacionamento** entre duas outras classes.
+- ![[Pasted image 20260902114955.png]]
+- **Herança (ou generalização):** representado por uma seta branca.
+- ![[Pasted image 20260902115130.png]]
+- **Associação de dependência**: mostra que a relação é fraca, indireta ou ocorre apenas em momentos específicos. Isso acontece quando uma classe recebe a outra como parâmetro em um método ou cria uma instância dela internamente.
+- ![[Pasted image 20260902120447.png]]
+- **Navegabilidade**: define a direção em que os objetos conseguem "enxergar" ou acessar os dados e métodos de outra classe associada. Os tipos de navegabilidade são:
+	 -  **Unidirecional:** Ocorre em uma única direção. É representada por uma linha com uma **seta aberta** na ponta da classe destino (ex: `Cliente` ➔ `Pedido`). Apenas a classe de origem conhece a classe de destino.
+	 - **Bidirecional:** Ocorre em ambas as direções. É representada por uma linha simples **sem setas**. Tanto a classe `A` conhece a `B`, quanto a classe `B` conhece a `A`.
+## Qual a diferença entre classe persistente e transiente?
+
+Classe persistente é capaz de guardar seu estado e classe transiente é destruída ao final da sessão.

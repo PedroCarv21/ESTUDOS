@@ -178,4 +178,37 @@ Resultado:
 
 Adicionando o atributo `novalidate` na tag `form`.
 
+# Linguagem de Marcação e Estilos - Css
 
+## Três formas de inserir CSS na página
+
+- **Interna:** através da tag `<style></style>`.
+- **Externa:** através da tag `<link>`, sendo o atributo `rel` usado para informar o tipo de arquivo (neste caso será stylesheet) e o atributo `href` para receber o caminho até o arquivo CSS.
+- **Inline:** adiciona CSS em uma tag HTML específica.
+- **Escopo:** estilos no âmbito de escopo, ou seja, específicos para as seções da página em que foram declarados, incluindo os seus elementos filhos. Exemplo:
+  ![[Pasted image 20260903110641.png]]
+## Nome de cada uma das partes do CSS
+
+![[Pasted image 20260903104722.png]]
+
+## Comentários
+
+Os comentários em CSS são feitos assim: `/**/`
+## Herança
+
+Quando um elemento pai transmite alguma das suas definições CSS ao elemento filho.
+## Tradução do código HTML/CSS
+
+Tanto a HTML quanto a CSS são linguagens interpretadas diretamente pelo browser e que não precisam ser compiladas – exceto a CSS quando se utiliza pré-processadores.
+## Como centralizar uma div?
+
+Estabeleça um tamanho específico com a propriedade `width` e coloque também a declaração `margin: 0 auto;`
+## O que significa HSL?
+
+Matriz, saturação e luminosidade.
+## O que são web fontes?
+
+Arquivos de letras estilizadas que carregam direto da internet para mostrar os textos de um site.
+## Como se dá o controle do CSS em relação aos elementos de uma página?
+
+A CSS permite total controle sobre qualquer elemento em uma página.

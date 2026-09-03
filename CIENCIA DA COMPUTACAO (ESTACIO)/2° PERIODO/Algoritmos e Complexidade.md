@@ -479,7 +479,11 @@ Algoritmo que compara um elemento com o próximo elemento da estrutura de dados 
 
 ![[Pasted image 20260825105850.png]]
 
-O nível de complexidade desse algoritmo é **O(n²).**
+O tempo de execução do bubble sort é:
+
+- O(n) – Melhor caso – Os elementos já estão ordenados.
+- O(n2) – Pior caso – Os elementos estão ordenados na ordem inversa.
+- O(n2) – Caso médio.
 
 ## O que é o insertion sort?
 
@@ -495,7 +499,13 @@ Também é um algoritmo de ordenação de elementos em uma estrutura de dados, s
 
 Em seguida, o algoritmo avança para a próxima posição do  estrutura de dados esse processo é feito até que todo a estrutura de dados esteja ordenada.
 
-O tempo de execução do selection sort é **O(n²)** para o melhor e o pior caso.
+O tempo de execução do insertion sort é:
+
+- O(n) – Melhor caso – Os elementos já estão ordenados.
+
+- O(n2) – Pior caso – Os elementos estão ordenados na ordem inversa.
+
+- O(n2) – Caso médio.
 
 ## O que é o merge sort?
 
@@ -509,7 +519,25 @@ Sua complexidade é O(n log n) em todos os casos.
 O Quick Sort é um algoritmo de ordenação eficiente que usa a estratégia de dividir para conquistar. Este é o processo.
 
 - **Escolha do pivô:** Seleciona-se um elemento da lista para ser o **pivô** (referência). Pode ser o primeiro, o último ou um valor aleatório.
-- **Particionamento:** A lista é reorganizada de forma que todos os valores menores que o pivô fiquem à esquerda dele e todos os maiores fiquem à direita. O pivô fica na sua posição final correta.
+- **Particionamento:** A lista é reorganizada de forma que todos os valores menores ou iguais ao pivô fiquem à esquerda dele e todos os maiores fiquem à direita. O pivô fica na sua posição final correta.
 - **Recursão:** O processo é repetido de forma independente nas sublistas à esquerda e à direita do pivô até que a lista inteira esteja ordenada.
 
-No **caso médio e melhor caso**, o tempo de execução é **O(n log n)**. No **pior caso**, o tempo cai para **O(n²)**. O **tempo médio** do quick sort é **O(n log n)**.
+No **caso médio e melhor caso**, o tempo de execução é **O(n log n)**, sendo que o procedimento de particionamento produz duas regiões de tamanho N/2. O **pior caso** ocorre quando uma região fica com n-1 elementos e a outra com apenas um elemento, sendo que o tempo cai para **O(n²)**. O **tempo médio** do quick sort é **O(n log n)**.
+## O que é shell sort?
+
+Um algoritmo de ordenação que funciona da seguinte forma:
+
+- Primeiro, todos os elementos que estão três posições afastados uns dos outros são ordenados.
+- Em seguida, todos os elementos que estão duas posições afastados são ordenados.
+- Finalmente, todos os elementos adjacentes são ordenados.
+
+Por essa razão, é dito que ser derivado da ordenação por inserção e baseado na diminuição dos incrementos.
+
+Exemplo:
+![[Pasted image 20260901102835.png]]
+
+**OBS.: Evite sequências que são potências de 2, pois, por razões matemáticas complexas, elas reduzem a eficiência do algoritmo de ordenação, embora a ordenação ainda funcione.**
+
+É uma ótima opção para arquivos de tamanho moderado.
+
+Na versão original proposta por Shell, com incrementos sucessivos pela metade do tamanho do vetor, o pior caso é O(n²). Já outras sequências de incrementos, mais elaboradas, podem melhorar o desempenho observado, chegando a valores como O(n^1,2) ou O(n (log n)²).

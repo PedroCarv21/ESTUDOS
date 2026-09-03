@@ -660,3 +660,84 @@ $$
 - O tipo de cada restrição do primal determina o sinal da variável correspondente no dual.
 
 
+## O que é analise de sensibilidade (ou pós-otimilidade)?
+
+Se preocupa em avaliar os impactos que variações nos parâmetros (variações na disponibilidade de recursos ou variações nos coeficientes da função objetivo) podem provocar na solução ótima do problema em estudo e identificar os valores alternativos dos parâmetros que levariam a uma nova solução para o problema.
+
+A análise de sensibilidade estuda como um modelo de programação matemática se comporta quando submetido a mudanças em suas condições iniciais, tais como:
+
+- Mudança no vetor de custos (das variáveis básicas e não básicas).
+- Mudança no vetor de termos independentes.
+- Mudanças nos coeficientes das variáveis.
+- Acréscimo de restrições.
+- Acréscimo de novas variáveis.
+
+É possível analisar todas essas mudanças por meio do Solver.
+
+## Exercício de análise de sensibilidade
+
+A empresa Glass Co., que possui três fábricas, produz janelas e portas de vidro. As esquadrias e ferragens em aço são feitas na fábrica 1, as esquadrias de madeira são produzidas na fábrica 2, e a fábrica 3 produz o vidro e monta os produtos.
+
+ A direção da empresa decidiu modernizar a linha de produtos e propôs o lançamento de duas novidades:
+
+- Produto 1: porta de vidro de 2,5m com esquadria de alumínio.
+- Produto 2: janela adornada com esquadria de madeira 1,2m x 1,8m.
+
+O produto 1 requer capacidade produtiva das fábricas 1 e 3. O produto 2 precisa das fábricas 2 e 3. A divisão de marketing concluiu que a empresa poderia vender tanto quanto fosse possível produzir desses produtos por essas fábricas. Porém, ambos os produtos competem por capacidade produtiva da fábrica 3, não estando claro qual mix dos dois produtos seria mais lucrativo. É preciso então determinar quais devem ser as taxas de produção para maximizar o lucro total sujeitas às restrições impostas pela capacidade produtiva:
+
+![[Pasted image 20260831091838.png]]
+
+### Variáveis de decisão e função objetivo
+
+Como a dúvida aqui é saber a quantidade ideal de lotes do produto1 e produto2 a serem fabricados, isso significa que essas serão as variáveis de decisão (representadas por x1 e x2). 
+
+Considerando que cada lote do produto1 retorna um lucro de R$ 3.000,00 e cada lote do produto dá um lucro de R$ 5.000,00, a função objetivo será $3000X_1 + 5000X_2$ ou, simplificando, $Max\ Z\ =\ 3X_1 + 5X_2$.
+### Restrições
+
+Há restrições relacionadas ao tempo de produção disponível por semana em cada fábrica. Logo, temos as seguintes restrições:
+
+$$
+\begin{aligned}
+X_1 ≤ 4 \\
+2X_2 ≤ 12\ à\ X_2 ≤6 \\
+3X_1 + 2X_2 ≤ 18 \\
+X1, X2≥0
+\end{aligned}
+$$
+
+
+### Resolvendo o exercício com Solver
+
+Esse problema foi estruturado no Excel e o cálculo para encontrar o valor ótimo foi realizado através do Solver. As tabelas referentes ao exercício, assim como a análise de sensibilidade, se encontram no arquivo abaixo:
+
+![[ANALISE_DE_SENSIBILIDADE 1.xlsx]]
+
+Algumas informações sobre as tabelas da Análise de sensibilidade:
+
+- **Coluna Objetivo Coeficiente da tabela Células Variáveis:** são os valores originais atribuídos aos coeficientes de cada variável de decisão na função objetivo.
+- **Colunas Permitido Aumentar e Permitido Reduzir da tabela Células Variáveis:** os aumentos e as reduções permitidos nos valores dos coeficientes de cada variável de decisão na função objetivo sem que haja alterações na base da solução ótima do problema. Dessa forma:
+	- O coeficiente de X1 pode reduzir em 3 unidades ou aumentar em 4,5 unidades sem alterar a solução ótima, assumindo que todos os demais coeficientes se mantenham constantes).
+	- O coeficiente de X2, ou seja, o lucro da venda do produto 2, pode reduzir em 3 unidades, sem que a solução ótima seja alterada. Porém, perceba que, mesmo que esse coeficiente aumente indefinidamente, não teremos alterações na solução ótima para o problema da Glass Co.
+  - **Coluna Reduzido Custo da tabela Células Variáveis:**  indica o quanto o coeficiente da função objetivo de uma **variável não básica** pode variar sem que a solução ótima para o problema se altere. **Variáveis não básicas são aquelas que assumem valor igual a zero.** Em relação ao valor da função objetivo, isso pode ser encarado de duas formas:
+	  - **Problema de maximização:** o custo reduzido de uma variável deve ser não negativo para indicar que um aumento no valor da variável implica um aumento no valor da função objetivo.
+	  - **Problema de minimização:** o custo reduzido deve ser não positivo para indicar melhorias na função objetivo.
+  - **Coluna Sombra Preço da tabela Restrições:** indica o impacto que o aumento de uma unidade no valor do RHS (b) da restrição tem sobre o valor da função objetivo, dado que todos os demais coeficientes permaneçam constantes. Pode haver:
+	  - **Preço-sombra positivo:** indica o aumento do valor de z obtido para a solução ótima.
+	  - **Preço-sombra negativo:** implica uma redução no valor de z obtido para a solução ótima.
+  - **Restrição Lateral RH:** indica o lado direito das restrições (depois do sinal de ≥ ou ≤).
+## Regra dos 100%
+
+Essa é uma regra aplicada quando há alterações em mais de um coeficiente da função objetivo. Neste caso, duas situações podem ocorrer:
+
+- **Todas as variáveis, cujos coeficientes da função objetivo se alteram, têm custos reduzidos diferentes de zero:** nesse caso, não há alteração na solução ótima atual desde que o coeficiente de cada variável modificada permaneça dentro dos limites estabelecidos nas colunas “Permitido Aumentar” e “Permitido Reduzir” do Relatório de Sensibilidade.
+- **Pelo menos uma variável, cujo coeficiente da função objetivo se altere, tem um custo reduzido igual a zero:**  é preciso analisar a proporção de alteração planejada em $c_j$ para a máxima alteração permissível para a qual a solução atual permanece ótima.
+
+## O que são restrições agrupadas?
+
+Restrições que tenham folga igual a zero na solução ótima para um problema de programação linear.
+## O que é o relatório limite?
+
+Apresenta o valor ótimo para cada célula variável, além de indicar quais valores a célula de destino assume se cada célula variável for ajustada para seu limite superior ou inferior. 
+
+- **Coluna “Inferior Limite”:** apresenta o menor valor que cada variável pode assumir, enquanto os valores de todas as outras células variáveis permanecerem constantes e todas as restrições forem satisfeitas. 
+- **Coluna “Superior Limite”:** apresenta o maior valor que cada variável pode assumir, enquanto os valores de todas as outras células variáveis permanecerem constantes e todas as restrições forem satisfeitas.

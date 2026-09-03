@@ -53,12 +53,12 @@ Esta formatação será utilizada para completar uma quantidade de casas numéri
 Opção 1:
 
 ```csharp
-string nome;
+string _nome;
 public string Nome
 {
     get
     {
-        return string.Format($"Nome do usuário: {nome}");
+        return string.Format($"Nome do usuário: {_nome}");
     }
     set
     {
@@ -68,7 +68,7 @@ public string Nome
         }
         else
         {
-            nome = value;
+            _nome = value;
         }   
     }
 }
@@ -103,7 +103,7 @@ public string senha
 
 ## A diferença entre `const` e `readonly`
 
-Se for uma constante, é necessário inicializar o atributo já na declaração. Se o atributo for `readonly`, o atributo pode ser inicializar já na declaração ou por meio do método construtor. Exemplo de constante:
+Se for uma constante, é necessário inicializar o atributo já na declaração. Se o atributo for `readonly`, o atributo pode se inicializar já na declaração ou por meio do método construtor. Exemplo de constante:
 
 ```csharp
 public const double Pi = 3.14;
@@ -218,7 +218,7 @@ A atualização do nome do `usuario1` não irá afetar o `usuario2`.
 
 ## Comando `ref`
 
-utilizada para modificar uma variável que é passada como argumento em um método. Par isso, coloque o comando `ref` tanto no parâmetro como também no argumento. Exemplo:
+Utilizada para modificar uma variável que é passada como argumento em um método. Par isso, coloque o comando `ref` tanto no parâmetro como também no argumento. Exemplo:
 
 ```csharp
 static void Main(string[] args)

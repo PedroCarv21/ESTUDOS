@@ -91,7 +91,7 @@ Significa usar um ponto para acessar as partes de um objeto. Por exemplo:
 | Método                                | O que faz                                                                      |
 | ------------------------------------- | ------------------------------------------------------------------------------ |
 | `ToUpper`                             | Torna todas as letras de uma string em maiúsculas.                             |
-| `Insert(posicao, string)`             | Insere uma string dentro de outra string de acordo<br>com o posição informada. |
+| `Insert(posicao, string)`             | Insere uma string dentro de outra string de acordo<br>com a posição informada. |
 | `Replace(palavraAntiga, novaPalavra)` | Substitui uma palavra de uma string por outra.                                 |
 
 ## Como informar a possibilidade do valor `null` em um string?
